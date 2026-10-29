@@ -1,0 +1,111 @@
+{
+ "texts": [
+  "STATUS: LISTENING",
+  "EXIT",
+  "Open hand gesture",
+  "idlelisteningthinkingspeaking🎙 MIC OFF↻ REPLAY♪ SOUND ON",
+  "idle",
+  "listening",
+  "thinking",
+  "speaking",
+  "🎙 MIC OFF",
+  "↻ REPLAY",
+  "♪ SOUND ON"
+ ],
+ "pressed": [
+  {
+   "t": "EXIT",
+   "p": null
+  },
+  {
+   "t": "Open hand gesture",
+   "p": null
+  },
+  {
+   "t": "idle",
+   "p": null
+  },
+  {
+   "t": "listening",
+   "p": null
+  },
+  {
+   "t": "thinking",
+   "p": null
+  },
+  {
+   "t": "speaking",
+   "p": null
+  },
+  {
+   "t": "🎙 MIC OFF",
+   "p": null
+  },
+  {
+   "t": "↻ REPLAY",
+   "p": null
+  },
+  {
+   "t": "♪ SOUND ON",
+   "p": null
+  }
+ ],
+ "canvases": [
+  {
+   "w": 1440,
+   "h": 900,
+   "sw": "1440px",
+   "sh": "900px",
+   "blend": "normal",
+   "filter": "none"
+  },
+  {
+   "w": 900,
+   "h": 900,
+   "sw": "100%",
+   "sh": "100%",
+   "blend": "normal",
+   "filter": "none"
+  },
+  {
+   "w": 900,
+   "h": 900,
+   "sw": "900px",
+   "sh": "900px",
+   "blend": "normal",
+   "filter": "none"
+  }
+ ],
+ "imgs": [
+  {
+   "src": "backdrop-v1.webp",
+   "nw": 1672,
+   "blend": "normal",
+   "filter": "none",
+   "opacity": "1"
+  },
+  {
+   "src": "cbd3fbb0-e811-4ff1-9a52-5ed845642032",
+   "nw": 1024,
+   "blend": "plus-lighter",
+   "filter": "none",
+   "opacity": "0.223251"
+  },
+  {
+   "src": "cbd3fbb0-e811-4ff1-9a52-5ed845642032",
+   "nw": 1024,
+   "blend": "plus-lighter",
+   "filter": "none",
+   "opacity": "0.100902"
+  },
+  {
+   "src": "cbd3fbb0-e811-4ff1-9a52-5ed845642032",
+   "nw": 1024,
+   "blend": "plus-lighter",
+   "filter": "none",
+   "opacity": "0.158527"
+  }
+ ],
+ "classes": [],
+ "storage": {}
+}

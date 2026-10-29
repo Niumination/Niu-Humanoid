@@ -1,0 +1,162 @@
+{
+ "generatedAt": "2026-10-29T10:24:14.187Z",
+ "dom": {
+  "live": {
+   "hasDebugBar": true,
+   "barLabels": [
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "buttons": [
+    {
+     "label": "EXIT",
+     "aria": "Exit humanoid view",
+     "title": null
+    },
+    {
+     "label": "Open hand gesture",
+     "aria": "Open hand gesture",
+     "title": null
+    },
+    {
+     "label": "idle",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "listening",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "thinking",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "speaking",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "🎙 MIC OFF",
+     "aria": null,
+     "title": "Drive the speaking face from your microphone"
+    },
+    {
+     "label": "↻ REPLAY",
+     "aria": null,
+     "title": "Run the birth again"
+    },
+    {
+     "label": "♪ SOUND ON",
+     "aria": null,
+     "title": null
+    }
+   ],
+   "status": "STATUS: IDLE"
+  },
+  "build": {
+   "hasDebugBar": true,
+   "barLabels": [
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "buttons": [
+    {
+     "label": "EXIT",
+     "aria": "Exit humanoid view",
+     "title": null
+    },
+    {
+     "label": "Open hand gesture",
+     "aria": "Open hand gesture",
+     "title": null
+    },
+    {
+     "label": "idle",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "listening",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "thinking",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "speaking",
+     "aria": null,
+     "title": null
+    },
+    {
+     "label": "🎙 MIC OFF",
+     "aria": null,
+     "title": "Drive the speaking face from your microphone"
+    },
+    {
+     "label": "↻ REPLAY",
+     "aria": null,
+     "title": "Run the birth again"
+    },
+    {
+     "label": "♪ SOUND ON",
+     "aria": null,
+     "title": null
+    }
+   ],
+   "status": "STATUS: IDLE"
+  }
+ },
+ "hooks": {
+  "count": 18,
+  "names": [
+   "__HUM_ASM_EL",
+   "__HUM_ASM_OFF",
+   "__HUM_ATTN",
+   "__HUM_BG_PULSE",
+   "__HUM_BG_REST",
+   "__HUM_BG_T",
+   "__HUM_BLEND",
+   "__HUM_BOIL_AMP",
+   "__HUM_CLICK",
+   "__HUM_DOT",
+   "__HUM_ENERGY",
+   "__HUM_FORCE_2D",
+   "__HUM_FREEZE_T",
+   "__HUM_NO_BG",
+   "__HUM_RIM",
+   "__HUM_SKIP_ASSEMBLY",
+   "__HUM_SPEAK_AMP",
+   "__HUM_SURGE"
+  ],
+  "missing": [],
+  "notListed": [],
+  "freeze": 5,
+  "frozenDelta": 0,
+  "freeDelta": 4.143,
+  "frozenStable": true,
+  "freeMoves": true
+ },
+ "consoleErrors": [],
+ "pass": {
+  "bar": true,
+  "hookCount": true,
+  "freeze": true,
+  "noErrors": true
+ }
+}

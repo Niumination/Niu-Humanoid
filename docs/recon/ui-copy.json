@@ -1,0 +1,346 @@
+{
+"apex": [
+[
+1050744,
+"css-value",
+"opacity 140ms"
+],
+[
+1057942,
+"css-value",
+"opacity 900ms"
+],
+[
+1058764,
+"copy",
+"center 42%"
+],
+[
+1063491,
+"copy",
+"camera unavailable"
+],
+[
+1064029,
+"css-value",
+"5px 10px"
+],
+[
+1064136,
+"copy",
+"'Share Tech Mono', monospace"
+],
+[
+1075444,
+"copy",
+"ASSEMBLING... 25%"
+],
+[
+1089146,
+"copy",
+"STATUS: SPEAKING  INTENSITY: HIGH"
+],
+[
+1089282,
+"copy",
+"Apex cinematic humanoid"
+],
+[
+1089765,
+"copy",
+"Animated cyan and gold Apex humanoid"
+],
+[
+1091658,
+"css-value",
+"width, height, left, top, opacity"
+],
+[
+1091751,
+"copy",
+"Exit humanoid view"
+],
+[
+1091856,
+"css-value",
+"0 14px"
+],
+[
+1092173,
+"copy",
+"Close camera"
+],
+[
+1092191,
+"copy",
+"Open camera now"
+],
+[
+1092209,
+"copy",
+"Open hand gesture"
+],
+[
+1092632,
+"copy",
+"Camera tracking is on \u2014 open controls"
+],
+[
+1092678,
+"copy",
+"Finger tracking is on"
+],
+[
+1092854,
+"css-value",
+"0 0 10px #ff4444aa"
+],
+[
+1092885,
+"css-value",
+"fadeInOut 1.6s ease infinite"
+],
+[
+1106854,
+"css-value",
+"5px 11px"
+],
+[
+1107068,
+"copy",
+"Drive the speaking face from your microphone"
+],
+[
+1107326,
+"copy",
+"\ud83c\udf99 MIC "
+],
+[
+1107337,
+"copy",
+"ON"
+],
+[
+1107396,
+"copy",
+"Run the birth again"
+],
+[
+1107590,
+"copy",
+"\u21bb REPLAY"
+],
+[
+1107816,
+"copy",
+"\u266a SOUND ON"
+],
+[
+1107829,
+"copy",
+"\u266a SOUND OFF"
+],
+[
+1108129,
+"copy",
+"APEX HUMANOID"
+],
+[
+1108245,
+"copy",
+"a figure of light that assembles itself"
+],
+[
+1108331,
+"css-value",
+"12px 34px"
+],
+[
+1108643,
+"copy",
+"the click opens the audio - the birth has a sound"
+]
+],
+"mira": [
+[
+1060789,
+"copy",
+"context lost"
+],
+[
+1060804,
+"copy",
+"no log"
+],
+[
+1063211,
+"copy",
+"mira field"
+],
+[
+1063863,
+"css-value",
+"opacity .25s linear"
+],
+[
+1130692,
+"copy",
+"camera on - show your hand"
+],
+[
+1130731,
+"copy",
+"hand found - point, pinch to touch her"
+],
+[
+1131527,
+"copy",
+"starting the camera"
+],
+[
+1131625,
+"copy",
+"this browser has no camera access here"
+],
+[
+1132010,
+"copy",
+"loading hand tracking"
+],
+[
+1134135,
+"copy",
+"camera blocked - allow it in the browser settings"
+],
+[
+1134208,
+"copy",
+"no camera found"
+],
+[
+1134226,
+"copy",
+"camera unavailable"
+],
+[
+1134752,
+"css-value",
+"5px 10px"
+],
+[
+1134857,
+"copy",
+"'Share Tech Mono', monospace"
+],
+[
+1135567,
+"copy",
+"Face light size"
+],
+[
+1176663,
+"css-value",
+"8px 13px"
+],
+[
+1176679,
+"css-value",
+"12px 'Share Tech Mono', monospace"
+],
+[
+1176987,
+"copy",
+"dial."
+],
+[
+1178656,
+"css-value",
+"button, input, select, textarea"
+],
+[
+1180575,
+"copy",
+"mira humanoid"
+],
+[
+1181379,
+"copy",
+"SPEED "
+],
+[
+1181519,
+"copy",
+"SOUND "
+],
+[
+1181536,
+"copy",
+"ON"
+],
+[
+1181735,
+"copy",
+"Exit"
+],
+[
+1181811,
+"css-value",
+"0 13px"
+],
+[
+1182021,
+"copy",
+"CAMERA OFF"
+],
+[
+1182034,
+"copy",
+"ENABLE CAMERA"
+],
+[
+1182083,
+"copy",
+"The camera is on"
+],
+[
+1182203,
+"css-value",
+"0 0 10px #ff4444aa"
+],
+[
+1182234,
+"css-value",
+"fadeInOut 1.6s ease infinite"
+],
+[
+1184540,
+"copy",
+"While she talks, her voice follows your microphone's loudness"
+],
+[
+1184624,
+"copy",
+"MIC "
+],
+[
+1184931,
+"copy",
+"MIRA HUMANOID"
+],
+[
+1185047,
+"copy",
+"a figure of light that weaves herself out of her own heart"
+],
+[
+1185162,
+"css-value",
+"12px 34px"
+],
+[
+1185352,
+"copy",
+"the click opens the audio - her build has a sound"
+]
+]
+}

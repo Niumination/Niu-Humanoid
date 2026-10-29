@@ -1,0 +1,54 @@
+{
+ "apex": {
+  "timers": [
+   [
+    "setTimeout",
+    "10"
+   ],
+   [
+    "setTimeout",
+    "10"
+   ],
+   [
+    "setInterval",
+    "180"
+   ]
+  ],
+  "transitions": [
+   "opacity 140ms",
+   "opacity 900ms"
+  ],
+  "animation": [
+   "fadeInOut 1.6s ease infinite",
+   "humRingBase 3.4s ease-in-out infinite",
+   "humRingPulse 4.55s linear infinite"
+  ],
+  "cues": []
+ },
+ "mira": {
+  "timers": [
+   [
+    "setTimeout",
+    "10"
+   ],
+   [
+    "setTimeout",
+    "10"
+   ],
+   [
+    "setTimeout",
+    "0"
+   ]
+  ],
+  "transitions": [
+   "opacity .25s linear"
+  ],
+  "animation": [
+   "fadeInOut 1.6s ease infinite"
+  ],
+  "cues": [
+   "{kind:\"gold\",at:[.38,.215],color:[1,.72,.36],run:70,pause:1.6,phase:0}",
+   "{kind:\"violet\",at:[.553,.158],color:[.78,.5,1],run:60,pause:2.1,phase:.55}"
+  ]
+ }
+}

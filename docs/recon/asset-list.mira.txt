@@ -1,0 +1,2 @@
+/humanoid/mira-hair-v1.webp
+/humanoid/mira-idle-v1.webp

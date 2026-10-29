@@ -1,0 +1,203 @@
+{
+ "apex": [
+  {
+   "file": "00-vert-1727b.glsl",
+   "bytes": 1765,
+   "unames": [
+    "uMap",
+    "uPixelRatio",
+    "uPulse",
+    "uRest",
+    "uSizeK",
+    "uWave",
+    "uWaveK"
+   ],
+   "attrs": [
+    "aCol",
+    "aPh, aRate, aBase, aTw, aSz",
+    "aUv"
+   ],
+   "head": "// aTw is a MODE: 1 = wandering star (briefly ON, mostly off) \u00b7 0.5 = vein breath"
+  },
+  {
+   "file": "01-frag-1357b.glsl",
+   "bytes": 1395,
+   "unames": [
+    "uDotSharp",
+    "uPatchUV",
+    "uPulseA",
+    "uPulseB",
+    "uStrongA",
+    "uStrongB",
+    "uTexA",
+    "uTexB",
+    "uTexS"
+   ],
+   "attrs": [],
+   "head": "// \u26a0 NO colorspace include here \u2014 the Bloom composer performs the one sRGB encode (see header)."
+  },
+  {
+   "file": "02-vert-1146b.glsl",
+   "bytes": 1184,
+   "unames": [
+    "uPixelRatio",
+    "uSizeK",
+    "uStr"
+   ],
+   "attrs": [
+    "aOff",
+    "aPh, aSp, aSz, aBr"
+   ],
+   "head": "// ESCAPE-AND-RETURN, the same species as the edge boil (round 8: an in-place wobble made"
+  }
+ ],
+ "mira": [
+  {
+   "file": "00-frag-3007b.glsl",
+   "bytes": 3045,
+   "unames": [
+    "uEnergy",
+    "uOpacity",
+    "uOrbPx",
+    "uOrbR",
+    "uSeed",
+    "uTime"
+   ],
+   "attrs": [],
+   "head": "// a MIRA ribbon (the near-orb correction, sections 12-13): ONE bright folding edge, a fading"
+  },
+  {
+   "file": "01-vert-2833b.glsl",
+   "bytes": 2871,
+   "unames": [
+    "uBright",
+    "uCoreA",
+    "uDense",
+    "uLag",
+    "uLiveT",
+    "uMatter",
+    "uPx",
+    "uSettle",
+    "uShock",
+    "uTime",
+    "uTrail"
+   ],
+   "attrs": [],
+   "head": "// (a TRAIL copy draws the same matter a moment earlier - uLag - fainter, only in flight: light streaks behind"
+  },
+  {
+   "file": "02-frag-2742b.glsl",
+   "bytes": 2780,
+   "unames": [
+    "uCorePx",
+    "uFade",
+    "uGain",
+    "uGlowLine",
+    "uGlowSketch",
+    "uHalfPx",
+    "uHot",
+    "uIdle",
+    "uLiveT",
+    "uPulse",
+    "uPulseSpeed",
+    "uRest",
+    "uSettle",
+    "uSketchBright",
+    "uSoftLine",
+    "uSoftSketch",
+    "uTaper",
+    "uTime"
+   ],
+   "attrs": [],
+   "head": "// NO BLUNT CUTS (round 6): a line thins and fades into its ends, and the drawing front fades in"
+  },
+  {
+   "file": "03-frag-990b.glsl",
+   "bytes": 1028,
+   "unames": [
+    "uGain",
+    "uMap",
+    "uSize"
+   ],
+   "attrs": [],
+   "head": "// (weighted by its see-through value, exactly as the flat picture was: her half-clear edge pixels never shine"
+  },
+  {
+   "file": "04-frag-929b.glsl",
+   "bytes": 967,
+   "unames": [
+    "uBright",
+    "uTime"
+   ],
+   "attrs": [],
+   "head": "// a real strike flashes, drops out, re-strikes, then fades (the same beats as lib/miraBuild flicker)"
+  },
+  {
+   "file": "05-frag-888b.glsl",
+   "bytes": 926,
+   "unames": [
+    "uFill",
+    "uGain",
+    "uHeadCut",
+    "uHeadOn",
+    "uMap",
+    "uSize",
+    "uTime"
+   ],
+   "attrs": [],
+   "head": ""
+  },
+  {
+   "file": "06-vert-865b.glsl",
+   "bytes": 903,
+   "unames": [
+    "uBackK",
+    "uHeadPose",
+    "uOn",
+    "uPxPerPic",
+    "uRim",
+    "uStep",
+    "uZRef"
+   ],
+   "attrs": [],
+   "head": ""
+  },
+  {
+   "file": "07-vert-747b.glsl",
+   "bytes": 785,
+   "unames": [
+    "uHalfPx",
+    "uRes"
+   ],
+   "attrs": [],
+   "head": "// her head turns (lib/figureHead3d): the line rides her head's surface, a hair toward you; what turns behind "
+  },
+  {
+   "file": "08-frag-608b.glsl",
+   "bytes": 646,
+   "unames": [
+    "uGain",
+    "uLifted",
+    "uOn",
+    "uPulse",
+    "uPulseSpeed",
+    "uSize",
+    "uTime"
+   ],
+   "attrs": [],
+   "head": "// now and then a light runs down the strand (only some strands carry one)"
+  },
+  {
+   "file": "09-frag-166b.glsl",
+   "bytes": 204,
+   "unames": [
+    "uGain",
+    "uMap",
+    "uOn",
+    "uSize"
+   ],
+   "attrs": [],
+   "head": ""
+  }
+ ]
+}

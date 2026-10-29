@@ -1,0 +1,1387 @@
+{
+ "generatedAt": "2026-10-29T08:57:29.999Z",
+ "unit": {
+  "plateW": 900,
+  "plateH": 959,
+  "idleDiffPx": 363459,
+  "idleMaxDelta": 35,
+  "speakingBrighterPx": 82128,
+  "totalPx": 863100
+ },
+ "views": {
+  "1440x900": [
+   {
+    "state": "idle",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 4.3922,
+      "gt32": 0.478,
+      "mae": 1.5216
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: IDLE",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: IDLE",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "listening",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 13.421,
+      "gt32": 5.2513,
+      "mae": 5.0477
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: LISTENING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: LISTENING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "thinking",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 4.9998,
+      "gt32": 0.5583,
+      "mae": 1.6863
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: THINKING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: THINKING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "speaking",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 4.9581,
+      "gt32": 0.5631,
+      "mae": 1.6785
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: SPEAKING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: SPEAKING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "strong",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 11.3911,
+      "gt32": 7.6398,
+      "mae": 9.7967
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       1440,
+       900
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: STRONG",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "900x900",
+       "rect": [
+        270,
+        0,
+        900,
+        900
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        1440,
+        900
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: IDLE",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   }
+  ],
+  "390x844": [
+   {
+    "state": "idle",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 12.3952,
+      "gt32": 1.4889,
+      "mae": 3.7078
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: IDLE",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: IDLE",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "listening",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 18.6192,
+      "gt32": 5.8349,
+      "mae": 6.5194
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: LISTENING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: LISTENING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "thinking",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 13.0827,
+      "gt32": 2.4411,
+      "mae": 4.1947
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: THINKING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: THINKING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "speaking",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 12.918,
+      "gt32": 2.4125,
+      "mae": 4.1547
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: SPEAKING",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: SPEAKING",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   },
+   {
+    "state": "strong",
+    "pixel": {
+     "baseline": {
+      "gt8": 0,
+      "gt32": 0,
+      "mae": 0
+     },
+     "rebuild": {
+      "gt8": 16.9167,
+      "gt32": 6.6943,
+      "mae": 9.6582
+     }
+    },
+    "geometry": {
+     "canvasLocal": 1,
+     "canvasLive": 2,
+     "backdrop": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     },
+     "backdropLive": {
+      "src": "backdrop-v1.webp",
+      "rect": [
+       0,
+       0,
+       390,
+       844
+      ],
+      "fit": "cover",
+      "filter": "none",
+      "opacity": "0",
+      "blend": "normal"
+     }
+    },
+    "geoBuild": {
+     "canvas": [
+      {
+       "dev": "900x900",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "import RefreshRuntime from \"/@react-refresh\"\nRefreshRuntime.injectIntoGlobalHook(window)\nwindow.$RefreshReg$ = () => {}\nwindow.$RefreshSig$ = () => (type) => type\nwindow.__vite_plugin_react_preamble_installed__ = true",
+      "Apex Humanoid",
+      ":root{--font-ui: \"Share Tech Mono\", monospace}html,body{margin:0;padding:0;background:#000;font-family:var(--font-ui)}#root{position:fixed;top:0;right:0;bottom:0;left:0}@keyframes fadeInOut{0%,to{opacity:.35}50%{opacity:1}}",
+      "@keyframes humRingBase { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.32; } }\n            @keyframes humRingPulse {\n              0% { transform: scale(1); opacity: 0; }\n              50% { opacity: 0.26; }\n              100% { transform: scale(1.05); opacity: 0; }\n            }",
+      "STATUS: STRONG",
+      "EXIT"
+     ]
+    },
+    "geoLive": {
+     "canvas": [
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      },
+      {
+       "dev": "390x390",
+       "rect": [
+        0,
+        227,
+        390,
+        390
+       ],
+       "fit": "fill",
+       "blend": "normal"
+      }
+     ],
+     "img": [
+      {
+       "src": "backdrop-v1.webp",
+       "rect": [
+        0,
+        0,
+        390,
+        844
+       ],
+       "fit": "cover",
+       "filter": "none",
+       "opacity": "0",
+       "blend": "normal"
+      }
+     ],
+     "texts": [
+      "Apex Humanoid",
+      "STATUS: IDLE",
+      "EXIT",
+      "Open hand gesture",
+      "idle",
+      "listening",
+      "thinking",
+      "speaking",
+      "🎙 MIC OFF",
+      "↻ REPLAY",
+      "♪ SOUND ON"
+     ]
+    }
+   }
+  ]
+ }
+}

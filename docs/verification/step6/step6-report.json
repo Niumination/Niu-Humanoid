@@ -1,0 +1,80 @@
+{
+ "generatedAt": "2026-10-29T10:20:25.809Z",
+ "denied": [
+  {
+   "name": "live",
+   "cameraError": "camera unavailable",
+   "labels": [
+    "EXIT",
+    "Close camera",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "ariaCamera": [
+    "Close camera",
+    "Camera tracking is on — open controls"
+   ],
+   "beforeLabels": [
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "afterFirstClickLabels": [
+    "EXIT",
+    "Open camera now",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ]
+  },
+  {
+   "name": "build",
+   "cameraError": "camera unavailable",
+   "labels": [
+    "EXIT",
+    "Close camera"
+   ],
+   "ariaCamera": [
+    "Close camera",
+    "Camera tracking is on — open controls"
+   ],
+   "beforeLabels": [
+    "EXIT",
+    "Open hand gesture"
+   ],
+   "afterFirstClickLabels": [
+    "EXIT",
+    "Open camera now"
+   ]
+  }
+ ],
+ "unit": {
+  "pinchTight": 1,
+  "pinchLoose": 0,
+  "palmFires": 1,
+  "palmClosedFires": 0,
+  "snapFires": 1,
+  "snapStale": 1,
+  "err": "camera unavailable"
+ },
+ "pass": {
+  "errorText": true,
+  "labels": true,
+  "unit": true
+ }
+}

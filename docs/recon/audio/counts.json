@@ -1,0 +1,118 @@
+{
+ "apex": {
+  "createOscillator": 16,
+  "createGain": 35,
+  "createBiquadFilter": 7,
+  "createBufferSource": 4,
+  "createWaveShaper": 4,
+  "createConvolver": 2,
+  "createStereoPanner": 2,
+  "createAnalyser": 3,
+  "createDynamicsCompressor": 1,
+  "createPanner": 1,
+  "facts": {
+   "waveforms": [
+    "bandpass",
+    "lowpass",
+    "sawtooth",
+    "sine",
+    "triangle"
+   ],
+   "freq_literals": [
+    "120",
+    "146.8",
+    "2900",
+    "340",
+    "392",
+    "430",
+    "4400",
+    "6.5",
+    "820"
+   ],
+   "q_values": [
+    ".7",
+    "1.1",
+    "7",
+    "9"
+   ],
+   "ramps": [
+    "exponentialRampToValueAtTime",
+    "linearRampToValueAtTime",
+    "setTargetAtTime",
+    "setValueCurveAtTime"
+   ],
+   "filter_types": [
+    "bandpass",
+    "lowpass"
+   ],
+   "analyser": [
+    [
+     "fftSize",
+     "1024"
+    ],
+    [
+     "fftSize",
+     "512"
+    ]
+   ]
+  }
+ },
+ "mira": {
+  "createOscillator": 16,
+  "createGain": 36,
+  "createBiquadFilter": 8,
+  "createBufferSource": 5,
+  "createWaveShaper": 4,
+  "createConvolver": 2,
+  "createStereoPanner": 4,
+  "createAnalyser": 3,
+  "createDynamicsCompressor": 1,
+  "createPanner": 1,
+  "facts": {
+   "waveforms": [
+    "bandpass",
+    "lowpass",
+    "sawtooth",
+    "sine",
+    "triangle"
+   ],
+   "freq_literals": [
+    "120",
+    "146.8",
+    "2900",
+    "340",
+    "392",
+    "430",
+    "4400",
+    "6.5",
+    "820"
+   ],
+   "q_values": [
+    ".7",
+    "1.1",
+    "7",
+    "9"
+   ],
+   "ramps": [
+    "exponentialRampToValueAtTime",
+    "linearRampToValueAtTime",
+    "setTargetAtTime",
+    "setValueCurveAtTime"
+   ],
+   "filter_types": [
+    "bandpass",
+    "lowpass"
+   ],
+   "analyser": [
+    [
+     "fftSize",
+     "1024"
+    ],
+    [
+     "fftSize",
+     "512"
+    ]
+   ]
+  }
+ }
+}

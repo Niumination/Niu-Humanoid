@@ -1,0 +1,8 @@
+/humanoid/apex-assembly-25-v1.webp
+/humanoid/apex-assembly-60-v1.webp
+/humanoid/apex-idle-v1.webp
+/humanoid/apex-listening-v1.webp
+/humanoid/apex-speaking-strong-v1.webp
+/humanoid/apex-speaking-v1.webp
+/humanoid/apex-thinking-v1.webp
+/humanoid/backdrop-v1.webp

@@ -1,0 +1,125 @@
+{
+ "unknown_categories": {
+  "apex": {
+   "three-internal": [
+    "zz-unknown-00-277b.glsl",
+    "zz-unknown-01-265b.glsl",
+    "zz-unknown-02-173b.glsl",
+    "zz-unknown-03-494b.glsl",
+    "zz-unknown-04-211b.glsl",
+    "zz-unknown-05-816b.glsl",
+    "zz-unknown-06-329b.glsl",
+    "zz-unknown-07-1092b.glsl",
+    "zz-unknown-08-769b.glsl",
+    "zz-unknown-09-179b.glsl",
+    "zz-unknown-10-297b.glsl",
+    "zz-unknown-11-625b.glsl",
+    "zz-unknown-12-864b.glsl",
+    "zz-unknown-13-469b.glsl",
+    "zz-unknown-14-964b.glsl",
+    "zz-unknown-15-1878b.glsl",
+    "zz-unknown-16-546b.glsl",
+    "zz-unknown-18-379b.glsl",
+    "zz-unknown-21-1101b.glsl",
+    "zz-unknown-25-217b.glsl",
+    "zz-unknown-26-227b.glsl"
+   ],
+   "postprocessing": [
+    "zz-unknown-17-1056b.glsl",
+    "zz-unknown-19-26824b.glsl",
+    "zz-unknown-20-3917b.glsl",
+    "zz-unknown-22-3258b.glsl",
+    "zz-unknown-23-2335b.glsl",
+    "zz-unknown-24-3222b.glsl"
+   ]
+  },
+  "mira": {
+   "three-internal": [
+    "zz-unknown-00-277b.glsl",
+    "zz-unknown-01-265b.glsl",
+    "zz-unknown-02-173b.glsl",
+    "zz-unknown-03-494b.glsl",
+    "zz-unknown-04-211b.glsl",
+    "zz-unknown-05-816b.glsl",
+    "zz-unknown-06-329b.glsl",
+    "zz-unknown-07-1092b.glsl",
+    "zz-unknown-08-769b.glsl",
+    "zz-unknown-09-179b.glsl",
+    "zz-unknown-10-297b.glsl",
+    "zz-unknown-11-625b.glsl",
+    "zz-unknown-12-864b.glsl",
+    "zz-unknown-13-469b.glsl",
+    "zz-unknown-14-964b.glsl",
+    "zz-unknown-15-1878b.glsl",
+    "zz-unknown-16-546b.glsl",
+    "zz-unknown-18-379b.glsl",
+    "zz-unknown-21-1101b.glsl",
+    "zz-unknown-25-424b.glsl",
+    "zz-unknown-26-313b.glsl",
+    "zz-unknown-27-401b.glsl",
+    "zz-unknown-28-472b.glsl",
+    "zz-unknown-29-240b.glsl",
+    "zz-unknown-30-747b.glsl",
+    "zz-unknown-31-344b.glsl",
+    "zz-unknown-32-929b.glsl",
+    "zz-unknown-33-2833b.glsl",
+    "zz-unknown-34-309b.glsl",
+    "zz-unknown-35-511b.glsl",
+    "zz-unknown-36-427b.glsl",
+    "zz-unknown-37-633b.glsl",
+    "zz-unknown-38-223b.glsl"
+   ],
+   "postprocessing": [
+    "zz-unknown-17-1056b.glsl",
+    "zz-unknown-19-26824b.glsl",
+    "zz-unknown-20-3917b.glsl",
+    "zz-unknown-22-3258b.glsl",
+    "zz-unknown-23-2335b.glsl",
+    "zz-unknown-24-3222b.glsl"
+   ]
+  }
+ },
+ "mira_design_comments_location": {
+  "// how much a turn has happened (Apex's threshol": [],
+  "// THE TURNED HEAD'S LIGHT (Apex rounds 20-22): ": [],
+  "// (z on the round head, turn weight, facing dir": [],
+  "// the edge, where the round head stands straigh": [],
+  "// so a layer on it never folds over itself or t": [],
+  "// where the point p of the picture is now, on t": [],
+  "// HER HEAD TURNS (lib/figureHead3d): the hair r": [],
+  "// turns with her head and never stretches sharp": [],
+  "// a MIRA ribbon (the near-orb correction, secti": [
+   "shaders/mira/00-frag-3007b.glsl"
+  ],
+  "// translucent body, broken secondary detail - n": [
+   "shaders/mira/00-frag-3007b.glsl"
+  ],
+  "// her head turns (lib/figureHead3d): the line r": [
+   "shaders/mira/zz-unknown-30-747b.glsl"
+  ],
+  "// NO BLUNT CUTS (round 6): a line thins and fad": [
+   "shaders/mira/01-frag-2742b.glsl"
+  ],
+  "// HOT, then its own colour (vF): the flare carr": [
+   "shaders/mira/01-frag-2742b.glsl"
+  ],
+  "// (under her hair her line gives way - lib/mira": [
+   "shaders/mira/01-frag-2742b.glsl"
+  ],
+  "// a real strike flashes, drops out, re-strikes,": [
+   "shaders/mira/zz-unknown-32-929b.glsl"
+  ],
+  "// a wave of current (her ignition's, or a touch": [
+   "shaders/mira/zz-unknown-33-2833b.glsl"
+  ],
+  "// (a seat holds her shape until her ignition's ": [
+   "shaders/mira/zz-unknown-33-2833b.glsl"
+  ],
+  "// the dust on her face catches the glow in its ": [
+   "shaders/mira/zz-unknown-33-2833b.glsl"
+  ],
+  "// (weighted by its see-through value, exactly a": [
+   "shaders/mira/02-frag-990b.glsl"
+  ]
+ }
+}

@@ -1,0 +1,525 @@
+{
+ "generatedAt": "2026-10-29T06:53:04.416Z",
+ "targets": {
+  "apex": {
+   "base": "https://apex-humanoid.vercel.app/",
+   "shots": [
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "entry",
+     "url": "https://apex-humanoid.vercel.app/",
+     "file": "apex/1440x900/entry.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "state-idle",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=idle",
+     "file": "apex/1440x900/state-idle.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "state-listening",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=listening",
+     "file": "apex/1440x900/state-listening.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "state-thinking",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=thinking",
+     "file": "apex/1440x900/state-thinking.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "state-speaking",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=speaking",
+     "file": "apex/1440x900/state-speaking.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "state-strong",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=strong",
+     "file": "apex/1440x900/state-strong.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "assembly-t1",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=1",
+     "file": "apex/1440x900/assembly-t1.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "assembly-t3",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=3",
+     "file": "apex/1440x900/assembly-t3.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "assembly-t5",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=5",
+     "file": "apex/1440x900/assembly-t5.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "assembly-t6.2",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=6.2",
+     "file": "apex/1440x900/assembly-t6.2.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "1440x900",
+     "name": "assembly-t7.4",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=7.4",
+     "file": "apex/1440x900/assembly-t7.4.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "entry",
+     "url": "https://apex-humanoid.vercel.app/",
+     "file": "apex/390x844/entry.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "state-idle",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=idle",
+     "file": "apex/390x844/state-idle.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "state-listening",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=listening",
+     "file": "apex/390x844/state-listening.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "state-thinking",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=thinking",
+     "file": "apex/390x844/state-thinking.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "state-speaking",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=speaking",
+     "file": "apex/390x844/state-speaking.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "state-strong",
+     "url": "https://apex-humanoid.vercel.app/?auto&skip&state=strong",
+     "file": "apex/390x844/state-strong.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "assembly-t1",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=1",
+     "file": "apex/390x844/assembly-t1.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "assembly-t3",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=3",
+     "file": "apex/390x844/assembly-t3.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "assembly-t5",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=5",
+     "file": "apex/390x844/assembly-t5.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "assembly-t6.2",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=6.2",
+     "file": "apex/390x844/assembly-t6.2.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "apex",
+     "view": "390x844",
+     "name": "assembly-t7.4",
+     "url": "https://apex-humanoid.vercel.app/?auto&asmel=7.4",
+     "file": "apex/390x844/assembly-t7.4.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    }
+   ],
+   "diagnostics": [],
+   "console": []
+  },
+  "mira": {
+   "base": "https://mira-humanoid.vercel.app/",
+   "shots": [
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "entry",
+     "url": "https://mira-humanoid.vercel.app/",
+     "file": "mira/1440x900/entry.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-idle-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=idle",
+     "file": "mira/1440x900/state-idle-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-idle-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=idle",
+     "file": "mira/1440x900/state-idle-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-listening-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=listening",
+     "file": "mira/1440x900/state-listening-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-listening-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=listening",
+     "file": "mira/1440x900/state-listening-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-talking-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=talking",
+     "file": "mira/1440x900/state-talking-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "1440x900",
+     "name": "state-talking-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=talking",
+     "file": "mira/1440x900/state-talking-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "entry",
+     "url": "https://mira-humanoid.vercel.app/",
+     "file": "mira/390x844/entry.png",
+     "classes": 0,
+     "canvas": 0,
+     "img": 0
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-idle-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=idle",
+     "file": "mira/390x844/state-idle-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-idle-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=idle",
+     "file": "mira/390x844/state-idle-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-listening-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=listening",
+     "file": "mira/390x844/state-listening-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-listening-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=listening",
+     "file": "mira/390x844/state-listening-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-talking-t2",
+     "url": "https://mira-humanoid.vercel.app/?t=2&state=talking",
+     "file": "mira/390x844/state-talking-t2.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    },
+    {
+     "target": "mira",
+     "view": "390x844",
+     "name": "state-talking-t6",
+     "url": "https://mira-humanoid.vercel.app/?t=6&state=talking",
+     "file": "mira/390x844/state-talking-t6.png",
+     "classes": 3,
+     "canvas": 2,
+     "img": 1
+    }
+   ],
+   "diagnostics": [],
+   "console": [
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 601 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 338 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 410 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 368 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 358 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 416 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 411 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 429 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 385 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 435 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 384 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 332 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 402 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 388 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 391 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 426 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 383 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 403 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 335 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 294 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 395 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 455 ms"
+    },
+    {
+     "type": "warning",
+     "text": "The AudioContext was not allowed to start. It must be resumed (or created) after a user gesture on the page. https://goo.gl/7K7WLu"
+    },
+    {
+     "type": "log",
+     "text": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 411 ms"
+    },
+    {
+     "type": "log",
+     "text": "[mira] hair picture: 47 strands can move, 260 twinkles, in 393 ms"
+    }
+   ],
+   "panelInputCount": 0
+  }
+ }
+}

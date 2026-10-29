@@ -1,0 +1,2018 @@
+{
+ "apex": [
+  {
+   "file": "shaders/apex/00-vert-8884b-j2.glsl",
+   "category": "shared-vendor",
+   "bytes": 8950,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/01-vert-8504b-aU.glsl",
+   "category": "APP",
+   "bytes": 8570,
+   "uniforms": [
+    "uAttn",
+    "uBoilT, uVeinT, uWaveT, uBoilAmp, uPivotY",
+    "uClick",
+    "uPalCyan, uPalPale",
+    "uStateA, uStateB, uBloomR",
+    "uStrongMix, uEnergy, uRim",
+    "uYaw, uPitch, uBreathe, uBreathY, uBackK, uVein, uSize, uPixelRatio"
+   ],
+   "attributes": [
+    "aBoil",
+    "aBright",
+    "aBucket",
+    "aKind",
+    "aNx",
+    "aSize",
+    "aWeight"
+   ],
+   "comments": [
+    "// the tile address: this particle's REST location in the plate (stagger and all)",
+    "// THE TEAR COVER (round 4): rotation stretches the projected spacing between stroke rows -",
+    "// at rest-size the tiles separate and the tilted crown showed black gaps between strokes.",
+    "// Tiles on the turning head grow WITH the turn (size AND sampled footprint together, so",
+    "// they fill the gaps with real neighbouring artwork, not a zoom).",
+    "// THE FLAT SPRAY SHEET HIDES AT A TURN (round 22): the still dust around the head lives at",
+    "// z=0 - a flat plane glued to the head - so at a hard turn the far side's dust swept ACROSS",
+    "// the visible face. Ruben: better to remove them at such angles. They fade with the turn",
+    "// and return as the head faces front. Head-rim motes ease down too, more gently.",
+    "// \u2500\u2500 STATE BLEND MASK \u2014 rest-space radial from the face core (the approved bloom's profile)",
+    "// the halo's edge brightens gently, exactly like the 2D bloom's ring pass",
+    "// \u2500\u2500 EDGE BOIL \u2014 rest space, so the mote rides every later transform. Escape-and-return.",
+    "// \u2500\u2500 THE CLICK, residual matter lean \u2014 20% of the old pinch; the real effect is LIGHT below",
+    "// whole-body counter-lean",
+    "// head turnover about the SILHOUETTE-DERIVED neck pivot, weighted so the neck flexes smoothly",
+    "// BREATHING \u2014 chest expansion anchored at the bottom crop; the head barely moves",
+    "// \u2500\u2500 THE SPEAKING WAVE \u2014 the 110-strip face deform, ported exactly; rides the blend mask in",
+    "// \u2500\u2500 DERIVED ROLES \u2014 multipliers CENTRED ON 1.0: the artwork is the baseline, the living",
+    "//    layer breathes around it (never below it \u2014 the 2D added its vein overlay on top too).",
+    "// \u2500\u2500 THE TURNED HEAD IS A LIT FORM \u2014 matter rotating away dims; grazing particles boost into",
+    "//    the profile line. Gated by the TURN AMOUNT (pitch counts too - round 4: Ruben's",
+    "//    tilts are pitch-heavy and got no shading before; the normal math stays yaw-based,",
+    "//    pitch contributes the gate). The rest view is untouched by construction.",
+    "// DEPTH FOG (round 20): matter that rotates BEHIND the mid-plane recedes into shade -",
+    "// the second depth cue (facing shades by surface angle, this one by actual distance),",
+    "// which is what makes the turned head read as a VOLUME instead of a bent sheet.",
+    "// \u2500\u2500 THE LIGHT PULSE \u2014 a luminous wavefront expanding from the click through the whole body",
+    "// occlusion gates: back shell + interior dust exist only while the head is turned.",
+    "// The back shell samples its own (shared) tile, dimmed \u2014 the mirrored strokes."
+   ]
+  },
+  {
+   "file": "shaders/apex/02-vert-5876b-ab.glsl",
+   "category": "shared-vendor",
+   "bytes": 5942,
+   "uniforms": [
+    "attenuationColor",
+    "attenuationDistance",
+    "modelMatrix",
+    "projectionMatrix",
+    "thickness",
+    "thicknessMap",
+    "transmission",
+    "transmissionMap",
+    "transmissionSamplerMap",
+    "transmissionSamplerSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/03-vert-4352b-r2.glsl",
+   "category": "shared-vendor",
+   "bytes": 4418,
+   "uniforms": [
+    "ambientLightColor",
+    "ltc_1",
+    "ltc_2",
+    "receiveShadow"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/04-vert-4043b-Fb.glsl",
+   "category": "shared-vendor",
+   "bytes": 4109,
+   "uniforms": [
+    "anisotropyMap",
+    "anisotropyVector",
+    "clearcoat",
+    "clearcoatRoughness",
+    "diffuse",
+    "dispersion",
+    "emissive",
+    "ior",
+    "iridescence",
+    "iridescenceIOR",
+    "iridescenceThicknessMaximum",
+    "iridescenceThicknessMinimum",
+    "metalness",
+    "opacity",
+    "roughness",
+    "sheenColor",
+    "sheenColorMap",
+    "sheenRoughness",
+    "sheenRoughnessMap",
+    "specularColor",
+    "specularColorMap",
+    "specularIntensity",
+    "specularIntensityMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/05-vert-3474b-sb.glsl",
+   "category": "shared-vendor",
+   "bytes": 3540,
+   "uniforms": [
+    "toneMappingExposure"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/06-frag-2448b-qL.glsl",
+   "category": "shared-vendor",
+   "bytes": 2514,
+   "uniforms": [
+    "aspect",
+    "cameraFar",
+    "cameraNear",
+    "resolution",
+    "sampler2D depthBuffer",
+    "sampler2D inputBuffer",
+    "texelSize",
+    "time"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/07-vert-2417b-ub.glsl",
+   "category": "shared-vendor",
+   "bytes": 2483,
+   "uniforms": [
+    "alphaMapTransform",
+    "anisotropyMapTransform",
+    "aoMapTransform",
+    "bumpMapTransform",
+    "clearcoatMapTransform",
+    "clearcoatNormalMapTransform",
+    "clearcoatRoughnessMapTransform",
+    "displacementMapTransform",
+    "emissiveMapTransform",
+    "iridescenceMapTransform",
+    "iridescenceThicknessMapTransform",
+    "lightMapTransform",
+    "mapTransform",
+    "metalnessMapTransform",
+    "normalMapTransform",
+    "roughnessMapTransform",
+    "sheenColorMapTransform",
+    "sheenRoughnessMapTransform",
+    "specularColorMapTransform",
+    "specularIntensityMapTransform",
+    "specularMapTransform",
+    "thicknessMapTransform",
+    "transmissionMapTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/08-vert-2035b-Nb.glsl",
+   "category": "shared-vendor",
+   "bytes": 2101,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity",
+    "shininess",
+    "specular"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/09-vert-1927b-Cb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1993,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/10-vert-1786b-Bb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1852,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/11-vert-1727b-mU.glsl",
+   "category": "APP",
+   "bytes": 1793,
+   "uniforms": [
+    "uMap",
+    "uT, uPixelRatio, uSizeK, uRest, uPulse",
+    "uWave",
+    "uWaveK"
+   ],
+   "attributes": [
+    "aCol",
+    "aPh, aRate, aBase, aTw, aSz",
+    "aUv"
+   ],
+   "comments": [
+    "// aTw is a MODE: 1 = wandering star (briefly ON, mostly off) \u00b7 0.5 = vein breath",
+    "// (gentle, continuous) \u00b7 0 = quiet glitter (rest light only)",
+    "// at pulse peak the color brightens IN ITS OWN HUE - never lifted toward white",
+    "// THE SHOCKWAVE crossing the ranges: as the ring (born at the figure's face core, at the",
+    "// horn's peak) passes over a point, it flares in its own color - the mountains answer the",
+    "// horn in sequence, near slopes first, far peaks last."
+   ]
+  },
+  {
+   "file": "shaders/apex/12-frag-1720b-GL.glsl",
+   "category": "shared-vendor",
+   "bytes": 1786,
+   "uniforms": [
+    "sampler2D depthBuffer",
+    "sampler2D normalBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/13-vert-1619b-bb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1685,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/14-vert-1556b-lb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1622,
+   "uniforms": [
+    "thicknessMapTransform",
+    "transmissionMapTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/15-vert-1506b-Ib.glsl",
+   "category": "shared-vendor",
+   "bytes": 1572,
+   "uniforms": [
+    "diffuse",
+    "matcap",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/16-frag-1391b-DL.glsl",
+   "category": "shared-vendor",
+   "bytes": 1457,
+   "uniforms": [
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/17-frag-1357b-lU.glsl",
+   "category": "APP",
+   "bytes": 1423,
+   "uniforms": [
+    "uStrongA, uStrongB, uPulseA, uPulseB, uPatchUV, uDotSharp",
+    "uTexA, uTexB, uTexS"
+   ],
+   "attributes": [],
+   "comments": [
+    "// \u26a0 NO colorspace include here \u2014 the Bloom composer performs the one sRGB encode (see header).",
+    "// THE TILE: sample the artwork at this fragment's own rest location. All overlapping dots",
+    "// agree on the answer, so the rest view reconstructs the plate pixel-for-pixel.",
+    "// near-black tiles vanish: the listening rings stay visible through dark body gaps"
+   ]
+  },
+  {
+   "file": "shaders/apex/18-vert-1291b-K2.glsl",
+   "category": "shared-vendor",
+   "bytes": 1357,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/19-vert-1208b-Ob.glsl",
+   "category": "shared-vendor",
+   "bytes": 1274,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/20-vert-1180b-SA.glsl",
+   "category": "shared-vendor",
+   "bytes": 1246,
+   "uniforms": [
+    "_gl_DrawID",
+    "batchingColorTexture",
+    "sampler2D batchingTexture",
+    "usampler2D batchingIdTexture"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/21-vert-1146b-uU.glsl",
+   "category": "APP",
+   "bytes": 1212,
+   "uniforms": [
+    "uT, uStr, uSizeK, uPixelRatio"
+   ],
+   "attributes": [
+    "aOff",
+    "aPh, aSp, aSz, aBr"
+   ],
+   "comments": [
+    "// ESCAPE-AND-RETURN, the same species as the edge boil (round 8: an in-place wobble made",
+    "// the pace change - and the click x2.5 - invisible; the edge's outward flights read it).",
+    "// Each mote leaps from the cluster along its own radial and falls back; alpha follows the",
+    "// flight so sparks brighten as they fly."
+   ]
+  },
+  {
+   "file": "shaders/apex/22-vert-1134b-Rb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1200,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/23-vert-1132b-Db.glsl",
+   "category": "shared-vendor",
+   "bytes": 1198,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/24-frag-1092b-_b.glsl",
+   "category": "shared-vendor",
+   "bytes": 1158,
+   "uniforms": [
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/25-vert-1075b-kb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1141,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/26-vert-1056b-Lb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1122,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/27-frag-1056b-UC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1122,
+   "uniforms": [
+    "radius",
+    "resolution",
+    "shadow_pass"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/28-vert-987b-Pb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1053,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/29-frag-967b-kI.glsl",
+   "category": "shared-vendor",
+   "bytes": 1033,
+   "uniforms": [
+    "channelWeights",
+    "opacity",
+    "sampler2D depthBuffer",
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/30-vert-964b-Wb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1030,
+   "uniforms": [
+    "center",
+    "rotation"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/31-vert-932b-Ab.glsl",
+   "category": "shared-vendor",
+   "bytes": 998,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/32-vert-871b-bA.glsl",
+   "category": "shared-vendor",
+   "bytes": 937,
+   "uniforms": [
+    "bumpMap",
+    "bumpScale"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/33-vert-864b-zb.glsl",
+   "category": "shared-vendor",
+   "bytes": 930,
+   "uniforms": [
+    "scale",
+    "size",
+    "uvTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/34-frag-859b-FL.glsl",
+   "category": "shared-vendor",
+   "bytes": 925,
+   "uniforms": [
+    "radius",
+    "sampler2D inputBuffer",
+    "sampler2D supportBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/35-frag-816b-mb.glsl",
+   "category": "shared-vendor",
+   "bytes": 882,
+   "uniforms": [
+    "backgroundBlurriness",
+    "backgroundIntensity",
+    "backgroundRotation",
+    "envMap",
+    "flipEnvMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/36-vert-816b-Tb.glsl",
+   "category": "shared-vendor",
+   "bytes": 882,
+   "uniforms": [
+    "dashSize",
+    "diffuse",
+    "opacity",
+    "totalSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/37-vert-815b-N2.glsl",
+   "category": "shared-vendor",
+   "bytes": 881,
+   "uniforms": [
+    "normalMap",
+    "normalMatrix",
+    "normalScale"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/38-vert-793b-Hb.glsl",
+   "category": "shared-vendor",
+   "bytes": 859,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/39-vert-792b-yb.glsl",
+   "category": "shared-vendor",
+   "bytes": 858,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/40-vert-770b-xb.glsl",
+   "category": "shared-vendor",
+   "bytes": 836,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/41-frag-769b-Sb.glsl",
+   "category": "shared-vendor",
+   "bytes": 835,
+   "uniforms": [
+    "farDistance",
+    "nearDistance",
+    "referencePosition"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/42-vert-768b-Xb.glsl",
+   "category": "shared-vendor",
+   "bytes": 834,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/43-vert-761b-NL.glsl",
+   "category": "shared-vendor",
+   "bytes": 827,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/44-frag-712b-Ub.glsl",
+   "category": "shared-vendor",
+   "bytes": 778,
+   "uniforms": [
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/45-vert-663b-Vb.glsl",
+   "category": "shared-vendor",
+   "bytes": 729,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/46-vert-638b-R2.glsl",
+   "category": "shared-vendor",
+   "bytes": 704,
+   "uniforms": [
+    "morphTargetBaseInfluence",
+    "morphTargetsTexture",
+    "morphTargetsTextureSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/47-vert-625b-Eb.glsl",
+   "category": "shared-vendor",
+   "bytes": 691,
+   "uniforms": [
+    "scale"
+   ],
+   "attributes": [
+    "lineDistance"
+   ],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/48-frag-608b-IL.glsl",
+   "category": "shared-vendor",
+   "bytes": 674,
+   "uniforms": [
+    "range",
+    "sampler2D inputBuffer",
+    "smoothing",
+    "threshold"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/49-vert-551b-$2.glsl",
+   "category": "shared-vendor",
+   "bytes": 617,
+   "uniforms": [
+    "bindMatrix",
+    "bindMatrixInverse",
+    "sampler2D boneTexture"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/50-vert-529b-kL.glsl",
+   "category": "shared-vendor",
+   "bytes": 595,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/51-frag-494b-db.glsl",
+   "category": "shared-vendor",
+   "bytes": 560,
+   "uniforms": [
+    "backgroundIntensity",
+    "t2D"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/52-frag-469b-Gb.glsl",
+   "category": "shared-vendor",
+   "bytes": 535,
+   "uniforms": [
+    "color",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/53-vert-435b-e2.glsl",
+   "category": "shared-vendor",
+   "bytes": 501,
+   "uniforms": [
+    "gradientMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/54-vert-403b-bL.glsl",
+   "category": "shared-vendor",
+   "bytes": 469,
+   "uniforms": [
+    "kernel",
+    "scale",
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/55-frag-397b-AL.glsl",
+   "category": "shared-vendor",
+   "bytes": 463,
+   "uniforms": [
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/56-vert-379b-XC.glsl",
+   "category": "shared-vendor",
+   "bytes": 445,
+   "uniforms": [
+    "depthColor",
+    "depthHeight",
+    "depthWidth"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/57-frag-329b-vb.glsl",
+   "category": "shared-vendor",
+   "bytes": 395,
+   "uniforms": [
+    "opacity",
+    "tCube",
+    "tFlip"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/58-vert-307b-qA.glsl",
+   "category": "shared-vendor",
+   "bytes": 373,
+   "uniforms": [
+    "reflectivity",
+    "refractionRatio"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/59-frag-297b-wb.glsl",
+   "category": "shared-vendor",
+   "bytes": 363,
+   "uniforms": [
+    "tEquirect"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/60-vert-281b-jA.glsl",
+   "category": "shared-vendor",
+   "bytes": 347,
+   "uniforms": [
+    "refractionRatio"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/61-vert-273b-G2.glsl",
+   "category": "shared-vendor",
+   "bytes": 339,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/62-vert-266b-WL.glsl",
+   "category": "shared-vendor",
+   "bytes": 332,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/63-frag-265b-JA.glsl",
+   "category": "shared-vendor",
+   "bytes": 331,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/64-vert-260b-jL.glsl",
+   "category": "shared-vendor",
+   "bytes": 326,
+   "uniforms": [
+    "aspect",
+    "cameraFar",
+    "cameraNear",
+    "resolution",
+    "texelSize",
+    "time"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/apex/65-vert-259b-k2.glsl",
+   "category": "shared-vendor",
+   "bytes": 325,
+   "uniforms": [
+    "clearcoatMap",
+    "clearcoatNormalMap",
+    "clearcoatNormalScale",
+    "clearcoatRoughnessMap"
+   ],
+   "attributes": [],
+   "comments": []
+  }
+ ],
+ "mira": [
+  {
+   "file": "shaders/mira/00-frag-14287b-cN.glsl",
+   "category": "APP",
+   "bytes": 14353,
+   "uniforms": [
+    "iAlpha",
+    "iCenter",
+    "iClear",
+    "iDebug",
+    "iEnergy",
+    "iField",
+    "iHotLo",
+    "iMatter",
+    "iNear",
+    "iRes",
+    "iRing",
+    "iSpread",
+    "iState",
+    "iTime"
+   ],
+   "attributes": [],
+   "comments": [
+    "// \u2500\u2500 the brief's toolbox: hash / noise / fbm / domain warp \u2500\u2500",
+    "// the two axes never move at the same speed (the brief) - the material stretches and flows",
+    "// three time bases for the wide field: nothing is mechanically synchronized (the brief, sections 22-23)",
+    "// the near-orb matter and the white energy keep their OWN clocks (the near-orb correction, section 20):",
+    "// the breakup mask on the slow one, the folds on the medium one, the hotspots on the detail one",
+    "// the orb: a localized distortion zone, never a visible ring",
+    "// (2026-09-18: the field no longer squeezes toward the orb while she listens - Ruben: nothing",
+    "// rigid in listening mode; the look changes only through eased values)",
+    "// \u2500\u2500 the wide field: warped, then folded into thin illuminated ridges (never visible noise) \u2500\u2500",
+    "// \u2500\u2500 moving local energy over the wide field: sections light up and fade on their own field \u2500\u2500",
+    "// a RARE near-white event far from the orb (section 14): a distant line gets one brief bright node",
+    "// the wide field is a little denser near the orb, by irregular distance, never a ring",
+    "// and the core itself stays clear",
+    "// (around her humanoid there is no core to keep clear: the circle read as a hole in the lit room)",
+    "// \u2500\u2500 NEAR-ORB MATTER: MIRA's primary signature (the near-orb correction, sections 3-8) \u2500\u2500",
+    "// orb distance is an INVISIBLE probability mask (strongest 1.05-2.5 R), never rendered directly:",
+    "// it is broken up by a slow domain-warped field first, so what shows is asymmetric fragments of",
+    "// fine folds, broken filaments and local membranes wrapping and crossing around the orb - no halo.",
+    "// the creator's first numbers (scale 1.35, 0.34-0.70) left the inner band nearly empty in the",
+    "// real stack (debug view 3): two patches at ~2 R and nothing hugging the ring. Smaller, more",
+    "// numerous fragments and a wider window keep the orb EMBEDDED while still never a full circle.",
+    "// the INDEPENDENT energy field (section 7): its own slow clock, partially unrelated to the folds,",
+    "// so a fold persists while the light appears in it, travels, weakens and moves elsewhere.",
+    "// NOT multiplied away (the debug note, section 7): energy x the matter's PRESENCE, one product,",
+    "// where presence is the strongest structure under this pixel - fold, filament or membrane body",
+    "// at the creator's scale (0.62) one or two noise cells covered the whole band, so for long",
+    "// stretches NOTHING was hot (debug view 5 stayed black even at 0.48); at 1.5 several cells",
+    "// cross the band at once - a few are hot, they last seconds, they move on",
+    "// measured in the lab (debug view 5): this field crosses 0.48 in 2-4 places at a time and",
+    "// almost never 0.56, so the working threshold is ~0.50 (lib/miraDebug HOT_THRESHOLD_DEFAULT),",
+    "// not the 0.64 the note started from. Presence is lifted so a hot pixel on real matter reaches",
+    "// FULL white instead of a grey ceiling (a membrane body alone tops out at 0.6).",
+    "// this canvas has no bloom, so the white-hot core carries its own soft lilac glow: the same",
+    "// fold at a LOW power is a wide soft band around the thin ridge",
+    "// \u2500\u2500 colour: mixed by intensity, never one flat purple; high energy moves the colour toward WHITE \u2500\u2500",
+    "// \u2500\u2500 the wide field's alpha: dimmer than the near-orb matter, and never even everywhere \u2500\u2500",
+    "// background 20% in the hierarchy: with the near-orb layer at full strength the wide field was",
+    "// filling most of the frame (debug view ALL) - it is pulled back so large black areas remain",
+    "// and pulled back again to ~25% for the core-matter round (section 22): faint atmosphere only",
+    "// FOG ACROSS THE WHOLE SCREEN (Ruben, her humanoid, 2026-10-08): the dark gaps close up as it rises",
+    "// near-orb matter (normal blending, low opacity): dark violet -> violet -> bright lavender along one structure",
+    "// the hero layer (the creator's hierarchy: near-orb 100 / orb 90 / hotspots 70 / ribbons 35 / background 20):",
+    "// weights set from debug view D in the real stack, where the first cut read at about half of this",
+    "// \u2500\u2500 ground: near-black navy with an atmospheric violet that is NOT centered on the orb \u2500\u2500",
+    "// \u2500\u2500 DEBUG VIEWS (lib/miraDebug): each system alone, obvious, in the real stack \u2500\u2500",
+    "// 7 core / 8 corehot: the field steps aside entirely - MiraCoreMatter alone with the orb (section 31)",
+    "// the spread fog itself: a soft violet haze with the field's own large shapes in it, everywhere",
+    "// the near-orb procedural block survives only as faint edge turbulence under the core ribbons",
+    "// (the core-matter note, sections 1 and 33) - a violet trace, never white, never the hero",
+    "// no additive white from this field any more: the white energy travels inside MiraCoreMatter's ribbons"
+   ]
+  },
+  {
+   "file": "shaders/mira/01-vert-8884b-IR.glsl",
+   "category": "shared-vendor",
+   "bytes": 8950,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/02-vert-5876b-WR.glsl",
+   "category": "shared-vendor",
+   "bytes": 5942,
+   "uniforms": [
+    "attenuationColor",
+    "attenuationDistance",
+    "modelMatrix",
+    "projectionMatrix",
+    "thickness",
+    "thicknessMap",
+    "transmission",
+    "transmissionMap",
+    "transmissionSamplerMap",
+    "transmissionSamplerSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/03-vert-5061b-Jk.glsl",
+   "category": "APP",
+   "bytes": 5127,
+   "uniforms": [
+    "uCore",
+    "uCoreT",
+    "uShock",
+    "uShockW",
+    "uTime, uPx, uSettle, uLiveT, uBright, uMatter, uCoreA, uLag, uTrail, uDense"
+   ],
+   "attributes": [
+    "aCol",
+    "aFly",
+    "aSeed",
+    "aStay",
+    "aTArr",
+    "aTRev",
+    "aTurns"
+   ],
+   "comments": [
+    "// the light of the wave's front where it crosses p",
+    "// (a TRAIL copy draws the same matter a moment earlier - uLag - fainter, only in flight: light streaks behind it)",
+    "// a wave of current (her ignition's, or a touch's - lib/miraBuild touchWave) makes the specks it crosses jump and",
+    "// flare",
+    "// (a seat holds her shape until her ignition's wave reaches it, then melts into her picture - lib/miraBuild revealAt)",
+    "// (in the core each particle is small and dim, so thousands of them read as boiling plasma, not a blob - and the",
+    "// more of them there are, the less light each one carries: uDense)",
+    "// hot violet-white the instant it leaves the core, its own colour on the way, brighter in flight",
+    "// the dust on her face catches the glow in its front while she speaks (lib/miraFace)"
+   ]
+  },
+  {
+   "file": "shaders/mira/04-vert-4352b-Hb.glsl",
+   "category": "shared-vendor",
+   "bytes": 4418,
+   "uniforms": [
+    "ambientLightColor",
+    "ltc_1",
+    "ltc_2",
+    "receiveShadow"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/05-frag-4333b-Qk.glsl",
+   "category": "APP",
+   "bytes": 4399,
+   "uniforms": [
+    "uHz",
+    "uHzSkull, uHzInner",
+    "uRest, uSettle, uHot, uGain, uIdle, uPulse, uPulseSpeed, uSketchBright, uFade, uTaper, uLiveT",
+    "uShock",
+    "uShockW",
+    "uTime, uHalfPx, uCorePx, uSoftLine, uSoftSketch, uGlowLine, uGlowSketch"
+   ],
+   "attributes": [],
+   "comments": [
+    "// the light of the wave's front where it crosses p",
+    "// NO BLUNT CUTS (round 6): a line thins and fades into its ends, and the drawing front fades in",
+    "// HOT, then its own colour (vF): the flare carries the line's own colour - never a white sketch (Ruben: \"the build",
+    "// of white lines look bad\")",
+    "// the ignition's wave lights the line as it crosses it",
+    "// at rest: light travelling along the line, each line on its own speed and phase",
+    "// (under her hair her line gives way - lib/miraHairPic HAIR_ZONE_GLSL)",
+    "// (the line settles to its resting brightness once its colour has come)",
+    "// the lines in the front of her face catch the glow while she speaks"
+   ]
+  },
+  {
+   "file": "shaders/mira/06-vert-4043b-_C.glsl",
+   "category": "shared-vendor",
+   "bytes": 4109,
+   "uniforms": [
+    "anisotropyMap",
+    "anisotropyVector",
+    "clearcoat",
+    "clearcoatRoughness",
+    "diffuse",
+    "dispersion",
+    "emissive",
+    "ior",
+    "iridescence",
+    "iridescenceIOR",
+    "iridescenceThicknessMaximum",
+    "iridescenceThicknessMinimum",
+    "metalness",
+    "opacity",
+    "roughness",
+    "sheenColor",
+    "sheenColorMap",
+    "sheenRoughness",
+    "sheenRoughnessMap",
+    "specularColor",
+    "specularColorMap",
+    "specularIntensity",
+    "specularIntensityMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/07-vert-3474b-VR.glsl",
+   "category": "shared-vendor",
+   "bytes": 3540,
+   "uniforms": [
+    "toneMappingExposure"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/08-frag-3007b-Nk.glsl",
+   "category": "APP",
+   "bytes": 3073,
+   "uniforms": [
+    "uOrbPx",
+    "uOrbR",
+    "uTime, uOpacity, uEnergy, uSeed"
+   ],
+   "attributes": [],
+   "comments": [
+    "// a MIRA ribbon (the near-orb correction, sections 12-13): ONE bright folding edge, a fading",
+    "// translucent body, broken secondary detail - never two clean edges with a uniform fill",
+    "// a fine fold that comes and goes along the body, on its own clock",
+    "// holes in the body itself, so no stretch reads as a plastic strip",
+    "// internal lighting from a slow field that does NOT track the geometry: dim -> violet -> a small",
+    "// bright region -> dim -> a second highlight; the rare top of it goes near-white",
+    "// behind the orb: nothing of a ribbon shows inside the gold ring, a soft fade just outside it"
+   ]
+  },
+  {
+   "file": "shaders/mira/09-frag-2599b-sF.glsl",
+   "category": "APP",
+   "bytes": 2665,
+   "uniforms": [
+    "uFill",
+    "uGain",
+    "uHeadOn, uHeadCut",
+    "uHz",
+    "uHzSkull, uHzInner",
+    "uMap",
+    "uReveal",
+    "uShock",
+    "uShockW",
+    "uSize",
+    "uTime"
+   ],
+   "attributes": [],
+   "comments": [
+    "// when her ignition's wave reaches p: her picture, her lines and her hair appear there",
+    "// the light of the wave's front where it crosses p"
+   ]
+  },
+  {
+   "file": "shaders/mira/10-frag-2448b-IU.glsl",
+   "category": "shared-vendor",
+   "bytes": 2514,
+   "uniforms": [
+    "aspect",
+    "cameraFar",
+    "cameraNear",
+    "resolution",
+    "sampler2D depthBuffer",
+    "sampler2D inputBuffer",
+    "texelSize",
+    "time"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/11-vert-2417b-qR.glsl",
+   "category": "shared-vendor",
+   "bytes": 2483,
+   "uniforms": [
+    "alphaMapTransform",
+    "anisotropyMapTransform",
+    "aoMapTransform",
+    "bumpMapTransform",
+    "clearcoatMapTransform",
+    "clearcoatNormalMapTransform",
+    "clearcoatRoughnessMapTransform",
+    "displacementMapTransform",
+    "emissiveMapTransform",
+    "iridescenceMapTransform",
+    "iridescenceThicknessMapTransform",
+    "lightMapTransform",
+    "mapTransform",
+    "metalnessMapTransform",
+    "normalMapTransform",
+    "roughnessMapTransform",
+    "sheenColorMapTransform",
+    "sheenRoughnessMapTransform",
+    "specularColorMapTransform",
+    "specularIntensityMapTransform",
+    "specularMapTransform",
+    "thicknessMapTransform",
+    "transmissionMapTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/12-vert-2035b-yC.glsl",
+   "category": "shared-vendor",
+   "bytes": 2101,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity",
+    "shininess",
+    "specular"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/13-vert-1927b-hC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1993,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/14-frag-1919b-hF.glsl",
+   "category": "APP",
+   "bytes": 1985,
+   "uniforms": [
+    "uGain",
+    "uHz",
+    "uHzSkull, uHzInner",
+    "uMap",
+    "uSize"
+   ],
+   "attributes": [],
+   "comments": [
+    "// (weighted by its see-through value, exactly as the flat picture was: her half-clear edge pixels never shine at",
+    "// full strength)"
+   ]
+  },
+  {
+   "file": "shaders/mira/15-vert-1786b-wC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1852,
+   "uniforms": [
+    "diffuse",
+    "emissive",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/16-frag-1720b-bU.glsl",
+   "category": "shared-vendor",
+   "bytes": 1786,
+   "uniforms": [
+    "sampler2D depthBuffer",
+    "sampler2D normalBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/17-vert-1619b-cC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1685,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/18-vert-1556b-XR.glsl",
+   "category": "shared-vendor",
+   "bytes": 1622,
+   "uniforms": [
+    "thicknessMapTransform",
+    "transmissionMapTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/19-vert-1506b-pC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1572,
+   "uniforms": [
+    "diffuse",
+    "matcap",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/20-frag-1391b-yU.glsl",
+   "category": "shared-vendor",
+   "bytes": 1457,
+   "uniforms": [
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/21-vert-1360b-Zk.glsl",
+   "category": "APP",
+   "bytes": 1426,
+   "uniforms": [
+    "uHalfPx",
+    "uRes",
+    "uTime"
+   ],
+   "attributes": [
+    "aCol",
+    "aDir",
+    "aEnd",
+    "aF",
+    "aId",
+    "aLen",
+    "aS",
+    "aSketch",
+    "aT"
+   ],
+   "comments": [
+    "// her head turns (lib/figureHead3d): the line rides her head's surface, a hair toward you; what turns behind her head",
+    "// is hidden by it"
+   ]
+  },
+  {
+   "file": "shaders/mira/22-vert-1338b-NN.glsl",
+   "category": "APP",
+   "bytes": 1404,
+   "uniforms": [
+    "uCore",
+    "uCoreT"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uCore, uCoreT"
+  },
+  {
+   "file": "shaders/mira/23-vert-1291b-LR.glsl",
+   "category": "shared-vendor",
+   "bytes": 1357,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/24-vert-1258b-fF.glsl",
+   "category": "APP",
+   "bytes": 1324,
+   "uniforms": [
+    "uStep, uPxPerPic, uBackK, uRim, uOn, uZRef"
+   ],
+   "attributes": [
+    "aKind",
+    "aRest",
+    "aZ"
+   ],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/25-vert-1208b-xC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1274,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/26-vert-1180b-rb.glsl",
+   "category": "shared-vendor",
+   "bytes": 1246,
+   "uniforms": [
+    "_gl_DrawID",
+    "batchingColorTexture",
+    "sampler2D batchingTexture",
+    "usampler2D batchingIdTexture"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/27-vert-1134b-fC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1200,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/28-vert-1132b-vC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1198,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/29-frag-1092b-nC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1158,
+   "uniforms": [
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/30-vert-1075b-SC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1141,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/31-vert-1056b-mC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1122,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/32-frag-1056b-gP.glsl",
+   "category": "shared-vendor",
+   "bytes": 1122,
+   "uniforms": [
+    "radius",
+    "resolution",
+    "shadow_pass"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/33-vert-987b-dC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1053,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/34-frag-967b-wD.glsl",
+   "category": "shared-vendor",
+   "bytes": 1033,
+   "uniforms": [
+    "channelWeights",
+    "opacity",
+    "sampler2D depthBuffer",
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/35-vert-964b-bC.glsl",
+   "category": "shared-vendor",
+   "bytes": 1030,
+   "uniforms": [
+    "center",
+    "rotation"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/36-frag-947b-nF.glsl",
+   "category": "APP",
+   "bytes": 1013,
+   "uniforms": [
+    "uShock",
+    "uShockW"
+   ],
+   "attributes": [],
+   "comments": [
+    "// the light of the wave's front where it crosses p"
+   ]
+  },
+  {
+   "file": "shaders/mira/37-vert-932b-uC.glsl",
+   "category": "shared-vendor",
+   "bytes": 998,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/38-frag-929b-Yw.glsl",
+   "category": "APP",
+   "bytes": 995,
+   "uniforms": [
+    "uTime, uBright"
+   ],
+   "attributes": [],
+   "comments": [
+    "// a real strike flashes, drops out, re-strikes, then fades (the same beats as lib/miraBuild flicker)"
+   ]
+  },
+  {
+   "file": "shaders/mira/39-vert-871b-cb.glsl",
+   "category": "shared-vendor",
+   "bytes": 937,
+   "uniforms": [
+    "bumpMap",
+    "bumpScale"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/40-vert-864b-MC.glsl",
+   "category": "shared-vendor",
+   "bytes": 930,
+   "uniforms": [
+    "scale",
+    "size",
+    "uvTransform"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/41-frag-859b-SU.glsl",
+   "category": "shared-vendor",
+   "bytes": 925,
+   "uniforms": [
+    "radius",
+    "sampler2D inputBuffer",
+    "sampler2D supportBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/42-frag-816b-JR.glsl",
+   "category": "shared-vendor",
+   "bytes": 882,
+   "uniforms": [
+    "backgroundBlurriness",
+    "backgroundIntensity",
+    "backgroundRotation",
+    "envMap",
+    "flipEnvMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/43-vert-816b-lC.glsl",
+   "category": "shared-vendor",
+   "bytes": 882,
+   "uniforms": [
+    "dashSize",
+    "diffuse",
+    "opacity",
+    "totalSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/44-vert-815b-yR.glsl",
+   "category": "shared-vendor",
+   "bytes": 881,
+   "uniforms": [
+    "normalMap",
+    "normalMatrix",
+    "normalScale"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/45-vert-793b-EC.glsl",
+   "category": "shared-vendor",
+   "bytes": 859,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/46-frag-793b-ak.glsl",
+   "category": "APP",
+   "bytes": 859,
+   "uniforms": [
+    "uGain, uOn, uTime, uPulse, uPulseSpeed",
+    "uLifted",
+    "uSize"
+   ],
+   "attributes": [],
+   "comments": [
+    "// now and then a light runs down the strand (only some strands carry one)"
+   ]
+  },
+  {
+   "file": "shaders/mira/47-vert-792b-tC.glsl",
+   "category": "shared-vendor",
+   "bytes": 858,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/48-vert-770b-iC.glsl",
+   "category": "shared-vendor",
+   "bytes": 836,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/49-frag-769b-rC.glsl",
+   "category": "shared-vendor",
+   "bytes": 835,
+   "uniforms": [
+    "farDistance",
+    "nearDistance",
+    "referencePosition"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/50-vert-768b-RC.glsl",
+   "category": "shared-vendor",
+   "bytes": 834,
+   "uniforms": [
+    "diffuse",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/51-vert-761b-xU.glsl",
+   "category": "shared-vendor",
+   "bytes": 827,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/52-vert-755b-T_.glsl",
+   "category": "APP",
+   "bytes": 821,
+   "uniforms": [
+    "uHz",
+    "uHzSkull, uHzInner"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/53-frag-712b-gC.glsl",
+   "category": "shared-vendor",
+   "bytes": 778,
+   "uniforms": [
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/54-vert-712b-iF.glsl",
+   "category": "APP",
+   "bytes": 778,
+   "uniforms": [
+    "uHalfPx",
+    "uRes"
+   ],
+   "attributes": [
+    "aDir",
+    "aS"
+   ],
+   "comments": [],
+   "note": "uniform app khas: uHalfPx, uRes"
+  },
+  {
+   "file": "shaders/mira/55-frag-707b-oF.glsl",
+   "category": "APP",
+   "bytes": 773,
+   "uniforms": [
+    "uFill",
+    "uMap",
+    "uReveal",
+    "uSize",
+    "uTime"
+   ],
+   "attributes": [],
+   "comments": [
+    "// when her ignition's wave reaches p: her picture, her lines and her hair appear there"
+   ]
+  },
+  {
+   "file": "shaders/mira/56-vert-663b-TC.glsl",
+   "category": "shared-vendor",
+   "bytes": 729,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/57-vert-638b-fR.glsl",
+   "category": "shared-vendor",
+   "bytes": 704,
+   "uniforms": [
+    "morphTargetBaseInfluence",
+    "morphTargetsTexture",
+    "morphTargetsTextureSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/58-frag-633b-rF.glsl",
+   "category": "APP",
+   "bytes": 699,
+   "uniforms": [
+    "uCol",
+    "uHead, uTail, uLen, uCorePx, uHalfPx, uSoft, uOn"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uCol, uCorePx, uHalfPx, uHead, uLen, uOn, uSoft, uTail"
+  },
+  {
+   "file": "shaders/mira/59-vert-625b-aC.glsl",
+   "category": "shared-vendor",
+   "bytes": 691,
+   "uniforms": [
+    "scale"
+   ],
+   "attributes": [
+    "lineDistance"
+   ],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/60-frag-608b-mU.glsl",
+   "category": "shared-vendor",
+   "bytes": 674,
+   "uniforms": [
+    "range",
+    "sampler2D inputBuffer",
+    "smoothing",
+    "threshold"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/61-vert-551b-kR.glsl",
+   "category": "shared-vendor",
+   "bytes": 617,
+   "uniforms": [
+    "bindMatrix",
+    "bindMatrixInverse",
+    "sampler2D boneTexture"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/62-vert-529b-wU.glsl",
+   "category": "shared-vendor",
+   "bytes": 595,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/63-frag-494b-ZR.glsl",
+   "category": "shared-vendor",
+   "bytes": 560,
+   "uniforms": [
+    "backgroundIntensity",
+    "t2D"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/64-frag-469b-AC.glsl",
+   "category": "shared-vendor",
+   "bytes": 535,
+   "uniforms": [
+    "color",
+    "opacity"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/65-vert-450b-pN.glsl",
+   "category": "APP",
+   "bytes": 516,
+   "uniforms": [
+    "uTime, uPx"
+   ],
+   "attributes": [
+    "aPhase",
+    "aSize"
+   ],
+   "comments": [
+    "// each grain twinkles on its own clock: some steady, some blinking"
+   ],
+   "note": "uniform app khas: uPx, uTime"
+  },
+  {
+   "file": "shaders/mira/66-vert-435b-Fb.glsl",
+   "category": "shared-vendor",
+   "bytes": 501,
+   "uniforms": [
+    "gradientMap"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/67-vert-416b-$0.glsl",
+   "category": "APP",
+   "bytes": 482,
+   "uniforms": [
+    "uShock",
+    "uShockW"
+   ],
+   "attributes": [],
+   "comments": [
+    "// the light of the wave's front where it crosses p"
+   ]
+  },
+  {
+   "file": "shaders/mira/68-vert-403b-fU.glsl",
+   "category": "shared-vendor",
+   "bytes": 469,
+   "uniforms": [
+    "kernel",
+    "scale",
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/69-frag-397b-cU.glsl",
+   "category": "shared-vendor",
+   "bytes": 463,
+   "uniforms": [
+    "sampler2D inputBuffer"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/70-vert-388b-ik.glsl",
+   "category": "APP",
+   "bytes": 454,
+   "uniforms": [
+    "uTime, uSway"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uSway, uTime"
+  },
+  {
+   "file": "shaders/mira/71-vert-379b-RP.glsl",
+   "category": "shared-vendor",
+   "bytes": 445,
+   "uniforms": [
+    "depthColor",
+    "depthHeight",
+    "depthWidth"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/72-vert-377b-A_.glsl",
+   "category": "APP",
+   "bytes": 443,
+   "uniforms": [
+    "uReveal"
+   ],
+   "attributes": [],
+   "comments": [
+    "// when her ignition's wave reaches p: her picture, her lines and her hair appear there"
+   ]
+  },
+  {
+   "file": "shaders/mira/73-vert-344b-qw.glsl",
+   "category": "APP",
+   "bytes": 410,
+   "uniforms": [],
+   "attributes": [
+    "aCol",
+    "aStr",
+    "aT",
+    "aU",
+    "aW"
+   ],
+   "comments": [],
+   "note": "tanpa uniform"
+  },
+  {
+   "file": "shaders/mira/74-frag-329b-eC.glsl",
+   "category": "shared-vendor",
+   "bytes": 395,
+   "uniforms": [
+    "opacity",
+    "tCube",
+    "tFlip"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/75-frag-326b-uk.glsl",
+   "category": "APP",
+   "bytes": 392,
+   "uniforms": [
+    "uOn, uSpark"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uOn, uSpark"
+  },
+  {
+   "file": "shaders/mira/76-frag-313b-mN.glsl",
+   "category": "APP",
+   "bytes": 379,
+   "uniforms": [
+    "uColor",
+    "uOpacity"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uColor, uOpacity"
+  },
+  {
+   "file": "shaders/mira/77-frag-309b-$k.glsl",
+   "category": "APP",
+   "bytes": 375,
+   "uniforms": [],
+   "attributes": [],
+   "comments": [],
+   "note": "tanpa uniform"
+  },
+  {
+   "file": "shaders/mira/78-vert-307b-Pb.glsl",
+   "category": "shared-vendor",
+   "bytes": 373,
+   "uniforms": [
+    "reflectivity",
+    "refractionRatio"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/79-frag-297b-oC.glsl",
+   "category": "shared-vendor",
+   "bytes": 363,
+   "uniforms": [
+    "tEquirect"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/80-vert-291b-rh.glsl",
+   "category": "APP",
+   "bytes": 357,
+   "uniforms": [
+    "uFace"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uFace"
+  },
+  {
+   "file": "shaders/mira/81-vert-281b-Ib.glsl",
+   "category": "shared-vendor",
+   "bytes": 347,
+   "uniforms": [
+    "refractionRatio"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/82-vert-273b-AR.glsl",
+   "category": "shared-vendor",
+   "bytes": 339,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/83-vert-266b-RU.glsl",
+   "category": "shared-vendor",
+   "bytes": 332,
+   "uniforms": [
+    "texelSize"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/84-frag-265b-Nb.glsl",
+   "category": "shared-vendor",
+   "bytes": 331,
+   "uniforms": [],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/85-vert-260b-LU.glsl",
+   "category": "shared-vendor",
+   "bytes": 326,
+   "uniforms": [
+    "aspect",
+    "cameraFar",
+    "cameraNear",
+    "resolution",
+    "texelSize",
+    "time"
+   ],
+   "attributes": [],
+   "comments": []
+  },
+  {
+   "file": "shaders/mira/86-frag-260b-sk.glsl",
+   "category": "APP",
+   "bytes": 326,
+   "uniforms": [
+    "uGain, uOn",
+    "uMap",
+    "uSize"
+   ],
+   "attributes": [],
+   "comments": [],
+   "note": "uniform app khas: uGain, uMap, uOn, uSize"
+  },
+  {
+   "file": "shaders/mira/87-vert-259b-SR.glsl",
+   "category": "shared-vendor",
+   "bytes": 325,
+   "uniforms": [
+    "clearcoatMap",
+    "clearcoatNormalMap",
+    "clearcoatNormalScale",
+    "clearcoatRoughnessMap"
+   ],
+   "attributes": [],
+   "comments": []
+  }
+ ]
+}

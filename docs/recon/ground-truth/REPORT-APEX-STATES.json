@@ -1,0 +1,76 @@
+{
+ "1440x900": [
+  {
+   "state": "idle",
+   "status": "STATUS: IDLE",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "listening",
+   "status": "STATUS: LISTENING",
+   "canvases": 3,
+   "imgs": 4,
+   "storage": {}
+  },
+  {
+   "state": "thinking",
+   "status": "STATUS: THINKING",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "speaking",
+   "status": "STATUS: SPEAKING",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "strong",
+   "status": "STATUS: IDLE",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  }
+ ],
+ "390x844": [
+  {
+   "state": "idle",
+   "status": "STATUS: IDLE",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "listening",
+   "status": "STATUS: LISTENING",
+   "canvases": 3,
+   "imgs": 4,
+   "storage": {}
+  },
+  {
+   "state": "thinking",
+   "status": "STATUS: THINKING",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "speaking",
+   "status": "STATUS: SPEAKING",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  },
+  {
+   "state": "strong",
+   "status": "STATUS: IDLE",
+   "canvases": 3,
+   "imgs": 1,
+   "storage": {}
+  }
+ ]
+}

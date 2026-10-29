@@ -1,0 +1,2 @@
+// ESCAPE-AND-RETURN, the same species as the edge boil (round 8: an in-place wobble made
+// at pulse peak the color brightens IN ITS OWN HUE - never lifted toward white

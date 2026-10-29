@@ -1,0 +1,93 @@
+{
+ "generatedAt": "2026-10-29T10:17:55.688Z",
+ "rows": [
+  {
+   "t": 1,
+   "textLive": "ASSEMBLING... 14%",
+   "textLive2": "ASSEMBLING... 14%",
+   "textBuild": "ASSEMBLING... 14%",
+   "pixel": {
+    "baseline": {
+     "gt8": 0.0428,
+     "gt32": 0.0171,
+     "mae": 0.0158,
+     "meanA": 1.12,
+     "meanB": 1.12
+    },
+    "rebuild": {
+     "gt8": 1.6718,
+     "gt32": 0.5464,
+     "mae": 0.6948,
+     "meanA": 0.85,
+     "meanB": 1.12
+    }
+   }
+  },
+  {
+   "t": 3,
+   "textLive": "ASSEMBLING... 41%",
+   "textLive2": "ASSEMBLING... 41%",
+   "textBuild": "ASSEMBLING... 41%",
+   "pixel": {
+    "baseline": {
+     "gt8": 0.0352,
+     "gt32": 0.0162,
+     "mae": 0.0403,
+     "meanA": 3.57,
+     "meanB": 3.57
+    },
+    "rebuild": {
+     "gt8": 1.8817,
+     "gt32": 0.5465,
+     "mae": 0.7962,
+     "meanA": 3.28,
+     "meanB": 3.57
+    }
+   }
+  },
+  {
+   "t": 5,
+   "textLive": "ASSEMBLING... 94%",
+   "textLive2": "ASSEMBLING... 94%",
+   "textBuild": "ASSEMBLING... 94%",
+   "pixel": {
+    "baseline": {
+     "gt8": 0.0605,
+     "gt32": 0.0311,
+     "mae": 0.1965,
+     "meanA": 10.41,
+     "meanB": 10.41
+    },
+    "rebuild": {
+     "gt8": 4.4627,
+     "gt32": 0.639,
+     "mae": 1.5888,
+     "meanA": 10.04,
+     "meanB": 10.41
+    }
+   }
+  },
+  {
+   "t": 6.5,
+   "textLive": "ASSEMBLING... 99%",
+   "textLive2": "ASSEMBLING... 99%",
+   "textBuild": "ASSEMBLING... 99%",
+   "pixel": {
+    "baseline": {
+     "gt8": 1.6857,
+     "gt32": 0.1633,
+     "mae": 0.7298,
+     "meanA": 13.32,
+     "meanB": 13.33
+    },
+    "rebuild": {
+     "gt8": 9.2267,
+     "gt32": 1.4123,
+     "mae": 2.8285,
+     "meanA": 12.2,
+     "meanB": 13.32
+    }
+   }
+  }
+ ]
+}

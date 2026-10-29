@@ -1,0 +1,26 @@
+{
+ "idle": {
+  "baseline_pct": 0.0,
+  "rebuild_pct_noHUD": 0.014,
+  "mae": 0.034,
+  "rebuild_pct_kanvas": 0.463
+ },
+ "listening": {
+  "baseline_pct": 0.0,
+  "rebuild_pct_noHUD": 0.023,
+  "mae": 0.052,
+  "rebuild_pct_kanvas": 0.55
+ },
+ "thinking": {
+  "baseline_pct": 0.0,
+  "rebuild_pct_noHUD": 0.024,
+  "mae": 0.051,
+  "rebuild_pct_kanvas": 0.537
+ },
+ "speaking": {
+  "baseline_pct": 0.0,
+  "rebuild_pct_noHUD": 0.023,
+  "mae": 0.05,
+  "rebuild_pct_kanvas": 0.53
+ }
+}

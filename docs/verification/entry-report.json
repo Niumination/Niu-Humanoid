@@ -1,0 +1,55 @@
+{
+ "generatedAt": "2026-10-29T07:43:53.403Z",
+ "local": "http://127.0.0.1:5180/",
+ "live": "https://apex-humanoid.vercel.app/",
+ "views": {
+  "1440x900": {
+   "pixel": {
+    "baseline": {
+     "gt8": 0,
+     "gt32": 0,
+     "mae": 0
+    },
+    "rebuild": {
+     "gt8": 0,
+     "gt32": 0,
+     "mae": 0
+    }
+   },
+   "gateA": {
+    "textDiff": [],
+    "styleDiffs": [],
+    "pass": true
+   },
+   "verdict": {
+    "gt32": true,
+    "gt8": true,
+    "mae": true
+   }
+  },
+  "390x844": {
+   "pixel": {
+    "baseline": {
+     "gt8": 0,
+     "gt32": 0,
+     "mae": 0
+    },
+    "rebuild": {
+     "gt8": 0,
+     "gt32": 0,
+     "mae": 0
+    }
+   },
+   "gateA": {
+    "textDiff": [],
+    "styleDiffs": [],
+    "pass": true
+   },
+   "verdict": {
+    "gt32": true,
+    "gt8": true,
+    "mae": true
+   }
+  }
+ }
+}

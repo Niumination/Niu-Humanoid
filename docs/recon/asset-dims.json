@@ -1,0 +1,62 @@
+{
+ "apex-assembly-25-v1.webp": {
+  "w": 1254,
+  "h": 1254,
+  "bytes": 312814,
+  "mode": "RGB"
+ },
+ "apex-assembly-60-v1.webp": {
+  "w": 1254,
+  "h": 1254,
+  "bytes": 322748,
+  "mode": "RGB"
+ },
+ "apex-idle-v1.webp": {
+  "w": 1215,
+  "h": 1295,
+  "bytes": 300084,
+  "mode": "RGB"
+ },
+ "apex-listening-v1.webp": {
+  "w": 1214,
+  "h": 1295,
+  "bytes": 350160,
+  "mode": "RGB"
+ },
+ "apex-speaking-strong-v1.webp": {
+  "w": 1216,
+  "h": 1293,
+  "bytes": 327680,
+  "mode": "RGB"
+ },
+ "apex-speaking-v1.webp": {
+  "w": 1213,
+  "h": 1296,
+  "bytes": 286100,
+  "mode": "RGB"
+ },
+ "apex-thinking-v1.webp": {
+  "w": 1215,
+  "h": 1295,
+  "bytes": 275616,
+  "mode": "RGB"
+ },
+ "backdrop-v1.webp": {
+  "w": 1672,
+  "h": 941,
+  "bytes": 312166,
+  "mode": "RGB"
+ },
+ "mira-hair-v1.webp": {
+  "w": 1385,
+  "h": 1422,
+  "bytes": 159716,
+  "mode": "RGB"
+ },
+ "mira-idle-v1.webp": {
+  "w": 1145,
+  "h": 1374,
+  "bytes": 364544,
+  "mode": "RGBA"
+ }
+}

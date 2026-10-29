@@ -1,0 +1,30 @@
+[
+ {
+  "t": 1.0,
+  "full_pct": 0.5574,
+  "canvas_pct_noHUD": 0.0388,
+  "mae_noHUD": 0.0629,
+  "baseline_live_vs_live_pct": 0.036
+ },
+ {
+  "t": 3.0,
+  "full_pct": 0.5394,
+  "canvas_pct_noHUD": 0.0317,
+  "mae_noHUD": 0.1489,
+  "baseline_live_vs_live_pct": 0.0341
+ },
+ {
+  "t": 5.0,
+  "full_pct": 0.636,
+  "canvas_pct_noHUD": 0.1228,
+  "mae_noHUD": 1.0471,
+  "baseline_live_vs_live_pct": 0.0374
+ },
+ {
+  "t": 6.5,
+  "full_pct": 1.4346,
+  "canvas_pct_noHUD": 1.0564,
+  "mae_noHUD": 2.6189,
+  "baseline_live_vs_live_pct": 0.2203
+ }
+]

@@ -1,0 +1,113 @@
+{
+ "html": "<html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Apex Humanoid</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n    <link href=\"https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap\" rel=\"stylesheet\">\n    <script type=\"module\" crossorigin=\"\" src=\"/assets/index-BD7VNgkM.js\"></script>\n    <link rel=\"stylesheet\" crossorigin=\"\" href=\"/assets/index-CvOJNoLF.css\">\n  </head>\n  <body>\n    <div id=\"root\"><div style=\"position: fixed; inset: 0px; background: rgb(0, 0, 0); display: grid; place-items: center;\"><div style=\"text-align: center; font-family: var(--font-ui);\"><div style=\"color: rgb(34, 211, 238); font-size: 22px; letter-spacing: 0.3em; margin-bottom: 8px;\">APEX HUMANOID</div><div style=\"color: rgb(159, 216, 232); font-size: 12px; letter-spacing: 0.12em; margin-bottom: 28px;\">a figure of light that assembles itself</div><button style=\"padding: 12px 34px; background: transparent; color: rgb(34, 211, 238); cursor: pointer; border: 1px solid rgba(34, 211, 238, 0.4); border-radius: 10px; font-family: var(--font-ui); font-size: 14px; letter-spacing: 0.25em; box-shadow: rgba(34, 211, 238, 0.133) 0px 0px 24px;\">ENTER</button><div style=\"color: rgb(74, 107, 117); font-size: 10px; letter-spacing: 0.1em; margin-top: 18px;\">the click opens the audio - the birth has a sound</div></div></div></div>\n  \n\n</body></html>",
+ "texts": [
+  "APEX HUMANOID",
+  "a figure of light that assembles itself",
+  "ENTER",
+  "the click opens the audio - the birth has a sound"
+ ],
+ "classes": [],
+ "testids": [],
+ "arias": [],
+ "canvases": [],
+ "imgs": [],
+ "styles": [
+  {
+   "tag": "DIV",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "22px",
+   "weight": "400",
+   "ls": "6.6px",
+   "color": "rgb(34, 211, 238)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(34, 211, 238)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 573,
+    "y": 378,
+    "w": 294,
+    "h": 24
+   }
+  },
+  {
+   "tag": "DIV",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "12px",
+   "weight": "400",
+   "ls": "1.44px",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(159, 216, 232)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 573,
+    "y": 410,
+    "w": 294,
+    "h": 14
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "14px",
+   "weight": "400",
+   "ls": "3.5px",
+   "color": "rgb(34, 211, 238)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "12px 34px",
+   "border": "1px solid rgba(34, 211, 238, 0.4)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 656,
+    "y": 452,
+    "w": 128,
+    "h": 41
+   }
+  },
+  {
+   "tag": "DIV",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "10px",
+   "weight": "400",
+   "ls": "1px",
+   "color": "rgb(74, 107, 117)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(74, 107, 117)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 573,
+    "y": 511,
+    "w": 294,
+    "h": 11
+   }
+  }
+ ],
+ "storage": {}
+}

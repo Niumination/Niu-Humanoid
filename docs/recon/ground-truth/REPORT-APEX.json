@@ -1,0 +1,473 @@
+{
+ "generatedAt": "2026-10-29T07:02:32.063Z",
+ "shots": [
+  {
+   "view": "1440x900",
+   "name": "entry",
+   "url": "https://apex-humanoid.vercel.app/",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "APEX HUMANOID",
+    "a figure of light that assembles itself",
+    "ENTER",
+    "the click opens the audio - the birth has a sound"
+   ],
+   "canvases": 0,
+   "imgs": 0
+  },
+  {
+   "view": "1440x900",
+   "name": "birth-t0.2",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=0.2",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 3%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "birth-t1",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=1",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 14%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "birth-t2",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=2",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 27%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "birth-t4",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=4",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 65%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "birth-done",
+   "url": "?auto",
+   "texts": [
+    "STATUS: IDLE",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3
+  },
+  {
+   "view": "1440x900",
+   "name": "state-idle",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=idle",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 96%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "state-listening",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=listening",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 94%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "state-thinking",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=thinking",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 99%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "state-speaking",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=speaking",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 93%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "1440x900",
+   "name": "state-strong",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=strong",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 97%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "entry",
+   "url": "https://apex-humanoid.vercel.app/",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "APEX HUMANOID",
+    "a figure of light that assembles itself",
+    "ENTER",
+    "the click opens the audio - the birth has a sound"
+   ],
+   "canvases": 0,
+   "imgs": 0
+  },
+  {
+   "view": "390x844",
+   "name": "birth-t0.2",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=0.2",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 3%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "birth-t1",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=1",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 14%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "birth-t2",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=2",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 27%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "birth-t4",
+   "url": "https://apex-humanoid.vercel.app/?auto&asmel=4",
+   "wait": 1500,
+   "freeze": null,
+   "texts": [
+    "ASSEMBLING... 65%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "birth-done",
+   "url": "?auto",
+   "texts": [
+    "STATUS: IDLE",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3
+  },
+  {
+   "view": "390x844",
+   "name": "state-idle",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=idle",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 58%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "state-listening",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=listening",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 65%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "state-thinking",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=thinking",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 67%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "state-speaking",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=speaking",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 61%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  },
+  {
+   "view": "390x844",
+   "name": "state-strong",
+   "url": "https://apex-humanoid.vercel.app/?auto&skip&state=strong",
+   "wait": 2500,
+   "freeze": 0,
+   "texts": [
+    "ASSEMBLING... 90%",
+    "EXIT",
+    "Open hand gesture",
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC",
+    "OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "canvases": 3,
+   "imgs": 1
+  }
+ ],
+ "repro": {
+  "a": "/home/user/Kerja-Arena/recon/ground-truth/apex/1440x900/_repro-a.png",
+  "b": "/home/user/Kerja-Arena/recon/ground-truth/apex/1440x900/_repro-b.png"
+ }
+}

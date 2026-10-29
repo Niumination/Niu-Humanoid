@@ -1,0 +1,29 @@
+{
+ "apex": {
+  "total": 54,
+  "custom": 3,
+  "vendor": 51,
+  "custom_files": [
+   "00-vert-1727b.glsl",
+   "01-frag-1357b.glsl",
+   "02-vert-1146b.glsl"
+  ]
+ },
+ "mira": {
+  "total": 70,
+  "custom": 10,
+  "vendor": 60,
+  "custom_files": [
+   "00-frag-3007b.glsl",
+   "01-vert-2833b.glsl",
+   "02-frag-2742b.glsl",
+   "03-frag-990b.glsl",
+   "04-frag-929b.glsl",
+   "05-frag-888b.glsl",
+   "06-vert-865b.glsl",
+   "07-vert-747b.glsl",
+   "08-frag-608b.glsl",
+   "09-frag-166b.glsl"
+  ]
+ }
+}

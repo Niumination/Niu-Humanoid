@@ -1,0 +1,382 @@
++re.key).replace(X,
+act(...) is not supported in production builds of React.
+React.Children.only expected to receive a single React element child.
+React.cloneElement(...): The argument must be a React element, but you passed 
+.split(
+http://www.w3.org/XML/1998/namespace
+http://www.w3.org/1999/xlink
+ at new 
+.Consumer
+.Provider
+)?Oe(s,l.type,d):l.hasOwnProperty(
+http://www.w3.org/1999/xhtml
+http://www.w3.org/2000/svg
++l.valueOf().toString()+
++l).trim():l+
+,pi,pi),window.removeEventListener(
+).style,
+change click focusin focusout input keydown keyup selectionchange
+focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange
+compositionend focusout keydown keypress keyup mousedown
+compositionstart focusout keydown keypress keyup mousedown
+compositionupdate focusout keydown keypress keyup mousedown
+DELETED
++d.toString(32)+
+300 es
+Invalid component type.
+index is out of range: 
+THREE.ImageUtils.getDataURL: Image converted to jpg for performance reasons
+THREE.Texture: Unable to serialize Texture.
+THREE.Quaternion: .setFromEuler() encountered an unknown order: 
+THREE.Matrix4.makePerspective(): Invalid coordinate system: 
+THREE.Matrix4.makeOrthographic(): Invalid coordinate system: 
+THREE.Euler: .setFromRotationMatrix() encountered an unknown order: 
+THREE.Object3D.add: object can't be added as a child of itself.
+THREE.Object3D.add: object not an instance of THREE.Object3D.
+THREE.Color: Alpha component of 
+ will be ignored.
+THREE.Color: Unknown color model 
+THREE.Color: Invalid hex color 
+THREE.Color: Unknown color 
+THREE.DataUtils.toHalfFloat(): Value out of range.
+THREE.BufferAttribute: array should be a Typed Array.
+THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed.
+,-1,-1,e,t,-n,r,o,5),this.setIndex(h),this.setAttribute(
+,new ft(p,3)),this.setAttribute(
+,new ft(m,3)),this.setAttribute(
+THREE.CubeCamera.updateCoordinateSystem(): Invalid coordinate system: 
+THREE.Frustum.setFromProjectionMatrix(): Invalid coordinate system: 
+THREE.WebGLAttributes: Unsupported buffer data format: 
+not supported, using
+PMREM.Background
+blur direction must be either latitudinal or longitudinal!
+,new yt(b,w)),B.setAttribute(
+PMREM.cubeUv
+THREE.WebGLRenderer: 
+ extension not supported.
+THREE.WebGLInfo: Unknown draw mode:
+,i.extensionMultiDraw?
+ has been deprecated. Use 
+SHADOWMAP_TYPE_BASIC
+SHADOWMAP_TYPE_PCF
+SHADOWMAP_TYPE_PCF_SOFT
+SHADOWMAP_TYPE_VSM
+ENVMAP_TYPE_CUBE
+ENVMAP_TYPE_CUBE_UV
+ENVMAP_MODE_REFLECTION
+ENVMAP_MODE_REFRACTION
+ENVMAP_BLENDING_NONE
+ENVMAP_BLENDING_MULTIPLY
+ENVMAP_BLENDING_MIX
+ENVMAP_BLENDING_ADD
++t.shaderType,
+,t.batching?
+,t.batchingColor?
+,t.instancing?
+,t.instancingColor?
+,t.instancingMorph?
+,t.useFog&&t.fog?
+,t.useFog&&t.fogExp2?
+,t.map?
+,t.envMap?
+,t.lightMap?
+,t.aoMap?
+,t.bumpMap?
+,t.normalMap?
+,t.normalMapObjectSpace?
+,t.normalMapTangentSpace?
+,t.displacementMap?
+,t.emissiveMap?
+,t.anisotropy?
+,t.anisotropyMap?
+,t.clearcoatMap?
+,t.clearcoatRoughnessMap?
+,t.clearcoatNormalMap?
+,t.iridescenceMap?
+,t.iridescenceThicknessMap?
+,t.specularMap?
+,t.specularColorMap?
+,t.specularIntensityMap?
+,t.roughnessMap?
+,t.metalnessMap?
+,t.alphaMap?
+,t.alphaHash?
+,t.transmission?
+,t.transmissionMap?
+,t.thicknessMap?
+,t.sheenColorMap?
+,t.sheenRoughnessMap?
+,t.mapUv?
++t.mapUv:
+,t.alphaMapUv?
++t.alphaMapUv:
+,t.lightMapUv?
++t.lightMapUv:
+,t.aoMapUv?
++t.aoMapUv:
+,t.emissiveMapUv?
++t.emissiveMapUv:
+,t.bumpMapUv?
++t.bumpMapUv:
+,t.normalMapUv?
++t.normalMapUv:
+,t.displacementMapUv?
++t.displacementMapUv:
+,t.metalnessMapUv?
++t.metalnessMapUv:
+,t.roughnessMapUv?
++t.roughnessMapUv:
+,t.anisotropyMapUv?
++t.anisotropyMapUv:
+,t.clearcoatMapUv?
++t.clearcoatMapUv:
+,t.clearcoatNormalMapUv?
++t.clearcoatNormalMapUv:
+,t.clearcoatRoughnessMapUv?
++t.clearcoatRoughnessMapUv:
+,t.iridescenceMapUv?
++t.iridescenceMapUv:
+,t.iridescenceThicknessMapUv?
++t.iridescenceThicknessMapUv:
+,t.sheenColorMapUv?
++t.sheenColorMapUv:
+,t.sheenRoughnessMapUv?
++t.sheenRoughnessMapUv:
+,t.specularMapUv?
++t.specularMapUv:
+,t.specularColorMapUv?
++t.specularColorMapUv:
+,t.specularIntensityMapUv?
++t.specularIntensityMapUv:
+,t.transmissionMapUv?
++t.transmissionMapUv:
+,t.thicknessMapUv?
++t.thicknessMapUv:
+,t.vertexColors?
+,t.vertexAlphas?
+,t.vertexUv1s?
+,t.vertexUv2s?
+,t.vertexUv3s?
+,t.pointsUvs?
+,t.flatShading?
+,t.skinning?
+,t.morphTargets?
+,t.morphColors?
++t.morphTextureStride:
++t.morphTargetsCount:
+,t.doubleSided?
+,t.flipSided?
+,t.shadowMapEnabled?
+,t.sizeAttenuation?
+,t.logarithmicDepthBuffer?
+,t.reverseDepthBuffer?
+,t.alphaToCoverage?
+,t.matcap?
+,t.clearcoat?
+,t.dispersion?
+,t.iridescence?
+,t.alphaTest?
+,t.sheen?
+,t.vertexColors||t.instancingColor||t.batchingColor?
+,t.gradientMap?
+,t.premultipliedAlpha?
+,t.decodeVideoTexture?
+,t.toneMapping):
+,t.dithering?
+,t.opaque?
+,nn.colorspace_pars_fragment,B3(
+,t.outputColorSpace),H3(),t.useDepthPacking?
++t.depthPacking:
+THREE.WebGLProgram: Shader Error 
+ - VALIDATE_STATUS 
+?console.warn(
+THREE.WebGLProgram.getParameters:
+THREE.WebGLShadowMap:
+has no shadow.
+.shadowMap
+THREE.WebGLState: Invalid blending: 
+THREE.WebGLState:
+&&new OffscreenCanvas(1,1).getContext(
+).drawImage(H,0,0,De,xt),console.warn(
++Ue.width+
++Ue.height+
+in H&&console.warn(
+THREE.WebGLRenderer: Attempt to use non-existing WebGL internal format '
+THREE.WebGLTextures: Trying to use 
+ texture units while this GPU supports only 
+THREE.WebGLRenderer: Texture marked for update but no image data found.
+THREE.WebGLRenderer: Texture marked for update but image is incomplete
+renderTarget.depthTexture must be an instance of THREE.DepthTexture
+Unknown depthTexture format
+target.depthTexture not supported in Cube render targets
+THREE.WebGLTextures: sRGB encoded textures have to use RGBAFormat and UnsignedByteType.
+THREE.WebGLTextures: Unsupported texture color space:
+,J),r.removeEventListener(
+THREE.WebXRManager: Cannot change framebuffer scale while presenting.
+THREE.WebXRManager: Cannot change reference space type while presenting.
+,J),r.addEventListener(
+THREE.WebGLRenderer: Maximum number of simultaneously usable uniforms groups reached.
+THREE.WebGLRenderer: Texture samplers can not be part of an uniforms group.
+THREE.WebGLRenderer: Unsupported uniform value type.
+&&n instanceof WebGLRenderingContext)throw new Error(
+THREE.WebGLRenderer: Can't change size while VR device is presenting.
+THREE.WebGLRenderer: Context Lost.
+THREE.WebGLRenderer: Context Restored.
+THREE.WebGLRenderer: A WebGL context could not be created. Reason: 
+THREE.WebGLRenderer.render: camera is not an instance of THREE.Camera.
+THREE.WebGLRenderer.readRenderTargetPixels: renderTarget is not THREE.WebGLRenderTarget.
+THREE.WebGLRenderer.readRenderTargetPixelsAsync: requested read bounds are out of range.
+&&__THREE_DEVTOOLS__.dispatchEvent(new CustomEvent(
+THREE.SkinnedMesh: Unrecognized bindMode: 
+THREE.Skeleton: Number of inverse bone matrices does not match amount of bones.
+THREE.Skeleton: No bone found with UUID:
+Skeleton.toJSON
+THREE.Curve: .getPoint() not implemented.
+Curve.toJSON
+,new ft(c,2)),this.setAttribute(
+THREE.ExtrudeGeometry: vec does not exist
+,PHYSICAL:
+call to abstract method
+THREE.KeyframeTrack: track name is undefined
+THREE.KeyframeTrack: no keyframes in track named 
+unsupported interpolation for 
+ keyframe track named 
+THREE.KeyframeTrack:
+THREE.KeyframeTrack: Invalid value size in track.
+THREE.KeyframeTrack: Track is empty.
+THREE.KeyframeTrack: Time is not a valid number.
+THREE.KeyframeTrack: Out of order keys.
+THREE.KeyframeTrack: Value is not a valid number.
+THREE.AnimationClip: No animation in JSONLoader data.
+__DEFAULT
+THREE.FileLoader: HTTP Status 0 received.
+,h,!1),c.removeEventListener(
+,h,!1),c.addEventListener(
+THREE.MaterialLoader: Undefined texture
+THREE:ObjectLoader: Can't parse 
+THREE.ObjectLoader: Can't load 
+THREE.ObjectLoader.parseTexture: Constant should be in numeric form.
+THREE.ObjectLoader: Undefined image
+THREE.ObjectLoader: Undefined geometry
+THREE.ObjectLoader: Undefined material
+THREE.ObjectLoader: Undefined texture
+THREE.ObjectLoader: No skeleton found with UUID:
+&&console.warn(
+THREE.Audio: Audio is already playing.
+THREE.Audio: this Audio has no playback control.
++v_.replace(
+).replace(XI,
+THREE.PropertyBinding: No target node found for track: 
+ but it wasn't found.
+THREE.Raycaster: Unsupported camera type: 
+,t,e,ni,n*.7,r*1.1,-1),di(
+,t,e,ni,-n*.7,r*1.1,-1),di(
+,t,e,ni,0,r,-1),e.getAttribute(
+THREE.BoxHelper: .update() has no longer arguments.
+&&(window.__THREE__?console.warn(
++x.toString(32)+
++(N(u.value)||
+R3F: Primitives without 'object' are invalid!
+R3F: The args prop must be an array!
+R3F: the args prop must be an array!
+R3F: Hooks can only be used within the Canvas component!
+R3F.createRoot should only be called once!
+in Z||
+)&&i.includes(
+,DEPTH_PACKING:
+,COLOR_WRITE:
+,this):document.removeEventListener(
+FRAGMENT_HEAD
+FRAGMENT_MAIN_UV
+FRAGMENT_MAIN_IMAGE
+VERTEX_HEAD
+VERTEX_MAIN_SUPPORT
+Blur.Target.A
+Blur.Target.B
+Upsampling.Mipmap0
+Downsampling.Mipmap
+Upsampling.Mipmap
+Bloom.Target
+distinction was removed
+),DEPTH_PACKING:
+,ENCODE_OUTPUT:
+).replace(En.FRAGMENT_MAIN_UV,i.get(En.FRAGMENT_MAIN_UV)||
+).replace(En.FRAGMENT_MAIN_IMAGE,i.get(En.FRAGMENT_MAIN_IMAGE)||
+).replace(En.VERTEX_MAIN_SUPPORT,i.get(En.VERTEX_MAIN_SUPPORT)||
+),E.delete(
+unknown moment
+'+i.key+'
+context lost
+no log
+mira field
+,new ft(B,1)),L.setAttribute(
+,new ft(k,1)),L.setAttribute(
+,new ft(J,3)),X.setAttribute(
+hum.hair.swaySpeed
+hum.hair.swayAmt
+hum.lines.pulseSpeed
+hum.state.talkSpeed
+hum.state.talkBright
+hum.state.listenSpeed
+hum.state.listenBright
+https://esm.sh/@mediapipe/tasks-vision@0.10.14
+https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm
+camera on - show your hand
+hand found - point, pinch to touch her
+starting the camera
+this browser has no camera access here
+loading hand tracking
+VIDEO
+camera blocked - allow it in the browser settings
+no camera found
+camera unavailable
+,fontSize:10.5,letterSpacing:
+Face light size
+&&new URLSearchParams(window.location.search).get(
+).split(
+,new yt(r,3)),M.setAttribute(
+,new yt(o,2)),M.setAttribute(
+,new yt(a,1)),M.setAttribute(
+,new yt(c,3)),M.setAttribute(
+,new yt(h,1)),M.setAttribute(
+,new yt(p,1)),M.setAttribute(
+,new yt(m,1)),M.setAttribute(
+,new yt(g,1)),M.setAttribute(
+,new yt(v,1)),M.setAttribute(
+,new ft(re,1)),ze.setAttribute(
+,new ft(Y,1)),ze.setAttribute(
+,new ft(ce,1)),ze.setAttribute(
+,new ft(we,3)),ze.setAttribute(
+,new yt(ce,3)),Ne.setAttribute(
+,new yt(we,1)),Ne.setAttribute(
+,new yt(Ae,1)),Ne.setAttribute(
+,new yt(ze,1)),Ne.setAttribute(
+,new yt(ot,1)),Ne.setAttribute(
+,new yt(Me,1)),Ne.setAttribute(
+,new yt(Ge,3)),Ve.setAttribute(
+,new yt(We,2)),Ve.setAttribute(
+),Y.addColorStop(.25,
+),Y.addColorStop(1,
+),Y.addColorStop(.3,
+),Y.addColorStop(.65,
+),renderOrder:8.95,frustumCulled:!1,children:nt.jsx(
+),renderOrder:.05,frustumCulled:!1,children:nt.jsx(
+rgba(16, 6, 30, 0.72)
+8px 13px
+12px 'Share Tech Mono', monospace
+)||0),talk:Number(X.get(
+)||0),listen:Number(X.get(
+button, input, select, textarea
+,left:0,top:0,width:0,opacity:0,filter:Ur.has(
+brightness(0) invert(1)
+mira humanoid
+SOUND 
+Turn the camera (hand tracking) on or off
+CAMERA OFF
+ENABLE CAMERA
+The camera is on
+LISTENING
+TALKING
+)||i.has(
+))?i.get(
+)?Number(i.get(

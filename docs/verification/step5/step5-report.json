@@ -1,0 +1,99 @@
+{
+ "generatedAt": "2026-10-29T10:14:23.470Z",
+ "stateText": [
+  {
+   "input": "idle",
+   "live": "STATUS: IDLE",
+   "build": "STATUS: IDLE",
+   "same": true
+  },
+  {
+   "input": "listening",
+   "live": "STATUS: LISTENING",
+   "build": "STATUS: LISTENING",
+   "same": true
+  },
+  {
+   "input": "thinking",
+   "live": "STATUS: THINKING",
+   "build": "STATUS: THINKING",
+   "same": true
+  },
+  {
+   "input": "speaking",
+   "live": "STATUS: SPEAKING",
+   "build": "STATUS: SPEAKING",
+   "same": true
+  },
+  {
+   "input": "strong",
+   "live": "STATUS: IDLE",
+   "build": "STATUS: IDLE",
+   "same": true
+  },
+  {
+   "input": "SPEAK",
+   "live": "STATUS: SPEAKING",
+   "build": "STATUS: SPEAKING",
+   "same": true
+  },
+  {
+   "input": "process",
+   "live": "STATUS: THINKING",
+   "build": "STATUS: THINKING",
+   "same": true
+  },
+  {
+   "input": "quiet",
+   "live": "STATUS: IDLE",
+   "build": "STATUS: IDLE",
+   "same": true
+  }
+ ],
+ "pixel": {
+  "idle": {
+   "live": "1440-live-idle.png",
+   "live2": "1440-live2-idle.png",
+   "build": "1440-build-idle.png"
+  },
+  "listening": {
+   "live": "1440-live-listening.png",
+   "live2": "1440-live2-listening.png",
+   "build": "1440-build-listening.png"
+  },
+  "thinking": {
+   "live": "1440-live-thinking.png",
+   "live2": "1440-live2-thinking.png",
+   "build": "1440-build-thinking.png"
+  },
+  "speaking": {
+   "live": "1440-live-speaking.png",
+   "live2": "1440-live2-speaking.png",
+   "build": "1440-build-speaking.png"
+  }
+ },
+ "transitions": [
+  {
+   "to": "thinking",
+   "dur": 0.95,
+   "effectiveMs": 950,
+   "ended": true
+  },
+  {
+   "to": "speaking",
+   "dur": 0.7,
+   "effectiveMs": 750,
+   "ended": true
+  },
+  {
+   "to": "idle",
+   "dur": 1.2,
+   "effectiveMs": 1250,
+   "ended": true
+  }
+ ],
+ "pass": {
+  "text": true,
+  "fade": true
+ }
+}

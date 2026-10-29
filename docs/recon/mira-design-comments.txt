@@ -1,0 +1,19 @@
+// how much a turn has happened (Apex's thresholds): the points grow with it so no gap opens (round 4), and the
+// THE TURNED HEAD'S LIGHT (Apex rounds 20-22): the far side is a shadow not a smear, the edge glows as the profile
+// (z on the round head, turn weight, facing direction u, inside 0/1)
+// the edge, where the round head stands straight up, it leans away at a steady slope instead and is flat beyond -
+// so a layer on it never folds over itself or tears where the head's edge turns
+// where the point p of the picture is now, on the round head, lifted toward you by "lift" px
+// HER HEAD TURNS (lib/figureHead3d): the hair rides a SOFT shell of her head (hair px <-> her picture's px), so it
+// turns with her head and never stretches sharply at its edge; hairSource = where a point of the screen came FROM
+// a MIRA ribbon (the near-orb correction, sections 12-13): ONE bright folding edge, a fading
+// translucent body, broken secondary detail - never two clean edges with a uniform fill
+// her head turns (lib/figureHead3d): the line rides her head's surface, a hair toward you; what turns behind her head
+// NO BLUNT CUTS (round 6): a line thins and fades into its ends, and the drawing front fades in
+// HOT, then its own colour (vF): the flare carries the line's own colour - never a white sketch (Ruben: "the build
+// (under her hair her line gives way - lib/miraHairPic HAIR_ZONE_GLSL)
+// a real strike flashes, drops out, re-strikes, then fades (the same beats as lib/miraBuild flicker)
+// a wave of current (her ignition's, or a touch's - lib/miraBuild touchWave) makes the specks it crosses jump and
+// (a seat holds her shape until her ignition's wave reaches it, then melts into her picture - lib/miraBuild revealAt)
+// the dust on her face catches the glow in its front while she speaks (lib/miraFace)
+// (weighted by its see-through value, exactly as the flat picture was: her half-clear edge pixels never shine at

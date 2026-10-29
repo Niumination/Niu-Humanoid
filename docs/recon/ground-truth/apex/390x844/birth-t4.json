@@ -1,0 +1,472 @@
+{
+ "html": "<html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Apex Humanoid</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n    <link href=\"https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap\" rel=\"stylesheet\">\n    <script type=\"module\" crossorigin=\"\" src=\"/assets/index-BD7VNgkM.js\"></script>\n    <link rel=\"stylesheet\" crossorigin=\"\" href=\"/assets/index-CvOJNoLF.css\">\n  </head>\n  <body>\n    <div id=\"root\"><div style=\"position: fixed; inset: 0px; background: rgb(0, 0, 0);\"><section data-testid=\"humanoid-mode\" aria-label=\"Apex cinematic humanoid\" style=\"position: fixed; inset: 0px; z-index: 75; overflow: hidden; background: rgb(0, 0, 0); color: rgb(25, 221, 255); font-family: var(--font-ui);\"><div style=\"position: absolute; inset: 0px; pointer-events: none; user-select: none;\"><img src=\"/humanoid/backdrop-v1.webp\" alt=\"\" aria-hidden=\"true\" draggable=\"false\" style=\"position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; opacity: 0; transition: opacity 900ms;\"><div style=\"position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: none; inset: 0px; opacity: 0; transition: opacity 900ms; mix-blend-mode: screen;\"><div style=\"width: 100%; height: 100%;\"><canvas data-engine=\"three.js r169\" width=\"390\" height=\"844\" style=\"display: block; width: 390px; height: 844px;\"></canvas></div></div></div><div data-testid=\"humanoid-portrait-frame\" style=\"position: absolute; left: 50%; top: 50%; width: min(100vw, 100vh); height: min(100vw, 100vh); transform: translate(-50%, -50%); overflow: hidden; background: transparent;\"><canvas aria-label=\"Animated cyan and gold Apex humanoid\" width=\"390\" height=\"390\" style=\"width: 100%; height: 100%; display: block;\"></canvas><div style=\"position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: none; inset: 0px; opacity: 0; transition: opacity 140ms;\"><div style=\"width: 100%; height: 100%;\"><canvas data-engine=\"three.js r169\" width=\"390\" height=\"390\" style=\"display: block; width: 390px; height: 390px;\"></canvas></div></div><div aria-live=\"polite\" style=\"position: absolute; right: 5.8%; top: 21%; max-width: 27%; font-family: &quot;Share Tech Mono&quot;, monospace; font-size: clamp(9px, 1.05vmin, 13px); line-height: 1.5; letter-spacing: 0.16em; color: rgb(25, 221, 255); text-align: right; text-shadow: rgba(25, 221, 255, 0.533) 0px 0px 12px; pointer-events: none;\">ASSEMBLING... 65%</div></div><div aria-hidden=\"true\" style=\"position: fixed; left: 0px; top: 0px; width: 0px; height: 0px; border-radius: 50%; pointer-events: none; mix-blend-mode: screen; opacity: 0; z-index: 1; background: radial-gradient(circle, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0) 58%, rgba(150, 225, 255, 0.8) 77%, rgba(0, 0, 0, 0) 96%); will-change: width, height, left, top, opacity;\"></div><button type=\"button\" aria-label=\"Exit humanoid view\" style=\"position: absolute; top: 18px; left: 18px; z-index: 2; min-width: 44px; min-height: 44px; padding: 0px 14px; border: 1px solid rgba(25, 221, 255, 0.333); border-radius: 9px; background: rgba(0, 10, 14, 0.72); color: rgb(25, 221, 255); font-family: &quot;Share Tech Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.08em; cursor: pointer; box-shadow: rgba(25, 221, 255, 0.08) 0px 0px 18px;\">EXIT</button><button type=\"button\" aria-label=\"Open hand gesture\" style=\"position: absolute; top: 18px; left: 88px; z-index: 2; min-height: 44px; padding: 0px 14px; border: 1px solid rgba(25, 221, 255, 0.25); border-radius: 9px; background: rgba(0, 10, 14, 0.72); color: rgb(25, 221, 255); font-family: &quot;Share Tech Mono&quot;, monospace; font-size: 12px; cursor: pointer; box-shadow: rgba(25, 221, 255, 0.063) 0px 0px 18px;\">Open hand gesture</button></section><div style=\"position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 200; display: flex; gap: 6px; font-family: var(--font-ui);\"><button style=\"padding: 5px 11px; background: rgba(34, 211, 238, 0.2); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">idle</button><button style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">listening</button><button style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">thinking</button><button style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">speaking</button><button title=\"Drive the speaking face from your microphone\" style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">🎙 MIC OFF</button><button title=\"Run the birth again\" style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">↻ REPLAY</button><button style=\"padding: 5px 11px; background: rgb(10, 15, 18); color: rgb(159, 216, 232); border: 1px solid rgba(34, 211, 238, 0.333); border-radius: 6px; font-size: 11px; cursor: pointer; font-family: var(--font-ui);\">♪ SOUND ON</button></div></div></div>\n  \n\n</body></html>",
+ "texts": [
+  "ASSEMBLING... 65%",
+  "EXIT",
+  "Open hand gesture",
+  "idle",
+  "listening",
+  "thinking",
+  "speaking",
+  "🎙 MIC",
+  "OFF",
+  "↻ REPLAY",
+  "♪ SOUND ON"
+ ],
+ "classes": [],
+ "testids": [
+  "humanoid-mode",
+  "humanoid-portrait-frame"
+ ],
+ "arias": [
+  {
+   "tag": "SECTION",
+   "label": "Apex cinematic humanoid",
+   "live": null,
+   "role": null
+  },
+  {
+   "tag": "CANVAS",
+   "label": "Animated cyan and gold Apex humanoid",
+   "live": null,
+   "role": null
+  },
+  {
+   "tag": "DIV",
+   "label": null,
+   "live": "polite",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": "Exit humanoid view",
+   "live": null,
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": "Open hand gesture",
+   "live": null,
+   "role": null
+  }
+ ],
+ "canvases": [
+  {
+   "w": 390,
+   "h": 844,
+   "styleW": "390px",
+   "styleH": "844px",
+   "blend": "normal"
+  },
+  {
+   "w": 390,
+   "h": 390,
+   "styleW": "100%",
+   "styleH": "100%",
+   "blend": "normal"
+  },
+  {
+   "w": 390,
+   "h": 390,
+   "styleW": "390px",
+   "styleH": "390px",
+   "blend": "normal"
+  }
+ ],
+ "imgs": [
+  {
+   "src": "backdrop-v1.webp",
+   "nw": 1672,
+   "nh": 941,
+   "blend": "normal",
+   "filter": "none"
+  }
+ ],
+ "styles": [
+  {
+   "tag": "SECTION",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgb(0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "fixed",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "75",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   }
+  },
+  {
+   "tag": "IMG",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "0",
+   "transition": "opacity 0.9s",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "absolute",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   }
+  },
+  {
+   "tag": "CANVAS",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   }
+  },
+  {
+   "tag": "CANVAS",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 0,
+    "y": 227,
+    "w": 390,
+    "h": 390
+   }
+  },
+  {
+   "tag": "CANVAS",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 0,
+    "y": 227,
+    "w": 390,
+    "h": 390
+   }
+  },
+  {
+   "tag": "DIV",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "9px",
+   "weight": "400",
+   "ls": "1.44px",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "absolute",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 262,
+    "y": 309,
+    "w": 105,
+    "h": 27
+   }
+  },
+  {
+   "tag": "DIV",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "16px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "0",
+   "transition": "all",
+   "padding": "0px",
+   "border": "0px none rgb(25, 221, 255)",
+   "position": "fixed",
+   "mixBlendMode": "screen",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "1",
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 0,
+    "h": 0
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "12px",
+   "weight": "400",
+   "ls": "0.96px",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 10, 14, 0.72)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px 14px",
+   "border": "1px solid rgba(25, 221, 255, 0.333)",
+   "position": "absolute",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "2",
+   "rect": {
+    "x": 18,
+    "y": 18,
+    "w": 58,
+    "h": 44
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "12px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(25, 221, 255)",
+   "bg": "rgba(0, 10, 14, 0.72)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "0px 14px",
+   "border": "1px solid rgba(25, 221, 255, 0.25)",
+   "position": "absolute",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "2",
+   "rect": {
+    "x": 88,
+    "y": 18,
+    "w": 132,
+    "h": 44
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgba(34, 211, 238, 0.2)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": -36,
+    "y": 783,
+    "w": 48,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 18,
+    "y": 783,
+    "w": 78,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 102,
+    "y": 783,
+    "w": 72,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 180,
+    "y": 783,
+    "w": 72,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 258,
+    "y": 783,
+    "w": 42,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 306,
+    "y": 783,
+    "w": 60,
+    "h": 51
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "11px",
+   "weight": "400",
+   "ls": "normal",
+   "color": "rgb(159, 216, 232)",
+   "bg": "rgb(10, 15, 18)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "5px 11px",
+   "border": "1px solid rgba(34, 211, 238, 0.333)",
+   "position": "static",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running",
+   "zIndex": "auto",
+   "rect": {
+    "x": 372,
+    "y": 783,
+    "w": 54,
+    "h": 51
+   }
+  }
+ ],
+ "storage": {}
+}

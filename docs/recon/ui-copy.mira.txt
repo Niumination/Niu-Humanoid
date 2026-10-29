@@ -1,0 +1,39 @@
+# ui-copy — mira — urutan kemunculan di bundle = urutan render. Format: pos<TAB>kelas<TAB>teks
+766798	copy	running
+1030512	copy	ENTER
+1060789	copy	context lost
+1060804	copy	no log
+1063211	copy	mira field
+1063863	css-value	opacity .25s linear
+1130692	copy	camera on - show your hand
+1130731	copy	hand found - point, pinch to touch her
+1131527	copy	starting the camera
+1131625	copy	this browser has no camera access here
+1132010	copy	loading hand tracking
+1134135	copy	camera blocked - allow it in the browser settings
+1134208	copy	no camera found
+1134226	copy	camera unavailable
+1134752	css-value	5px 10px
+1134857	copy	'Share Tech Mono', monospace
+1135567	copy	Face light size
+1176663	css-value	8px 13px
+1176679	css-value	12px 'Share Tech Mono', monospace
+1176987	copy	dial.
+1178656	css-value	button, input, select, textarea
+1180575	copy	mira humanoid
+1181379	copy	SPEED 
+1181519	copy	SOUND 
+1181536	copy	ON
+1181735	copy	Exit
+1181811	css-value	0 13px
+1182021	copy	CAMERA OFF
+1182034	copy	ENABLE CAMERA
+1182083	copy	The camera is on
+1182203	css-value	0 0 10px #ff4444aa
+1182234	css-value	fadeInOut 1.6s ease infinite
+1184540	copy	While she talks, her voice follows your microphone's loudness
+1184624	copy	MIC 
+1184931	copy	MIRA HUMANOID
+1185047	copy	a figure of light that weaves herself out of her own heart
+1185162	css-value	12px 34px
+1185352	copy	the click opens the audio - her build has a sound

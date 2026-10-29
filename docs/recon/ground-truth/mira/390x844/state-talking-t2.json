@@ -1,0 +1,419 @@
+{
+ "html": "<html lang=\"en\"><head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>MIRA Humanoid</title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n    <link href=\"https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap\" rel=\"stylesheet\">\n    <script type=\"module\" crossorigin=\"\" src=\"/assets/index-1PiDnpcG.js\"></script>\n    <link rel=\"stylesheet\" crossorigin=\"\" href=\"/assets/index-BlszmC9G.css\">\n  </head>\n  <body>\n    <div id=\"root\"><div style=\"position: fixed; inset: 0px; background: rgb(0, 0, 0);\"><div style=\"position: fixed; inset: 0px; z-index: 75; background: rgb(0, 0, 0); overflow: hidden; touch-action: none;\"><canvas aria-hidden=\"true\" width=\"320\" height=\"590\" style=\"position: fixed; inset: 0px; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.573431; transition: opacity 0.25s linear;\"></canvas><img src=\"/humanoid/mira-idle-v1.webp\" alt=\"\" aria-hidden=\"true\" draggable=\"false\" style=\"position: absolute; left: 3%; top: 47.922%; width: 94%; opacity: 0; filter: brightness(0); pointer-events: none; height: 52.078%; transform-origin: 50% 100%; transform: scale(1, 1);\" data-at=\"0.0300,0.4792,0.9400,0.5208\"><div style=\"position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: auto; inset: 0px; background: transparent;\"><div style=\"width: 100%; height: 100%;\"><canvas data-engine=\"three.js r169\" width=\"390\" height=\"844\" style=\"display: block; width: 390px; height: 844px;\"></canvas></div></div><div class=\"mira-own-row\" style=\"position: absolute; right: 18px; bottom: 18px; display: flex; gap: 8px; z-index: 2; flex-wrap: wrap; justify-content: flex-end;\"><button class=\"mira-btn\" style=\"background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; padding: 8px 13px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">REPLAY</button><button class=\"mira-btn\" style=\"background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; padding: 8px 13px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">SPEED 1x</button><button class=\"mira-btn\" data-testid=\"mira-humanoid-sound\" aria-pressed=\"true\" style=\"background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; padding: 8px 13px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">SOUND ON</button></div><div style=\"position: absolute; left: 18px; top: 18px; display: flex; gap: 8px; align-items: center; z-index: 2;\"><button data-testid=\"mira-humanoid-camera\" aria-pressed=\"false\" aria-label=\"Turn the camera (hand tracking) on or off\" style=\"background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; padding: 0px 13px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px; min-height: 44px;\">ENABLE CAMERA</button></div></div><div class=\"mira-page-row\" style=\"position: fixed; left: 18px; bottom: 18px; z-index: 200; display: flex; gap: 8px; flex-wrap: wrap;\"><button class=\"mira-btn\" aria-pressed=\"false\" style=\"padding: 8px 13px; background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">IDLE</button><button class=\"mira-btn\" aria-pressed=\"false\" style=\"padding: 8px 13px; background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">LISTENING</button><button class=\"mira-btn\" aria-pressed=\"true\" style=\"padding: 8px 13px; background: rgba(196, 168, 255, 0.2); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.667); border-radius: 9px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.2) 0px 0px 18px;\">TALKING</button><button class=\"mira-btn\" aria-pressed=\"false\" title=\"While she talks, her voice follows your microphone's loudness\" style=\"padding: 8px 13px; background: rgba(16, 6, 30, 0.72); color: rgb(196, 168, 255); border: 1px solid rgba(196, 168, 255, 0.333); border-radius: 9px; font: 12px &quot;Share Tech Mono&quot;, monospace; letter-spacing: 0.14em; cursor: pointer; box-shadow: rgba(196, 168, 255, 0.08) 0px 0px 18px;\">MIC OFF</button></div></div></div>\n  \n\n</body></html>",
+ "title": "MIRA Humanoid",
+ "texts": [
+  {
+   "text": "REPLAY",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "SPEED",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "1",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "x",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "SOUND",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "ON",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "ENABLE CAMERA",
+   "parent": "BUTTON."
+  },
+  {
+   "text": "IDLE",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "LISTENING",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "TALKING",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "MIC",
+   "parent": "BUTTON.mira-btn"
+  },
+  {
+   "text": "OFF",
+   "parent": "BUTTON.mira-btn"
+  }
+ ],
+ "classes": [
+  "mira-btn",
+  "mira-own-row",
+  "mira-page-row"
+ ],
+ "testids": [
+  "mira-humanoid-sound",
+  "mira-humanoid-camera"
+ ],
+ "arias": [
+  {
+   "tag": "BUTTON",
+   "label": null,
+   "live": null,
+   "pressed": "true",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": "Turn the camera (hand tracking) on or off",
+   "live": null,
+   "pressed": "false",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": null,
+   "live": null,
+   "pressed": "false",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": null,
+   "live": null,
+   "pressed": "false",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": null,
+   "live": null,
+   "pressed": "true",
+   "role": null
+  },
+  {
+   "tag": "BUTTON",
+   "label": null,
+   "live": null,
+   "pressed": "false",
+   "role": null
+  }
+ ],
+ "styles": [
+  {
+   "tag": "CANVAS",
+   "cls": "",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "16px",
+    "weight": "400",
+    "ls": "normal",
+    "color": "rgb(0, 0, 0)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "opacity": "0.573431",
+    "transition": "opacity 0.25s linear",
+    "padding": "0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "transform": "none",
+    "position": "fixed",
+    "zIndex": "0",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   }
+  },
+  {
+   "tag": "IMG",
+   "cls": "",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "16px",
+    "weight": "400",
+    "ls": "normal",
+    "color": "rgb(0, 0, 0)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "opacity": "0",
+    "transition": "all",
+    "padding": "0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)",
+    "position": "absolute",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 12,
+    "y": 404,
+    "w": 367,
+    "h": 440
+   }
+  },
+  {
+   "tag": "CANVAS",
+   "cls": "",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "16px",
+    "weight": "400",
+    "ls": "normal",
+    "color": "rgb(0, 0, 0)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "0px",
+    "border": "0px none rgb(0, 0, 0)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 844
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 155,
+    "y": 755,
+    "w": 61,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 222,
+    "y": 755,
+    "w": 75,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 303,
+    "y": 755,
+    "w": 75,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "12px",
+    "weight": "400",
+    "ls": "1.68px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "0px 13px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 18,
+    "y": 18,
+    "w": 128,
+    "h": 44
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 12,
+    "y": 803,
+    "w": 48,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 66,
+    "y": 803,
+    "w": 82,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(196, 168, 255, 0.2)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.667)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 153,
+    "y": 803,
+    "w": 68,
+    "h": 29
+   }
+  },
+  {
+   "tag": "BUTTON",
+   "cls": "mira-btn",
+   "id": "",
+   "css": {
+    "font": "\"Share Tech Mono\", monospace",
+    "size": "11px",
+    "weight": "400",
+    "ls": "0.88px",
+    "color": "rgb(196, 168, 255)",
+    "bg": "rgba(16, 6, 30, 0.72)",
+    "opacity": "1",
+    "transition": "all",
+    "padding": "7px 9px",
+    "border": "1px solid rgba(196, 168, 255, 0.333)",
+    "transform": "none",
+    "position": "static",
+    "zIndex": "auto",
+    "mixBlendMode": "normal",
+    "animation": "none 0s ease 0s 1 normal none running"
+   },
+   "rect": {
+    "x": 228,
+    "y": 803,
+    "w": 68,
+    "h": 29
+   }
+  }
+ ],
+ "canvasCount": 2,
+ "imgCount": 1
+}

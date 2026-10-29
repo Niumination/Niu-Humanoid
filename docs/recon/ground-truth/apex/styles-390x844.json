@@ -1,0 +1,30 @@
+[
+ {
+  "tag": "BUTTON",
+  "cls": "",
+  "id": "",
+  "css": {
+   "font": "\"Share Tech Mono\", monospace",
+   "size": "14px",
+   "weight": "400",
+   "ls": "3.5px",
+   "color": "rgb(34, 211, 238)",
+   "bg": "rgba(0, 0, 0, 0)",
+   "opacity": "1",
+   "transition": "all",
+   "padding": "12px 34px",
+   "border": "1px solid rgba(34, 211, 238, 0.4)",
+   "transform": "none",
+   "position": "static",
+   "zIndex": "auto",
+   "mixBlendMode": "normal",
+   "animation": "none 0s ease 0s 1 normal none running"
+  },
+  "rect": {
+   "x": 131,
+   "y": 424,
+   "w": 128,
+   "h": 41
+  }
+ }
+]

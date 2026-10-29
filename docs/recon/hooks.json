@@ -1,0 +1,646 @@
+{
+ "apex": {
+  "window_hooks": {
+   "__HUM_SURGE": [
+    {
+     "pos": 1031608,
+     "ctx": ">{let e=i!=null&&i.current?(performance.now()-i.current)/1e3:99;return typeof window<\"u\"&&window.__HUM_SURGE!=null&&(e=Number(window.__HUM_SURGE)),e},u_=i=>{const e=Bw(i);return e>=0&&e<6.5?Math.exp(-e/1.9):0},sU=Rs.total-Rs.hornPeak,oU=i=>Bw(i)+sU,a"
+    },
+    {
+     "pos": 1031644,
+     "ctx": "nce.now()-i.current)/1e3:99;return typeof window<\"u\"&&window.__HUM_SURGE!=null&&(e=Number(window.__HUM_SURGE)),e},u_=i=>{const e=Bw(i);return e>=0&&e<6.5?Math.exp(-e/1.9):0},sU=Rs.total-Rs.hornPeak,oU=i=>Bw(i)+sU,aU=`\n  attribute float aWeight;\n  att"
+    },
+    {
+     "pos": 1056942,
+     "ctx": "1-v/f*2);let x=t!=null&&t.current?(performance.now()-t.current)/1e3:99;typeof window<\"u\"&&window.__HUM_SURGE!=null&&(x=Number(window.__HUM_SURGE)),x+=Rs.total-Rs.hornPeak;const S=Math.min(l,f)/f;x>=0&&x<4.5?(n.uWave.value.set(0,.14*S,x*1.5*S,Math.exp"
+    },
+    {
+     "pos": 1056978,
+     "ctx": "erformance.now()-t.current)/1e3:99;typeof window<\"u\"&&window.__HUM_SURGE!=null&&(x=Number(window.__HUM_SURGE)),x+=Rs.total-Rs.hornPeak;const S=Math.min(l,f)/f;x>=0&&x<4.5?(n.uWave.value.set(0,.14*S,x*1.5*S,Math.exp(-x/1.8)),n.uWaveK.value.set(l/f,.45"
+    },
+    {
+     "pos": 1083061,
+     "ctx": "(fe-p.current)/1e3;{const Ve=g.current;if(Ve){let Ut=Ke-Rs.hornPeak;if(typeof window<\"u\"&&window.__HUM_SURGE!=null&&(Ut=Number(window.__HUM_SURGE)+(Rs.total-Rs.hornPeak)),Ut<=0||Ut>4.5)Ve.style.opacity=\"0\";else{const Mt=xe.getBoundingClientRect(),Ht="
+    },
+    {
+     "pos": 1083098,
+     "ctx": "t;if(Ve){let Ut=Ke-Rs.hornPeak;if(typeof window<\"u\"&&window.__HUM_SURGE!=null&&(Ut=Number(window.__HUM_SURGE)+(Rs.total-Rs.hornPeak)),Ut<=0||Ut>4.5)Ve.style.opacity=\"0\";else{const Mt=xe.getBoundingClientRect(),Ht=Ut*.75*Mt.height,mn=Mt.left+Mt.width*"
+    },
+    {
+     "pos": 1105213,
+     "ctx": "&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i"
+    }
+   ],
+   "__HUM_ENERGY": [
+    {
+     "pos": 1044081,
+     "ctx": "nt)||\"\");let v=((b=e==null?void 0:e.current)==null?void 0:b.energy)||0;typeof window<\"u\"&&window.__HUM_ENERGY!=null&&(v=Number(window.__HUM_ENERGY));const x=g.includes(\"speak\")?2.2+v*2:g.includes(\"listen\")?1.6:g.includes(\"think\")?1.3:1,S=o.current,A="
+    },
+    {
+     "pos": 1044118,
+     "ctx": "urrent)==null?void 0:b.energy)||0;typeof window<\"u\"&&window.__HUM_ENERGY!=null&&(v=Number(window.__HUM_ENERGY));const x=g.includes(\"speak\")?2.2+v*2:g.includes(\"listen\")?1.6:g.includes(\"think\")?1.3:1,S=o.current,A=t==null?void 0:t.current;A&&A!==S.obj"
+    },
+    {
+     "pos": 1047662,
+     "ctx": "rgy)||0,$=((We=r==null?void 0:r.current)==null?void 0:We.strongMix)||0;typeof window<\"u\"&&window.__HUM_ENERGY!=null&&(oe=Number(window.__HUM_ENERGY),$=r1((oe-.34)/.4)),k.uEnergy.value=oe,k.uStrongMix.value=$,k.uStrongA.value=N.a===2?$:0,k.uStrongB.va"
+    },
+    {
+     "pos": 1047700,
+     "ctx": "t)==null?void 0:We.strongMix)||0;typeof window<\"u\"&&window.__HUM_ENERGY!=null&&(oe=Number(window.__HUM_ENERGY),$=r1((oe-.34)/.4)),k.uEnergy.value=oe,k.uStrongMix.value=$,k.uStrongA.value=N.a===2?$:0,k.uStrongB.value=N.b===2?$:0;const ie=u_(o),ue=1+.9"
+    }
+   ],
+   "__HUM_CLICK": [
+    {
+     "pos": 1044353,
+     "ctx": "nt;A&&A!==S.obj&&A.strength>.5&&(S.obj=A,S.age=0),S.age+=m;let E=S.age;typeof window<\"u\"&&window.__HUM_CLICK&&(E=window.__HUM_CLICK.t||0);const M=1+1.5*(E<3?Math.exp(-E/.6):0),C=u_(n);r.current+=m*x*M*(1+3*C),f.uT.value=r.current,f.uStr.value=.55*(1+"
+    },
+    {
+     "pos": 1044376,
+     "ctx": "ngth>.5&&(S.obj=A,S.age=0),S.age+=m;let E=S.age;typeof window<\"u\"&&window.__HUM_CLICK&&(E=window.__HUM_CLICK.t||0);const M=1+1.5*(E<3?Math.exp(-E/.6):0),C=u_(n);r.current+=m*x*M*(1+3*C),f.uT.value=r.current,f.uStr.value=.55*(1+2*C),f.uSizeK.value=1.6"
+    },
+    {
+     "pos": 1048565,
+     "ctx": ";let xe=(Q==null?void 0:Q.x)||0,ge=(Q==null?void 0:Q.y)||0,Ue=Z.age;if(typeof window<\"u\"&&window.__HUM_CLICK){const Xe=window.__HUM_CLICK;xe=Xe.x,ge=Xe.y,Ue=Xe.t||0}let ke=Ue<2.5?Math.exp(-Ue*1.9):0;const He=oU(o);ke<=.001&&He>=0&&He<4&&(xe=0,ge=.14,"
+    },
+    {
+     "pos": 1048594,
+     "ctx": "|0,ge=(Q==null?void 0:Q.y)||0,Ue=Z.age;if(typeof window<\"u\"&&window.__HUM_CLICK){const Xe=window.__HUM_CLICK;xe=Xe.x,ge=Xe.y,Ue=Xe.t||0}let ke=Ue<2.5?Math.exp(-Ue*1.9):0;const He=oU(o);ke<=.001&&He>=0&&He<4&&(xe=0,ge=.14,ke=1.35*Math.exp(-He/1.6),Ue="
+    }
+   ],
+   "__HUM_FREEZE_T": [
+    {
+     "pos": 1044608,
+     "ctx": "f.uSizeK.value=1.6*Math.max(.6,((d==null?void 0:d.height)||1020)/1020),typeof window<\"u\"&&window.__HUM_FREEZE_T!=null&&(f.uT.value=Number(window.__HUM_FREEZE_T))}),Tt.jsx(\"points\",{geometry:l,renderOrder:4,frustumCulled:!1,children:Tt.jsx(\"shaderMate"
+    },
+    {
+     "pos": 1044656,
+     "ctx": "d.height)||1020)/1020),typeof window<\"u\"&&window.__HUM_FREEZE_T!=null&&(f.uT.value=Number(window.__HUM_FREEZE_T))}),Tt.jsx(\"points\",{geometry:l,renderOrder:4,frustumCulled:!1,children:Tt.jsx(\"shaderMaterial\",{args:[{uniforms:f,vertexShader:uU,fragmen"
+    },
+    {
+     "pos": 1049642,
+     "ctx": "xA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[window.__HUM_BLEND.b]||p.idle),window.__HUM_FREEZE_T!=null)){const Xe=Number(window.__HUM_FREEZE_T);k.uBoilT.value=Xe*1,k.uVeinT.value=Xe*.25,k.uWaveT.value=Xe,k.uBreathY.value=.012*Math.sin("
+    },
+    {
+     "pos": 1049688,
+     "ctx": "exB.value=te[window.__HUM_BLEND.b]||p.idle),window.__HUM_FREEZE_T!=null)){const Xe=Number(window.__HUM_FREEZE_T);k.uBoilT.value=Xe*1,k.uVeinT.value=Xe*.25,k.uWaveT.value=Xe,k.uBreathY.value=.012*Math.sin(Xe*1.37),k.uBreathe.value=1+Math.sin(Xe*.9)*.0"
+    }
+   ],
+   "__HUM_SPEAK_AMP": [
+    {
+     "pos": 1047982,
+     "ctx": "ulseA.value=(N.a===1?z:1)*ue,k.uPulseB.value=(N.b===1?z:1)*ue;const ae=typeof window<\"u\"&&window.__HUM_SPEAK_AMP!=null?Number(window.__HUM_SPEAK_AMP):.55,J=D?ae:b?1.1:1,H=bm(M.x)*.44*J,le=bm(M.y)*.2*J,Le=1-Math.exp(-E*4.2),W=l.current;W.yaw+=(H-W.yaw"
+    },
+    {
+     "pos": 1048018,
+     "ctx": "eB.value=(N.b===1?z:1)*ue;const ae=typeof window<\"u\"&&window.__HUM_SPEAK_AMP!=null?Number(window.__HUM_SPEAK_AMP):.55,J=D?ae:b?1.1:1,H=bm(M.x)*.44*J,le=bm(M.y)*.2*J,Le=1-Math.exp(-E*4.2),W=l.current;W.yaw+=(H-W.yaw)*Le,W.pitch+=(le-W.pitch)*Le,k.uYaw"
+    }
+   ],
+   "__HUM_BOIL_AMP": [
+    {
+     "pos": 1049228,
+     "ctx": ",(x==null?void 0:x.height)||1020),k.uAttn.value.set(bm(M.x),-bm(M.y)),typeof window<\"u\"&&(window.__HUM_BOIL_AMP!=null&&(k.uBoilAmp.value=window.__HUM_BOIL_AMP),window.__HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSha"
+    },
+    {
+     "pos": 1049275,
+     "ctx": ".set(bm(M.x),-bm(M.y)),typeof window<\"u\"&&(window.__HUM_BOIL_AMP!=null&&(k.uBoilAmp.value=window.__HUM_BOIL_AMP),window.__HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&"
+    }
+   ],
+   "__HUM_RIM": [
+    {
+     "pos": 1049298,
+     "ctx": "typeof window<\"u\"&&(window.__HUM_BOIL_AMP!=null&&(k.uBoilAmp.value=window.__HUM_BOIL_AMP),window.__HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window"
+    },
+    {
+     "pos": 1049336,
+     "ctx": "AMP!=null&&(k.uBoilAmp.value=window.__HUM_BOIL_AMP),window.__HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window."
+    }
+   ],
+   "__HUM_DOT": [
+    {
+     "pos": 1049354,
+     "ctx": "lAmp.value=window.__HUM_BOIL_AMP),window.__HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uB"
+    },
+    {
+     "pos": 1049397,
+     "ctx": "HUM_RIM!=null&&(k.uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.va"
+    }
+   ],
+   "__HUM_BLEND": [
+    {
+     "pos": 1049415,
+     "ctx": "uRim.value=window.__HUM_RIM),window.__HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HU"
+    },
+    {
+     "pos": 1049452,
+     "ctx": "_HUM_DOT!=null&&(k.uDotSharp.value=window.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[w"
+    },
+    {
+     "pos": 1049489,
+     "ctx": "ndow.__HUM_DOT),window.__HUM_BLEND&&(k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[window.__HUM_BLEND.b]||p.idle),window."
+    },
+    {
+     "pos": 1049526,
+     "ctx": "k.uStateA.value=window.__HUM_BLEND.a,k.uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[window.__HUM_BLEND.b]||p.idle),window.__HUM_FREEZE_T!=null)){const Xe=Numbe"
+    },
+    {
+     "pos": 1049564,
+     "ctx": ".uStateB.value=window.__HUM_BLEND.b,k.uBloomR.value=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[window.__HUM_BLEND.b]||p.idle),window.__HUM_FREEZE_T!=null)){const Xe=Number(window.__HUM_FREEZE_T);k.uBoilT.valu"
+    },
+    {
+     "pos": 1049611,
+     "ctx": "alue=window.__HUM_BLEND.r,k.uTexA.value=te[window.__HUM_BLEND.a]||p.idle,k.uTexB.value=te[window.__HUM_BLEND.b]||p.idle),window.__HUM_FREEZE_T!=null)){const Xe=Number(window.__HUM_FREEZE_T);k.uBoilT.value=Xe*1,k.uVeinT.value=Xe*.25,k.uWaveT.value=Xe,"
+    }
+   ],
+   "__HUM_BG_REST": [
+    {
+     "pos": 1056257,
+     "ctx": "ow<\"u\"&&window.devicePixelRatio||1,1.5)},uSizeK:{value:1},uRest:{value:typeof window<\"u\"&&window.__HUM_BG_REST!=null?window.__HUM_BG_REST:.22},uPulse:{value:typeof window<\"u\"&&window.__HUM_BG_PULSE!=null?window.__HUM_BG_PULSE:2.6},uMap:{value:new rn("
+    },
+    {
+     "pos": 1056284,
+     "ctx": "atio||1,1.5)},uSizeK:{value:1},uRest:{value:typeof window<\"u\"&&window.__HUM_BG_REST!=null?window.__HUM_BG_REST:.22},uPulse:{value:typeof window<\"u\"&&window.__HUM_BG_PULSE!=null?window.__HUM_BG_PULSE:2.6},uMap:{value:new rn(2,-2,-1,1)},uWave:{value:ne"
+    },
+    {
+     "pos": 1105302,
+     "ctx": "(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"i"
+    }
+   ],
+   "__HUM_BG_PULSE": [
+    {
+     "pos": 1056343,
+     "ctx": "u\"&&window.__HUM_BG_REST!=null?window.__HUM_BG_REST:.22},uPulse:{value:typeof window<\"u\"&&window.__HUM_BG_PULSE!=null?window.__HUM_BG_PULSE:2.6},uMap:{value:new rn(2,-2,-1,1)},uWave:{value:new rn(0,0,0,0)},uWaveK:{value:new Fe(1.78,.4)}}),[]);return "
+    },
+    {
+     "pos": 1056371,
+     "ctx": "ll?window.__HUM_BG_REST:.22},uPulse:{value:typeof window<\"u\"&&window.__HUM_BG_PULSE!=null?window.__HUM_BG_PULSE:2.6},uMap:{value:new rn(2,-2,-1,1)},uWave:{value:new rn(0,0,0,0)},uWaveK:{value:new Fe(1.78,.4)}}),[]);return zd(({size:r},o)=>{typeof win"
+    },
+    {
+     "pos": 1105396,
+     "ctx": "ow.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,e]=Ne.useState(()=>!!new URLSearchParams(window.location.search).ge"
+    }
+   ],
+   "__HUM_BG_T": [
+    {
+     "pos": 1056540,
+     "ctx": ",0,0,0)},uWaveK:{value:new Fe(1.78,.4)}}),[]);return zd(({size:r},o)=>{typeof window<\"u\"&&window.__HUM_BG_T!=null?n.uT.value=window.__HUM_BG_T:n.uT.value+=Math.min(.05,o||.016),n.uSizeK.value=Math.max(.6,((r==null?void 0:r.height)||1020)/1020);const "
+    },
+    {
+     "pos": 1056575,
+     "ctx": ".4)}}),[]);return zd(({size:r},o)=>{typeof window<\"u\"&&window.__HUM_BG_T!=null?n.uT.value=window.__HUM_BG_T:n.uT.value+=Math.min(.05,o||.016),n.uSizeK.value=Math.max(.6,((r==null?void 0:r.height)||1020)/1020);const l=(r==null?void 0:r.width)||1,f=(r="
+    }
+   ],
+   "__HUM_ATTN": [
+    {
+     "pos": 1060578,
+     "ctx": "L=0;return}E=z;const ae=ue[0],J=ue[4],H=ue[8],le=$(ae,ue[9])||.001;if(typeof window>\"u\"||!window.__HUM_ATTN){const ke=Math.max(-1,Math.min(1,((1-H.x)*2-1)*1.6)),He=Math.max(-1,Math.min(1,(H.y*2-1)*1.6)),Ee=i.current;Ee.x+=(ke-Ee.x)*.5,Ee.y+=(He-Ee.y)"
+    },
+    {
+     "pos": 1077087,
+     "ctx": "nt>.58),180);return()=>clearInterval(Q)},[]),Ne.useEffect(()=>{const Q=typeof window<\"u\"&&window.__HUM_ATTN,xe=Ee=>{const G=n.current;if(!G)return null;const We=G.getBoundingClientRect();return{x:Math.max(-1,Math.min(1,(Ee.clientX-We.left)/We.width*2"
+    },
+    {
+     "pos": 1077823,
+     "ctx": "ner(\"blur\",He),document.documentElement.addEventListener(\"mouseleave\",He),Q&&(M.current.x=window.__HUM_ATTN.x||0,M.current.y=window.__HUM_ATTN.y||0),()=>{window.removeEventListener(\"pointermove\",Ue),window.removeEventListener(\"pointerdown\",ke),window"
+    },
+    {
+     "pos": 1077858,
+     "ctx": "ment.addEventListener(\"mouseleave\",He),Q&&(M.current.x=window.__HUM_ATTN.x||0,M.current.y=window.__HUM_ATTN.y||0),()=>{window.removeEventListener(\"pointermove\",Ue),window.removeEventListener(\"pointerdown\",ke),window.removeEventListener(\"blur\",He),doc"
+    }
+   ],
+   "__HUM_SKIP_ASSEMBLY": [
+    {
+     "pos": 1074692,
+     "ctx": "(0),d=Ne.useRef({energy:0,strongMix:0}),p=Ne.useRef(performance.now()-(typeof window<\"u\"&&window.__HUM_SKIP_ASSEMBLY?99e3:typeof window<\"u\"&&window.__HUM_ASM_OFF?window.__HUM_ASM_OFF*1e3:0)),m=Ne.useRef(p.current+Rs.total*1e3),g=Ne.useRef(null),v=Ne."
+    },
+    {
+     "pos": 1076715,
+     "ctx": "dow.matchMedia)==null?void 0:ge.call(window,\"(prefers-reduced-motion: reduce)\").matches)||window.__HUM_SKIP_ASSEMBLY){J(\"\");return}PE(Yh.ASSEMBLY);const xe=setInterval(()=>{const Ue=S.current;J(Ue>=1?\"\":`ASSEMBLING... ${Math.min(99,Math.round(Ue*100)"
+    },
+    {
+     "pos": 1104947,
+     "ctx": ";function JU(){const i=new URLSearchParams(window.location.search);return i.get(\"skip\")&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.ge"
+    }
+   ],
+   "__HUM_ASM_OFF": [
+    {
+     "pos": 1074743,
+     "ctx": "(performance.now()-(typeof window<\"u\"&&window.__HUM_SKIP_ASSEMBLY?99e3:typeof window<\"u\"&&window.__HUM_ASM_OFF?window.__HUM_ASM_OFF*1e3:0)),m=Ne.useRef(p.current+Rs.total*1e3),g=Ne.useRef(null),v=Ne.useRef({to:Pm(i),p:1,dur:.95}),x=Ne.useRef(null),S="
+    },
+    {
+     "pos": 1074764,
+     "ctx": "ypeof window<\"u\"&&window.__HUM_SKIP_ASSEMBLY?99e3:typeof window<\"u\"&&window.__HUM_ASM_OFF?window.__HUM_ASM_OFF*1e3:0)),m=Ne.useRef(p.current+Rs.total*1e3),g=Ne.useRef(null),v=Ne.useRef({to:Pm(i),p:1,dur:.95}),x=Ne.useRef(null),S=Ne.useRef(0),A=Ne.use"
+    },
+    {
+     "pos": 1105035,
+     "ctx": "&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.ge"
+    }
+   ],
+   "__HUM_ASM_EL": [
+    {
+     "pos": 1082917,
+     "ctx": "nsform(nt,0,0,nt,0,0),ge.fillStyle=\"#000\",ge.fillRect(0,0,_e,Te);const Pe=fe/1e3,Ke=He?99:window.__HUM_ASM_EL!=null?Number(window.__HUM_ASM_EL):(fe-p.current)/1e3;{const Ve=g.current;if(Ve){let Ut=Ke-Rs.hornPeak;if(typeof window<\"u\"&&window.__HUM_SUR"
+    },
+    {
+     "pos": 1082950,
+     "ctx": "e=\"#000\",ge.fillRect(0,0,_e,Te);const Pe=fe/1e3,Ke=He?99:window.__HUM_ASM_EL!=null?Number(window.__HUM_ASM_EL):(fe-p.current)/1e3;{const Ve=g.current;if(Ve){let Ut=Ke-Rs.hornPeak;if(typeof window<\"u\"&&window.__HUM_SURGE!=null&&(Ut=Number(window.__HUM"
+    },
+    {
+     "pos": 1105125,
+     "ctx": "window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get("
+    }
+   ],
+   "__HUM_FORCE_2D": [
+    {
+     "pos": 1086425,
+     "ctx": "current=1;const ne=v.current,ot=()=>{var Ve;return!He&&!!((Ve=x.current)!=null&&Ve.fig)&&!window.__HUM_FORCE_2D};if(Ge!==ne.to&&ot()&&ee.current)ne.to=Ge;else if(Ge!==ne.to){const Ve=G();if(ne.p<1)Ve.actx.setTransform(1,0,0,1,0,0),Ve.actx.drawImage(Q"
+    }
+   ],
+   "__HUM_NO_BG": [
+    {
+     "pos": 1089425,
+     "ctx": "et:0,zIndex:75,overflow:\"hidden\",background:\"#000\",color:no,fontFamily:IE},children:[ue&&!window.__HUM_NO_BG&&Tt.jsx(xU,{visible:B,birthRef:m}),Tt.jsxs(\"div\",{ref:n,\"data-testid\":\"humanoid-portrait-frame\",style:{position:\"absolute\",left:\"50%\",top:\"50"
+    },
+    {
+     "pos": 1104994,
+     "ctx": "ow.location.search);return i.get(\"skip\")&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i."
+    }
+   ]
+  },
+  "query_params": {
+   "map": [
+    {
+     "pos": 1008710,
+     "call": "get",
+     "ctx": "mapBlurPass=new zL,this.mipmapBlurPass.enabled=n,this.mipmapBlurPass.radius=o,this.mipmapBlurPass.levels=l,this.uniforms.get(\"map\").value=n?this.mipmapBlurPass.texture:this.renderTarget.texture;const x=this.resolution=new hr(this,g,v,d);x.addEventListener(\"cha"
+    }
+   ],
+   "intensity": [
+    {
+     "pos": 1009834,
+     "call": "get",
+     "ctx": "as removed\"),1}set distinction(i){console.warn(this.name,\"distinction was removed\")}get intensity(){return this.uniforms.get(\"intensity\").value}set intensity(i){this.uniforms.get(\"intensity\").value=i}getIntensity(){return this.intensity}setIntensity(i){this.in"
+    },
+    {
+     "pos": 1009888,
+     "call": "get",
+     "ctx": "me,\"distinction was removed\")}get intensity(){return this.uniforms.get(\"intensity\").value}set intensity(i){this.uniforms.get(\"intensity\").value=i}getIntensity(){return this.intensity}setIntensity(i){this.intensity=i}getResolutionScale(){return this.resolution."
+    }
+   ],
+   "fragment": [
+    {
+     "pos": 1023638,
+     "call": "get",
+     "ctx": "+b.charAt(0).toUpperCase()+b.slice(1),C));const E=new Map([[\"fragment\",n],[\"vertex\",r]]);t1(i,A,t.defines),t1(i,A,E),n=E.get(\"fragment\"),r=E.get(\"vertex\");const M=e.blendMode;if(t.blendModes.set(M.blendFunction,M),o){e.inputColorSpace!==null&&e.inputColorSpace"
+    }
+   ],
+   "vertex": [
+    {
+     "pos": 1023658,
+     "call": "get",
+     "ctx": "Case()+b.slice(1),C));const E=new Map([[\"fragment\",n],[\"vertex\",r]]);t1(i,A,t.defines),t1(i,A,E),n=E.get(\"fragment\"),r=E.get(\"vertex\");const M=e.blendMode;if(t.blendModes.set(M.blendFunction,M),o){e.inputColorSpace!==null&&e.inputColorSpace!==t.colorSpace&&(g+"
+    }
+   ],
+   "skip": [
+    {
+     "pos": 1104932,
+     "call": "get",
+     "ctx": "MBLY&&ZU()},onCheck(i){}});const ya=\"#22d3ee\";function JU(){const i=new URLSearchParams(window.location.search);return i.get(\"skip\")&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"as"
+    }
+   ],
+   "nobg": [
+    {
+     "pos": 1104979,
+     "call": "get",
+     "ctx": "unction JU(){const i=new URLSearchParams(window.location.search);return i.get(\"skip\")&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!="
+    }
+   ],
+   "asmoff": [
+    {
+     "pos": 1105018,
+     "call": "get",
+     "ctx": "s(window.location.search);return i.get(\"skip\")&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get("
+    },
+    {
+     "pos": 1105064,
+     "call": "get",
+     "ctx": "&&(window.__HUM_SKIP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\""
+    }
+   ],
+   "asmel": [
+    {
+     "pos": 1105082,
+     "call": "get",
+     "ctx": "IP_ASSEMBLY=!0),i.get(\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__"
+    },
+    {
+     "pos": 1105104,
+     "call": "get",
+     "ctx": "\"nobg\")&&(window.__HUM_NO_BG=!0),i.get(\"asmoff\")&&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get"
+    },
+    {
+     "pos": 1105153,
+     "call": "get",
+     "ctx": "&(window.__HUM_ASM_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\""
+    }
+   ],
+   "surge": [
+    {
+     "pos": 1105170,
+     "call": "get",
+     "ctx": "M_OFF=Number(i.get(\"asmoff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window._"
+    },
+    {
+     "pos": 1105192,
+     "call": "get",
+     "ctx": "moff\"))),i.get(\"asmel\")!=null&&i.get(\"asmel\")!==\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i."
+    },
+    {
+     "pos": 1105240,
+     "call": "get",
+     "ctx": "\"\"&&(window.__HUM_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"b"
+    }
+   ],
+   "bgrest": [
+    {
+     "pos": 1105257,
+     "call": "get",
+     "ctx": "_ASM_EL=Number(i.get(\"asmel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(w"
+    },
+    {
+     "pos": 1105280,
+     "call": "get",
+     "ctx": "smel\"))),i.get(\"surge\")!=null&&i.get(\"surge\")!==\"\"&&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Nu"
+    },
+    {
+     "pos": 1105331,
+     "call": "get",
+     "ctx": "&(window.__HUM_SURGE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}func"
+    }
+   ],
+   "bgpulse": [
+    {
+     "pos": 1105349,
+     "call": "get",
+     "ctx": "GE=Number(i.get(\"surge\"))),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,"
+    },
+    {
+     "pos": 1105373,
+     "call": "get",
+     "ctx": ")),i.get(\"bgrest\")!=null&&i.get(\"bgrest\")!==\"\"&&(window.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,e]=Ne.useState(()=>!!new"
+    },
+    {
+     "pos": 1105426,
+     "call": "get",
+     "ctx": "ow.__HUM_BG_REST=Number(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,e]=Ne.useState(()=>!!new URLSearchParams(window.location.search).get(\"auto\"))"
+    }
+   ],
+   "state": [
+    {
+     "pos": 1105445,
+     "call": "get",
+     "ctx": "mber(i.get(\"bgrest\"))),i.get(\"bgpulse\")!=null&&i.get(\"bgpulse\")!==\"\"&&(window.__HUM_BG_PULSE=Number(i.get(\"bgpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,e]=Ne.useState(()=>!!new URLSearchParams(window.location.search).get(\"auto\")),[t,n]=Ne.useState("
+    }
+   ],
+   "auto": [
+    {
+     "pos": 1105553,
+     "call": "get",
+     "ctx": "gpulse\"))),i.get(\"state\")||\"idle\"}function $U(){const[i,e]=Ne.useState(()=>!!new URLSearchParams(window.location.search).get(\"auto\")),[t,n]=Ne.useState(0),[r,o]=Ne.useState(\"idle\"),[l,f]=Ne.useState(!1),[d,p]=Ne.useState(RE()),m=Ne.useRef(null);Ne.useEffect(()"
+    }
+   ]
+  }
+ },
+ "mira": {
+  "window_hooks": {
+   "__MIRA_DEBUG": [
+    {
+     "pos": 1032592,
+     "ctx": "U(){try{const i=new URLSearchParams(window.location.search),e=String(i.get(\"mira_debug\")||window.__MIRA_DEBUG||\"\").toLowerCase();d0=xT.includes(e)?e:\"\";const t=Number(i.get(\"hot\"));t>0&&t<1&&(_T=t)}catch{}}typeof window<\"u\"&&$U();const eN=()=>({mode:"
+    }
+   ],
+   "__HUM_ATTN": [
+    {
+     "pos": 1130851,
+     "ctx": "touch her\"),M=ne;const te=V[0],W=V[4],ae=V[8],be=ie(te,V[9])||.001;if(typeof window>\"u\"||!window.__HUM_ATTN){const ot=Math.max(-1,Math.min(1,((1-ae.x)*2-1)*1.6)),Me=Math.max(-1,Math.min(1,(ae.y*2-1)*1.6)),q=i.current;q.x+=(ot-q.x)*.5,q.y+=(Me-q.y)*.5"
+    }
+   ]
+  },
+  "query_params": {
+   "map": [
+    {
+     "pos": 1007722,
+     "call": "get",
+     "ctx": "mapBlurPass=new EU,this.mipmapBlurPass.enabled=n,this.mipmapBlurPass.radius=o,this.mipmapBlurPass.levels=a,this.uniforms.get(\"map\").value=n?this.mipmapBlurPass.texture:this.renderTarget.texture;const y=this.resolution=new yr(this,g,v,h);y.addEventListener(\"cha"
+    }
+   ],
+   "intensity": [
+    {
+     "pos": 1008846,
+     "call": "get",
+     "ctx": "as removed\"),1}set distinction(i){console.warn(this.name,\"distinction was removed\")}get intensity(){return this.uniforms.get(\"intensity\").value}set intensity(i){this.uniforms.get(\"intensity\").value=i}getIntensity(){return this.intensity}setIntensity(i){this.in"
+    },
+    {
+     "pos": 1008900,
+     "call": "get",
+     "ctx": "me,\"distinction was removed\")}get intensity(){return this.uniforms.get(\"intensity\").value}set intensity(i){this.uniforms.get(\"intensity\").value=i}getIntensity(){return this.intensity}setIntensity(i){this.intensity=i}getResolutionScale(){return this.resolution."
+    }
+   ],
+   "fragment": [
+    {
+     "pos": 1022650,
+     "call": "get",
+     "ctx": "+b.charAt(0).toUpperCase()+b.slice(1),R));const w=new Map([[\"fragment\",n],[\"vertex\",r]]);xw(i,E,t.defines),xw(i,E,w),n=w.get(\"fragment\"),r=w.get(\"vertex\");const M=e.blendMode;if(t.blendModes.set(M.blendFunction,M),o){e.inputColorSpace!==null&&e.inputColorSpace"
+    }
+   ],
+   "vertex": [
+    {
+     "pos": 1022670,
+     "call": "get",
+     "ctx": "Case()+b.slice(1),R));const w=new Map([[\"fragment\",n],[\"vertex\",r]]);xw(i,E,t.defines),xw(i,E,w),n=w.get(\"fragment\"),r=w.get(\"vertex\");const M=e.blendMode;if(t.blendModes.set(M.blendFunction,M),o){e.inputColorSpace!==null&&e.inputColorSpace!==t.colorSpace&&(g+"
+    }
+   ],
+   "mira_debug": [
+    {
+     "pos": 1032572,
+     "call": "get",
+     "ctx": "\"core\",\"corehot\"],JU=.5;let d0=\"\",_T=JU;function $U(){try{const i=new URLSearchParams(window.location.search),e=String(i.get(\"mira_debug\")||window.__MIRA_DEBUG||\"\").toLowerCase();d0=xT.includes(e)?e:\"\";const t=Number(i.get(\"hot\"));t>0&&t<1&&(_T=t)}catch{}}type"
+    }
+   ],
+   "hot": [
+    {
+     "pos": 1032670,
+     "call": "get",
+     "ctx": "ion.search),e=String(i.get(\"mira_debug\")||window.__MIRA_DEBUG||\"\").toLowerCase();d0=xT.includes(e)?e:\"\";const t=Number(i.get(\"hot\"));t>0&&t<1&&(_T=t)}catch{}}typeof window<\"u\"&&$U();const eN=()=>({mode:d0,code:Math.max(0,xT.indexOf(d0)),hotLo:_T}),tN=()=>d0!=="
+    }
+   ],
+   "off": [
+    {
+     "pos": 1138989,
+     "call": "get",
+     "ctx": ":Number(i)}catch{return .02}})(),Xw=18,yg=260,Ur=new Set((typeof window<\"u\"&&new URLSearchParams(window.location.search).get(\"off\")||\"\").split(\",\").filter(Boolean)),es={src:\"/humanoid/mira-idle-v1.webp\",head:{x:.502,y:.232,r:.165,rx:.166,top:.042,chin:.43},fac"
+    }
+   ],
+   "lights": [
+    {
+     "pos": 1172179,
+     "call": "has",
+     "ctx": "ent.material.opacity=Math.min(1,zt(\"hum.aura\")*.6*xs(Y,[M.ignite,M.ignite+1.35])*Fe.glow*Ae.bright*(1+.6*q))}const en=Ur.has(\"lights\")?0:xs(Y,[M.ignite,M.ignite+1.2])*zt(\"hum.lines.pulse\")/.7*Ae.bright,Cn=200*zt(\"hum.lines.pulseSpeed\");for(const Ye of W){const"
+    }
+   ],
+   "hair": [
+    {
+     "pos": 1172918,
+     "call": "has",
+     "ctx": "enderOrder:.1,children:nt.jsx(\"spriteMaterial\",{map:be,transparent:!0,opacity:0,depthTest:!1,depthWrite:!1,...vr})}),!Ur.has(\"hair\")&&nt.jsx(fk,{buildT:S,head:es.head,fill:e.uniforms,headU:I}),nt.jsx(\"lineSegments\",{geometry:k.g,material:k.m,renderOrder:11.5,f"
+    }
+   ],
+   "pic": [
+    {
+     "pos": 1173256,
+     "call": "has",
+     "ctx": "1],renderOrder:.5,frustumCulled:!1,children:nt.jsx(\"planeGeometry\",{args:[E,w]})}),nt.jsx(\"mesh\",{material:J,visible:!Ur.has(\"pic\"),position:[E/2,w/2,0],scale:[1,-1,1],renderOrder:1,frustumCulled:!1,children:nt.jsx(\"planeGeometry\",{args:[E,w]})}),nt.jsx(\"primi"
+    }
+   ],
+   "lines": [
+    {
+     "pos": 1173506,
+     "call": "has",
+     "ctx": "jsx(\"primitive\",{object:ie.pts,renderOrder:1.2,frustumCulled:!1}),nt.jsx(\"mesh\",{geometry:me.g,material:me.m,visible:!Ur.has(\"lines\"),renderOrder:8,frustumCulled:!1}),nt.jsx(\"sprite\",{ref:y,visible:!Ur.has(\"core\"),renderOrder:8.95,frustumCulled:!1,children:nt."
+    }
+   ],
+   "core": [
+    {
+     "pos": 1173587,
+     "call": "has",
+     "ctx": "geometry:me.g,material:me.m,visible:!Ur.has(\"lines\"),renderOrder:8,frustumCulled:!1}),nt.jsx(\"sprite\",{ref:y,visible:!Ur.has(\"core\"),renderOrder:8.95,frustumCulled:!1,children:nt.jsx(\"spriteMaterial\",{map:ae,color:\"black\",transparent:!0,depthTest:!1,depthWrite"
+    },
+    {
+     "pos": 1174358,
+     "call": "has",
+     "ctx": ",re)=>nt.jsx(\"mesh\",{geometry:$.g,material:$.m,renderOrder:9.5,frustumCulled:!1},re)),nt.jsx(\"sprite\",{ref:v,visible:!Ur.has(\"core\"),renderOrder:.05,frustumCulled:!1,children:nt.jsx(\"spriteMaterial\",{map:be,color:\"black\",transparent:!0,depthTest:!1,depthWrite:"
+    }
+   ],
+   "matter": [
+    {
+     "pos": 1173800,
+     "call": "has",
+     "ctx": ":\"black\",transparent:!0,depthTest:!1,depthWrite:!1,toneMapped:!1,...vr})}),nt.jsx(\"primitive\",{object:ne.pts,visible:!Ur.has(\"matter\"),renderOrder:9,frustumCulled:!1}),!Ur.has(\"matter\")&&ne.trails.map(($,re)=>nt.jsx(\"primitive\",{object:$},re)),nt.jsx(\"lineSegm"
+    },
+    {
+     "pos": 1173851,
+     "call": "has",
+     "ctx": "toneMapped:!1,...vr})}),nt.jsx(\"primitive\",{object:ne.pts,visible:!Ur.has(\"matter\"),renderOrder:9,frustumCulled:!1}),!Ur.has(\"matter\")&&ne.trails.map(($,re)=>nt.jsx(\"primitive\",{object:$},re)),nt.jsx(\"lineSegments\",{geometry:V.g,material:V.m,visible:!Ur.has(\"a"
+    }
+   ],
+   "arcs": [
+    {
+     "pos": 1173984,
+     "call": "has",
+     "ctx": ")&&ne.trails.map(($,re)=>nt.jsx(\"primitive\",{object:$},re)),nt.jsx(\"lineSegments\",{geometry:V.g,material:V.m,visible:!Ur.has(\"arcs\"),renderOrder:11,frustumCulled:!1}),nt.jsx(\"sprite\",{ref:m,renderOrder:12,children:nt.jsx(\"spriteMaterial\",{map:ae,color:new mt(2"
+    }
+   ],
+   "listen": [
+    {
+     "pos": 1177096,
+     "call": "has",
+     "ctx": "startsWith(\"dial.\")&&rN(X.slice(5),Number(j))}catch{}let D=!1;try{const X=new URLSearchParams(window.location.search);(X.has(\"listen\")||X.has(\"talk\"))&&(D=!0,Ew({voice:Number(X.get(\"voice\")||0),talk:Number(X.get(\"talk\")||0),listen:Number(X.get(\"listen\")||0)}))"
+    },
+    {
+     "pos": 1177215,
+     "call": "get",
+     "ctx": "X.has(\"listen\")||X.has(\"talk\"))&&(D=!0,Ew({voice:Number(X.get(\"voice\")||0),talk:Number(X.get(\"talk\")||0),listen:Number(X.get(\"listen\")||0)}))}catch{}return()=>{Rw(null),D&&Ew(null)}},[]),yF();const a=vF(i),c=Te.useRef(null),[h,p]=Te.useState(7),[m,g]=Te.useSta"
+    }
+   ],
+   "talk": [
+    {
+     "pos": 1177113,
+     "call": "has",
+     "ctx": "\")&&rN(X.slice(5),Number(j))}catch{}let D=!1;try{const X=new URLSearchParams(window.location.search);(X.has(\"listen\")||X.has(\"talk\"))&&(D=!0,Ew({voice:Number(X.get(\"voice\")||0),talk:Number(X.get(\"talk\")||0),listen:Number(X.get(\"listen\")||0)}))}catch{}return()="
+    },
+    {
+     "pos": 1177183,
+     "call": "get",
+     "ctx": "Params(window.location.search);(X.has(\"listen\")||X.has(\"talk\"))&&(D=!0,Ew({voice:Number(X.get(\"voice\")||0),talk:Number(X.get(\"talk\")||0),listen:Number(X.get(\"listen\")||0)}))}catch{}return()=>{Rw(null),D&&Ew(null)}},[]),yF();const a=vF(i),c=Te.useRef(null),[h,p"
+    }
+   ],
+   "voice": [
+    {
+     "pos": 1177152,
+     "call": "get",
+     "ctx": " D=!1;try{const X=new URLSearchParams(window.location.search);(X.has(\"listen\")||X.has(\"talk\"))&&(D=!0,Ew({voice:Number(X.get(\"voice\")||0),talk:Number(X.get(\"talk\")||0),listen:Number(X.get(\"listen\")||0)}))}catch{}return()=>{Rw(null),D&&Ew(null)}},[]),yF();const"
+    }
+   ],
+   "fog": [
+    {
+     "pos": 1180080,
+     "call": "has",
+     "ctx": "s(\"div\",{style:{position:\"fixed\",inset:0,zIndex:75,background:\"#000\",overflow:\"hidden\",touchAction:\"none\"},children:[!Ur.has(\"fog\")&&nt.jsx(dN,{state:\"idle\"}),nt.jsx(\"img\",{ref:c,src:i,alt:\"\",\"aria-hidden\":\"true\",draggable:!1,style:{position:\"absolute\",left:0,"
+    }
+   ],
+   "cutwhite": [
+    {
+     "pos": 1180253,
+     "call": "has",
+     "ctx": "ref:c,src:i,alt:\"\",\"aria-hidden\":\"true\",draggable:!1,style:{position:\"absolute\",left:0,top:0,width:0,opacity:0,filter:Ur.has(\"cutwhite\")?\"brightness(0) invert(1)\":\"brightness(0)\",pointerEvents:\"none\"}}),nt.jsxs(xD,{camera:{position:[0,0,FT],fov:50},dpr:[1,1.5]"
+    }
+   ],
+   "waves": [
+    {
+     "pos": 1180684,
+     "call": "has",
+     "ctx": "ment,{name:\"mira humanoid\",onLost:()=>{try{X(\"never\")}catch{}},onRestored:()=>{try{X(\"always\")}catch{}}})},children:[!Ur.has(\"waves\")&&nt.jsx(kk,{}),nt.jsx(gF,{state:e}),y&&nt.jsx(mF,{bloomRef:L,base:Z.i,clock:v,ignite:y.tl.ignite}),a&&y&&!Ur.has(\"figure\")&&nt"
+    }
+   ],
+   "figure": [
+    {
+     "pos": 1180806,
+     "call": "has",
+     "ctx": "as(\"waves\")&&nt.jsx(kk,{}),nt.jsx(gF,{state:e}),y&&nt.jsx(mF,{bloomRef:L,base:Z.i,clock:v,ignite:y.tl.ignite}),a&&y&&!Ur.has(\"figure\")&&nt.jsx(pF,{net:a,sched:y,clock:v,shadow:c,attention:M,boltRef:R}),!Ur.has(\"bloom\")&&nt.jsx(BU,{children:nt.jsx(VU,{ref:L,int"
+    }
+   ],
+   "bloom": [
+    {
+     "pos": 1180891,
+     "call": "has",
+     "ctx": "ck:v,ignite:y.tl.ignite}),a&&y&&!Ur.has(\"figure\")&&nt.jsx(pF,{net:a,sched:y,clock:v,shadow:c,attention:M,boltRef:R}),!Ur.has(\"bloom\")&&nt.jsx(BU,{children:nt.jsx(VU,{ref:L,intensity:Z.i,luminanceThreshold:Z.t,luminanceSmoothing:.9,mipmapBlur:!0,radius:Z.r})})]"
+    }
+   ],
+   "auto": [
+    {
+     "pos": 1182965,
+     "call": "get",
+     "ctx": "{Xu}33`:`0 0 18px ${Xu}14`});function SF(){const i=new URLSearchParams(window.location.search),[e,t]=Te.useState(()=>!!i.get(\"auto\")||i.has(\"t\")),[n,r]=Te.useState(()=>Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef("
+    }
+   ],
+   "t": [
+    {
+     "pos": 1182980,
+     "call": "has",
+     "ctx": "px ${Xu}14`});function SF(){const i=new URLSearchParams(window.location.search),[e,t]=Te.useState(()=>!!i.get(\"auto\")||i.has(\"t\")),[n,r]=Te.useState(()=>Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef(null),h=i.has(\""
+    },
+    {
+     "pos": 1183114,
+     "call": "has",
+     "ctx": "r]=Te.useState(()=>Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef(null),h=i.has(\"t\")?Number(i.get(\"t\")):null;Te.useEffect(()=>{let g=0;const v=performance.now(),y=()=>{n===\"talking\"?KU(\"output\",c.current?c.current.l"
+    },
+    {
+     "pos": 1183132,
+     "call": "get",
+     "ctx": ">Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef(null),h=i.has(\"t\")?Number(i.get(\"t\")):null;Te.useEffect(()=>{let g=0;const v=performance.now(),y=()=>{n===\"talking\"?KU(\"output\",c.current?c.current.level():_F((perform"
+    }
+   ],
+   "state": [
+    {
+     "pos": 1183033,
+     "call": "get",
+     "ctx": "ms(window.location.search),[e,t]=Te.useState(()=>!!i.get(\"auto\")||i.has(\"t\")),[n,r]=Te.useState(()=>Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef(null),h=i.has(\"t\")?Number(i.get(\"t\")):null;Te.useEffect(()=>{let g=0"
+    },
+    {
+     "pos": 1183049,
+     "call": "get",
+     "ctx": "on.search),[e,t]=Te.useState(()=>!!i.get(\"auto\")||i.has(\"t\")),[n,r]=Te.useState(()=>Jw.some(([g])=>g===i.get(\"state\"))?i.get(\"state\"):\"idle\"),[o,a]=Te.useState(!1),c=Te.useRef(null),h=i.has(\"t\")?Number(i.get(\"t\")):null;Te.useEffect(()=>{let g=0;const v=perform"
+    }
+   ]
+  }
+ }
+}
