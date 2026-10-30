@@ -15,3 +15,11 @@
 - Repo: `Niumination/Niu-Humanoid` (private) — commit awal tanpa perubahan kode
 - Vercel: project `niu-humanoid`, production Ready
 - URL: https://niu-humanoid.vercel.app
+
+## Tindak lanjut verifikasi arena.ai (30 Okt)
+- Temuan arena.ai terbukti: `mira-humanoid.vercel.app` milik app MIRA asli (subdomain global
+  first-come-first-served), bukan deployment kita.
+- Deployment rebuild MIRA yang sah + publik: **https://mira-humanoid-niu.vercel.app**
+  (project Vercel `mira-humanoid-niu`; bundle sha256 identik repo HEAD; penanda
+  __MIRA_MATTER/STRANDS/WAVES ada, MediaPipe tidak ada).
+- Gerbang piksel penuh tinggal dijalankan terhadap URL di atas.
