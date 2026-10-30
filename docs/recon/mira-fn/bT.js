@@ -1,0 +1,1 @@
+function bT(i,e=4){let t=i;for(let n=0;n<e;n++){const r=[t[0]];for(let o=1;o<t.length-1;o++)r.push([(t[o-1][0]+2*t[o][0]+t[o+1][0])/4,(t[o-1][1]+2*t[o][1]+t[o+1][1])/4]);r.push(t[t.length-1]),t=r}return t}

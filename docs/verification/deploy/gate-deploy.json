@@ -1,0 +1,30 @@
+{
+ "1440x900": {
+  "baseline_prod_vs_prod": {
+   "mae": 3.82,
+   "over32": 3.41
+  },
+  "prod_vs_deploy": {
+   "mae": 11.93,
+   "over32": 10.73
+  },
+  "mean": {
+   "prod": 27.5,
+   "deploy": 23.2
+  }
+ },
+ "390x844": {
+  "baseline_prod_vs_prod": {
+   "mae": 2.15,
+   "over32": 1.66
+  },
+  "prod_vs_deploy": {
+   "mae": 9.01,
+   "over32": 7.71
+  },
+  "mean": {
+   "prod": 22.1,
+   "deploy": 19.2
+  }
+ }
+}

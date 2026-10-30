@@ -1,0 +1,1 @@
+IN=(i,e,t,n=qo)=>n.weave[0]+(n.weave[1]-n.weave[0])*Math.pow(Math.max(PN(i,e,t,n),1e-6),n.accel);

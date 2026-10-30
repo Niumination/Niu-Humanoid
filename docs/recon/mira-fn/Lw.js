@@ -1,0 +1,1 @@
+function Lw(i,e,t,n){if(i.length<2)return null;const r=i.map(m=>[m%e/n,(m/e|0)/n]);let o=0,a=0,c=0;for(const m of i)o+=t[m*4],a+=t[m*4+1],c+=t[m*4+2];const h=i.length,p=Math.max(o,a,c)/h||1;return{pts:r,col:[o/h/p,a/h/p,c/h/p],weight:h}}

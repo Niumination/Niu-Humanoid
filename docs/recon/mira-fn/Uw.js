@@ -1,0 +1,1 @@
+function Uw(i,e,t,n,r,o,a){let c=[[e,t],[n,r]],h=Math.hypot(n-e,r-t)*o;for(let p=0;p<a;p++){const m=[c[0]];for(let g=0;g<c.length-1;g++){const[v,y]=c[g],[S,E]=c[g+1],w=S-v,M=E-y,R=Math.hypot(w,M)||1,b=(i()*2-1)*h;m.push([(v+S)/2-M/R*b,(y+E)/2+w/R*b],c[g+1])}c=m,h*=.55}return c}

@@ -1,0 +1,1 @@
+function xN(i){const e=[0];for(let t=1;t<i.pts.length;t++)e.push(e[t-1]+Math.hypot(i.pts[t][0]-i.pts[t-1][0],i.pts[t][1]-i.pts[t-1][1]));return i.cum=e,i.len=e[e.length-1],i}

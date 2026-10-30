@@ -307,3 +307,207 @@ User memilih **port penuh** (bukan bloom-2D jalan tengah, bukan berhenti di pari
 **10,55 % / 11,58** dan **7,57 % / 9,02**; acuan derau live-vs-live 0,87 % / 1,48 dan 1,35 % / 1,49.
 Backdrop identik (18,9 vs 18,9), kepala 76,3 vs 75,9, badan 35,6 vs 32,9.
 Sisa selisih = profil kernel bloom (dikuantifikasi, bukan fitur hilang).
+
+---
+
+## 16. Deploy APEX + mulai MIRA
+
+**Deploy APEX** (user): https://niu-humanoid.vercel.app · `tools/diff-vs-production.js` → 17/17 identik ·
+`tools/gate-deploy.js` → 10,73 % / 11,93 (1440×900) dan 7,71 % / 9,01 (390×844), sama dengan dev
+(10,55 / 7,57) di dalam derau.
+
+| # | temuan | dampak |
+|---|---|---|
+| F-51 | Harness gerbang mencatat uniform sebagai "nilai terakhir global"; backdrop & figur sama-sama punya `uSizeK` dengan nilai berbeda → gerbang ⛔ palsu | uniform dibaca per-program saat `drawArrays`; `uT` (akumulator) dikecualikan |
+| F-52 | TOMBOL `EXIT` MIRA tidak dirender saat masuk lewat `?auto` (terukur di live) | rebuild mengikuti |
+| F-53 | `miraDial` mengubah store tetapi panel tidak re-render (tanpa `useSyncExternalStore`) → alias tampak tidak jalan | `useDialVersion()` |
+| F-54 | Bundle menamai default param **`def:`** bukan `default:` | verifikasi param harus memetakan nama field dulu |
+
+**MIRA** dimulai: `recon/verify-mira.py` (82/82), proyek `mira-humanoid-rebuild/`, langkah 1 (entry)
+dan langkah 7 (panel 82 slider, `?dial.<key>=`, localStorage, 7 alias) selesai dengan Gerbang A 8/8
+dan Gerbang B 10/10.
+
+### F-55 · MIRA: warna garis bukan warna gambar — palet dicampur 60 %
+`FN`: `col: N.outline ? [.95,.9,1] : Nd[N.kind].map((z,Z)=> z*.6 + N.col[Z]*.4)` dengan
+`Nd = {white:[1,.95,1], violet:[.72,.42,1], gold:[1,.66,.26]}`. Bukti: 84 warna live fit pas (selisih ≤1e-7)
+terhadap rumus ini, sementara `col` mentah dari `SN` meleset sampai 0,36.
+
+### F-56 · MIRA: jam ignition tidak perlu disimulasikan — ia fungsi jarak
+`FN`: `ignite = weave[1]+hush = 6,55`, `speed = wave·tinggi = 1×1374`, `E(p)=ignite+LN(|p−bintang|,speed)`,
+`aT = E − 0,02`, `aF = E + 0,30`. Jadi `aT`/`aF` bisa direproduksi tanpa menjalankan animasi; terbukti identik
+byte-per-byte dengan buffer live (`verify-mira-wire.mjs`).
+
+### F-57 · MIRA: `aId` per garis = mulberry32 seed 3 (bukan acak bebas)
+`Ud(3)` dibuat sekali lalu dipanggil per garis berurutan (`me = useMemo(()=>{const $=Ud(3); e.lines.map(... id:$())})`).
+Dua tangkapan live terpisah menghasilkan `aId` identik → nilai ini bisa (dan sudah) direproduksi persis.
+
+### F-58 · MIRA: `lF` menulis indeks SEKALI per titik, bukan per sisi strip
+Jebakan port: menulis 6 indeks di dalam loop `for Z of [-1,1]` menghasilkan 2× indeks → `RangeError: offset is out of bounds`
+(`Uint32Array.set`). Yang benar: dua verteks ditulis per titik, indeks `(Z,Z+1,Z+2)(Z+1,Z+3,Z+2)` sesudahnya.
+
+### F-59 · MIRA: mask kepala disiapkan pada ukuran `SN.width`, bukan ukuran gambar asli
+`ck()`/loader gambar membuat kanvas `m.width × m.height` (1146×1374 = hasil `round(1145·0,5)/0,5`)
+lalu `drawImage(img,0,0,width,height)` — jadi gambar 1145 px **diperlebar 1 px**. Konsekuensinya
+`px` (mask kepala) bukan alpha gambar asli: cx/hw bergeser ~0,5 px, `neckY` 557 vs 565.
+Setelah ukuran ini dipakai, `rowTexture` 1×1374 RGBA32F rebuild **identik byte-per-byte** dengan live.
+
+### F-60 · MIRA: `uHeadRows` = tekstur `1×H RGBA32F` (bukan RGBA8)
+Live: `texStorage2D(TEXTURE_2D, 1, RGBA32F, 1, 1374)` + `texSubImage2D(..., 1, 1374, RGBA, FLOAT, 5496 float)`,
+`minFilter = magFilter = NEAREST`. Nilai = (centre x px, half width px, turn weight 0..1, depth share 0..1).
+
+### F-61 · MIRA: DUA kanvas — figur 1007×630 (rasio 0,7), latar 1440×900
+Live: `<canvas>` pertama 1007×630 (style fixed, z-index 0, opacity 0,49 transisi) = panggung figur;
+kanvas kedua 1440×900 = latar (nebula/asap). Jadi `setPixelRatio` panggung = **0,7**, bukan 1.
+`uRes` di shader garis = **[1440, 900]** = ukuran JENDELA, bukan ukuran kanvas (rumus bundle:
+`px = gl.domElement.width / window.innerWidth` = 0,7).
+
+### F-62 · MIRA: gambar diunggah dengan `UNPACK_FLIP_Y_WEBGL = true`
+three.js `Texture.flipY` default `true`. Tanpa flag ini kuad gambar tampil **terbalik** (kepala di bawah),
+sementara garis & awan titik benar — gejala yang sempat muncul dan langsung hilang setelah flag dipasang.
+
+### F-63 · MIRA: gambar digambar DUA kali (lapis isi + lapis warna)
+Keduanya kuad yang sama, geometri `±w/2, ±h/2` (`w = SN.width`, `h = SN.height`), UV standar, 6 indeks:
+`04-vert` + `05-frag` (`uFill`, `uReveal`; blend **ZERO / ONE_MINUS_SRC_ALPHA** = menutupi latar dengan alpha),
+lalu `04-vert` + `06-frag` (`uGain`, `uHeadOn`, `uHz*`, `uFace*`, `uShock`; blend **ONE / ONE**).
+
+### F-64 · MIRA: awan titik gambar = 103.367 titik, geometri IDENTIK live
+`aRest/aKind/aZ` rebuild **maxdiff 0** terhadap buffer live (3/3). Urutan array bukan urutan grid:
+`[materi belakang (kind 1)…, kepala acak (kind 5) ×6000, grid (kind 0)…]`, PRNG `Ud(29)`, langkah 1,5 px,
+alpha > 32. `uPxPerPic` 0,589519679…; `gl_PointSize = uStep·2·cover·uPxPerPic` (`uStep` 1,5).
+
+### F-65 · MIRA: sprite cadangan = gradien radial 128 px, warna "black" tidak menambah cahaya
+Dua tekstur sprite dibuat runtime: glow `#fff → rgba(230,205,255,.55) @0,25 → rgba(140,80,255,0)`,
+asap `rgba(200,150,255,.8) → (.32) → (.08) → (0)`. Sprite ber-`color:"black"` (opacity 0 saat idle)
+tidak menyumbang piksel — aman dilewati sebelum langkah 3.
+
+### F-66 · MIRA: kanvas latar beresolusi kerja 0,7; kanvas figur penuh (1440×900)
+Salah baca sebelumnya (F-61 dikoreksi). Bukti dari probe: draw `01-frag` (medan nebula) berjalan di kanvas
+**1007×630**, sedangkan SEMUA lapisan figur (garis 22.248, titik 103.367, kuad gambar, materi, rambut)
+berjalan di kanvas **1440×900** dengan `uRes = [1440, 900]`, `uHeadRows` di unit 0, `uMap` di unit 1.
+
+Konsekuensi:
+1. Kanvas figur memakai **dpr 1** (1440×900 di jendela 1440×900). Merender figur di 0,7 lalu memekarkannya
+   ke 1440 menghasilkan tangga piksel 2–3 px bertepi magenta/merah — cacat yang sempat muncul di `build-stage4.png`.
+2. Medan nebula memang **dirender rendah (0,7) lalu dimakarkan** — itu sebab kabutnya halus dan lembut;
+   `iRes = [1007, 630]` adalah resolusi kerjanya, bukan ukuran jendela.
+3. Karena hanya ada SATU kanvas di DOM untuk figur, larutan yang dipakai: medan dirender ke **FBO 1007×630**,
+   lalu di-blit (sampler LINEAR) ke kanvas figur — hasilnya sama dengan menumpuk kanvas 0,7 di bawah kanvas penuh.
+
+### F-67 · MIRA: gambar diunggah sebagai sRGB8_ALPHA8 **dan** di-premultiply
+`EXT_texture_storage`/three memakai `SRGB8_ALPHA8` (terukur: `texStorage2D` format 35907) → GPU mendekode
+sRGB→linear. Selain itu asset `mira-idle-v1.webp` menyimpan warna terang (sampai 255) pada **64.335 piksel
+ber-alpha < 40**; dengan blend `ONE/ONE` warna itu tampil sebagai pinggiran magenta/merah yang di live tidak ada.
+`UNPACK_PREMULTIPLY_ALPHA_WEBGL = true` + `alpha:false` pada kanvas menghilangkan cacat itu **seluruhnya**
+(diverifikasi lewat potongan 8× di bahu: `build-stage9.png` masih bergerigi, `build-stage10.png` mulus).
+
+### F-68 · MIRA: bloom = postprocessing BloomEffect (bukan bloom 2D) — shader ditangkap utuh
+Live memakai `postprocessing` dengan `BloomEffect` (bukan `UnrealBloomPass`). Seluruh sumber shader-nya kini
+tersimpan di `recon/shaders/mira-allsrc/` (37 berkas; 36 sama dengan `mira-live/`, 1 baru = pass komposit):
+
+| pass | shader | ukuran | catatan |
+|---|---|---|---|
+| luminansi | `17-vert` + `18-frag` | 1726 / 5485 B | `THRESHOLD`+`COLOR` aktif; `threshold` 0,6 · `smoothing` 0,9 |
+| turun | `19-vert` + `20-frag` | 2335 / 3702 B | 12 tap (bobot 0,125 / 0,05556), `texelSize` = 1/ukuran sumber |
+| naik | `21-vert` + `22-frag` | 2101 / 3168 B | 9 tap, `mix(baseColor, blur, radius)` · radius 0,62 |
+| komposit | `23-vert` + `24-frag` | 1917 / 10857 B | `ENCODE_OUTPUT` aktif → **sRGB encode di shader**; `e0Intensity` 0,9 |
+
+Parameter terukur dari draw live: `e0Intensity = 0,9` = `hum.glow.strength` (bukan `bloom.strength` 1,3 —
+dua akar berbeda, alias `hum.glow.*` yang dipakai figur), `e0BlendOpacity 1`, `threshold 0,6`, `radius 0,62`,
+mip 8 level mulaidari 0,5 resolusi (720×450 → … → 12×8).
+
+### F-69 · MIRA: latar digambar ke KANVAS, figur ke render target, komposit menimpa
+Urutan final yang benar (dua kali salah sebelum ini):
+1. medan nebula (`01-frag`) → FBO 0,7 → **blit ke kanvas** (opaque).
+2. semua lapisan figur (sprite, kuad isi, kuad warna, titik, garis) → **render target HDR penuh**.
+3. bloom atas RT itu (luminansi → 8 mip turun → 8 mip naik), komposit `24-frag` **langsung ke kanvas**
+   dengan `blendFunc(ONE, ONE_MINUS_SRC_ALPHA)` supaya figur menimpa latar dan tidak ada halo kotak.
+4. komposit meng-encode sRGB sendiri (`ENCODE_OUTPUT`) → kanvas figur tidak boleh punya konversi warna tambahan.
+
+Kesalahan yang sempat terjadi: (a) komposit ditulis ke kanvas dua kali (figur hilang), (b) latar ikut masuk RT
+figur sehingga seluruh layar ikut di-bloom (putih susu, MAE 63,8). Setelah (a)+(b) diperbaiki angka "beda vs live"
+justru naik 16,4 % → 23,9 % (MAE 17,3 → 19,4) **dan itu wajar**: sebelumnya area cahaya gelap, sekarang menyala.
+Yang harus dibandingkan: kecerahan rata-rata naik 29,2 → 36,6 dengan acuan live 41,7. Sisa selisih didominasi
+rambut & materi (belum dibuat).
+
+### F-70 · MIRA: rambut = SATU kuad citra 1385×1422 (bukan mesh helai)
+Live menggambar rambut dua kali dengan kuad yang sama (`uSize` 1385×1422, 4 verteks, 6 indeks):
+draw #29 (`uOn` 1, `uClock`) dan draw #40 (`uOn` 0). Yang terlihat saat idle hanya yang pertama:
+`29-vert` + `30-frag` — shader ini memakai `hairSource()`/`hairTurn()` (kepala lembut) dan membaca
+`uMap` (citra `mira-hair-v1.webp`). Dua lapis **helai** rambut (`31-vert` + `32-frag`, 32.382 indeks,
+atribut `aRest/aS/aSeed/aLen`) dan percikan (`33-vert` + `34-frag`, 260 titik) belum dibuat.
+
+Uniform terukur: `uUp 48` · `uSide 120` · `uMass 0,7` · `uEarY 343,41` · `uTop 0,6` ·
+`uHead [694,79, 322,80]` · `uHairOff [120, 48]` · modelView geser `(-2,0320425, 1,9313689)`.
+`uBT` = jam build (`b_`) — saat idle bernilai 0,9 s lalu 3,03 s lalu 5,26 s (mengikuti jam, bukan konstan).
+
+### F-71 · MIRA: blend additive yang benar = `blendFuncSeparate(ONE, ONE, ZERO, ONE)`
+Terukur di 19 draw live: `srcRGB ONE · dstRGB ONE · srcAlpha ZERO · dstAlpha ONE`. Artinya warna ditambahkan
+tetapi **alpha tujuan dibiarkan**. Memakai `blendFunc(ONE, ONE)` (seperti sebelumnya) membuat alpha ikut
+bertambah; akibatnya komposit akhir menganggap seluruh kotak kuad gambar/rambut itu "figur" dan menutupi latar
+dengan hitam — gejala kotak hitam besar yang sempat muncul di `build-stage14.png`. Setelah semua lapisan figur
+memakai `blendFuncSeparate`, kotak itu hilang dan latar menembus di sekitar siluet.
+
+| metrik (1 frame 1440×900) | sebelum rambut | sesudah rambut + blend benar | live |
+|---|---|---|---|
+| kecerahan rata-rata | 36,6 | **42,9** | 36,8 |
+| piksel > 32/255 vs live | 23,9 % | **20,1 %** | — |
+| piksel > 8/255 vs live | 32,8 % | **29,9 %** | — |
+| MAE | 19,4 | **14,2** | — |
+
+Kecerahan kini sedikit **di atas** live (42,9 vs 36,8) — kandidat penyebab: bloom ikut mengenai lapisan yang di
+live berada di kanvas terpisah, dan/atau intensitas komposit perlu dikalikan `bloom.strength`. Ini masuk daftar
+pengukuran berikutnya, bukan diakali dengan menurunkan angka secara manual.
+
+### F-72 · MIRA: jam bisa DIBEKUKAN — verifikasi fase-per-fase, bukan perasaan
+Live menerima `?t=<detik>` (`pinTime`): jam berhenti di nilai itu, dan `?off=<lapisan>` mematikan lapisan
+(`arcs, bloom, core, cutwhite, figure, fog, hair, lights, lines, matter, pic, waves`). Dua tangkapan live
+pada `t=9,5` **identik** — MAE 0,10–0,12, piksel > 8/255 0,12–0,14 %, kecerahan 39,6 di ketiganya.
+Artinya frame live deterministik dan rebuild boleh dinilai piksel-per-piksel. Rebuild sekarang menerima `?t=`
+juga (jam dibekukan, delta pita = 0 seperti live).
+
+### F-73 · MIRA: materi 54.500 titik terpasang dan cocok dengan buffer live
+Port `Nw/FN/Uw/g0/RN/CN/PN/IN/LN` (`src/lib/miraMatter.ts`) dijalankan dengan seed `Ud(7·31+1)=Ud(218)`,
+`seats 36000` dari citra penuh (1146×1374) + `hairSeats 14000` dari `mira-hair-v1.webp` dengan
+`{minLum 0,12, dx −120, dy −48}` → **54.500** butir (live 54.492; selisih 8 dari sampling tepi).
+
+| atribut | live vs rebuild |
+|---|---|
+| `aCol` | maxdiff 1/255 |
+| `aTurns` / `aSeed` | 3·10⁻⁸ (float32 identik) |
+| `aStay` | 8 dari 54.492 butir berbeda |
+| `aTArr` | rata 4,629 vs 4,620 · median 4,773 vs 4,764 · p90 5,618 vs 5,613 |
+| `aFly` / `aTRev` | 0,88 / 0,726 (induk `rnd()` terpakai lebih dulu di jalur kita) |
+
+Busur: 18 inti + 10 mahkota = **1.912 ruas** (live 1.984 ruas dalam satu draw; beda dari pemakaian PRNG).
+Di layar materi **memang 0 kontribusi saat idle**: `melt = 1 − smoothstep(aTRev, aTRev+0,35, tm)` mematikan
+semua butir setelah gelombang reveal lewat (t ≈ 6,6–7,6 s). Itu perilaku live, bukan bug — terukur sebagai
+Δ body 0,0 pada `?off=matter`.
+
+### F-74 · MIRA: helai rambut — angka live dan rebuild sama persis
+Port `EN/AN/TN/bT/RT/Bf` (`src/lib/miraHair.ts`) pada citra setengah resolusi (693×711) memberi
+**47 helai** dan **260 bintik** — log live: `hair picture: 47 strands can move, 260 twinkles`.
+Geometri pita: **10.888 verteks · 10.794 segitiga** (live: `080-Uint16Array-32382` → 10.794 segitiga, 10.888
+verteks). Tidak ada parameter yang ditebak: `hum.hair.moving 60` memotong 47 helai yang tersedia.
+
+### F-75 · MIRA: lapisan `waves` (3 pita + 168 percikan) — inilah "streak" panjang di live
+Teka-teki garis panjang yang melintasi seluruh layar dipecahkan dengan `?off=`: `off=waves` menghapusnya,
+`off=hair`/`off=arcs` tidak. Sumbernya komponen `kk`: **3 pita** (`Qy 3`) masing-masing kurva Catmull-Rom
+sentripetal dari 6–7 titik kendali di x −9…9, z −2,2…−2,8, diukir jadi 65 ruas × 2 verteks (`Da 64`), plus
+`gN(56,3)` = **168 percikan** yang bergerak sepanjang kurva. Port: `src/lib/miraWaves.ts` (kurva Catmull-Rom
+three.js diimplementasikan ulang) + shader `25/26` & `27/28`.
+
+### F-76 · MIRA: bloom dan gambar dasar belum seimbang (angka, bukan kesan)
+Karena `?off=bloom` di live tetap mengomposit figur (dengan intensitas 0), jalur rebuild disamakan dulu
+(komposit selalu jalan, `e0Intensity = 0` saat `off=bloom`) supaya perbandingan adil. Hasil pada `t=9,5`:
+
+| | kotak badan | dengan bloom | tambahan bloom |
+|---|---|---|---|
+| live | 38,8 | 80,2 | **+41,4** |
+| rebuild | 92,7 | 101,2 | **+8,5** |
+
+Jadi gambar dasar rebuild ≈ 2,4× terlalu terang dan bloom rebuild hanya menambah ~1/5 dari tambahan live.
+Live = figur gelap + bloom kuat; rebuild = figur terang + bloom lemah. Kontribusi per lapisan (Δ kotak badan):
+garis live −6,0 vs rebuild −16,7 · rambut −8,2 vs −6,0 · helai −2,0 · pita 0,0 · materi 0,0.
+Intensitas bloom live saat `t=9,5` bukan 0,9 tapi `0,9·(1+1,6·b_(9,5;6,55)·surge)` ≈ **1,21**
+(`b_(i,e,1,9)=exp(−(i−e)/1,9)`), jadi 0,9 di rebuild memang terlalu kecil — tapi selisih 2,4× pada gambar dasar
+tetap harus dijelaskan lebih dulu sebelum angkanya dinaikkan.

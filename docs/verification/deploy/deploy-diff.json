@@ -1,0 +1,199 @@
+{
+ "generatedAt": "2026-10-29T19:14:34.451Z",
+ "prod": "https://apex-humanoid.vercel.app/",
+ "target": "https://niu-humanoid.vercel.app",
+ "checks": [
+  {
+   "name": "entry: teks",
+   "prod": "APEX HUMANOID a figure of light that assembles itself ENTER the click opens the audio - the birth has a sound",
+   "target": "APEX HUMANOID a figure of light that assembles itself ENTER the click opens the audio - the birth has a sound",
+   "pass": true
+  },
+  {
+   "name": "entry: tombol",
+   "prod": [
+    "ENTER"
+   ],
+   "target": [
+    "ENTER"
+   ],
+   "pass": true
+  },
+  {
+   "name": "state idle: STATUS",
+   "prod": "STATUS: IDLE",
+   "target": "STATUS: IDLE",
+   "pass": true
+  },
+  {
+   "name": "state listening: STATUS",
+   "prod": "STATUS: LISTENING",
+   "target": "STATUS: LISTENING",
+   "pass": true
+  },
+  {
+   "name": "state thinking: STATUS",
+   "prod": "STATUS: THINKING",
+   "target": "STATUS: THINKING",
+   "pass": true
+  },
+  {
+   "name": "state speaking: STATUS",
+   "prod": "STATUS: SPEAKING",
+   "target": "STATUS: SPEAKING",
+   "pass": true
+  },
+  {
+   "name": "state strong: STATUS",
+   "prod": "STATUS: IDLE",
+   "target": "STATUS: IDLE",
+   "pass": true
+  },
+  {
+   "name": "state SPEAK: STATUS",
+   "prod": "STATUS: SPEAKING",
+   "target": "STATUS: SPEAKING",
+   "pass": true
+  },
+  {
+   "name": "debug bar (?auto)",
+   "prod": [
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "target": [
+    "idle",
+    "listening",
+    "thinking",
+    "speaking",
+    "🎙 MIC OFF",
+    "↻ REPLAY",
+    "♪ SOUND ON"
+   ],
+   "pass": true
+  },
+  {
+   "name": "birth t=1s: teks ASSEMBLING",
+   "prod": "ASSEMBLING... 14%",
+   "target": "ASSEMBLING... 14%",
+   "pass": true
+  },
+  {
+   "name": "birth t=3s: teks ASSEMBLING",
+   "prod": "ASSEMBLING... 41%",
+   "target": "ASSEMBLING... 41%",
+   "pass": true
+  },
+  {
+   "name": "birth t=5s: teks ASSEMBLING",
+   "prod": "ASSEMBLING... 94%",
+   "target": "ASSEMBLING... 94%",
+   "pass": true
+  },
+  {
+   "name": "birth t=6.5s: teks ASSEMBLING",
+   "prod": "ASSEMBLING... 99%",
+   "target": "ASSEMBLING... 99%",
+   "pass": true
+  },
+  {
+   "name": "uniform per-draw 5197",
+   "prod": {
+    "uPixelRatio": 1,
+    "uSizeK": 0.8823529481887817,
+    "uRest": 0.2199999988079071,
+    "uPulse": 2.5999999046325684,
+    "uMap": [
+     2.221041440963745,
+     -2,
+     -1.1105207204818726,
+     1
+    ],
+    "uWave": [
+     0,
+     0.14000000059604645,
+     3.138000011444092,
+     0.31279030442237854
+    ],
+    "uWaveK": [
+     1.600000023841858,
+     0.44999998807907104
+    ]
+   },
+   "target": {
+    "uPixelRatio": 1,
+    "uSizeK": 0.8823529481887817,
+    "uRest": 0.2199999988079071,
+    "uPulse": 2.5999999046325684,
+    "uMap": [
+     2.221041440963745,
+     -2,
+     -1.1105207204818726,
+     1
+    ],
+    "uWave": [
+     0,
+     0.14000000059604645,
+     3.138000011444092,
+     0.31279030442237854
+    ],
+    "uWaveK": [
+     1.600000023841858,
+     0.44999998807907104
+    ]
+   },
+   "pass": true
+  },
+  {
+   "name": "uniform per-draw 274799",
+   "prod": {
+    "uVein": 1.4540836811065674,
+    "uSize": 2.558823585510254,
+    "uPixelRatio": 1,
+    "uStateA": 0,
+    "uPatchUV": 0.002843137364834547
+   },
+   "target": {
+    "uVein": 1.4540836811065674,
+    "uSize": 2.558823585510254,
+    "uPixelRatio": 1,
+    "uStateA": 0,
+    "uPatchUV": 0.002843137364834547
+   },
+   "pass": true
+  },
+  {
+   "name": "uniform per-draw 240",
+   "prod": {
+    "uSizeK": 1.4117647409439087,
+    "uPixelRatio": 1
+   },
+   "target": {
+    "uSizeK": 1.4117647409439087,
+    "uPixelRatio": 1
+   },
+   "pass": true
+  },
+  {
+   "name": "drawArrays >1000 (geometri besar)",
+   "prod": [
+    5197,
+    274799
+   ],
+   "target": [
+    5197,
+    274799
+   ],
+   "pass": true
+  }
+ ],
+ "summary": {
+  "passed": 17,
+  "total": 17
+ }
+}

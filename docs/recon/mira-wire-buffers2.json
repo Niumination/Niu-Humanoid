@@ -1,0 +1,74 @@
+[
+ {
+  "kind": "data",
+  "len": 22752,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-22752-0.bin"
+ },
+ {
+  "kind": "data",
+  "len": 22752,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-22752-1.bin"
+ },
+ {
+  "kind": "data",
+  "len": 15168,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-15168-2.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-3.bin"
+ },
+ {
+  "kind": "data",
+  "len": 22752,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-22752-4.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-5.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-6.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-7.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-8.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-9.bin"
+ },
+ {
+  "kind": "data",
+  "len": 7584,
+  "type": "Float32Array",
+  "file": "/tmp/mira-wire-buf-Float32Array-7584-10.bin"
+ },
+ {
+  "kind": "data",
+  "len": 22248,
+  "type": "Uint32Array",
+  "file": "/tmp/mira-wire-buf-Uint32Array-22248-11.bin"
+ }
+]

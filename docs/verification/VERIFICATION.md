@@ -484,3 +484,82 @@ Backup angka lama: `verification/step8/step8-report.json` (baseline & build per 
 | 7. HUD + hook | ✅ debug bar 7/7 | ✅ 18/18 hook + freeze | n/a | selesai + terukur |
 | 8. bloom + figur GPU | ✅ backdrop `xU` + **figur 274.799 titik + bloom diport penuh**; uniform/atribut identik 16 digit | n/a | 🟡 10,55 % / 11,58 (1440×900) · 7,57 % / 9,02 (390×844); acuan derau 0,87 % / 1,48 | sisa = profil kernel bloom, bukan fitur hilang |
 | MIRA | — | ⬜ 82 dial (keputusan: bangun panel lengkap) | ⬜ | setelah APEX |
+
+---
+
+## Fase 4 — Deploy APEX & verifikasi produksi
+
+Repo APEX sudah di-deploy user ke **https://niu-humanoid.vercel.app** (bundle `dist/assets/index-DyoQ8hKN.js`,
+identik dengan `npm run build` lokal: 226,20 kB / 75,62 kB gzip).
+
+`tools/diff-vs-production.js https://niu-humanoid.vercel.app` → **17/17 pemeriksaan identik**:
+
+| gerbang | isi | hasil |
+|---|---|---|
+| A — entry | teks body + daftar tombol | ✅ identik |
+| A — state | 6 masukan `?state=` (idle, listening, thinking, speaking, strong, SPEAK) | ✅ 6/6 STATUS sama |
+| A — HUD | label debug bar `?auto` | ✅ 7/7 |
+| A — birth | `?asmel=1 / 3 / 5 / 6.5` teks ASSEMBLING | ✅ 4/4 |
+| B — uniform per-draw | 5.197 (backdrop) · 274.799 (figur) · 240 (mote inti) | ✅ 3/3 identik |
+| B — geometri | `drawArrays > 1000` | ✅ sama |
+
+Catatan metode: harness pertama versi mencatat uniform "nilai terakhir global", sehingga `uSizeK`
+backdrop (0,88235) tertukar dengan milik figur (1,41176) → gerbang salah menyala ⛔. Sudah diperbaiki:
+uniform kini dibaca **per program yang aktif saat `drawArrays`**, dan `uT` mote inti (akumulator waktu)
+dikecualikan dari perbandingan nilai.
+
+`tools/gate-deploy.js` (protokol sama dengan langkah 8: `?surge=1.5` + `__HUM_BG_T=3`, tunggu 13 s):
+
+| perbandingan | `>32` | MAE |
+|---|---|---|
+| produksi asli vs dirinya (derau) 1440×900 | 3,41 % | 3,82 |
+| **produksi asli vs deploy 1440×900** | **10,73 %** | **11,93** |
+| produksi asli vs dirinya 390×844 | 1,66 % | 2,15 |
+| **produksi asli vs deploy 390×844** | **7,71 %** | **9,01** |
+
+Angka deploy = angka dev server (10,55 / 7,57) di dalam derau → **build produksi tidak mengubah
+pipeline apa pun**. Sisa selisih tetap milik kernel bloom (lihat bab langkah 8).
+
+---
+
+## Fase MIRA — P1.3–P1.5: verifikasi fakta sebelum menulis kode
+
+`recon/verify-mira.py` membandingkan `recon/mira-params.json` dengan blok literal di `recon/mira.js`:
+
+| klaim spec | hasil |
+|---|---|
+| 82 parameter | ✅ **82/82** cocok (`key`, `label`, `group`, `min`, `max`, `step`, `default`) |
+| 20 seksi berurutan | ✅ 14·2·4·7·2·3·2·3·3·1·3·4·4·8·6·2·4·3·4·3 = 82 |
+| `Her hair` dua kali | ✅ seksi 10 (1 param) & 14 (8 param) |
+| 7 alias `stands` | ✅ 7, dengan default humanoid ≠ scene (mis. `hum.glow.threshold` 0,6 vs `bloom.threshold` 0,18) |
+| 13 query param | ✅ `auto, fragment, hot, intensity, listen, map, mira_debug, off, state, t, talk, vertex, voice` |
+| hook window | ✅ `__MIRA_DEBUG`, `__HUM_ATTN` (+ `__THREE__` bawaan three.js) |
+
+Catatan metode: percobaan pertama gagal karena bundle menamai field default **`def:`**, bukan `default:`
+→ sempat terbaca "semua default hilang". Setelah dipetakan, 82/82 bersih.
+Keluaran: `recon/mira-verified.json`.
+
+### Gerbang A MIRA — 8/8
+
+`tools/gate-mira-a.js` (live vs rebuild): title, seluruh node teks entry, `innerText`, tombol entry
+**beserta gaya terhitung** (warna, bg, border, radius, font, size, letter-spacing, padding),
+label tombol mode, gaya tombol REPLAY, `aria-pressed` status, `aria-label` kamera → **semua identik**.
+Satu perbaikan dari temuan ini: tombol `EXIT` di live **tidak dirender** saat masuk lewat `?auto`
+(terukur), jadi rebuild sekarang juga tidak merendernya pada kondisi itu.
+
+### Gerbang B MIRA — 10/10
+
+`tools/gate-mira-b.js`: 82 slider · 20 seksi · urutan nama seksi · jumlah baris per seksi ·
+key/label/min/max/step/default 82/82 · 7 alias propagate · `?dial.<key>=` · localStorage bertahan
+setelah reload.
+
+Bug yang ditemukan gerbang ini: alias **tidak terpropagasi saat slider digeser** — penyebabnya
+nilai terbaca benar di store tetapi panel tidak di-render ulang (`useSyncExternalStore` belum
+dipakai). Setelah diperbaiki: 7/7 alias bergerak.
+
+**Deviasi yang disengaja (U-10):** panel 82 slider **tidak ada di live** (terukur: `panel-mira.json`
+count 0). Panel dibangun karena SPEC + daftar 82 parameter mendokumentasikannya sebagai permukaan
+kendali aslinya. Panel default **tertutup** dan tidak menyentuh DOM saat tertutup, sehingga Gerbang A
+dan C tetap sebanding dengan live.
+
+**Status MIRA:** langkah 1 (entry) ✅ · langkah 7 (panel/hook) ✅ · langkah 2, 3, 4, 5, 6, 8 ⬜ belum.

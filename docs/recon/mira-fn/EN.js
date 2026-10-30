@@ -1,0 +1,1 @@
+function EN(i,{scale:e=.5,minLen:t=70,fromY:n=.18,toY:r=.98,spacing:o=3,step:a=2,seedRows:c=3,seedK:h=1,overlap:p=.6,mark:m=1,thrK:g=.35}

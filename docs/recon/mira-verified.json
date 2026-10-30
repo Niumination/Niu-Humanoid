@@ -1,0 +1,116 @@
+{
+ "paramMatches": 82,
+ "paramTotal": 82,
+ "mismatches": [],
+ "sections": [
+  [
+   "Centre lines",
+   14
+  ],
+  [
+   "Smoke",
+   2
+  ],
+  [
+   "Star dust",
+   4
+  ],
+  [
+   "Ring and centre light",
+   7
+  ],
+  [
+   "Her voice",
+   2
+  ],
+  [
+   "Far waves",
+   3
+  ],
+  [
+   "Floating particles",
+   2
+  ],
+  [
+   "Background",
+   3
+  ],
+  [
+   "Glow (whole picture)",
+   3
+  ],
+  [
+   "Her hair",
+   1
+  ],
+  [
+   "Her head",
+   3
+  ],
+  [
+   "Her states",
+   4
+  ],
+  [
+   "Her face",
+   4
+  ],
+  [
+   "Her hair",
+   8
+  ],
+  [
+   "Her lines at rest",
+   6
+  ],
+  [
+   "Her breathing",
+   2
+  ],
+  [
+   "The build",
+   4
+  ],
+  [
+   "Lightning",
+   3
+  ],
+  [
+   "Fog and far waves",
+   4
+  ],
+  [
+   "Glow (her whole picture)",
+   3
+  ]
+ ],
+ "aliases": {
+  "hum.fog.spread": "field.spread",
+  "hum.fog.amount": "field.alpha",
+  "hum.waves.opacity": "waves.opacity",
+  "hum.waves.speed": "waves.speed",
+  "hum.glow.strength": "bloom.strength",
+  "hum.glow.threshold": "bloom.threshold",
+  "hum.glow.radius": "bloom.radius"
+ },
+ "queryParams": [
+  "auto",
+  "fragment",
+  "hot",
+  "intensity",
+  "listen",
+  "map",
+  "mira_debug",
+  "off",
+  "state",
+  "t",
+  "talk",
+  "vertex",
+  "voice"
+ ],
+ "hooks": [
+  "__HUM_ATTN",
+  "__MIRA_DEBUG",
+  "__THREE__"
+ ]
+}

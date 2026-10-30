@@ -1,0 +1,1 @@
+function RT(i,e){const t=[i[0]];let n=0;for(let a=1;a<i.length;a++){const[c,h]=i[a-1],[p,m]=i[a],g=Math.hypot(p-c,m-h);let v=e-n;for(;v<=g;){const y=v/g;t.push([c+(p-c)*y,h+(m-h)*y]),v+=e}n=g-(v-e)}const r=i[i.length-1],o=t[t.length-1];return Math.hypot(r[0]-o[0],r[1]-o[1])>e*.35?t.push(r):t[t.length-1]=r,t}

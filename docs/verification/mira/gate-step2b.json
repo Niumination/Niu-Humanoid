@@ -1,0 +1,133 @@
+{
+ "method": "phase-locked: live mendukung ?t=<detik> yang membekukan jam (pinTime) dan ?off=<lapisan>. Dua tangkapan live pada t=9.5 identik (MAE 0,10-0,12) → frame live deterministik, jadi rebuild bisa dibandingkan piksel-per-piksel, bukan 'mirip'.",
+ "captured": "2026-10-30",
+ "live_vs_live_baseline": {
+  "t": 9.5,
+  "runs": [
+   "live-t95.png",
+   "live-t95-b.png",
+   "live-t95-c.png"
+  ],
+  "MAE": [
+   0.1,
+   0.12
+  ],
+  "pixels_gt8": [
+   "0.14%",
+   "0.12%"
+  ],
+  "mean_brightness": [
+   39.6,
+   39.6,
+   39.6
+  ]
+ },
+ "layers_verified_exact": {
+  "matter_points": {
+   "live": 54492,
+   "rebuild": 54500,
+   "note": "buildMatter: 36000 kursi citra + 14000 kursi rambut (−8 dari live; sampling tepi)"
+  },
+  "matter_attrs": {
+   "aCol": "maxdiff 1/255",
+   "aTurns": "3e-8",
+   "aSeed": "3e-8",
+   "aStay": "8/54492 beda",
+   "aTArr": "rata 4,629 vs 4,620 · median 4,773 vs 4,764 · p90 5,618 vs 5,613 (korelasi 0,090 — urutan kursi beda, sebaran sama)",
+   "aFly": "0,88",
+   "aTRev": "0,726"
+  },
+  "arcs": {
+   "live_segments_in_one_draw": 1984,
+   "rebuild_segments": 1912,
+   "core": 18,
+   "crown": 10
+  },
+  "hair_strands": {
+   "live_log": "47 strands can move, 260 twinkles",
+   "rebuild_log": "47 strands can move, 260 twinkles",
+   "verts": [
+    10888,
+    10888
+   ],
+   "tris": [
+    10794,
+    10794
+   ],
+   "strand_paths": 47
+  },
+  "waves": {
+   "ribbons": 3,
+   "segs": 64,
+   "sparks": 168,
+   "source": "komponen kk (Qy=3, Da=64, gN(56,3))"
+  }
+ },
+ "pixel_scores_t95": {
+  "build-stage20_full": {
+   "gt8": "57.28%",
+   "MAE": 12.53,
+   "mean": 44.8
+  },
+  "live_full": {
+   "mean": 39.6,
+   "body_box_500_880_520_920": 80.2,
+   "corner_box": 21.0
+  },
+  "rebuild_full": {
+   "mean": 44.8,
+   "body_box_500_880_520_920": 101.2,
+   "corner_box": 16.9
+  }
+ },
+ "layer_contributions_body_box": {
+  "live": {
+   "lines": -6.0,
+   "hair": -8.2,
+   "arcs": 0.0,
+   "waves": -0.0
+  },
+  "rebuild": {
+   "lines": -16.7,
+   "hair": -6.0,
+   "strands": -2.0,
+   "waves": -0.0,
+   "matter": -0.0
+  },
+  "note": "materi 0 di kedua sisi: setelah reveal, `melt` mematikan semua butir (perilaku benar, bukan bug)."
+ },
+ "bloom_calibration_open": {
+  "live": {
+   "body_without_bloom": 38.8,
+   "body_with_bloom": 80.2,
+   "gain": 41.4
+  },
+  "rebuild": {
+   "body_without_bloom": 92.7,
+   "body_with_bloom": 101.2,
+   "gain": 8.5
+  },
+  "diagnosis": "gambar dasar rebuild ~2,4x lebih terang dari live dan bloom rebuild hanya menambah ~1/5 dari tambahan live. Live = figur gelap + bloom kuat; rebuild = figur terang + bloom lemah.",
+  "surge_formula": "bloom.intensity = hum.glow.strength(0,9) * (1 + 1,6*b_(t,ignite)*hum.build.surge); b_(i,e,1.9)=exp(-(i-e)/1.9) untuk e<=i<e+8 → pada t=9,5, e=6,55 → faktor 1,212"
+ },
+ "files": {
+  "live": [
+   "verification/mira/live-t95.png",
+   "live-t95-nobloom.png",
+   "live-t95-nolines.png",
+   "live-t95-nohair2.png",
+   "live-t95-nowaves.png",
+   "live-t95-noarcs.png",
+   "live-t189.png"
+  ],
+  "rebuild": [
+   "build-stage17.png",
+   "build-stage18.png",
+   "build-stage19.png",
+   "build-stage20.png",
+   "build-stage21.png",
+   "build-stage21-nobloom.png",
+   "build-t189.png"
+  ]
+ }
+}

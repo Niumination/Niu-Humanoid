@@ -1,0 +1,1 @@
+function _N(i,{goldRatio:e=1.15,whiteSat:t=.36}={}){const[n,r,o]=i;if(n>o*e)return"gold";const a=Math.max(n,r,o),c=Math.min(n,r,o);return(a-c)/(a||1)<t?"white":"violet"}

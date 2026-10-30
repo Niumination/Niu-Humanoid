@@ -1,0 +1,26 @@
+{
+ "live": {
+  "trace": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4492 dust grains in 315 ms",
+  "drawElements": [
+   22248,
+   32382
+  ],
+  "wire": null
+ },
+ "build": {
+  "trace": "[mira] humanoid: traced 3 outline + 81 inner lines (25 white / 34 violet / 25 gold), 4500 dust grains in 341 ms",
+  "drawElements": [
+   22248
+  ],
+  "wire": {
+   "indexCount": 22248,
+   "vertexCount": 7584,
+   "lines": 84
+  }
+ },
+ "traceMatch": true,
+ "dust": {
+  "live": 4492,
+  "build": 4500
+ }
+}
