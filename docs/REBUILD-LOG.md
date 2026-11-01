@@ -549,3 +549,30 @@ kanvas opaque, jadi warna additive tetap menyembur. Perbaikan paling setia pada 
 
 Sisa kecerahan pada 1,89–5,5 = **lapisan orb (`25/26`, 15 kuad) belum ada** — di live itulah benda terang
 yang terlihat saat materi berpusar sebelum ignition.
+
+### F-81 · MIRA: salinan materi & `uSettle` — sebab sebenarnya fase 1,89–5,5 gelap
+Dibaca langsung dari program materi live (`13195/2542`) memakai `tools/probe-mira-field.js`:
+
+| uniform | live | rebuild (sebelum) |
+|---|---|---|
+| `uTrail` (salinan utama) | **1** | 0,55 |
+| `uLag` (salinan utama) | **0** | 0,025 |
+| salinan jejak | `eF = [[0,025·0,55],[0,05·0,32],[0,08·0,16]]` → **3 salinan tambahan** | tidak ada |
+| `uSettle` | `0,75 − 0,4·smoothstep(t; 0,9; 6)` → 0,7106 @1,89 · 0,3608 @5,5 | konstanta 0,7109 |
+| `uLiveT` | sama dengan jam build | 0 |
+| setelah `last + 0,5 s` | `drawRange(0, nStay)` + semua jejak disembunyikan | tidak ada |
+
+Perbaikan: satu salinan utama (`lag 0, trail 1`) + tiga salinan jejak, `uSettle` berjalan, dan setelah
+`lastReveal + 0,5 s` hanya titik yang menetap (`nStay`) yang digambar tanpa jejak.
+
+| t | MAE sebelum (build6) | MAE sesudah (build7) | kecerahan build / live |
+|---|---|---|---|
+| 0,3 | 3,19 | 4,30 | 6,3 / 3,0 |
+| 1,89 | 20,06 | **13,92** | 9,6 / 21,7 |
+| 3,5 | 15,27 | **9,14** | 22,6 / 23,0 |
+| 5,5 | 18,46 | **14,30** | 27,4 / 22,5 |
+| 6,8 | 37,25 | **35,45** | 36,8 / 61,2 |
+| 9,5 | 12,53 | 12,89 | 45,2 / 39,6 |
+
+Tiga angka sebelumnya (1,89 · 3,5 · 5,5) turun 20–40 %; 3,5 kini praktis tepat (22,6 vs 23,0).
+Sisa terbesar: **6,8** — live 61,2 vs rebuild 36,8: kilatan ignition (`hum.strike.flash` + `13/14`), belum ada.

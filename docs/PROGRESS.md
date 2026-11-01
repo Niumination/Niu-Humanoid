@@ -237,3 +237,14 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
    `VERIFIKASI-DEPLOY.md`, `CATATAN-TEMUAN.md`, `.gitignore` (+`.vercel`, `.env*`).
 6. **Sisa yang belum ada di repo (15 berkas, 13,2 MB):** `HASIL-PEMERIKSAAN-PENERAPAN.md`, `LANGKAH3.md`,
    `langkah3/prod-t*.png` (4), `terapan-2026-10-30/*.png` (9) → dibundel jadi `niu-update-sinkron.zip`.
+
+## 2026-11-01 (13) — Langkah 3 bagian 3: salinan materi + uSettle (fase build 1,89–5,5)
+
+1. Alat baru `tools/probe-mira-field.js` membaca uniform NYATA app asli per fase (dua konteks WebGL:
+   medan `webgl` 1007×630 dan figur `webgl2` 1440×900). Data tersimpan di `/tmp/g-<t>.json` saat dijalankan.
+2. Temuan (F-81): rebuild hanya menggambar **satu salinan jejak** (lag 0,025 · trail 0,55) — salinan utama
+   (lag 0 · trail 1) dan dua salinan `eF` lain tidak ada; `uSettle` juga konstanta padahal live
+   `0,75 − 0,4·smoothstep(t; 0,9; 6)`; setelah `last + 0,5 s` live menggambar hanya `nStay` titik.
+3. Hasil (MAE vs app asli): 1,89 **20,06 → 13,92** · 3,5 **15,27 → 9,14** · 5,5 **18,46 → 14,30** ·
+   6,8 37,25 → 35,45 · 9,5 12,53 → 12,89 · 0,3 3,19 → 4,30 (kecerahan 6,3 vs 3,0 — perlu ditelusuri).
+4. Sisa: **6,8** (live 61,2 vs kita 36,8) = kilatan ignition `13/14` + percikan `33/34`; lalu gerbang C.
