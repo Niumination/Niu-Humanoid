@@ -222,3 +222,18 @@ lain, karena `mira-humanoid.vercel.app` milik app asli) + matikan Deployment Pro
 
 **Berikutnya:** lapisan **orb `25/26`** (15 kuad, `uOrbPx/uOrbR/uEnergy/uOpacity`) — inilah terang yang hilang
 pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu gerbang C.
+
+## 2026-11-01 (12) — Sinkronisasi workspace ↔ upstream setelah langkah 3
+
+1. **Repo Niu-Humanoid** `784c43e`: hanya `docs/PROGRESS.md` + `docs/REBUILD-LOG.md` (sesi 11, F-77…F-80).
+2. **Repo mira-humanoid** `6829d6a`: `src/` langkah 3 (shock.vert/frag.glsl baru + MiraStage/comp/picColor/blit),
+   `docs/langkah3/` 12 PNG, `docs/mira/gate-deploy-niu.json`, `VERIFIKASI-DEPLOY.md`, `CATATAN-TEMUAN.md`.
+3. **Cocok 100 %:** seluruh `src/` app identik sha256 dengan workspace (66/66), `tools/` 79/79 identik,
+   `docs` 135/135 identik, **0 berkas beda**.
+4. **Produksi sudah ikut:** `mira-humanoid-niu` menyajikan `index-DZGcjv2t.js` (sha256 = build repo HEAD);
+   gerbang piksel produksi vs live: 0,3 → **3,19** · 5,5 → 18,46 · 6,8 → 37,24 · 9,5 → **12,53**;
+   produksi vs build lokal ≤ 0,18.
+5. **Workspace dirampingkan:** 13 berkas identik dihapus (7,6 MB) → Kerja-Arena 33 → 25 MB; dari repo ditarik
+   `VERIFIKASI-DEPLOY.md`, `CATATAN-TEMUAN.md`, `.gitignore` (+`.vercel`, `.env*`).
+6. **Sisa yang belum ada di repo (15 berkas, 13,2 MB):** `HASIL-PEMERIKSAAN-PENERAPAN.md`, `LANGKAH3.md`,
+   `langkah3/prod-t*.png` (4), `terapan-2026-10-30/*.png` (9) → dibundel jadi `niu-update-sinkron.zip`.
