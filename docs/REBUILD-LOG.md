@@ -511,3 +511,41 @@ garis live −6,0 vs rebuild −16,7 · rambut −8,2 vs −6,0 · helai −2,0 
 Intensitas bloom live saat `t=9,5` bukan 0,9 tapi `0,9·(1+1,6·b_(9,5;6,55)·surge)` ≈ **1,21**
 (`b_(i,e,1,9)=exp(−(i−e)/1,9)`), jadi 0,9 di rebuild memang terlalu kecil — tapi selisih 2,4× pada gambar dasar
 tetap harus dijelaskan lebih dulu sebelum angkanya dinaikkan.
+
+### F-77 · MIRA: `uBT` = jam build (bukan konstanta) — fase sebelum ignition jadi gelap seperti live
+Tiga lapisan rambut memakai `uBT = 100` (selalu tampil), sehingga pada `t = 1,89` rebuild sudah menampilkan
+rambut penuh sementara live baru menampilkan percikan. Setelah `uBT = jam build`, `t = 1,89`:
+MAE **31,61 → 25,14** dan pada `t = 9,5` tetap 12,53 (kondisi mapan tidak rusak).
+
+### F-78 · MIRA: ramp build `iField`/`iMatter` + opacity kanvas latar (angka live)
+`Tw({waves, matter, orb})` di live, disalin apa adanya ke `rampAt(t)`:
+`H = 0,04 + 0,2·smoothstep(t, 0,9; 6)`, `F = smoothstep(t, 6,60; 7,65)`, `ge = smoothstep(t, 6,80; 8,05)`,
+`waves = max(strike·0,5 ; H+(1−H)F)`, `matter = max(strike·0,4 ; H·0,8+(1−H·0,8)ge)`,
+`orb = max(strike·0,25 ; smoothstep(t, 6,55; 7,90))`.
+- `iField = waves`, `iMatter = matter` (sebelumnya konstanta 1).
+- kanvas latar punya **CSS opacity = min(1, waves·1,6)** di live (terukur di DOM: 0,064 pada t=0,3 ·
+  0,604 pada t=1,89 · 1,0 pada t=9,5) → di rebuild jadi `uOpacity` pada blit latar.
+
+### F-79 · MIRA: kenapa live masih gelap sebelum gelombang reveal (akar masalahnya)
+Selama ini rebuild menampilkan figur penuh sejak frame pertama. Penyebab terukur: di live kanvas figur
+ber-alpha dan lapisan gambar (`06-frag`) hanya mengalikan **alpha** dengan `filled`, bukan warnanya; yang
+membuatnya tak tampil adalah komposisi canvas ber-alpha (premultiplied) di browser. Rebuild memakai satu
+kanvas opaque, jadi warna additive tetap menyembur. Perbaikan paling setia pada hasil ukur: kalikan juga
+**rgb** dengan `filled` di `picColor.frag`. Hasil `t = 0,3`: MAE **18,05 → 3,19**, kecerahan 2,0 vs live 3,0.
+
+### F-80 · MIRA: cincin kejut ignition (`35/36`) + `qN`
+`qN(t)`: radius `n·1500·(1−0,18·min(1,n/2))`, kekuatan `smoothstep(n,0;0,04)·e^(−n/0,9)` untuk `0 ≤ n ≤ 2,6`
+(n = t − 6,55). Dipasang sebagai satu kuad penuh + `uShock` diteruskan ke materi dan garis (efek "jump & flare").
+`t = 6,8`: kecerahan 32,4 → **43,2** (live 61,2); MAE 38,04 → 35,32.
+
+| t | MAE sebelum langkah 3 | MAE sesudah (ramp + fill-mask + shock) | kecerahan build/live |
+|---|---|---|---|
+| 0,3 | 18,05 | **3,19** | 2,0 / 3,0 |
+| 1,89 | 31,61 | **20,06** | 3,2 / 21,7 |
+| 3,5 | 25,12 | **15,27** | 10,2 / 23,0 |
+| 5,5 | 27,16 | **18,46** | 8,0 / 22,5 |
+| 6,8 | 36,52 | **37,25** | 32,4 / 61,2 |
+| 9,5 | 12,53 | **12,53** | 44,8 / 39,6 |
+
+Sisa kecerahan pada 1,89–5,5 = **lapisan orb (`25/26`, 15 kuad) belum ada** — di live itulah benda terang
+yang terlihat saat materi berpusar sebelum ignition.

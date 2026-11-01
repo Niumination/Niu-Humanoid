@@ -169,3 +169,56 @@ padahal live baru menggambar setelah `ignite 6,55 s`); (d) gerbang C.
    verification terbaru), `mira-humanoid-rebuild/`, `tools/`, `sync-upstream.sh`, `README-UPDATE.md`,
    `PENGHAPUSAN-2026-10-30.md`. Skrip `sync-upstream.sh` membandingkan sha256 dan bisa menghapus otomatis
    berkas yang sudah masuk repo setelah push.
+
+## 2026-10-30 (9) — Pemeriksaan penerapan Hermes: repo beres, deploy MIRA tidak terbukti
+
+Hasil lengkap: `verification/HASIL-PEMERIKSAAN-PENERAPAN.md`. Ringkas:
+
+1. **Repo:** `Niumination/Niu-Humanoid` (commit `1f2f997`, +283 berkas) dan `Niumination/mira-humanoid`
+   (`25fdce58` 65 berkas + `1c4a0af` catatan). **279/279 berkas paket masuk, 277 identik sha256, 0 hilang.**
+   `docs/PROGRESS.md` memuat sesi (6)(7)(8), `REBUILD-LOG.md` sampai F-76. Secret-scan bersih.
+2. **Build:** klon bersih lulus di keduanya — Niu `index-DyoQ8hKN.js` 226,20 kB (sha256 **sama** dengan yang
+   tersaji di `niu-humanoid.vercel.app`), MIRA `index-CgepBFsa.js` 395,39 kB.
+3. **Deploy APEX sah:** entry deploy vs produksi **MAE 0,00**; idle MAE **10,92** · kecerahan 19,3 vs 26,0 —
+   konsisten dengan `gate-deploy.json` lama (11,93 · 19,2 vs 27,5), bukan regresi.
+4. **Deploy MIRA TIDAK terbukti:** `mira-humanoid.vercel.app` menyajikan app **asli** (`index-1PiDnpcG.js`
+   1.185.588 B; tanpa `__MIRA_MATTER/WAVES/STRANDS`; ada `mediapipe`; log `hair picture: 47 strands`).
+   Piksel: URL itu vs ground truth `live-t95.png` = **MAE 0,61** (app sama), sedangkan build repo kita vs
+   ground truth = **MAE 12,52**. 10 kandidat hostname `mira-humanoid-*.vercel.app` → 404.
+   **App asli utuh** (tidak tertimpa), tapi **rebuild MIRA belum publik**.
+5. **Kode repo = kode workspace:** build repo MIRA vs `build-stage21.png` = **MAE 0,16** (kecerahan 44,8 = 44,8).
+6. **Temuan kecil:** `tsconfig.tsbuildinfo` ter-commit di Niu (sudah tercatat di CATATAN-TEMUAN);
+   cache `public/humanoid/*` 7 hari tanpa nama ber-hash.
+
+**Perlu dari pengguna:** URL deployment Vercel MIRA yang sebenarnya (atau deploy ulang dengan nama proyek
+lain, karena `mira-humanoid.vercel.app` milik app asli) + matikan Deployment Protection untuk production.
+
+## 2026-10-30 (10) — Deploy MIRA sah (mira-humanoid-niu) + langkah 3 bagian 1
+
+1. **URL produksi sah:** `https://mira-humanoid-niu.vercel.app` — 200, publik, judul MIRA Humanoid.
+   Bundle `/assets/index-CgepBFsa.js` 395.461 B, sha256 `cbecb4da…` **sama** dengan build ulang repo HEAD
+   (`36b6263`); penanda `__MIRA_MATTER/STRANDS/WAVES` ada, `mediapipe` tidak ada.
+2. **Gerbang piksel produksi:** vs `build-stage21.png` **MAE 0,14**; vs preview lokal 0,09; vs app asli
+   (GT) 12,53 (kecerahan 44,8 vs 39,6). Deploy = repo, bukan regresi.
+3. **Langkah 3 bagian 1 — jam build:** `uBT` rambut/helai/bintik diubah dari konstanta 100 → jam build.
+   `t=1,89`: MAE 31,61 → **25,14**; `t=9,5` tetap 12,53 (tidak merusak kondisi mapan).
+4. **Dua sisa terukur:** (a) `t<6,55` live hampir hitam (mean 3,0 di t=0,3) sementara rebuild 37,5 → latar
+   `field` belum punya ramp `iField`; (b) `t=6,8` live 61,2 vs rebuild 45,4 → kilatan ignition + cincin
+   kejut `35/36` (`uShock`) belum ada.
+
+**Berikutnya:** ramp `iField`/`iMatter` (latar muncul bersama build), cincin kejut `35/36` + percikan orb
+`33/34`, lalu garis glide `13/14`; sesudah itu gerbang C.
+
+## 2026-10-30 (11) — Langkah 3 bagian 2: ramp build, mask reveal, cincin kejut → fase build mendekati live
+
+1. `uBT` = jam build (F-77): `t=1,89` MAE 31,61 → 25,14.
+2. Ramp `iField/iMatter` + opacity kanvas latar (F-78) — rumus `Tw` disalin dari live, dan **terbukti** dari
+   DOM live (`opacity` kanvas latar 0,064 / 0,604 / 1,0 pada t = 0,3 / 1,89 / 9,5).
+3. Akar "figur tampil sejak frame pertama" (F-79): warna lapisan gambar tidak di-mask `filled` karena live
+   mengandalkan alpha kanvas. Di kanvas tunggal → kalikan rgb dengan `filled`. `t=0,3`: 18,05 → **3,19**.
+4. Cincin kejut ignition `35/36` + `qN` (F-80): `t=6,8` kecerahan 32,4 → 43,2 (live 61,2).
+5. Tabel fase terukur (MAE vs app asli): 0,3 → **3,19** · 1,89 → **20,06** · 3,5 → **15,27** · 5,5 → **18,46** ·
+   6,8 → **37,25** · 9,5 → **12,53** (tidak berubah = kondisi mapan aman).
+
+**Berikutnya:** lapisan **orb `25/26`** (15 kuad, `uOrbPx/uOrbR/uEnergy/uOpacity`) — inilah terang yang hilang
+pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu gerbang C.
