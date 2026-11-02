@@ -248,3 +248,17 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 3. Hasil (MAE vs app asli): 1,89 **20,06 → 13,92** · 3,5 **15,27 → 9,14** · 5,5 **18,46 → 14,30** ·
    6,8 37,25 → 35,45 · 9,5 12,53 → 12,89 · 0,3 3,19 → 4,30 (kecerahan 6,3 vs 3,0 — perlu ditelusuri).
 4. Sisa: **6,8** (live 61,2 vs kita 36,8) = kilatan ignition `13/14` + percikan `33/34`; lalu gerbang C.
+
+## 2026-11-01 (14) — Langkah 3 bagian 4: empat jam + parameter orb/gain
+
+1. **Sinkron upstream dicek:** Niu `b4617b6`, mira `4b7bde3`; `src/` identik (68/68), `tools/probe-mira-field.js`
+   sudah di repo, 0 berkas kode beda. Produksi `index-p8VjQZkw.js` sha256 = build repo HEAD.
+   Workspace: `CATATAN-TEMUAN.md` ditarik dari repo, 6 PNG `build7` dihapus (identik, 4,2 MB).
+2. **Temuan besar (F-82):** jam medan nebula di live saat `?t=` dipin adalah **0,150**, bukan jam build.
+   Diperbaiki → 9,5 MAE 12,89 → **9,89**; 6,8 35,45 → 34,87.
+3. Jam rambut/helai/bintik dan jam wajah dipisah (jam sendiri, tak ikut dipin) — sesuai ukur 0,045–0,2.
+4. Orb: `uOpacity = matter·0,3`, `uOrbPx/uOrbR` dari `iCenter/iRing` (721,35/622,08/111,47 @1440×900) →
+   mask "di belakang cincin" hidup lagi. Garis: `uGain = 0,95·(1+1,1·e^(−(t−6,55)/1,9))`.
+5. MAE terkini vs app asli: 0,3 **3,46** · 1,89 **13,45** · 3,5 **8,55** · 5,5 **13,72** · 6,8 **34,87** · 9,5 **9,89**.
+6. Sisa: (a) 6,8 = kilatan ignition `13/14`/`33/34` (live 61,2 vs kita 36,7); (b) kelebihan terang 9,5
+   +7,1 dari lapisan gambar/garis/rambut (cakupan piksel, bukan uniform).

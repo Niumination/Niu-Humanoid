@@ -576,3 +576,22 @@ Perbaikan: satu salinan utama (`lag 0, trail 1`) + tiga salinan jejak, `uSettle`
 
 Tiga angka sebelumnya (1,89 · 3,5 · 5,5) turun 20–40 %; 3,5 kini praktis tepat (22,6 vs 23,0).
 Sisa terbesar: **6,8** — live 61,2 vs rebuild 36,8: kilatan ignition (`hum.strike.flash` + `13/14`), belum ada.
+
+### F-82 · MIRA: empat jam berbeda + parameter orb/gain (dari pembacaan uniform app asli)
+Semua diukur dengan `tools/probe-mira-field.js` (dua konteks: medan `webgl` 1007×630, figur `webgl2` 1440×900).
+
+| hal | live | rebuild (sebelum) | akibat bila salah |
+|---|---|---|---|
+| jam medan nebula `iTime` saat `?t=` dipin | **0,150** di keempat fase | = jam build (0,3…9,5) | nebula bergeser jauh → latar gelap; **ini penyebab utama 9,5 (12,89) dan 6,8 (35,45)** |
+| rambut/helai/bintik `uClock`/`uTime` | 0,045 – 0,2 (jam sendiri, tak ikut dipin) | = jam build | rambut "bergerak 9,5 s" padahal live baru 0,05 s |
+| `uFaceA.z` (jam wajah) | 0,2 | 0 | ekspresi wajah beda fase |
+| orb `uOpacity` | `matter · 0,3` (0,0905 @1,89 · 0,30 @9,5) | 0,36 tetap | pita orb terlalu tebal |
+| orb `uOrbPx`/`uOrbR` | `iCenter·(w,h)` = 721,35 / 622,08 · `iRing·h` = 111,47 | (−9999,−9999) / 1 | mask "di belakang cincin" mati → pita menembus cincin emas |
+| garis `uGain` | `0,95·(1 + 1,1·q)`, `q = hum.build.surge · e^(−(t−6,55)/1,9)` → **1,1712 @9,5** | 0,95 tetap | kilau garis setelah ignition kurang |
+
+Hasil sesudah: **9,5 → 9,89** (dari 12,89), **6,8 → 34,87** (35,45), **0,3 → 3,46** (4,30), 3,5 → 8,55, 5,5 → 13,72, 1,89 → 13,45.
+
+Sisa terukur pada 9,5 (kita 46,7 vs live 39,6, kelebihan +7,1). Kontribusi tiap lapisan (uji `off=…`):
+gambar 10,0 · garis 6,5 · rambut 5,8 · bloom 4,5 · materi 0,4 · pita 0,8. Uniform lapisan-lapisan itu
+sudah sama dengan live, jadi sisa ini soal **cakupan piksel/komposisi**, bukan nilai uniform — perlu
+perbandingan per-lapisan berikutnya (gambar dulu: live menggambar lapisan gambar di dua tahap dengan alpha).
