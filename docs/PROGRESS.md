@@ -317,3 +317,15 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Gerbang build13: **3,43 · 8,98 · 7,24 · 12,17 · 13,41 · 9,89** (rata-rata **9,19**; build11 11,96).
 - Produksi: `index-Du1MXuMO.js` 484 600 B sha `f54625e9…`; klon segar repo + 2 berkas → sha identik.
 - Sisa terbesar sekarang: 5,5 (+8,1) · 9,5 (+7,1) · 1,89 (+7,3) — semuanya kelebihan terang, bukan geometri.
+
+### Sesi 18 (2026-11-02) — audit 9,5, alat dipulihkan, dua temuan diparkir
+
+- **F-91:** `e0Intensity` live = 0,9·(1+1,6·q) (terukur 2,1625 @6,8 · 1,2048 @9,5). Dipasang di balik `?bq=1`;
+  default tetap 0,9 karena net-negatif selama dasar masih terang (rata-rata 9,19 → 9,23).
+- **F-92:** dengan bloom dimatikan, dasar kita +16,1 lebih terang: figur +16,53 vs live +9,45,
+  latar kita +3,05 vs live ≈ +16,6 → masalah ada di **bentuk tekstur medan**, bukan alpha.
+- **F-93:** urutan perbaikan berikutnya (tekstur medan → turunkan figur → aktifkan F-91).
+- Alat: `tools/siapkan-alat.sh` (Playwright + chromium + pustaka + 6 acuan live ke `recon/live-ref/`),
+  `tools/probe-bloom.js`.
+- Kode **tidak berubah** dari build13 (tangkapan 1,89 & 6,8 identik per piksel dengan build13);
+  gerbang tetap 3,43 · 8,98 · 7,24 · 12,17 · 13,41 · 9,89 (rata-rata 9,19).
