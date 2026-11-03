@@ -329,3 +329,13 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
   `tools/probe-bloom.js`.
 - Kode **tidak berubah** dari build13 (tangkapan 1,89 & 6,8 identik per piksel dengan build13);
   gerbang tetap 3,43 · 8,98 · 7,24 · 12,17 · 13,41 · 9,89 (rata-rata 9,19).
+
+### Sesi 19 (2026-11-02) — akar masalah blending (F-94) → **build15**
+
+- **F-94:** semua material figur live memakai preset `vr` = CustomBlending (SRC_ALPHA, ONE, ZERO, ONE);
+  kode kita memakai (ONE, ONE, ZERO, ONE) → tiap fragmen alpha<1 terlalu terang dan alpha FBO figur
+  menumpuk sehingga latar medan tertutup. 13 pemanggilan blending diperbaiki.
+- **F-95:** dua tombol yang dulu diparkir kini menguntungkan: `bq` (F-91) diaktifkan, `hz` 1,0 → 0,2.
+- Gerbang build15: **1,93 · 3,99 · 5,75 · 9,30 · 10,32 · 6,22** (rata-rata **6,25**; build13 9,19).
+- Produksi: `index-BnGAAagM.js` sha `082cd9b3…`; klon segar repo + berkas baru → sha identik.
+- Sisa: 5,5 & 3,5 kini **kurang** terang (jadwal kemunculan lapisan gambar/garis/rambut di 3–6 s).
