@@ -488,3 +488,16 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - **Diterima:** `bb` 1,00 → 0,90 dan `bq` 0,70 → 0,85 (semua fase membaik/tertahan; 2,688 → 2,666).
 - Gerbang build31: **1,28 · 2,07 · 1,91 · 2,84 · 3,18 · 4,71 = 2,67** (blur4 2,17 · blur10 1,99).
 - Kesimpulan: sisa galat = detail frekuensi tinggi (butir/kilau/tekstur). `blur10` 1,99 = struktur besar sudah dekat.
+
+### Sesi 32 (2026-11-04) — sapuan 21 fase: galat terkonsentrasi di ignition (6,0–8,0); gerbang 6 fase terlalu sempit
+
+- Terverifikasi penuh paket 4d: produksi `index-B3kfpwXh.js`, repo `b703d26`, **225 berkas repo = 0 berbeda**.
+- Acuan baru **`recon/live-ref-v3/` (21 fase)** + render kita; alat: `tools/shot.js` seperti biasa.
+- Hasil: rata² 21 fase **5,43**; fase terbaik 3,0 (1,35); **terburuk 7,5 (29,70)**; 6,5 = 7,49; 8,0 = 10,28.
+  Enam fase gerbang lama semuanya 1,3–4,7 → gerbang lama tidak pernah melihat zona terburuk.
+- t=7,5: semua lapisan yang bisa diablasi hampir sama dengan live (pic 13,48/11,10 · hair 8,04/7,51 ·
+  lines 6,38/7,82 · arcs 0,00/0,00) tetapi rata bingkai 84,45 vs 57,50 → **kilatan ignition = peristiwa bloom**.
+  `bq=2,0` → 29,70 → 28,05 (belum cukup).
+- t=6,5: kita 13,45 vs live 7,00 (nebula 6,60 + materi 3,44); mematikan keduanya memburuk (7,78/8,82) →
+  masalahnya **kurva waktu**, bukan kelebihan salah satu lapisan.
+- Langkah berikut: gerbang diperluas ke 21 fase; sasaran utama 7,5 & 6,5 (bloom + kurva waktu).

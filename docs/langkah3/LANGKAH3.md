@@ -1172,3 +1172,66 @@ berhenti di titik optimum, (b) menggeser gambar 10 px memperburuk 78 %.
 
 Bukti visual: `banding-build31.jpg`. Knob riset baru (semua default netral):
 `?lb= ?hg= ?pp= ?qdx= ?qdy= ?bb=`.
+
+---
+
+## Bagian 22 — Sapuan 21 fase: pekerjaan fase-per-fase ternyata mengoptimasi puncak gunung es (pemeriksaan build31)
+
+Pemeriksaan penerapan 4d: produksi `index-B3kfpwXh.js`; repo `b703d26`; **225 berkas repo dibandingkan,
+0 berbeda** (blob `MiraStage` `414d650d…`, `comp.frag` `dd531eb6…`, `hp.frag` `56794e7e…` = lokal);
+build ulang lokal = `index-B3kfpwXh.js` yang sama. Penerapan **terverifikasi penuh**.
+
+### 22.1 Alat baru: acuan 21 fase
+
+Selama ini gerbang hanya menguji **6 fase** (0,3 · 1,89 · 3,5 · 5,5 · 6,8 · 9,5). Sesi ini diambil acuan
+baru `recon/live-ref-v3/` untuk **21 fase** (0,5 · 1,0 · 1,5 · 2,0 · 2,5 · 3,0 · 4,0 · 4,5 · 5,0 · 6,0 ·
+6,5 · 7,0 · 7,5 · 8,0 · 8,5 · 9,0 · 10,0 · 10,5 · 11,0 · 11,5 · 12,0) dari app asli, lalu frame kita
+dirender untuk fase yang sama.
+
+### 22.2 Hasil sapuan (RGB-MAE vs app asli)
+
+| t | 0,5 | 1,0 | 1,5 | 2,0 | 2,5 | 3,0 | 4,0 | 4,5 | 5,0 | 6,0 | 6,5 | 7,0 | **7,5** | 8,0 | 8,5 | 9,0 | 10,0 | 10,5 | 11,0 | 11,5 | 12,0 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| MAE | 2,56 | 4,83 | 1,44 | 2,00 | 1,63 | **1,35** | 2,01 | 2,88 | 2,91 | 3,74 | 7,49 | 6,12 | **29,70** | 10,28 | 6,00 | 5,11 | 4,57 | 4,64 | 4,96 | 4,88 | 4,94 |
+
+Rata-rata 21 fase **5,43**; 13 fase di bawah 5,0; **satu fase (7,5) menyumbang 29,70** dan menarik rata-rata.
+Enam fase gerbang lama semuanya berada di 1,3–4,7 — artinya gerbang lama memang tidak pernah "melihat"
+dua zona terburuk: **sekitar ignition (6,0–8,0)**.
+
+### 22.3 Anatomi t=7,5 (fase terburuk): kilatan yang tidak bisa diablasi
+
+| lapisan | live | kita |
+|---|---|---|
+| pic | 13,48 | 11,10 |
+| hair | 8,04 | 7,51 |
+| lines | 6,38 | 7,82 |
+| matter / waves / arcs | 0,11 / 0,25 / 0,00 | 0,15 / 0,41 / 0,00 |
+| **rata bingkai** | **84,45** | **57,50** |
+
+Selisih +26,95 itu **tidak dimiliki lapisan mana pun** (semua lapisan yang bisa dimatikan hampir sama
+besar). Sisa = bloom (tidak bisa diablasi di app asli). Jadi **kilatan ignition di app asli adalah peristiwa
+bloom**, bukan peristiwa lapisan cahaya. `?bq=2,0` (lonjakan bloom 2,4×) hanya menurunkan 29,70 → 28,05.
+
+### 22.4 Anatomi t=6,5 (sebelum ignition) — kita terlalu terang
+
+live 7,00 · kita 13,45. Kontribusi kita: nebula (`field`) **6,60** · materi 3,44 · waves 0,24.
+Tetapi mematikan keduanya justru memburuk (MAE 7,49 → 7,78 dengan `mg=0`, → 8,82 dengan `fk=0`;
+pada t=5,0: 2,91 → 5,62 / 5,81). Jadi kelebihan terang sebelum ignition **bukan** karena salah satu lapisan
+kelebihan, melainkan karena kurva waktu (kapan tiap lapisan menyala) belum tepat.
+
+### 22.5 Catatan kecil yang dikunci
+
+- Pita helai (`strands`) di build kita menyumbang **+1,38** pada t=9,5, sedangkan di live **+0,01**
+  (di app asli helai terangkat masih diam pada fase itu). Tetapi mematikannya tidak mengubah MAE
+  (2,666 → 2,666) → bukan prioritas; jangan dikejar sebagai "perbaikan angka".
+- Frame kita **deterministik**: 5 dari 6 fase identik byte-per-byte dengan build30; fase 0,3 berbeda
+  694 piksel (0,02 rata) karena kebetulan frame tangkapan jam medan, bukan perubahan kode.
+
+### 22.6 Kesimpulan arah (penting)
+
+Gerbang 6 fase membuat kita mengoptimasi **puncak gunung es**: 15 fase lain belum pernah diukur. Zona
+6,0–8,0 (ignition + kilatan) adalah tempat seluruh galat terkonsentrasi, dan itu **wilayah bloom +
+kurva waktu**, bukan lapisan gambar. Langkah berikutnya harus: (a) gerbang diperluas ke 21 fase ini,
+(b) sasaran utama **t=7,5 dan t=6,5**, bukan lagi 6,8/9,5.
+
+Bukti visual: `banding-21fase.jpg` (live · kita · |selisih|×3, 21 fase).
