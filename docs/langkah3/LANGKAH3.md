@@ -1235,3 +1235,65 @@ kurva waktu**, bukan lapisan gambar. Langkah berikutnya harus: (a) gerbang diper
 (b) sasaran utama **t=7,5 dan t=6,5**, bukan lagi 6,8/9,5.
 
 Bukti visual: `banding-21fase.jpg` (live · kita · |selisih|×3, 21 fase).
+
+---
+
+## Bagian 23 — Gerbang 21 fase memecahkan dua hal besar: bidang cincin kejut & takikan haze (build32)
+
+Pemeriksaan penerapan 4e: paket itu hanya dokumentasi (tanpa kode), dan memang tidak ada perubahan produksi.
+Sesi ini menyerang **t=7,5 (29,70)** dan **t=6,5 (7,49)** yang ditemukan di Bagian 22.
+
+### 23.1 F-129 (DITERIMA): bidang cincin kejut 9× gambar, bukan sebesar gambar
+
+Di bundle live, cincin kejut dibuat sebagai
+
+```js
+const Q = new PlaneGeometry(E*9, E*9); Q.translate(e.star.x, e.star.y, 0)
+```
+
+yaitu bidang **9 × lebar gambar** yang digeser ke titik bintang → menutupi seluruh layar. Port kita memakai
+kuad seukuran gambar (0…fw, 0…fh) di `mvPoints`, sehingga gelombang **terpotong di tepi gambar**: yang tampak
+hanya kotak terang, bukan cincin raksasa yang menyapu seluruh bingkai. Itulah wujud galat di 7,0–8,0.
+
+Perbaikan: kuad kejut kini dibangun di sekitar titik bintang dengan setengah-sisi `4,5 × lebar gambar`.
+
+| t | sebelum | sesudah F-129 |
+|---|---|---|
+| 7,0 | 6,12 | **3,79** |
+| **7,5** | **29,70** | **5,28** |
+| 8,0 | 10,28 | **5,38** |
+| 8,5 | 6,00 | 4,65 |
+| 9,0 | 5,11 | 4,78 |
+
+Kalibrasi kekuatan cincin `?rg=`: 1,00 → 6,32 · **1,15 → 4,53** · 1,25 → 4,76 · 1,30 → 5,25 · 1,60 → 8,38
+(pada t=7,4; 1,15 juga terbaik di 6,8 (3,19), 7,5 (5,28) dan 8,0 (5,38)). `rg` default **1,15**.
+Melebarkan pita (`?rw=1,4`) tidak membantu.
+
+### 23.2 F-130 (DITERIMA): haze lebar punya TAKIKAN sebelum ignition
+
+Pada t=6,4–6,5 build kita **12,9** sedangkan live **7,0**: bola sudah berpendar sebelum app asli
+menyalakannya. Penyebabnya denyut haze `3,56·exp(−((t−6,9)/0,75)²)` yang masih bernilai 64 % pada 6,4.
+Tetapi haze itu **memang ada** di live pada 5,5 dan 6,0 (mematikannya membuat 5,5 memburuk 2,84 → 2,99).
+Jadi bentuk yang benar bukan "gerbang mulai ignition", melainkan **takikan sempit**:
+
+```
+notch = 1 − smoothstep(t; 5,75; 6,15) · (1 − smoothstep(t; ignite−0,02; ignite+0,10))
+```
+
+Hasil: t=5,5 **2,84** (utuh), t=6,0 **2,34** (dari 3,74), t=6,4–6,5 **1,50** (dari 12,9/7,49).
+
+### 23.3 Gerbang 21 fase: build31 → build32
+
+| t | 0,5 | 1,0 | 1,5 | 2,0 | 2,5 | 3,0 | 4,0 | 4,5 | 5,0 | 6,0 | 6,5 | 7,0 | **7,5** | 8,0 | 8,5 | 9,0 | 10,0 | 10,5 | 11,0 | 11,5 | 12,0 | rata² |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| build31 | 2,56 | 4,83 | 1,44 | 2,00 | 1,63 | 1,35 | 2,01 | 2,88 | 2,91 | 3,74 | 7,49 | 6,12 | **29,70** | 10,28 | 6,00 | 5,11 | 4,57 | 4,64 | 4,96 | 4,88 | 4,94 | 5,43 |
+| **build32** | 2,56 | 4,83 | 1,44 | 2,00 | 1,63 | 1,35 | 2,01 | 2,88 | 2,91 | **2,34** | **1,50** | **3,79** | **5,28** | **5,38** | **4,65** | **4,78** | 4,57 | 4,64 | 4,96 | 4,88 | 4,94 | **3,49** |
+
+### 23.4 Gerbang 6 fase (lama) tetap terjaga
+
+| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
+|---|---|---|---|---|---|---|---|---|---|
+| build31 | 1,28 | 2,07 | 1,91 | 2,84 | 3,18 | 4,71 | 2,67 | 2,17 | 1,99 |
+| **build32** | 1,28 | 2,07 | 1,91 | 2,84 | **3,05** | 4,71 | **2,64** | **2,15** | **1,97** |
+
+Tidak ada fase yang memburuk. Bukti visual: `banding-build32.jpg` (termasuk 7,0 & 7,5 yang tadinya kotak terang).
