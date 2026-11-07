@@ -1506,3 +1506,91 @@ Kelebihan dada +9,96 **tidak bisa** ditutup satu knob: yang salah adalah **pemba
 Langkah berikutnya harus **menyeimbangkan tiga lapisan sekaligus** dengan sasaran terukur per lapisan
 (dada: gambar 43,6 · rambut +33,8 · bloom +4,9), bukan mengejar MAE total satu fase.
 Fase terburuk sekarang: 8,0 (5,38) · 7,5 (5,28) · 11,0 (4,82) · 12,0 (4,79) · 9,0 (4,78) · 11,5 (4,74).
+
+
+---
+
+## Bagian 26 — Sesi 36: profil bloom terhadap waktu (bukan skalanya) — fase 7,5 & 8,0
+
+### 26.1 Verifikasi paket 4h (LULUS)
+
+| pemeriksaan | hasil |
+|---|---|
+| produksi | `assets/index-CWsd9OOS.js` |
+| repo head | `4fcba39` — "langkah 4h (build34): F-134 plato bloom akhir gerbang t=10,2 + knob nm/nh/pgg/pge/hgg" |
+| blob `MiraStage.tsx` | `66731b32d7dd79bd` · 83 986 B = lokal |
+| blob `picColor.frag.glsl` | `4f94c7632488c4b1` · 8 742 B = lokal |
+| build ulang lokal | `index-CWsd9OOS.js`, sha256 `cf240796…` **identik byte** dengan produksi |
+
+### 26.2 Hipotesis yang gugur lebih dulu
+
+Pola galatnya (7,5–8,0 kita **gelap**, 9–12 kita **terang**) menyerupai amplop *surge* pasca-ignition yang
+meluruh terlalu cepat. Diperiksa langsung di bundle live:
+
+```
+P_ = (i, e, t = 1.9) => i >= e && i < e + 8 ? Math.exp(-(i - e) / t) : 0
+```
+
+Rumus kita `qSurge = me >= 0 && me < 8 ? exp(-me/1.9) : 0` **identik** → bukan penyebab. (Tercatat di
+`REBUILD-LOG.md` supaya tidak dicek ulang.)
+
+### 26.3 Ablasi lapisan pada t=8,0 (fase terburuk)
+
+Wilayah figur: baris 200–700, kolom 450–1000. Penuh: **live 106,30 vs kita 102,30 (−4,00)**.
+
+| lapisan | live (figur) | kita (figur) |
+|---|---|---|
+| `hair` | +22,76 | +21,92 |
+| `lines` | +3,72 | +3,72 |
+| `matter` | +0,24 | +0,29 |
+| `waves` | +0,41 | +0,46 |
+| `strands` | — | +4,71 |
+| `twinkles` | — | +0,32 |
+| **bloom** (dial `hum.glow.strength=0`) | **+13,55** | **+10,54** |
+
+Semua lapisan lain sudah setara; **hanya bloom yang kurang 3,0** — dan pada t=11,0 bloom kita justru
+**lebih 3,0** (+7,99 vs +4,94). Jadi masalahnya **bentuk profil bloom terhadap waktu**, bukan skalanya.
+
+Penjelasan mekanisnya: kernel bloom kita lebih lemah pada masukan terang. Figur baru menyala pada t≈8
+(figur mean 102) sehingga sumber HDR tinggi dan ambang menahan lebih banyak; pada t≈11 figur meredup
+(mean 43) dan selisih kernel mengecil. Pengali kompensasi `bgK` karena itu harus **besar tepat sesudah
+ignition** lalu mengecil — bukan plato datar seperti sebelumnya.
+
+### 26.4 Kalibrasi bump (F-135)
+
+```
+kabut = bbu · exp(−((t − bbc)/bbw)²)
+bgK   = 2,0 − 0,5·xs(t; 5,8; 7,2) − 0,15·xs(t; 10,2; 10,6) + kabut
+```
+
+| varian | 7,0 | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 |
+|---|---|---|---|---|---|---|
+| dasar (build34) | 3,79 | 5,28 | 5,38 | 4,65 | 4,78 | 4,71 |
+| bbu 0,4 (lebar 0,9) | — | 4,80 | 5,05 | — | — | — |
+| bbu 0,7 (lebar 0,9) | — | **4,65** | 4,90 | — | 4,86 | 4,75 |
+| bbu 1,0 (lebar 0,9) | — | 4,68 | 4,85 | — | 4,93 | 4,78 |
+| bbu 1,4 (lebar 0,9) | — | 4,88 | 4,92 | — | 5,05 | 4,81 |
+| bbu 0,75 · lebar 0,70 (pusat 8,2) | — | 4,73 | 4,89 | 4,63 | 4,82 | 4,72 |
+| bbu 0,8 · lebar 0,8 (pusat 8,0) | 3,96 | 4,67 | 4,86 | 4,60 | 4,81 | — |
+| **bbu 0,85 · lebar 0,68 (pusat 8,1)** | **3,81** | **4,65** | **4,86** | **4,62** | **4,80** | **4,72** |
+
+Amplitudo **monoton membaik sampai ≈0,85 lalu memburuk** (1,4 → 7,5 naik lagi ke 4,88): bump terlalu besar
+membuat figur menyala *terlalu* cepat. Lebar 0,68 dipilih supaya t=7,0 dan t≥9,0 **nyaris tak tersentuh**
+(kerugian maksimum +0,02) — bump lebar 0,9 merusak 7,0 (3,79 → 3,96) dan 9,0 (4,86).
+
+### 26.5 Gerbang build35
+
+| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
+|---|---|---|---|---|---|---|---|---|---|
+| build34 | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | 2,62 | 2,12 | 1,95 |
+| **build35** | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,72 | **2,62** | **2,12** | **1,95** |
+
+Gerbang 24 fase: **3,20 → 3,15**. Perubahan: 7,5 **5,28 → 4,65** · 8,0 **5,38 → 4,86** · 8,5 4,65 → 4,62 ·
+9,0 4,78 → 4,80 · 7,0 3,79 → 3,81 · 6,8 3,05 → 3,06 · 9,5 4,71 → 4,72 (kerugian ≤ 0,02).
+
+### 26.6 Sasaran berikut
+
+Enam fase masih 4,6–4,9 dan semuanya **wilayah figur penuh (t ≥ 8,0)**: 8,0 (4,86) · 11,0 (4,82) · 9,0 (4,80) ·
+12,0 (4,79) · 11,5 (4,74) · 9,5 (4,72). Setelah F-135, selisih kecerahan total tinggal +1…+2 (kita sedikit
+lebih terang), jadi sisa galat bukan lagi soal terang total melainkan **sebaran** — berikutnya: peta selisih
+per-blok pada t=11,0 setelah F-133/F-135 untuk melihat apakah kelebihan berpindah dari dada ke tepi tubuh.

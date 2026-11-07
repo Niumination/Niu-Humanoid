@@ -611,3 +611,14 @@ perbandingan per-lapisan berikutnya (gambar dulu: live menggambar lapisan gambar
 live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini terdokumentasi
 (`hum.body.bright`=1, `hum.glow.strength`=0,9, `hum.glow.threshold`=0,6, `hum.glow.radius`=0,62,
 `hum.hair.light`=1, `hum.lines.bright`=0,15, …).
+
+
+## Sesi 36 (2026-11-06) — F-135
+
+| # | temuan | angka |
+|---|---|---|
+| **F-135** | Profil bloom terhadap waktu **salah bentuk**. Ablasi t=8,0 (figur): bloom live +13,55 vs kita +10,54 (kurang 3,0); t=11,0: live +4,94 vs kita +7,99 (lebih 3,0). Sebab: kernel bloom kita lebih lemah pada masukan terang, jadi kompensasi `bgK` harus besar tepat sesudah ignition lalu mengecil. **Diterima:** `kabut = 0,85·exp(−((t−8,1)/0,68)²)` ditambahkan ke `bgK` (knob `?bbu= ?bbc= ?bbw=`). | 7,5 **5,28 → 4,65** · 8,0 **5,38 → 4,86** · 8,5 4,65 → 4,62 · 24 fase **3,20 → 3,15**; kerugian ≤ +0,02 (7,0 · 9,0 · 6,8 · 9,5) |
+| **G-1** | Amplop surge live **sudah** identik: `P_(i,e,t=1.9)=>i>=e&&i<e+8?exp(-(i-e)/t):0` — hipotesis "surge meluruh terlalu cepat" **gugur**, jangan diuji ulang. | — |
+
+**Kalibrasi F-135 (MAE, t=7,5 / 8,0):** 0,4 → 4,80/5,05 · 0,7 → **4,65**/4,90 · 1,0 → 4,68/4,85 ·
+1,4 → 4,88/4,92 (memburuk) · lebar 0,68 pusat 8,1 → **4,65/4,86** dan 7,0 tetap 3,81.

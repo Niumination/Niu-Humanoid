@@ -553,3 +553,25 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Paket **`niu-update-langkah4h.zip`** (kode + shader + docs + PNG + acuan).
 - Berikutnya: menyeimbangkan **tiga lapisan sekaligus** (gambar −, rambut +, bloom −) dengan sasaran terukur
   per lapisan; fase terburuk 8,0 (5,38) dan 7,5 (5,28) justru berada di wilayah yang sebaliknya (kita terlalu gelap).
+
+
+### Sesi 36 (2026-11-06) — profil bloom terhadap waktu → **build35**
+
+- **Verifikasi paket 4h LULUS:** produksi `index-CWsd9OOS.js`, repo `4fcba39`, blob `MiraStage.tsx`
+  `66731b32d7dd79bd` (83 986 B) & `picColor.frag.glsl` `4f94c7632488c4b1` = lokal; build ulang **identik byte**
+  (sha256 `cf240796…`).
+- Catatan alat: `/tmp` (playwright) hilang antar-sesi → jalankan `bash tools/siapkan-alat.sh` dan
+  `vite preview` lagi; **dua proses chromium paralel saling mematikan** (swiftshader) → sapuan render harus
+  **berurutan**. Glitch snapshot juga menghapus `LANGKAH3.md` Bagian 25 + 12 PNG build34 dari workspace →
+  dipulihkan dari paket 4h.
+- Hipotesis amplop surge **gugur**: rumus live `P_(i,e,1.9)=exp(−(i−e)/1,9)` identik dengan kita.
+- Ablasi t=8,0 (figur 200–700 × 450–1000): live 106,30 vs kita 102,30. Semua lapisan setara **kecuali bloom**
+  (live +13,55 vs kita +10,54) — sedangkan pada 11,0 bloom kita justru lebih (+7,99 vs +4,94).
+- **F-135 DITERIMA:** bump bloom bergerbang waktu `kabut = 0,85·exp(−((t−8,1)/0,68)²)` ditambahkan ke `bgK`.
+  Kalibrasi: 0,4 → 7,5 4,80 · 0,7 → 4,65/8,0 4,90 · 1,0 → 4,68/4,85 · **1,4 → memburuk (4,88)**;
+  lebar 0,9 merusak 7,0 (3,96) → lebar **0,68** dengan pusat 8,1.
+- **Gerbang build35:** 6 fase 1,14 · 2,07 · 1,91 · 2,84 · 3,06 · 4,72 = **2,62** (blur4 2,12 · blur10 1,95);
+  24 fase **3,20 → 3,15**, dengan 7,5 **5,28 → 4,65** dan 8,0 **5,38 → 4,86**; kerugian maksimum +0,02.
+- Paket **`niu-update-langkah4i.zip`**.
+- Berikutnya: enam fase sisa (8,0 · 11,0 · 9,0 · 12,0 · 11,5 · 9,5 ≈ 4,6–4,9) selisih terang totalnya hanya
+  +1…+2 → sisa galat adalah soal **sebaran**, bukan jumlah cahaya.
