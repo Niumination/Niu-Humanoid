@@ -595,3 +595,19 @@ Sisa terukur pada 9,5 (kita 46,7 vs live 39,6, kelebihan +7,1). Kontribusi tiap 
 gambar 10,0 · garis 6,5 · rambut 5,8 · bloom 4,5 · materi 0,4 · pita 0,8. Uniform lapisan-lapisan itu
 sudah sama dengan live, jadi sisa ini soal **cakupan piksel/komposisi**, bukan nilai uniform — perlu
 perbandingan per-lapisan berikutnya (gambar dulu: live menggambar lapisan gambar di dua tahap dengan alpha).
+
+
+## Sesi 35 (2026-11-06) — F-132…F-134
+
+| # | temuan | angka |
+|---|---|---|
+| **F-132** | Mipmap gambar 1145×1374 (digambar 0,59×) dirata-ratakan ke mip 1 → dugaan "kabut ungu". Uji `?nm=1` (tanpa mipmap) + `?nh=1` (rambut). | 11,0: 4,96 → **5,29** (nm=1) · 5,23 (nm=1&nh=1) → **mipmap justru membantu, knob default mati** |
+| **F-133** | Tekstur gambar didekode **dua kali** di live (SRGB8_ALPHA8 + EOTF sRGB di shader, perilaku three.js). Bukti: mid-tone dada kita 1,93× live tetapi puncak terang hanya 1,07×. Knob `?pgg=<gamma>` dan `?pge=1` (EOTF eksak). | gambar-saja t=11,0: MAE **8,19 → 2,08** (pge) · dada 77,5 → 46,3 vs live 47,2. Tumpukan penuh: **9,35** → ditolak sebagai default |
+| **F-133b** | `?hgg=` gain rambut tersendiri (sebelumnya `?fg=` mengubah gambar+rambut+helai+bintik sekaligus, sehingga sapuan lama tidak bisa memisahkan penyebab). | rambut dada kita +25,9 vs live +33,5 (bloom mati) |
+| **F-134** | Platon akhir `bgK` 1,50 membuat bloom kita 1,6× live pada t>10 (dada +7,99 vs +4,94), sementara fase 7–9 masih membutuhkan bloom penuh. **Diterima:** `bgK = 2,0 − 0,5·xs(t;5,8;7,2) − 0,15·xs(t;10,2;10,6)`. | 10,5 4,64→**4,53** · 11,0 4,96→**4,82** · 11,5 4,88→**4,74** · 12,0 4,94→**4,79** · 7,5/8,0/9,0/9,5 tetap |
+
+**Jebakan alat (dicatat supaya tidak terulang):** `?off=bloom` di live membuang **seluruh composer postprocessing**
+(bukan hanya bloom), sehingga `off=bloom` live-vs-kita bukan pembanding setara. Untuk mengukur kontribusi bloom
+live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini terdokumentasi
+(`hum.body.bright`=1, `hum.glow.strength`=0,9, `hum.glow.threshold`=0,6, `hum.glow.radius`=0,62,
+`hum.hair.light`=1, `hum.lines.bright`=0,15, …).

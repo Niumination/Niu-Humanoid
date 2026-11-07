@@ -527,3 +527,29 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Acuan fase awal 0,7–1,3 ditambahkan ke `recon/live-ref-v3/` (total 27 fase).
 - Sisa terburuk sekarang: 8,0 (5,38) · 7,5 (5,28) · 11,0 (4,96) · 12,0 (4,94) · 11,5 (4,88) — semuanya wilayah
   dada/tepi (peta selisih 11,0: +15,5 di blok dada kiri-tengah).
+
+
+### Sesi 35 (2026-11-06) — verifikasi 4g + diagnosis dada/torso → **build34**
+
+- **Verifikasi paket 4g LULUS:** produksi `assets/index-Er3c1CLa.js`; repo head `d534b49`; blob
+  `MiraStage.tsx` = `e33acf06556a164d` (82 843 B) = lokal; `npm ci` + `npm run build` → berkas **identik byte**
+  (sha256 `8ace0810…` di kedua sisi).
+- Tiga pemeriksaan dasar untuk t=11,0: **tidak ada** pergeseran waktu (10,9/11,05/11,1 → 4,72/4,79/5,01),
+  acuan live **deterministik** (live-vs-live MAE 0,08), dan geometri **tepat** (optimum skala 1,00 geser 0,0).
+- Ablasi lapisan kita & live pada 11,0. Temuan penting: **`?off=bloom` di live membuang seluruh composer** →
+  kontribusi bloom live harus diukur dengan dial resmi `?dial.hum.glow.strength=0` (+4,94 dada, bukan +43,33).
+- Diagnosis: **pembagian beban lapisan berbeda** — gambar kita +30 terlalu terang di dada, rambut kita −8
+  terlalu lemah, bloom kita 1,6× terlalu kuat; totalnya hanya +9,96 karena dua kesalahan pertama saling menutupi.
+- **F-133 (ditambah, default MATI):** koreksi tonal gambar (`?pgg=` pow, `?pge=1` EOTF sRGB eksak). Di harness
+  gambar-saja EOTF eksak menurunkan MAE dada **8,19 → 2,08** (dada 77,5 → 46,3 vs live 47,2), tetapi di
+  tumpukan penuh menjadi 9,35 → **ditolak sebagai default**, disimpan sebagai knob riset.
+- Ditolak juga: `nm=1` (5,29), `bo=1` (10,13), `bb=2,5/4,0` (7,78/10,28), `bb=4,0&bt=1,2` (7,5 → 7,12),
+  `ur=0,5&bb=0,75` (11,0 4,68 ✓ tetapi 7,5 8,25 ✗), `hgg=1,4`+`pge=1` (10,74).
+- **F-134 DITERIMA:** plato akhir `bgK` 1,50 → 1,35 mulai t≈10,2 (bergerbang waktu, bukan skala global):
+  10,5 4,64→**4,53** · 11,0 4,96→**4,82** · 11,5 4,88→**4,74** · 12,0 4,94→**4,79**; fase 7,5/8,0/9,0/9,5
+  **tidak berubah sama sekali**.
+- **Gerbang build34:** 6 fase 1,14 · 2,07 · 1,91 · 2,84 · 3,05 · 4,71 = **2,62** (identik, tanpa regresi);
+  24 fase **3,22 → 3,20**. Alat baru `tools/metric3.py` (acuan v3 + jatuh ke v2 + `--grid`).
+- Paket **`niu-update-langkah4h.zip`** (kode + shader + docs + PNG + acuan).
+- Berikutnya: menyeimbangkan **tiga lapisan sekaligus** (gambar −, rambut +, bloom −) dengan sasaran terukur
+  per lapisan; fase terburuk 8,0 (5,38) dan 7,5 (5,28) justru berada di wilayah yang sebaliknya (kita terlalu gelap).

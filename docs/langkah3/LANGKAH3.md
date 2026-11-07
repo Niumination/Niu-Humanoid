@@ -1374,3 +1374,135 @@ Gerbang 6 fase:
 Gerbang 24 fase (rata-rata): **3,56 → 3,22**, tanpa satu fase pun memburuk selain 1,5 (+0,03).
 Acuan fase awal (0,7–1,3) kini tersimpan di `recon/live-ref-v3/ref_-*.png`.
 Bukti visual: `banding-build33.jpg`.
+
+
+---
+
+## Bagian 25 — Sesi 35: dada/torso (t 9–12) — diagnosis berlapis, penyeimbangan lapisan
+
+Sasaran sesi: peta selisih t=11,0 menunjukkan kelebihan **+9…+15 di blok dada/torso** (bukan tata letak).
+Sebelum menawar angka, tiga pemeriksaan dasar dijalankan lebih dulu.
+
+### 25.1 Tiga pemeriksaan dasar (semuanya negatif — bagus, berarti bukan itu)
+
+| dugaan | uji | hasil |
+|---|---|---|
+| fase akhir kita **bergeser waktu** vs live | live t=10,9 / 11,05 / 11,1 diukur ulang | 4,72 / 4,79 / 5,01 — semua di sekitar acuan 4,96 → tidak ada pergeseran |
+| acuan live tidak deterministik | dua tangkapan live t=11,0 | **MAE 0,08 · blur4 0,04** → live deterministik, acuan sahih |
+| figur kita **digeser/di-skala** | cari skala & geseran optimal (blur8) | optimum tepat **skala 1,00, geser (0,0)** → geometri benar |
+
+Acuan baru disimpan: `recon/live-ref-v3/lt-10.9.png`, `lt-11.05.png`, `lt-11.1.png`, `var-11.0-2.png`.
+
+### 25.2 Ablasi lapisan, kita **dan** live, pada t=11,0
+
+Energi lapisan = (render penuh − render `off=lapisan`), diukur pada kotak dada (baris 330–580, kolom 560–940).
+
+| lapisan | kita: dada / seluruh | live: dada / seluruh |
+|---|---|---|
+| `hair` | **+33,92** / +7,33 | **+33,84** / +6,74 |
+| `strands` | +5,29 / +1,29 | (ikut `hair`) |
+| `lines` (termasuk `wire`) | +2,68 / +1,40 | +2,42 / +1,23 |
+| `bloom` | +7,99 / +2,55 | +4,94 / +1,62 |
+| `waves` | +0,53 / +0,63 | +0,02 / +0,68 |
+| `matter` | +0,29 / +0,11 | +0,24 / +0,10 |
+| `twinkles` | +0,29 / +0,11 | — |
+| `core`, `lights` | 0,00 / 0,00 | 0,00 / 0,00 |
+
+**Jebakan yang ditemukan:** `?off=bloom` di live **membuang seluruh composer** (bukan hanya bloom), sehingga
+kontribusi bloom live tampak +43,33 di dada — angka itu artefak. Pengganti yang sah: dial resmi live
+`?dial.hum.glow.strength=0` → kontribusi bloom live yang sebenarnya **+4,94 dada / +1,62 seluruh**.
+Semua angka "adil" di bawah memakai dial ini.
+
+### 25.3 Pembagian beban lapisan kita berbeda dari live
+
+Harness **gambar-saja** (`?off=hair,lines,matter,waves,bloom,strands,twinkles` di kedua sisi, jadi pipeline-nya sama):
+
+| | dada | seluruh |
+|---|---|---|
+| live | 43,56 | 24,18 |
+| kita | **63,54** | **31,14** |
+| sumber `mira-idle-v1.webp` (kotak yang sama) | 59,53 | — |
+
+Tanpa bloom (dial glow 0 di live, `off=bloom` di kita): **live 68,58 dada / kita 83,03 (+14,45)** tanpa hair.
+Jadi: **gambar kita terlalu terang, tetapi rambut/glow kita terlalu lemah** — dua kesalahan yang sebagian
+saling menutupi sehingga total dada hanya +9,96. Ini sebabnya setiap knob **tunggal** gagal.
+
+### 25.4 Koreksi tonal gambar (F-133) — menang terisolasi, kalah di tumpukan penuh
+
+Distribusi dada t=11,0 (gambar-saja): mid-tone kita **1,93×** live (p50 57,3 vs 29,7) tetapi puncak terang
+hanya **1,07×** (p99 249,7 vs 233,7) → bukan soal gain, melainkan **lengkung tonal**. Itu gejala live
+men-dekode gambar **dua kali** (internalFormat `SRGB8_ALPHA8` + EOTF sRGB di shader — perilaku three.js).
+
+Kalibrasi di harness gambar-saja (dada / MAE):
+
+| varian | dada | MAE |
+|---|---|---|
+| dasar (uPG=1) | 77,51 | 8,19 |
+| `?pgg=1,2` | 67,03 | 5,88 |
+| `?pgg=1,4` | 59,33 | 4,26 |
+| `?pgg=1,6` | 53,60 | 3,16 |
+| `?pgg=1,8` | 49,25 | 2,49 |
+| `?pgg=2,0` | 45,88 | 2,28 |
+| **`?pge=1` (EOTF sRGB eksak)** | **46,25** | **2,08** |
+| acuan live | 47,16 | — |
+
+Tetapi di **tumpukan penuh** hasilnya berbalik dan ditolak: `?pge=1` → 11,0 **9,35** (dari 4,96),
+8,0 10,76, 9,0 10,10; `?pgg=1,2` → 11,0 5,89 · 9,5 6,16 · 8,0 7,06 (fase 3,5/5,5 tetap).
+Artinya: menggelapkan gambar saja akan membuat total terlalu gelap — persis karena §25.3
+(lapisan lain kita memang kurang). **Knob tetap ada, default mati (`pgg=1`, `pge=0`) → piksel sama dengan build33.**
+
+### 25.5 Yang diuji dan ditolak (jangan diulang)
+
+| uji | hasil | keputusan |
+|---|---|---|
+| `?nm=1` (gambar tanpa mipmap) | 11,0 4,96 → **5,29**; `nm=1&nh=1` 5,23 | mipmap justru membantu → tolak |
+| `?bo=1` (awan titik tubuh dinyalakan) | 11,0 → **10,13** | default mati sudah benar |
+| `?bb=2,5` / `?bb=4,0` (bloom naik) | 11,0 7,78 / 10,28 · 7,5 8,99 / 14,66 | bloom bukan kekurangan |
+| `?bb=4,0&bt=1,2` | 11,0 4,76 tetapi 7,5 **7,12** | naikkan ambang = matikan bloom → tolak |
+| `?ur=0,5&bb=0,75` (bloom lebih sempit+redup) | 11,0 **4,68** · 12,0 4,50 ✓ tetapi 7,0 7,27 · 7,5 8,25 · 8,0 6,62 ✗ | global → tolak |
+| `?hgg=1,4` + `pge=1` | 11,0 10,74 · 9,0 10,87 | menaikkan rambut sebagai blob melebar → tolak |
+| `?lg=0,9` (sesi 34) | 11,0 4,93 ✓ tetapi 7,5 5,77 ✗ | sudah ditolak |
+
+### 25.6 F-134 — DITERIMA: plato akhir bloom diturunkan, dengan gerbang waktu
+
+Kontribusi bloom kita pada fase akhir **1,6× live** (+7,99 vs +4,94 di dada), sedangkan pada fase 7–9 bloom
+kita justru **dibutuhkan** (badan kita terlalu gelap di sana: 7,5 → mean 82,4 vs live 84,5; menurunkan bloom
+global membuat 7,5 memburuk 5,28 → 8,25). Maka penurunannya **digerbangi waktu**:
+
+```
+bgK = 2,0 − 0,5·xs(t; 5,8; 7,2) − 0,15·xs(t; 10,2; 10,6)      // plato akhir 1,50 → 1,35
+```
+
+| t | 10,5 | 11,0 | 11,5 | 12,0 | 9,5 | 9,0 | 8,0 | 7,5 |
+|---|---|---|---|---|---|---|---|---|
+| build33 | 4,64 | 4,96 | 4,88 | 4,94 | 4,71 | 4,78 | 5,38 | 5,28 |
+| **build34** | **4,53** | **4,82** | **4,74** | **4,79** | 4,71 | 4,78 | 5,38 | 5,28 |
+
+Fase 7,0–9,5 **persis tidak berubah** (gerbang mulai 10,2) — itulah gunanya gerbang, bukan skala global.
+
+### 25.7 Gerbang build34
+
+| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
+|---|---|---|---|---|---|---|---|---|---|
+| build33 | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | 2,62 | 2,12 | 1,95 |
+| **build34** | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | **2,62** | **2,12** | **1,95** |
+
+Gerbang 24 fase: **3,22 → 3,20**, tanpa satu fase pun memburuk (perubahan hanya di 10,5 · 11,0 · 11,5 · 12,0).
+
+### 25.8 Alat baru: `tools/metric3.py`
+
+Acuan `recon/live-ref-v3/ref_-<t>.png` (jatuh ke `live-ref-v2/live-t<t>.png` untuk 6 fase gerbang yang tidak
+ada di v3), plus peta selisih grid:
+
+```
+python3 tools/metric3.py build34 9.5 11.0 12.0
+python3 tools/metric3.py build34 --grid 11.0 11.0
+```
+
+### 25.9 Sasaran berikut (belum tertutup)
+
+Kelebihan dada +9,96 **tidak bisa** ditutup satu knob: yang salah adalah **pembagian beban**
+(gambar kita +30 terlalu terang, rambut kita −8 terlalu lemah, bloom kita +3 terlalu kuat).
+Langkah berikutnya harus **menyeimbangkan tiga lapisan sekaligus** dengan sasaran terukur per lapisan
+(dada: gambar 43,6 · rambut +33,8 · bloom +4,9), bukan mengejar MAE total satu fase.
+Fase terburuk sekarang: 8,0 (5,38) · 7,5 (5,28) · 11,0 (4,82) · 12,0 (4,79) · 9,0 (4,78) · 11,5 (4,74).
