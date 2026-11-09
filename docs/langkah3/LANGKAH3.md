@@ -1594,3 +1594,88 @@ Enam fase masih 4,6–4,9 dan semuanya **wilayah figur penuh (t ≥ 8,0)**: 8,0 
 12,0 (4,79) · 11,5 (4,74) · 9,5 (4,72). Setelah F-135, selisih kecerahan total tinggal +1…+2 (kita sedikit
 lebih terang), jadi sisa galat bukan lagi soal terang total melainkan **sebaran** — berikutnya: peta selisih
 per-blok pada t=11,0 setelah F-133/F-135 untuk melihat apakah kelebihan berpindah dari dada ke tepi tubuh.
+
+
+---
+
+## Bagian 27 — Sesi 37: helai rambut (strands) + koreksi cara ukur — fase 9–12
+
+### 27.1 Verifikasi paket 4i (LULUS)
+
+| pemeriksaan | hasil |
+|---|---|
+| produksi | `assets/index-laJDkWl3.js`, sha256 `352fd7e0…` = build lokal (identik byte) |
+| repo head | `33b2817` — "langkah 4i (build35): F-135 bump bloom bergerbang waktu…" |
+| blob `MiraStage.tsx` | `342212a1fbcc90ce` · 84 581 B = lokal |
+
+### 27.2 KOREKSI PENTING: angka "gambar kita +20 terlalu terang" adalah ARTEFAK
+
+Sesi 35 mengukur kontribusi lapisan gambar dengan `?off=bloom` **di live**. Itu tidak sah: di live,
+`off=bloom` membuang **seluruh composer postprocessing**, jadi yang keluar bukan "gambar tanpa bloom".
+Pembanding yang adil (composer tetap hidup di kedua sisi) — live `?dial.hum.glow.strength=0`,
+kita `?off=bloom` — memberi angka yang jauh lebih kecil:
+
+| pembanding adil, gambar-saja t=11,0 | dada | seluruh |
+|---|---|---|
+| live | 65,89 | 31,70 |
+| kita | 73,76 | 32,64 |
+| selisih | **+7,87** | **+0,94** |
+
+Kesimpulan sesi 35 bahwa "gambar kita +30 terlalu terang" **dibatalkan**; kelebihannya +7,9 di dada dan
+praktis nol di seluruh bingkai. Akibatnya kalibrasi F-133 (EOTF sRGB) di sesi 35 juga mengejar kesalahan
+yang salah besar — itu sebabnya ia "menang terisolasi" tetapi kalah di tumpukan penuh. Knob tetap mati.
+Dengan pembanding adil, `?pgg=1,1` menurunkan dada ke +4,2 tetapi MAE total **naik** 3,10 → 3,87 (dan 1,2 → 4,86):
+kelebihan itu **terlokalisasi**, bukan tonal. Jangan diulang.
+
+### 27.3 Kelebihan dada terlokalisasi di HELAI RAMBUT (strands), bukan di gambar
+
+Peta selisih gambar-saja (grid 12×8) hanya menyala di r3–r5, c4/c7 (+10,0 · +8,4 · +13,1 · +13,2 · +6,6 · +5,5)
+dan nol di mana pun. Visualnya: helai rambut panjang yang turun dari bahu ke dada **terlalu terang**.
+Lapisan `strands` sebelumnya tidak punya knob sendiri (menempel pada `?fg=` bersama gambar+rambut+bintik) —
+**F-136b**: `?stg=` kini khusus strands.
+
+### 27.4 F-136 — kalibrasi strands, lalu digerbangi waktu
+
+Tumpukan penuh, sebagai skala tetap:
+
+| stg | 7,5 | 8,0 | 9,0 | 9,5 | 11,0 | 11,5 | 12,0 |
+|---|---|---|---|---|---|---|---|
+| 1,0 (dasar) | 4,65 | 4,86 | 4,80 | 4,72 | 4,82 | 4,74 | 4,79 |
+| 0,7 | — | — | — | — | 4,62 | — | — |
+| 0,5 | — | — | — | — | 4,53 | — | — |
+| 0,35 | — | — | — | — | 4,50 | — | — |
+| 0,2 | — | — | — | — | 4,50 | — | — |
+| **0,3** | 4,71 | **4,95** | 4,74 | 4,55 | ~4,50 | 4,36 | 4,40 |
+
+Polanya sama seperti F-134/F-135: **menguntungkan akhir, merugikan awal**. Maka dipakai gerbang waktu —
+helai tetap penuh saat ignition (ia ikut menyala bersama figur) lalu diredupkan sesudahnya:
+
+```
+stgK = 1 − 0,7·xs(t; 8,6; 9,6)        // 1,0 sampai t=8,6 → 0,3 sesudah t=9,6
+```
+
+Hasil (gerbang hidup):
+
+| t | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 | 10,0 | 10,5 | 11,0 | 11,5 | 12,0 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| build35 | 4,65 | 4,86 | 4,62 | 4,80 | 4,72 | 4,57 | 4,53 | 4,82 | 4,74 | 4,79 |
+| **build36** | 4,65 | 4,86 | 4,62 | **4,71** | **4,54** | **4,28** | **4,23** | **4,50** | **4,36** | **4,40** |
+
+Fase < 8,6 **tidak berubah sama sekali** (gerbang mulai 8,6), jadi render build35 untuk fase itu dipakai
+ulang di gerbang build36 — jalur kodenya terbukti identik (`xs(t;8,6;9,6)=0` → `stgK=1`).
+
+### 27.5 Gerbang build36
+
+| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
+|---|---|---|---|---|---|---|---|---|---|
+| build35 | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,72 | 2,62 | 2,12 | 1,95 |
+| **build36** | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | **4,54** | **2,59** | **2,05** | **1,88** |
+
+Gerbang 24 fase: **3,15 → 3,08** (blur4 2,63 → **2,50** · blur10 2,42 → **2,28**), **tanpa satu fase memburuk**.
+
+### 27.6 Sasaran berikut
+
+Sisa terburuk kini semuanya di **jendela ignition (7,0–8,5)**: 8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62)
+dan **7,0 (3,81, lonjakan lokal)**. Fase akhir (10–12) sudah turun ke 4,2–4,5.
+Lonjakan 7,0 paling mencurigakan: tetangganya 6,8 (3,06) dan 7,5 (4,65) — perlu peta selisih 7,0 sendiri
+sebelum menyentuh apa pun lagi.

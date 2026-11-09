@@ -575,3 +575,23 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Paket **`niu-update-langkah4i.zip`**.
 - Berikutnya: enam fase sisa (8,0 · 11,0 · 9,0 · 12,0 · 11,5 · 9,5 ≈ 4,6–4,9) selisih terang totalnya hanya
   +1…+2 → sisa galat adalah soal **sebaran**, bukan jumlah cahaya.
+
+
+### Sesi 37 (2026-11-06) — strands + koreksi cara ukur → **build36**
+
+- **Verifikasi paket 4i LULUS:** produksi `index-laJDkWl3.js` (sha256 `352fd7e0…` = build lokal), repo `33b2817`,
+  blob `MiraStage.tsx` `342212a1fbcc90ce` (84 581 B) = lokal.
+- **KOREKSI METODOLOGI:** angka sesi 35 "gambar kita +20 lebih terang di dada" adalah **artefak** (`off=bloom`
+  di live membuang seluruh composer). Pembanding adil (`dial.hum.glow.strength=0` vs `off=bloom`):
+  dada **+7,87**, seluruh bingkai **+0,94**. Kesimpulan itu dibatalkan; F-133 tetap default MATI.
+  `pgg` (kurva tonal) juga ditolak di harness adil: dada +7,9 → +4,2 tetapi MAE total 3,10 → 3,87.
+- **F-136b:** knob `?stg=` khusus lapisan helai rambut (sebelumnya menempel pada `?fg=`).
+- **F-136 DITERIMA:** helai rambut terlalu terang setelah figur tenang. `stg=0,3` tetap: 11,0 4,82→4,50 ·
+  12,0 4,79→4,40 · 9,5 4,72→4,55 **tetapi** 8,0 4,86→4,95. Dipakai **gerbang waktu**
+  `stgK = 1 − 0,7·xs(t; 8,6; 9,6)` → fase < 8,6 tak tersentuh.
+- **Gerbang build36:** 6 fase 1,14 · 2,07 · 1,91 · 2,84 · 3,06 · **4,54** = **2,59** (blur4 **2,05** · blur10 **1,88**);
+  24 fase **3,15 → 3,08** (blur4 2,50 · blur10 2,28), tanpa regresi. Perbaikan besar: 10,0 4,57→**4,28** ·
+  10,5 4,53→**4,23** · 11,0 4,82→**4,50** · 11,5 4,74→**4,36** · 12,0 4,79→**4,40**.
+- Paket **`niu-update-langkah4j.zip`**.
+- Berikutnya: sisa terburuk ada di jendela ignition (8,0 4,86 · 9,0 4,71 · 7,5 4,65 · 8,5 4,62) dan **lonjakan
+  7,0 (3,81** vs tetangga 6,8 = 3,06) → perlu peta selisih 7,0 sendiri.

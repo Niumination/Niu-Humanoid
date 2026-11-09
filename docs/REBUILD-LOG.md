@@ -622,3 +622,13 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 
 **Kalibrasi F-135 (MAE, t=7,5 / 8,0):** 0,4 → 4,80/5,05 · 0,7 → **4,65**/4,90 · 1,0 → 4,68/4,85 ·
 1,4 → 4,88/4,92 (memburuk) · lebar 0,68 pusat 8,1 → **4,65/4,86** dan 7,0 tetap 3,81.
+
+
+## Sesi 37 (2026-11-06) — F-136 + koreksi metrik
+
+| # | temuan | angka |
+|---|---|---|
+| **M-2** | **Jebakan ukur:** `?off=bloom` di LIVE membuang seluruh composer postprocessing, jadi "kontribusi bloom/ gambar" yang diukur dengan cara itu artefak. Pembanding adil = live `?dial.hum.glow.strength=0` vs kita `?off=bloom`. | gambar-saja dada: +19,98 (artefak) → **+7,87** (adil) · seluruh bingkai +0,94. Kesimpulan sesi 35 "gambar +20" **dibatalkan** |
+| **F-133 (ulang)** | Diukur ulang dengan metrik adil: `?pgg=1,1` dada +7,9 → +4,2 tetapi MAE **3,10 → 3,87** (`pgg=1,2` → 4,86). Kelebihan terlokalisasi, bukan tonal → **tetap default MATI**. | — |
+| **F-136b** | Knob `?stg=` khusus lapisan `strands` (sebelumnya `?fg=` mengubah gambar+rambut+helai+bintik sekaligus). | — |
+| **F-136** | Helai rambut terlalu terang setelah figur tenang. Tetap `stg=0,3`: 11,0 4,82→**4,50** · 12,0 4,79→**4,40** · 9,5 4,72→**4,55**, tetapi 8,0 4,86→**4,95**. **Diterima sebagai gerbang:** `stgK = 1 − 0,7·xs(t; 8,6; 9,6)`. | 24 fase **3,15 → 3,08** · 6 fase 2,62 → **2,59** · blur10 2,42 → **2,28**, tanpa regresi |
