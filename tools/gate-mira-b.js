@@ -3,7 +3,7 @@
  * Pembanding: recon/mira-params.json (yang sudah diverifikasi 82/82 terhadap bundle).
  *   node tools/gate-mira-b.js http://127.0.0.1:5190
  */
-const { chromium } = require('playwright')
+const { chromium } = require(process.env.PW || '/tmp/pw/node_modules/playwright')
 const fs = require('fs')
 const base = (process.argv[2] || 'http://127.0.0.1:5190').replace(/\/$/, '')
 const P = JSON.parse(fs.readFileSync('/home/user/Kerja-Arena/recon/mira-params.json', 'utf8'))
@@ -33,6 +33,16 @@ const P = JSON.parse(fs.readFileSync('/home/user/Kerja-Arena/recon/mira-params.j
     }))
   )
   await p.screenshot({ path: '/home/user/Kerja-Arena/verification/mira/panel-open.png' })
+
+
+  // F-139 (alat): panel kadang SUDAH terbuka (mis. saat `?dial.` dipakai atau sesudah reload),
+  // sehingga tombol toggle tidak ada dan `click` menggantung 30 s. Buka hanya bila perlu.
+  const ensurePanel = async (page) => {
+    const has = await page.evaluate(() => !!document.querySelector('input[data-key]'))
+    if (has) return
+    await page.click('[data-testid="mira-panel-toggle"]')
+    await page.waitForTimeout(300)
+  }
 
   const rows = dom.flatMap((s) => s.rows)
   const checks = []
@@ -94,8 +104,7 @@ const P = JSON.parse(fs.readFileSync('/home/user/Kerja-Arena/recon/mira-params.j
   const p2 = await b.newPage({ viewport: { width: 1440, height: 900 } })
   await p2.goto(base + '/?auto=1&dial.lines.count=14&dial.hum.glow.threshold=0.25', { waitUntil: 'load' })
   await p2.waitForTimeout(1200)
-  await p2.click('[data-testid="mira-panel-toggle"]')
-  await p2.waitForTimeout(300)
+  await ensurePanel(p2)
   const urlVals = await p2.evaluate(() => ({
     count: Number(document.querySelector('input[data-key="lines.count"]').value),
     thr: Number(document.querySelector('input[data-key="hum.glow.threshold"]').value),
@@ -118,8 +127,7 @@ const P = JSON.parse(fs.readFileSync('/home/user/Kerja-Arena/recon/mira-params.j
   await p.waitForTimeout(150)
   await p.reload({ waitUntil: 'load' })
   await p.waitForTimeout(1200)
-  await p.click('[data-testid="mira-panel-toggle"]')
-  await p.waitForTimeout(300)
+  await ensurePanel(p)
   const after = await p.evaluate(() => Number(document.querySelector('input[data-key="lines.width"]').value))
   add('localStorage bertahan setelah reload', 2.3, after, Math.abs(after - 2.3) < 1e-9)
   await p.evaluate(() => window.localStorage.clear())

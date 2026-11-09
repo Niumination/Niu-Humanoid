@@ -616,3 +616,23 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Paket **`niu-update-langkah4k.zip`**.
 - Berikutnya: `lines` **+12 terlalu kuat di bahu** pada t=7,0 (live +36,2 vs kita +48,2) → kandidat gain
   `lines`/`wire` yang digerbangi waktu; sisa terburuk 8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62).
+
+
+### Sesi 39 (2026-11-06) — Gerbang A & B (P9) + gerbang dari produksi → **tanpa perubahan piksel**
+
+- **Verifikasi paket 4k LULUS:** produksi `index-B2KyDmhD.js` (sha256 `bca27438…` = build lokal), repo `aa05d21`,
+  blob `MiraStage.tsx` `4090892cb76dc049` (85 699 B) = lokal.
+- **Gerbang diukur dari URL PRODUKSI:** 1,14 · 2,07 · 1,91 · 2,84 · 2,80 · 4,55 = **2,55** — sama persis dengan
+  lokal (selisih 0,01 di 9,5 = derau render) → tidak ada penyimpangan build/deploy.
+- **Ditutup:** `lg` (gain garis) — 0,85 → 7,0 3,30 · 8,0 5,00; 0,7 → 3,54 · 5,15, keduanya lebih buruk dari
+  dasar (3,27/4,86) → kelebihan di bahu bukan dari `lines`.
+- **Ditutup:** aura kepala sesudah 7,5 — skala diperkecil 0,6 → 8,0 5,17 · 0,4 → 8,0 5,03 & 9,0 4,90,
+  semuanya lebih buruk dari dasar (4,86 / 4,71). Aura hanya benar di jendela ≤7,5.
+- **Aturan metrik baru:** `off=` di live tidak setara untuk lapisan berpartikel (`off=hair,matter` justru
+  menaikkan galat 4,86 → 5,29) → `off=` hanya untuk ablasi satu sisi, bukan pembanding dua implementasi.
+- **`recon/mira-params.json` hilang oleh glitch snapshot** → direkonstruksi dari bundle live: 82 dial unik + 7 `stands`.
+- **Gerbang A: 8/8 lolos** · **Gerbang B: 10/10 lolos** (`verification/mira/gate-{a,b}.json`). Alat gerbang B
+  diperbaiki (`ensurePanel()`) karena menggantung bila panel sudah terbuka.
+- **P9 🟡:** A & B lulus; C (ambang live-vs-live) dan D masih terbuka.
+- Paket **`niu-update-langkah4l.zip`** — isinya **dokumen + alat + spesifikasi dial**, BUKAN kode panggung
+  (tidak ada perubahan piksel sesi ini).

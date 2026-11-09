@@ -1378,76 +1378,74 @@ Bukti visual: `banding-build33.jpg`.
 
 ---
 
-## Bagian 28 — Sesi 38: jendela sesudah ignition (t 6,8–7,0) — aura kepala
+## Bagian 29 — Sesi 39: Gerbang A & B MIRA (P9) + verifikasi gerbang dari produksi
 
-### 28.1 Verifikasi paket 4j (LULUS)
+### 29.1 Verifikasi paket 4k (LULUS)
 
 | pemeriksaan | hasil |
 |---|---|
-| produksi | `assets/index-re72jnYx.js`, sha256 `76131240…` = build lokal (identik byte) |
-| repo head | `51e9913` — "langkah 4j (build36): F-136 gain helai rambut digerbangi waktu…" |
-| blob `MiraStage.tsx` | `eb65e850c75f12f1` · 85 082 B = lokal |
+| produksi | `assets/index-B2KyDmhD.js`, sha256 `bca27438…` = build lokal (identik byte) |
+| repo head | `aa05d21` — "langkah 4k (build37): F-138 aura kepala gerbang sempit…" |
+| blob `MiraStage.tsx` | `4090892cb76dc049` · 85 699 B = lokal |
 
-### 28.2 Di mana lonjakan t=7,0 sebenarnya
+### 29.2 Gerbang diukur ULANG dari URL produksi (bukan lokal)
 
-Peta selisih t=7,0: **biru −17,4 / −16,6 di dalam kepala** (baris 2, kolom 5–6) dan **merah +11,1 / +10,6 di tepi
-bawah** (baris 7) — jadi bukan satu kesalahan, melainkan dua arah sekaligus. Fokus diambil yang terbesar:
-kepala.
+Enam fase gerbang diambil dari `https://mira-humanoid-niu.vercel.app/?auto=1&t=…` (UI disembunyikan, sama
+seperti pengukuran lokal):
 
-Ablasi lapisan t=7,0 (kepala baris 150–330 × kolom 640–800; bahu baris 430–560 × kolom 500–950):
-
-| lapisan | live kepala | kita kepala | live bahu | kita bahu |
-|---|---|---|---|---|
-| `hair` | +0,33 | +0,59 | +25,26 | +20,26 |
-| `lines` | +3,15 | +6,78 | +36,22 | **+48,18** |
-| `matter` | +13,01 | +14,65 | +2,39 | +2,74 |
-| `waves` | +0,05 | +0,00 | +0,00 | +0,02 |
-| `bloom` (dial glow 0) | +6,24 | +7,61 | +38,22 | +38,67 |
-
-Total kepala: live **75,08** vs kita **55,43**. Setelah semua lapisan dikurangi, **dasar** kepala: live ≈ 52 vs
-kita ≈ 26 → yang hilang adalah cahaya yang **tidak berasal dari satu pun lapisan terukur**: itu **sprite aura
-violet di belakang kepala** (F-110), yang di build kita dimatikan (`?au=` default 0) karena dulu dinilai
-merugikan di t=9,5.
-
-### 28.3 F-137 — penekan `underHair` (diuji, INERT)
-
-Dugaan pertama: komponen `.w` `uHz` (kekuatan penekan `underHair` di shader gambar) terlalu kuat di tengkorak.
-Knob `?uh=` ditambahkan dan disapu 1,0 / 0,7 / 0,4 → **kepala tetap 55,43 dan MAE tetap 3,81** di ketiga nilai.
-Alasannya: `underHair` hanya bekerja pada piksel **terang** (`give = underHair·bright`), sedangkan yang hilang
-di kepala adalah pendar lembut. **Kesimpulan: bukan itu**; knob dibiarkan ada (inert) sebagai catatan.
-
-### 28.4 F-138 — aura violet di belakang kepala, DITERIMA dengan gerbang sempit
-
-Dinyalakan penuh (`au=1`) per fase:
-
-| t | 6,8 | 7,0 | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 |
+| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² |
 |---|---|---|---|---|---|---|---|
-| build36 | 3,06 | 3,81 | 4,65 | 4,86 | 4,62 | 4,71 | 4,54 |
-| `au=1` penuh | **2,80** | **3,27** | 5,02 | 5,46 | 5,41 | 5,42 | 5,27 |
+| lokal build37 | 1,14 | 2,07 | 1,91 | 2,84 | 2,80 | 4,54 | 2,55 |
+| **produksi** | 1,14 | 2,07 | 1,91 | 2,84 | 2,80 | 4,55 | **2,55** |
 
-Kepala t=7,0: 55,43 → **74,45** (live 75,08) — hampir tepat. Tetapi sesudah 7,5 aura itu merugikan
-(+0,4…+0,6), jadi dipasang **gerbang sempit**:
+Produksi mereproduksi angka lokal **persis** (selisih 0,01 di 9,5 = derau render) → tidak ada penyimpangan
+build/deploy.
 
-```
-auWin = 1 − xs(t; 7,1; 7,5)          // penuh sampai 7,1 · nol sesudah 7,5
-au    = 1,0 · auWin
-```
+### 29.3 Jalur `lines`/`lg` ditutup (dugaan dari sesi 38 salah)
 
-Hasil: 6,8 **3,06 → 2,80** · 7,0 **3,81 → 3,27** · 7,5 **4,65 (tetap)** · 8,0 **4,86 (tetap)** · 9,5 **4,54 (tetap)**.
+Ablasi t=7,0 menyarankan `lines` terlalu kuat di bahu (kita +48,2 vs live +36,2). Gain `wire` (`lg`) disapu:
+`lg=0,85` → 7,0 **3,30** · 8,0 **5,00**; `lg=0,7` → 7,0 3,54 · 8,0 5,15 — **keduanya memburuk** dari dasar
+(3,27 / 4,86). Jadi `lines` bukan penyebab; kelebihan di bahu kompensasi dari lapisan lain. **Ditutup.**
 
-### 28.5 Gerbang build37
+### 29.4 Rongga kepala t=8,0–9,0: aura kecil diuji, ditolak
 
-| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
-|---|---|---|---|---|---|---|---|---|---|
-| build36 | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,54 | 2,59 | 2,05 | 1,88 |
-| **build37** | 1,14 | 2,07 | 1,91 | 2,84 | **2,80** | 4,54 | **2,55** | **2,01** | **1,84** |
+Aura kepala dengan skala diperkecil (`?as=`) supaya hanya mengisi rongga kepala tanpa menumpuk di rambut:
 
-Gerbang 24 fase: **3,08 → 3,06** (blur4 2,50 → **2,48** · blur10 2,28 → **2,26**), tanpa regresi.
-(Render 24 fase lama hilang oleh glitch snapshot workspace, jadi seluruh himpunan dirender ulang penuh untuk
-build37 — bukan disalin.)
+| t | dasar | aura penuh (as=1) | as=0,6 | as=0,4 |
+|---|---|---|---|---|
+| 8,0 | **4,86** | 5,46 | 5,17 | 5,03 |
+| 9,0 | **4,71** | 5,42 | — | 4,90 |
 
-### 28.6 Sasaran berikut
+Monoton: makin kecil auranya makin kecil kerusakannya, tetapi **tidak pernah lebih baik dari dasar** →
+aura hanya berguna di jendela sempit t≤7,5 (F-138). **Ditutup.**
 
-Sisa terburuk kini: **8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62)** dan `lines` yang **+12 terlalu kuat di
-bahu** pada t=7,0 (live +36,2 vs kita +48,2). Karena `lines` juga menyumbang ke `wire`, kandidat berikutnya
-adalah gain `lines`/`wire` yang **digerbangi waktu** (pola yang sama seperti F-134/F-135/F-136), bukan skala global.
+### 29.5 Catatan metodologi: `off=` di live TIDAK setara untuk lapisan berpartikel
+
+Membandingkan kedua sisi dengan `off=hair,matter` justru **menaikkan** galat (t=8,0: 4,86 → **5,29**;
+9,5 → 4,22 di lain waktu). Sebab: `off=hair` di live juga mematikan helai dan mengubah masukan bloom, jadi
+pembandingnya bukan "tanpa rambut". **Aturan baru:** `off=` hanya dipakai untuk ablasi **satu sisi**
+(mengukur kontribusi lapisan), tidak untuk membandingkan dua implementasi.
+
+### 29.6 Gerbang A & B MIRA — dijalankan, LULUS
+
+`recon/mira-params.json` (spesifikasi 82 dial) hilang oleh glitch snapshot; direkonstruksi langsung dari
+bundle live `recon/mira-2026-11-03.js` → **82 dial unik, 7 `stands`**, urutan sesuai bundle.
+
+| gerbang | isi | hasil |
+|---|---|---|
+| **A** — entry & mode | title · teks entry (semua node daun) · body innerText · tombol + gaya · label mode · gaya tombol REPLAY · aria-pressed · aria-label kamera | **8/8 lolos** (`verification/mira/gate-a.json`) |
+| **B** — panel | 82 slider · 20 seksi · urutan nama seksi · jumlah baris per seksi · key/label/min/max/step/default **82/82** · 7 alias · alias propagate **7/7** · `?dial.lines.count=14` · `?dial.hum.glow.threshold=0,25` (tanpa menyentuh `bloom.threshold`) · localStorage bertahan sesudah reload | **10/10 lolos** (`verification/mira/gate-b.json`) |
+
+Perbaikan alat: skrip gerbang B menggantung 30 s bila panel **sudah** terbuka (mis. saat `?dial.` dipakai atau
+sesudah reload) karena tombol toggle tidak ada → ditambahkan `ensurePanel()` (buka hanya bila perlu).
+
+### 29.7 Status rencana
+
+| fase | status |
+|---|---|
+| P0–P7 | ✅ |
+| P8 (implementasi) | ✅ APEX 17/17 · MIRA tuntas sampai build37 |
+| **P9 Gerbang A/B/C/D** | 🟡 **A 8/8 · B 10/10**; C (ambang live-vs-live) & D masih ⬜ |
+| P10 deliverable + deploy | 🟡 deploy berjalan tiap paket; deliverable belum dirapikan |
+
+Gerbang pixel MIRA kini: **6 fase 2,55 · 24 fase 3,06** (dari 5,43 pada build32 → turun 44 %).

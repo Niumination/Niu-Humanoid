@@ -2,7 +2,7 @@
  * gate-mira-a.js — Gerbang A MIRA: entry screen (copy + gaya) dan mode humanoid.
  * Membandingkan rebuild (localhost) dengan live https://mira-humanoid.vercel.app/
  */
-const { chromium } = require('playwright')
+const { chromium } = require(process.env.PW || '/tmp/pw/node_modules/playwright')
 const fs = require('fs')
 const LIVE = 'https://mira-humanoid.vercel.app/'
 const BASE = (process.argv[2] || 'http://127.0.0.1:5190').replace(/\/$/, '')

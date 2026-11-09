@@ -641,3 +641,15 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 | **F-137** | `?uh=` kekuatan penekan `underHair` (komponen `.w` `uHz`). **INERT**: 1,0 / 0,7 / 0,4 → kepala 55,43 & MAE 3,81 identik. Sebab: `underHair` hanya menggigit piksel terang (`give = underHair·bright`), sedangkan yang hilang di kepala adalah pendar lembut. | 0 perubahan |
 | **F-138** | **Sprite aura violet di belakang kepala (F-110) dimatikan** sejak dulu → dasar kepala t=7,0 hanya 26 vs live 52 (total 55,43 vs 75,08). Dinyalakan penuh: 6,8 3,06→**2,80** · 7,0 3,81→**3,27** (kepala 74,45 vs live 75,08) tetapi 7,5 4,65→5,02 · 8,0 4,86→5,46 · 9,5 4,54→5,27. **Diterima dengan gerbang:** `auWin = 1 − xs(t; 7,1; 7,5)`. | 24 fase 3,08 → **3,06** · 6 fase 2,59 → **2,55** · blur10 2,28 → **2,26**, tanpa regresi |
 | **A-3** | Total kepala vs jumlah lapisan: live 75,08 dengan lapisan +22,7 → dasar 52; kita 55,43 dengan lapisan +29,4 → dasar 26. Selisih dasar itulah aura. Teknik "kurangkan ablasi dari total" berguna untuk menemukan lapisan yang **tidak terukur**. | — |
+
+
+## Sesi 39 (2026-11-06) — Gerbang A/B, penutupan jalur lg & aura
+
+| # | temuan | angka |
+|---|---|---|
+| **K-4** | Gain garis `?lg=` **bukan** penyebab kelebihan di bahu (t=7,0 hidup +12 vs live). `lg=0,85` → 7,0 **3,30** · 8,0 **5,00**; `lg=0,7` → **3,54 / 5,15**, sedangkan dasar 3,27 / 4,86. | ditutup |
+| **K-5** | Aura kepala sesudah 7,5 merugikan pada semua skala: `as=1` 8,0 **5,46** · `as=0,6` **5,17** · `as=0,4` **5,03** (dasar 4,86); 9,0 `as=0,4` **4,90** (dasar 4,71). | ditutup |
+| **M-3** | **`off=` di live tidak setara** untuk lapisan berpartikel: `off=hair,matter` di kedua sisi menaikkan galat t=8,0 4,86 → **5,29**. Aturan: `off=` untuk ablasi satu sisi saja. | — |
+| **G-A** | **Gerbang A MIRA 8/8 lolos** (title, teks entry, body, tombol+gaya, label & gaya & aria mode, aria-label kamera). | `verification/mira/gate-a.json` |
+| **G-B** | **Gerbang B MIRA 10/10 lolos** (82 slider, 20 seksi, urutan, 82/82 nilai, 7 alias + propagate, `?dial.`, localStorage). Alat diperbaiki: `ensurePanel()`. | `verification/mira/gate-b.json` |
+| **R-2** | `recon/mira-params.json` hilang oleh glitch snapshot → direkonstruksi dari bundle live: **82 dial unik + 7 `stands`**. | — |
