@@ -1378,304 +1378,76 @@ Bukti visual: `banding-build33.jpg`.
 
 ---
 
-## Bagian 25 — Sesi 35: dada/torso (t 9–12) — diagnosis berlapis, penyeimbangan lapisan
+## Bagian 28 — Sesi 38: jendela sesudah ignition (t 6,8–7,0) — aura kepala
 
-Sasaran sesi: peta selisih t=11,0 menunjukkan kelebihan **+9…+15 di blok dada/torso** (bukan tata letak).
-Sebelum menawar angka, tiga pemeriksaan dasar dijalankan lebih dulu.
-
-### 25.1 Tiga pemeriksaan dasar (semuanya negatif — bagus, berarti bukan itu)
-
-| dugaan | uji | hasil |
-|---|---|---|
-| fase akhir kita **bergeser waktu** vs live | live t=10,9 / 11,05 / 11,1 diukur ulang | 4,72 / 4,79 / 5,01 — semua di sekitar acuan 4,96 → tidak ada pergeseran |
-| acuan live tidak deterministik | dua tangkapan live t=11,0 | **MAE 0,08 · blur4 0,04** → live deterministik, acuan sahih |
-| figur kita **digeser/di-skala** | cari skala & geseran optimal (blur8) | optimum tepat **skala 1,00, geser (0,0)** → geometri benar |
-
-Acuan baru disimpan: `recon/live-ref-v3/lt-10.9.png`, `lt-11.05.png`, `lt-11.1.png`, `var-11.0-2.png`.
-
-### 25.2 Ablasi lapisan, kita **dan** live, pada t=11,0
-
-Energi lapisan = (render penuh − render `off=lapisan`), diukur pada kotak dada (baris 330–580, kolom 560–940).
-
-| lapisan | kita: dada / seluruh | live: dada / seluruh |
-|---|---|---|
-| `hair` | **+33,92** / +7,33 | **+33,84** / +6,74 |
-| `strands` | +5,29 / +1,29 | (ikut `hair`) |
-| `lines` (termasuk `wire`) | +2,68 / +1,40 | +2,42 / +1,23 |
-| `bloom` | +7,99 / +2,55 | +4,94 / +1,62 |
-| `waves` | +0,53 / +0,63 | +0,02 / +0,68 |
-| `matter` | +0,29 / +0,11 | +0,24 / +0,10 |
-| `twinkles` | +0,29 / +0,11 | — |
-| `core`, `lights` | 0,00 / 0,00 | 0,00 / 0,00 |
-
-**Jebakan yang ditemukan:** `?off=bloom` di live **membuang seluruh composer** (bukan hanya bloom), sehingga
-kontribusi bloom live tampak +43,33 di dada — angka itu artefak. Pengganti yang sah: dial resmi live
-`?dial.hum.glow.strength=0` → kontribusi bloom live yang sebenarnya **+4,94 dada / +1,62 seluruh**.
-Semua angka "adil" di bawah memakai dial ini.
-
-### 25.3 Pembagian beban lapisan kita berbeda dari live
-
-Harness **gambar-saja** (`?off=hair,lines,matter,waves,bloom,strands,twinkles` di kedua sisi, jadi pipeline-nya sama):
-
-| | dada | seluruh |
-|---|---|---|
-| live | 43,56 | 24,18 |
-| kita | **63,54** | **31,14** |
-| sumber `mira-idle-v1.webp` (kotak yang sama) | 59,53 | — |
-
-Tanpa bloom (dial glow 0 di live, `off=bloom` di kita): **live 68,58 dada / kita 83,03 (+14,45)** tanpa hair.
-Jadi: **gambar kita terlalu terang, tetapi rambut/glow kita terlalu lemah** — dua kesalahan yang sebagian
-saling menutupi sehingga total dada hanya +9,96. Ini sebabnya setiap knob **tunggal** gagal.
-
-### 25.4 Koreksi tonal gambar (F-133) — menang terisolasi, kalah di tumpukan penuh
-
-Distribusi dada t=11,0 (gambar-saja): mid-tone kita **1,93×** live (p50 57,3 vs 29,7) tetapi puncak terang
-hanya **1,07×** (p99 249,7 vs 233,7) → bukan soal gain, melainkan **lengkung tonal**. Itu gejala live
-men-dekode gambar **dua kali** (internalFormat `SRGB8_ALPHA8` + EOTF sRGB di shader — perilaku three.js).
-
-Kalibrasi di harness gambar-saja (dada / MAE):
-
-| varian | dada | MAE |
-|---|---|---|
-| dasar (uPG=1) | 77,51 | 8,19 |
-| `?pgg=1,2` | 67,03 | 5,88 |
-| `?pgg=1,4` | 59,33 | 4,26 |
-| `?pgg=1,6` | 53,60 | 3,16 |
-| `?pgg=1,8` | 49,25 | 2,49 |
-| `?pgg=2,0` | 45,88 | 2,28 |
-| **`?pge=1` (EOTF sRGB eksak)** | **46,25** | **2,08** |
-| acuan live | 47,16 | — |
-
-Tetapi di **tumpukan penuh** hasilnya berbalik dan ditolak: `?pge=1` → 11,0 **9,35** (dari 4,96),
-8,0 10,76, 9,0 10,10; `?pgg=1,2` → 11,0 5,89 · 9,5 6,16 · 8,0 7,06 (fase 3,5/5,5 tetap).
-Artinya: menggelapkan gambar saja akan membuat total terlalu gelap — persis karena §25.3
-(lapisan lain kita memang kurang). **Knob tetap ada, default mati (`pgg=1`, `pge=0`) → piksel sama dengan build33.**
-
-### 25.5 Yang diuji dan ditolak (jangan diulang)
-
-| uji | hasil | keputusan |
-|---|---|---|
-| `?nm=1` (gambar tanpa mipmap) | 11,0 4,96 → **5,29**; `nm=1&nh=1` 5,23 | mipmap justru membantu → tolak |
-| `?bo=1` (awan titik tubuh dinyalakan) | 11,0 → **10,13** | default mati sudah benar |
-| `?bb=2,5` / `?bb=4,0` (bloom naik) | 11,0 7,78 / 10,28 · 7,5 8,99 / 14,66 | bloom bukan kekurangan |
-| `?bb=4,0&bt=1,2` | 11,0 4,76 tetapi 7,5 **7,12** | naikkan ambang = matikan bloom → tolak |
-| `?ur=0,5&bb=0,75` (bloom lebih sempit+redup) | 11,0 **4,68** · 12,0 4,50 ✓ tetapi 7,0 7,27 · 7,5 8,25 · 8,0 6,62 ✗ | global → tolak |
-| `?hgg=1,4` + `pge=1` | 11,0 10,74 · 9,0 10,87 | menaikkan rambut sebagai blob melebar → tolak |
-| `?lg=0,9` (sesi 34) | 11,0 4,93 ✓ tetapi 7,5 5,77 ✗ | sudah ditolak |
-
-### 25.6 F-134 — DITERIMA: plato akhir bloom diturunkan, dengan gerbang waktu
-
-Kontribusi bloom kita pada fase akhir **1,6× live** (+7,99 vs +4,94 di dada), sedangkan pada fase 7–9 bloom
-kita justru **dibutuhkan** (badan kita terlalu gelap di sana: 7,5 → mean 82,4 vs live 84,5; menurunkan bloom
-global membuat 7,5 memburuk 5,28 → 8,25). Maka penurunannya **digerbangi waktu**:
-
-```
-bgK = 2,0 − 0,5·xs(t; 5,8; 7,2) − 0,15·xs(t; 10,2; 10,6)      // plato akhir 1,50 → 1,35
-```
-
-| t | 10,5 | 11,0 | 11,5 | 12,0 | 9,5 | 9,0 | 8,0 | 7,5 |
-|---|---|---|---|---|---|---|---|---|
-| build33 | 4,64 | 4,96 | 4,88 | 4,94 | 4,71 | 4,78 | 5,38 | 5,28 |
-| **build34** | **4,53** | **4,82** | **4,74** | **4,79** | 4,71 | 4,78 | 5,38 | 5,28 |
-
-Fase 7,0–9,5 **persis tidak berubah** (gerbang mulai 10,2) — itulah gunanya gerbang, bukan skala global.
-
-### 25.7 Gerbang build34
-
-| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
-|---|---|---|---|---|---|---|---|---|---|
-| build33 | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | 2,62 | 2,12 | 1,95 |
-| **build34** | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | **2,62** | **2,12** | **1,95** |
-
-Gerbang 24 fase: **3,22 → 3,20**, tanpa satu fase pun memburuk (perubahan hanya di 10,5 · 11,0 · 11,5 · 12,0).
-
-### 25.8 Alat baru: `tools/metric3.py`
-
-Acuan `recon/live-ref-v3/ref_-<t>.png` (jatuh ke `live-ref-v2/live-t<t>.png` untuk 6 fase gerbang yang tidak
-ada di v3), plus peta selisih grid:
-
-```
-python3 tools/metric3.py build34 9.5 11.0 12.0
-python3 tools/metric3.py build34 --grid 11.0 11.0
-```
-
-### 25.9 Sasaran berikut (belum tertutup)
-
-Kelebihan dada +9,96 **tidak bisa** ditutup satu knob: yang salah adalah **pembagian beban**
-(gambar kita +30 terlalu terang, rambut kita −8 terlalu lemah, bloom kita +3 terlalu kuat).
-Langkah berikutnya harus **menyeimbangkan tiga lapisan sekaligus** dengan sasaran terukur per lapisan
-(dada: gambar 43,6 · rambut +33,8 · bloom +4,9), bukan mengejar MAE total satu fase.
-Fase terburuk sekarang: 8,0 (5,38) · 7,5 (5,28) · 11,0 (4,82) · 12,0 (4,79) · 9,0 (4,78) · 11,5 (4,74).
-
-
----
-
-## Bagian 26 — Sesi 36: profil bloom terhadap waktu (bukan skalanya) — fase 7,5 & 8,0
-
-### 26.1 Verifikasi paket 4h (LULUS)
+### 28.1 Verifikasi paket 4j (LULUS)
 
 | pemeriksaan | hasil |
 |---|---|
-| produksi | `assets/index-CWsd9OOS.js` |
-| repo head | `4fcba39` — "langkah 4h (build34): F-134 plato bloom akhir gerbang t=10,2 + knob nm/nh/pgg/pge/hgg" |
-| blob `MiraStage.tsx` | `66731b32d7dd79bd` · 83 986 B = lokal |
-| blob `picColor.frag.glsl` | `4f94c7632488c4b1` · 8 742 B = lokal |
-| build ulang lokal | `index-CWsd9OOS.js`, sha256 `cf240796…` **identik byte** dengan produksi |
+| produksi | `assets/index-re72jnYx.js`, sha256 `76131240…` = build lokal (identik byte) |
+| repo head | `51e9913` — "langkah 4j (build36): F-136 gain helai rambut digerbangi waktu…" |
+| blob `MiraStage.tsx` | `eb65e850c75f12f1` · 85 082 B = lokal |
 
-### 26.2 Hipotesis yang gugur lebih dulu
+### 28.2 Di mana lonjakan t=7,0 sebenarnya
 
-Pola galatnya (7,5–8,0 kita **gelap**, 9–12 kita **terang**) menyerupai amplop *surge* pasca-ignition yang
-meluruh terlalu cepat. Diperiksa langsung di bundle live:
+Peta selisih t=7,0: **biru −17,4 / −16,6 di dalam kepala** (baris 2, kolom 5–6) dan **merah +11,1 / +10,6 di tepi
+bawah** (baris 7) — jadi bukan satu kesalahan, melainkan dua arah sekaligus. Fokus diambil yang terbesar:
+kepala.
 
-```
-P_ = (i, e, t = 1.9) => i >= e && i < e + 8 ? Math.exp(-(i - e) / t) : 0
-```
+Ablasi lapisan t=7,0 (kepala baris 150–330 × kolom 640–800; bahu baris 430–560 × kolom 500–950):
 
-Rumus kita `qSurge = me >= 0 && me < 8 ? exp(-me/1.9) : 0` **identik** → bukan penyebab. (Tercatat di
-`REBUILD-LOG.md` supaya tidak dicek ulang.)
+| lapisan | live kepala | kita kepala | live bahu | kita bahu |
+|---|---|---|---|---|
+| `hair` | +0,33 | +0,59 | +25,26 | +20,26 |
+| `lines` | +3,15 | +6,78 | +36,22 | **+48,18** |
+| `matter` | +13,01 | +14,65 | +2,39 | +2,74 |
+| `waves` | +0,05 | +0,00 | +0,00 | +0,02 |
+| `bloom` (dial glow 0) | +6,24 | +7,61 | +38,22 | +38,67 |
 
-### 26.3 Ablasi lapisan pada t=8,0 (fase terburuk)
+Total kepala: live **75,08** vs kita **55,43**. Setelah semua lapisan dikurangi, **dasar** kepala: live ≈ 52 vs
+kita ≈ 26 → yang hilang adalah cahaya yang **tidak berasal dari satu pun lapisan terukur**: itu **sprite aura
+violet di belakang kepala** (F-110), yang di build kita dimatikan (`?au=` default 0) karena dulu dinilai
+merugikan di t=9,5.
 
-Wilayah figur: baris 200–700, kolom 450–1000. Penuh: **live 106,30 vs kita 102,30 (−4,00)**.
+### 28.3 F-137 — penekan `underHair` (diuji, INERT)
 
-| lapisan | live (figur) | kita (figur) |
-|---|---|---|
-| `hair` | +22,76 | +21,92 |
-| `lines` | +3,72 | +3,72 |
-| `matter` | +0,24 | +0,29 |
-| `waves` | +0,41 | +0,46 |
-| `strands` | — | +4,71 |
-| `twinkles` | — | +0,32 |
-| **bloom** (dial `hum.glow.strength=0`) | **+13,55** | **+10,54** |
+Dugaan pertama: komponen `.w` `uHz` (kekuatan penekan `underHair` di shader gambar) terlalu kuat di tengkorak.
+Knob `?uh=` ditambahkan dan disapu 1,0 / 0,7 / 0,4 → **kepala tetap 55,43 dan MAE tetap 3,81** di ketiga nilai.
+Alasannya: `underHair` hanya bekerja pada piksel **terang** (`give = underHair·bright`), sedangkan yang hilang
+di kepala adalah pendar lembut. **Kesimpulan: bukan itu**; knob dibiarkan ada (inert) sebagai catatan.
 
-Semua lapisan lain sudah setara; **hanya bloom yang kurang 3,0** — dan pada t=11,0 bloom kita justru
-**lebih 3,0** (+7,99 vs +4,94). Jadi masalahnya **bentuk profil bloom terhadap waktu**, bukan skalanya.
+### 28.4 F-138 — aura violet di belakang kepala, DITERIMA dengan gerbang sempit
 
-Penjelasan mekanisnya: kernel bloom kita lebih lemah pada masukan terang. Figur baru menyala pada t≈8
-(figur mean 102) sehingga sumber HDR tinggi dan ambang menahan lebih banyak; pada t≈11 figur meredup
-(mean 43) dan selisih kernel mengecil. Pengali kompensasi `bgK` karena itu harus **besar tepat sesudah
-ignition** lalu mengecil — bukan plato datar seperti sebelumnya.
+Dinyalakan penuh (`au=1`) per fase:
 
-### 26.4 Kalibrasi bump (F-135)
-
-```
-kabut = bbu · exp(−((t − bbc)/bbw)²)
-bgK   = 2,0 − 0,5·xs(t; 5,8; 7,2) − 0,15·xs(t; 10,2; 10,6) + kabut
-```
-
-| varian | 7,0 | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 |
-|---|---|---|---|---|---|---|
-| dasar (build34) | 3,79 | 5,28 | 5,38 | 4,65 | 4,78 | 4,71 |
-| bbu 0,4 (lebar 0,9) | — | 4,80 | 5,05 | — | — | — |
-| bbu 0,7 (lebar 0,9) | — | **4,65** | 4,90 | — | 4,86 | 4,75 |
-| bbu 1,0 (lebar 0,9) | — | 4,68 | 4,85 | — | 4,93 | 4,78 |
-| bbu 1,4 (lebar 0,9) | — | 4,88 | 4,92 | — | 5,05 | 4,81 |
-| bbu 0,75 · lebar 0,70 (pusat 8,2) | — | 4,73 | 4,89 | 4,63 | 4,82 | 4,72 |
-| bbu 0,8 · lebar 0,8 (pusat 8,0) | 3,96 | 4,67 | 4,86 | 4,60 | 4,81 | — |
-| **bbu 0,85 · lebar 0,68 (pusat 8,1)** | **3,81** | **4,65** | **4,86** | **4,62** | **4,80** | **4,72** |
-
-Amplitudo **monoton membaik sampai ≈0,85 lalu memburuk** (1,4 → 7,5 naik lagi ke 4,88): bump terlalu besar
-membuat figur menyala *terlalu* cepat. Lebar 0,68 dipilih supaya t=7,0 dan t≥9,0 **nyaris tak tersentuh**
-(kerugian maksimum +0,02) — bump lebar 0,9 merusak 7,0 (3,79 → 3,96) dan 9,0 (4,86).
-
-### 26.5 Gerbang build35
-
-| t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
-|---|---|---|---|---|---|---|---|---|---|
-| build34 | 1,14 | 2,07 | 1,91 | 2,84 | 3,05 | 4,71 | 2,62 | 2,12 | 1,95 |
-| **build35** | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,72 | **2,62** | **2,12** | **1,95** |
-
-Gerbang 24 fase: **3,20 → 3,15**. Perubahan: 7,5 **5,28 → 4,65** · 8,0 **5,38 → 4,86** · 8,5 4,65 → 4,62 ·
-9,0 4,78 → 4,80 · 7,0 3,79 → 3,81 · 6,8 3,05 → 3,06 · 9,5 4,71 → 4,72 (kerugian ≤ 0,02).
-
-### 26.6 Sasaran berikut
-
-Enam fase masih 4,6–4,9 dan semuanya **wilayah figur penuh (t ≥ 8,0)**: 8,0 (4,86) · 11,0 (4,82) · 9,0 (4,80) ·
-12,0 (4,79) · 11,5 (4,74) · 9,5 (4,72). Setelah F-135, selisih kecerahan total tinggal +1…+2 (kita sedikit
-lebih terang), jadi sisa galat bukan lagi soal terang total melainkan **sebaran** — berikutnya: peta selisih
-per-blok pada t=11,0 setelah F-133/F-135 untuk melihat apakah kelebihan berpindah dari dada ke tepi tubuh.
-
-
----
-
-## Bagian 27 — Sesi 37: helai rambut (strands) + koreksi cara ukur — fase 9–12
-
-### 27.1 Verifikasi paket 4i (LULUS)
-
-| pemeriksaan | hasil |
-|---|---|
-| produksi | `assets/index-laJDkWl3.js`, sha256 `352fd7e0…` = build lokal (identik byte) |
-| repo head | `33b2817` — "langkah 4i (build35): F-135 bump bloom bergerbang waktu…" |
-| blob `MiraStage.tsx` | `342212a1fbcc90ce` · 84 581 B = lokal |
-
-### 27.2 KOREKSI PENTING: angka "gambar kita +20 terlalu terang" adalah ARTEFAK
-
-Sesi 35 mengukur kontribusi lapisan gambar dengan `?off=bloom` **di live**. Itu tidak sah: di live,
-`off=bloom` membuang **seluruh composer postprocessing**, jadi yang keluar bukan "gambar tanpa bloom".
-Pembanding yang adil (composer tetap hidup di kedua sisi) — live `?dial.hum.glow.strength=0`,
-kita `?off=bloom` — memberi angka yang jauh lebih kecil:
-
-| pembanding adil, gambar-saja t=11,0 | dada | seluruh |
-|---|---|---|
-| live | 65,89 | 31,70 |
-| kita | 73,76 | 32,64 |
-| selisih | **+7,87** | **+0,94** |
-
-Kesimpulan sesi 35 bahwa "gambar kita +30 terlalu terang" **dibatalkan**; kelebihannya +7,9 di dada dan
-praktis nol di seluruh bingkai. Akibatnya kalibrasi F-133 (EOTF sRGB) di sesi 35 juga mengejar kesalahan
-yang salah besar — itu sebabnya ia "menang terisolasi" tetapi kalah di tumpukan penuh. Knob tetap mati.
-Dengan pembanding adil, `?pgg=1,1` menurunkan dada ke +4,2 tetapi MAE total **naik** 3,10 → 3,87 (dan 1,2 → 4,86):
-kelebihan itu **terlokalisasi**, bukan tonal. Jangan diulang.
-
-### 27.3 Kelebihan dada terlokalisasi di HELAI RAMBUT (strands), bukan di gambar
-
-Peta selisih gambar-saja (grid 12×8) hanya menyala di r3–r5, c4/c7 (+10,0 · +8,4 · +13,1 · +13,2 · +6,6 · +5,5)
-dan nol di mana pun. Visualnya: helai rambut panjang yang turun dari bahu ke dada **terlalu terang**.
-Lapisan `strands` sebelumnya tidak punya knob sendiri (menempel pada `?fg=` bersama gambar+rambut+bintik) —
-**F-136b**: `?stg=` kini khusus strands.
-
-### 27.4 F-136 — kalibrasi strands, lalu digerbangi waktu
-
-Tumpukan penuh, sebagai skala tetap:
-
-| stg | 7,5 | 8,0 | 9,0 | 9,5 | 11,0 | 11,5 | 12,0 |
+| t | 6,8 | 7,0 | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 |
 |---|---|---|---|---|---|---|---|
-| 1,0 (dasar) | 4,65 | 4,86 | 4,80 | 4,72 | 4,82 | 4,74 | 4,79 |
-| 0,7 | — | — | — | — | 4,62 | — | — |
-| 0,5 | — | — | — | — | 4,53 | — | — |
-| 0,35 | — | — | — | — | 4,50 | — | — |
-| 0,2 | — | — | — | — | 4,50 | — | — |
-| **0,3** | 4,71 | **4,95** | 4,74 | 4,55 | ~4,50 | 4,36 | 4,40 |
+| build36 | 3,06 | 3,81 | 4,65 | 4,86 | 4,62 | 4,71 | 4,54 |
+| `au=1` penuh | **2,80** | **3,27** | 5,02 | 5,46 | 5,41 | 5,42 | 5,27 |
 
-Polanya sama seperti F-134/F-135: **menguntungkan akhir, merugikan awal**. Maka dipakai gerbang waktu —
-helai tetap penuh saat ignition (ia ikut menyala bersama figur) lalu diredupkan sesudahnya:
+Kepala t=7,0: 55,43 → **74,45** (live 75,08) — hampir tepat. Tetapi sesudah 7,5 aura itu merugikan
+(+0,4…+0,6), jadi dipasang **gerbang sempit**:
 
 ```
-stgK = 1 − 0,7·xs(t; 8,6; 9,6)        // 1,0 sampai t=8,6 → 0,3 sesudah t=9,6
+auWin = 1 − xs(t; 7,1; 7,5)          // penuh sampai 7,1 · nol sesudah 7,5
+au    = 1,0 · auWin
 ```
 
-Hasil (gerbang hidup):
+Hasil: 6,8 **3,06 → 2,80** · 7,0 **3,81 → 3,27** · 7,5 **4,65 (tetap)** · 8,0 **4,86 (tetap)** · 9,5 **4,54 (tetap)**.
 
-| t | 7,5 | 8,0 | 8,5 | 9,0 | 9,5 | 10,0 | 10,5 | 11,0 | 11,5 | 12,0 |
-|---|---|---|---|---|---|---|---|---|---|---|
-| build35 | 4,65 | 4,86 | 4,62 | 4,80 | 4,72 | 4,57 | 4,53 | 4,82 | 4,74 | 4,79 |
-| **build36** | 4,65 | 4,86 | 4,62 | **4,71** | **4,54** | **4,28** | **4,23** | **4,50** | **4,36** | **4,40** |
-
-Fase < 8,6 **tidak berubah sama sekali** (gerbang mulai 8,6), jadi render build35 untuk fase itu dipakai
-ulang di gerbang build36 — jalur kodenya terbukti identik (`xs(t;8,6;9,6)=0` → `stgK=1`).
-
-### 27.5 Gerbang build36
+### 28.5 Gerbang build37
 
 | t | 0,3 | 1,89 | 3,5 | 5,5 | 6,8 | 9,5 | rata² | blur4 | blur10 |
 |---|---|---|---|---|---|---|---|---|---|
-| build35 | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,72 | 2,62 | 2,12 | 1,95 |
-| **build36** | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | **4,54** | **2,59** | **2,05** | **1,88** |
+| build36 | 1,14 | 2,07 | 1,91 | 2,84 | 3,06 | 4,54 | 2,59 | 2,05 | 1,88 |
+| **build37** | 1,14 | 2,07 | 1,91 | 2,84 | **2,80** | 4,54 | **2,55** | **2,01** | **1,84** |
 
-Gerbang 24 fase: **3,15 → 3,08** (blur4 2,63 → **2,50** · blur10 2,42 → **2,28**), **tanpa satu fase memburuk**.
+Gerbang 24 fase: **3,08 → 3,06** (blur4 2,50 → **2,48** · blur10 2,28 → **2,26**), tanpa regresi.
+(Render 24 fase lama hilang oleh glitch snapshot workspace, jadi seluruh himpunan dirender ulang penuh untuk
+build37 — bukan disalin.)
 
-### 27.6 Sasaran berikut
+### 28.6 Sasaran berikut
 
-Sisa terburuk kini semuanya di **jendela ignition (7,0–8,5)**: 8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62)
-dan **7,0 (3,81, lonjakan lokal)**. Fase akhir (10–12) sudah turun ke 4,2–4,5.
-Lonjakan 7,0 paling mencurigakan: tetangganya 6,8 (3,06) dan 7,5 (4,65) — perlu peta selisih 7,0 sendiri
-sebelum menyentuh apa pun lagi.
+Sisa terburuk kini: **8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62)** dan `lines` yang **+12 terlalu kuat di
+bahu** pada t=7,0 (live +36,2 vs kita +48,2). Karena `lines` juga menyumbang ke `wire`, kandidat berikutnya
+adalah gain `lines`/`wire` yang **digerbangi waktu** (pola yang sama seperti F-134/F-135/F-136), bukan skala global.

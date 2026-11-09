@@ -632,3 +632,12 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 | **F-133 (ulang)** | Diukur ulang dengan metrik adil: `?pgg=1,1` dada +7,9 → +4,2 tetapi MAE **3,10 → 3,87** (`pgg=1,2` → 4,86). Kelebihan terlokalisasi, bukan tonal → **tetap default MATI**. | — |
 | **F-136b** | Knob `?stg=` khusus lapisan `strands` (sebelumnya `?fg=` mengubah gambar+rambut+helai+bintik sekaligus). | — |
 | **F-136** | Helai rambut terlalu terang setelah figur tenang. Tetap `stg=0,3`: 11,0 4,82→**4,50** · 12,0 4,79→**4,40** · 9,5 4,72→**4,55**, tetapi 8,0 4,86→**4,95**. **Diterima sebagai gerbang:** `stgK = 1 − 0,7·xs(t; 8,6; 9,6)`. | 24 fase **3,15 → 3,08** · 6 fase 2,62 → **2,59** · blur10 2,42 → **2,28**, tanpa regresi |
+
+
+## Sesi 38 (2026-11-06) — F-137, F-138
+
+| # | temuan | angka |
+|---|---|---|
+| **F-137** | `?uh=` kekuatan penekan `underHair` (komponen `.w` `uHz`). **INERT**: 1,0 / 0,7 / 0,4 → kepala 55,43 & MAE 3,81 identik. Sebab: `underHair` hanya menggigit piksel terang (`give = underHair·bright`), sedangkan yang hilang di kepala adalah pendar lembut. | 0 perubahan |
+| **F-138** | **Sprite aura violet di belakang kepala (F-110) dimatikan** sejak dulu → dasar kepala t=7,0 hanya 26 vs live 52 (total 55,43 vs 75,08). Dinyalakan penuh: 6,8 3,06→**2,80** · 7,0 3,81→**3,27** (kepala 74,45 vs live 75,08) tetapi 7,5 4,65→5,02 · 8,0 4,86→5,46 · 9,5 4,54→5,27. **Diterima dengan gerbang:** `auWin = 1 − xs(t; 7,1; 7,5)`. | 24 fase 3,08 → **3,06** · 6 fase 2,59 → **2,55** · blur10 2,28 → **2,26**, tanpa regresi |
+| **A-3** | Total kepala vs jumlah lapisan: live 75,08 dengan lapisan +22,7 → dasar 52; kita 55,43 dengan lapisan +29,4 → dasar 26. Selisih dasar itulah aura. Teknik "kurangkan ablasi dari total" berguna untuk menemukan lapisan yang **tidak terukur**. | — |

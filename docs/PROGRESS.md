@@ -595,3 +595,24 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - Paket **`niu-update-langkah4j.zip`**.
 - Berikutnya: sisa terburuk ada di jendela ignition (8,0 4,86 · 9,0 4,71 · 7,5 4,65 · 8,5 4,62) dan **lonjakan
   7,0 (3,81** vs tetangga 6,8 = 3,06) → perlu peta selisih 7,0 sendiri.
+
+
+### Sesi 38 (2026-11-06) — aura kepala + jendela ignition → **build37**
+
+- **Verifikasi paket 4j LULUS:** produksi `index-re72jnYx.js` (sha256 `76131240…` = build lokal), repo `51e9913`,
+  blob `MiraStage.tsx` `eb65e850c75f12f1` (85 082 B) = lokal. (Workspace sempat kehilangan PNG build36 lagi →
+  dipulihkan dari paket.)
+- Peta selisih t=7,0: **kepala −17,4/−16,6** (kita gelap) dan tepi bawah **+11,1/+10,6** (kita terang).
+- Ablasi t=7,0: total kepala live 75,08 vs kita 55,43; setelah semua lapisan dikurangi **dasar kepala live ≈52
+  vs kita ≈26** → yang hilang bukan milik lapisan terukur mana pun, melainkan **sprite aura violet** (F-110)
+  yang di build kita dimatikan sejak dulu.
+- **F-137 (INERT, dicatat):** `?uh=` (kekuatan penekan `underHair`) disapu 1,0/0,7/0,4 → hasil identik
+  (55,43 · MAE 3,81). `underHair` hanya bekerja pada piksel terang; yang hilang adalah pendar lembut → bukan itu.
+- **F-138 DITERIMA:** aura dinyalakan dengan **gerbang sempit** `auWin = 1 − xs(t; 7,1; 7,5)`.
+  Penuh `au=1`: 6,8 3,06→**2,80** · 7,0 3,81→**3,27** (kepala 55,4→74,5 vs live 75,1) tetapi 7,5 5,02 · 8,0 5,46 ·
+  9,5 5,27 → digerbangi. Hasil: 6,8 **2,80** · 7,0 **3,27** · 7,5/8,0/9,5 **tidak berubah**.
+- **Gerbang build37:** 6 fase 1,14 · 2,07 · 1,91 · 2,84 · **2,80** · 4,54 = **2,55** (blur4 **2,01** · blur10 **1,84**);
+  24 fase **3,08 → 3,06**. Seluruh 24 fase dirender ulang penuh (render lama hilang oleh glitch snapshot).
+- Paket **`niu-update-langkah4k.zip`**.
+- Berikutnya: `lines` **+12 terlalu kuat di bahu** pada t=7,0 (live +36,2 vs kita +48,2) → kandidat gain
+  `lines`/`wire` yang digerbangi waktu; sisa terburuk 8,0 (4,86) · 9,0 (4,71) · 7,5 (4,65) · 8,5 (4,62).
