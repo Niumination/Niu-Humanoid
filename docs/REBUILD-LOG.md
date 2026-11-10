@@ -653,3 +653,19 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 | **G-A** | **Gerbang A MIRA 8/8 lolos** (title, teks entry, body, tombol+gaya, label & gaya & aria mode, aria-label kamera). | `verification/mira/gate-a.json` |
 | **G-B** | **Gerbang B MIRA 10/10 lolos** (82 slider, 20 seksi, urutan, 82/82 nilai, 7 alias + propagate, `?dial.`, localStorage). Alat diperbaiki: `ensurePanel()`. | `verification/mira/gate-b.json` |
 | **R-2** | `recon/mira-params.json` hilang oleh glitch snapshot → direkonstruksi dari bundle live: **82 dial unik + 7 `stands`**. | — |
+
+
+## Sesi 40 (2026-10-29) — audio MIRA
+
+| # | temuan | angka |
+|---|---|---|
+| **A-1** | **Tidak ada `createAnalyser` di graph audio live.** Satu-satunya analyser di bundle = analyser mikrofon kamera (langkah 6). Butir rencana “16 osc + 36 gain + analyser→uEnergy” dibatalkan. | 0 analyser di graph |
+| **A-2** | **MIRA hanya memancarkan `MIRA_BUILD` + `MIRA_BOLT`.** `MIRA_ENTER`/`ASSEMBLY`/`READY`/`FAILED` hanya dipakai aplikasi APEX, jadi bunyi masuk humanoid datang dari skor cue. | 2 pemancar di app MIRA |
+| **A-3** | **Label SOUND**: live menampilkan `SOUND ${S ? 'OFF' : 'ON'}` dengan `S = localStorage.apex_sound_off === '1'` dan `aria-pressed = !S`. Port awal kita terbalik; dibetulkan → default **SOUND ON**, `aria-pressed=true`. | 1 bug dibetulkan |
+| **A-4** | **Skala pan `Vk` = lebar citra**: `pan = clamp((x − star.x)/(0,75·W), ±0,9)`. Bukan lebar layar. | — |
+| **A-5** | **`FN` live menyuntik latensi wall-clock** `(performance.now()−t)/1e3` ke `at`. Karena itu gerbang spektrum wajib membekukan `performance.now()`; tanpa itu “skor penuh” tampak gagal (MAE 12,8 % / 17,8 %) padahal port identik. | 0,0000 % setelah dibekukan |
+| **A-6** | **`boil`/`needle` mengundi `Math.random`** → gerbang paritas pemanggilan wajib memakai PRNG ber-seed per skenario, kalau tidak jumlah node berbeda secara acak. | 3 skenario sempat “gagal” palsu |
+| **D-1** | Paritas pemanggilan `create*` + penjadwalan AudioParam live vs port: **31/31 skenario identik** (termasuk multiset `jenis.param.metode.nilai`). | 1 709 sambungan · 777 penjadwalan |
+| **D-2** | Paritas spektrum `OfflineAudioContext` (Chromium, PRNG sama): **27/27 sampel-identik**. | MAE **0,0000 %** · korelasi pita **1,000000** |
+| **D-3** | Audio hidup di aplikasi (build lokal, autoplay dilonggarkan): mesin `running`, **36 cue**, panjang skor **12,550 s**, RMS master 2,55·10⁻², SOUND OFF → **0,00**, ON → 1,01·10⁻¹, bolt 2,26·10⁻². | 9/9 |
+| **D-4** | Tidak ada regresi piksel: build-audio vs produksi build37 `?t=8,0` **MAE 0,0000**, `?t=0,3` 0,0206. | — |

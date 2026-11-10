@@ -1,332 +1,217 @@
+#!/usr/bin/env node
 /**
- * gate-step4.js — Gerbang C/D langkah 4 (audio graph APEX).
+ * gate-step4.js — GERBANG D langkah 4 (bagian 1): PARITAS PEMANGGILAN AUDIO.
  *
- * Yang diukur (tanpa perangkat audio: Chromium headless memakai null sink, graph tetap dibangun):
+ * Menjalankan kode audio LIVE (`verification/mira/audio-live.mjs`, verbatim dari bundle) dan
+ * port kita (`verification/mira/audio-ours.mjs`, hasil `esbuild src/lib/miraAudio.ts`) di atas
+ * `AudioContext` tiruan yang mencatat setiap node/AudioParam, lalu membandingkan SIDIK JARI
+ * keduanya skenario per skenario.
  *
- *  A. PARITAS API — hitung pemanggilan `AudioContext.prototype.create*` di live vs rebuild
- *     selama cue ASSEMBLY (masuk lewat ENTER), 2,5 s.
- *  B. SPEKTRUM — render tiap cue di `OfflineAudioContext`, FFT per jendela waktu,
- *     cocokkan puncak dengan frekuensi yang dijadwalkan bundle (±3 %).
- *     - ready/failed/needsYou: satu jendela berisi nada utuh
- *     - alert: 392 Hz (554,3 Hz hanyalah frekuensi MODULATOR, bukan parsial → tidak diuji)
- *     - assembly: jendela paduan suara (formant 205/540/1150) + jendela peluit
- *       (dua cuplikan: frekuensi harus NAIK mengikuti ramp linear 2900→3280)
+ * Lulus bila untuk SEMUA skenario: jenis+jumlah node sama, jumlah sambungan sama, jumlah
+ * start/stop sama, dan multiset (nama param · metode · nilai) sama persis — yaitu tidak ada
+ * konstanta yang salah, tidak ada send reverb yang tertukar, tidak ada jadwal yang bergeser.
  *
- * Output: verification/step4/step4-report.json
+ * Pakai:  node tools/gate-step4.js [--json out.json] [-v]
  */
-const { chromium } = require('playwright')
-const fs = require('fs')
-const path = require('path')
+import { writeFileSync } from 'node:fs'
+import { installMock } from './audio-mock.mjs'
 
-const LIVE = 'https://apex-humanoid.vercel.app/'
-const BUILD = process.env.BUILD_URL || 'http://127.0.0.1:5180/'
-const OUT = '/home/user/Kerja-Arena/verification/step4'
-const TYPES = [
-  'createOscillator',
-  'createGain',
-  'createBiquadFilter',
-  'createBufferSource',
-  'createWaveShaper',
-  'createConvolver',
-  'createStereoPanner',
-  'createAnalyser',
-  'createDynamicsCompressor',
-]
+const ARG = process.argv.slice(2)
+const OUT = ARG.includes('--json') ? ARG[ARG.indexOf('--json') + 1] : null
+const VERBOSE = ARG.includes('-v')
 
-const INIT = `(() => {
-  const counts = {};
-  const proto = (window.AudioContext || window.webkitAudioContext).prototype;
-  for (const name of ${JSON.stringify(TYPES)}) {
-    counts[name] = 0;
-    const orig = proto[name];
-    if (!orig) continue;
-    proto[name] = function (...args) { counts[name]++; return orig.apply(this, args); };
-  }
-  window.__audioCounts = counts;
-  window.__audioCtxCreated = 0;
-  const Ctor = window.AudioContext || window.webkitAudioContext;
-  const Wrapped = function (...args) {
-    window.__audioCtxCreated++;
-    const ctx = new Ctor(...args);
-    window.__lastCtx = ctx;
-    return ctx;
-  };
-  Wrapped.prototype = Ctor.prototype;
-  window.AudioContext = Wrapped;
-})();`
-
-async function countNodes(page, url, label) {
-  await page.addInitScript(INIT)
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 })
-  await page.waitForTimeout(1500)
-  const btn = page.locator('button', { hasText: /ENTER|MASUK/i }).first()
-  if (await btn.count()) await btn.click({ timeout: 15000 })
-  await page.waitForTimeout(2500)
-  const res = await page.evaluate(() => ({
-    counts: window.__audioCounts || null,
-    ctxCreated: window.__audioCtxCreated || 0,
-    state: window.__lastCtx ? window.__lastCtx.state : 'none',
-  }))
-  console.log(label, JSON.stringify(res.counts), 'ctx=', res.ctxCreated, 'state=', res.state)
-  return res
+const mock = installMock()
+const { default: _l } = { default: null }
+const LIVE = await import('/home/user/Kerja-Arena/verification/mira/audio-live.mjs')
+const OURS = {
+  ...(await import('/home/user/Kerja-Arena/verification/mira/audio-ours.mjs')),
+  ...(await import('/home/user/Kerja-Arena/verification/mira/audio-ours-cues.mjs')),
 }
 
-/** FFT + deteksi puncak per jendela waktu, dijalankan di dalam halaman */
-const OFFLINE = async (spec) => {
-  const fft = (re, im) => {
-    const n = re.length
-    for (let i = 1, j = 0; i < n; i++) {
-      let bit = n >> 1
-      for (; j & bit; bit >>= 1) j ^= bit
-      j ^= bit
-      if (i < j) {
-        const tr = re[i]; re[i] = re[j]; re[j] = tr
-        const ti = im[i]; im[i] = im[j]; im[j] = ti
-      }
-    }
-    for (let len = 2; len <= n; len <<= 1) {
-      const ang = (-2 * Math.PI) / len
-      const wr = Math.cos(ang)
-      const wi = Math.sin(ang)
-      for (let i = 0; i < n; i += len) {
-        let cr = 1, ci = 0
-        for (let k = 0; k < len / 2; k++) {
-          const ur = re[i + k], ui = im[i + k]
-          const vr = re[i + k + len / 2] * cr - im[i + k + len / 2] * ci
-          const vi = re[i + k + len / 2] * ci + im[i + k + len / 2] * cr
-          re[i + k] = ur + vr; im[i + k] = ui + vi
-          re[i + k + len / 2] = ur - vr; im[i + k + len / 2] = ui - vi
-          const ncr = cr * wr - ci * wi
-          ci = cr * wi + ci * wr; cr = ncr
-        }
-      }
-    }
-  }
+// cue adegan contoh — dipakai untuk setiap jenis cue supaya kedua sisi menerima input identik
+const CUES = {
+  hum: { kind: 'hum', t: 0.3, dur: 5.7 },
+  strike: { kind: 'strike', t: 1.2, dur: 0.35, strength: 0.77, pan: -0.53 },
+  strikeBig: { kind: 'strike', t: 2.0, dur: 0.35, strength: 1.1, pan: 0.53 },
+  gather: { kind: 'gather', t: 3.8, dur: 2.2 },
+  boil: { kind: 'boil', t: 0.7, dur: 5.3 },
+  needle: { kind: 'needle', t: 0.9, dur: 5.1, step: 0.05, busy: Array.from({ length: 102 }, (_, i) => Math.sqrt((i % 7) / 7)) },
+  release: { kind: 'release', t: 6.55, dur: 6 },
+  fill: { kind: 'fill', t: 6.75, dur: 1.4 },
+  ignite: { kind: 'ignite', t: 6.6, dur: 3 },
+}
 
-  const analyse = (data, sr, from, to) => {
-    const a = Math.floor(from * sr)
-    const b = Math.min(data.length, Math.floor(to * sr))
-    // N adaptif: pangkat 2 terbesar yang muat di jendela (min 4096)
-    let N = 4096
-    while (N * 2 <= b - a && N < 32768) N *= 2
-    if (b - a < N) return { peaks: [], rms: 0, N: 0, binHz: 0 }
-    let sum = 0
-    for (let i = a; i < b; i++) sum += data[i] * data[i]
-    const re = new Float64Array(N)
-    const im = new Float64Array(N)
-    for (let i = 0; i < N; i++) {
-      const w = 0.5 - 0.5 * Math.cos((2 * Math.PI * i) / (N - 1))
-      re[i] = data[a + i] * w
-    }
-    fft(re, im)
-    const mag = new Float32Array(N / 2)
-    for (let i = 0; i < N / 2; i++) mag[i] = Math.hypot(re[i], im[i])
-    const minBin = Math.ceil((30 * N) / sr)
-    let mx = 0
-    for (let i = minBin; i < N / 2; i++) if (mag[i] > mx) mx = mag[i]
-    const peaks = []
-    for (let i = minBin; i < N / 2 - 2; i++) {
-      let isMax = true
-      for (let k = 1; k <= 3; k++) {
-        if (i - k >= 0 && mag[i - k] > mag[i]) isMax = false
-        if (i + k < N / 2 && mag[i + k] > mag[i]) isMax = false
-      }
-      if (!isMax || mag[i] < mx * 0.01) continue
-      const p = mag[i - 1], q = mag[i], r = mag[i + 1]
-      const d = (p - r) / (2 * (p - 2 * q + r) || 1e-9)
-      peaks.push({ f: +(((i + d) * sr) / N).toFixed(1), m: +(q / mx).toFixed(3) })
-    }
-    peaks.sort((x, y) => y.m - x.m)
-    // centroid puncak di dalam band (untuk nada menyapu)
-    const centroid = (lo, hi) => {
-      let num = 0
-      let den = 0
-      for (const p of peaks) {
-        if (p.f >= lo && p.f <= hi) { num += p.f * p.m; den += p.m }
-      }
-      return den > 0 ? +(num / den).toFixed(1) : null
-    }
-    return {
-      peaks: peaks.slice(0, 40),
-      rms: +Math.sqrt(sum / (b - a)).toFixed(5),
-      N,
-      binHz: +(sr / N).toFixed(2),
-      c2400_3800: centroid(2400, 3800),
-      bandPeaks: peaks.filter((p) => p.f >= 2400 && p.f <= 3800).slice(0, 10),
-    }
-  }
+const TRACK = [
+  CUES.gather, CUES.hum, CUES.boil, CUES.needle,
+  { ...CUES.strike }, { ...CUES.strikeBig }, { ...CUES.gather, t: 3.8 },
+  CUES.release, CUES.ignite, CUES.fill,
+]
 
-  const mod = await import('/src/lib/audio.ts')
-  const sr = 44100
+/** tiga himpunan data adegan sintetis untuk membandingkan pembangun skor (`Vk`) */
+const SCENES = [
+  {
+    name: 'adegan kecil (2 busur, 5 titik)',
+    arcs: [{ kind: 'core', t: 1.2, strength: 0.7, x: 100 }, { kind: 'crown', t: 2.0, strength: 1.0, x: 900 }],
+    particles: [{ tArr: 1.0 }, { tArr: 1.05 }, { tArr: 3.3 }, { tArr: 5.9 }, { tArr: 0.95 }],
+    width: 1000,
+    star: { x: 500, y: 400 },
+  },
+  {
+    name: 'adegan sedang (12 busur, 400 titik)',
+    arcs: Array.from({ length: 12 }, (_, i) => ({ kind: i % 2 ? 'crown' : 'core', t: 1 + i * 0.4, strength: 0.5 + (i % 5) * 0.2, x: 80 + i * 70 })),
+    particles: Array.from({ length: 400 }, (_, i) => ({ tArr: 0.9 + (i / 400) * 5.1 })),
+    width: 1146,
+    star: { x: 573, y: 512 },
+  },
+  {
+    name: 'adegan besar (28 busur, 3000 titik)',
+    arcs: Array.from({ length: 28 }, (_, i) => ({ kind: i < 18 ? 'core' : 'crown', t: 1.5 + i * 0.17, strength: 0.55 + (i % 7) * 0.09, x: 40 + i * 40 })),
+    particles: Array.from({ length: 3000 }, (_, i) => ({ tArr: 0.9 + ((i * 7919) % 5100) / 1000 })),
+    width: 1146,
+    star: { x: 573, y: 512 },
+  },
+]
+
+/** skenario: [nama, jalankan live, jalankan kita] */
+const SCEN = [
+  ['graph (rh/ensureAudio)', () => LIVE.rh(), () => OURS.ensureAudio()],
+  ['synth buffer (mo/syn)', () => LIVE.mo(), () => OURS.syn()],
+  ['cue hum', () => LIVE.qw.hum(CUES.hum, 0.03, 0), () => OURS.CUE_KINDS.hum(CUES.hum, 0.03, 0)],
+  ['cue strike', () => LIVE.qw.strike(CUES.strike, 0.03, 0), () => OURS.CUE_KINDS.strike(CUES.strike, 0.03, 0)],
+  ['cue strike>1.05 (thunder)', () => LIVE.qw.strike(CUES.strikeBig, 0.03, 0), () => OURS.CUE_KINDS.strike(CUES.strikeBig, 0.03, 0)],
+  ['cue gather', () => LIVE.qw.gather(CUES.gather, 0.03, 0), () => OURS.CUE_KINDS.gather(CUES.gather, 0.03, 0)],
+  ['cue boil', () => LIVE.qw.boil(CUES.boil, 0.03, 0), () => OURS.CUE_KINDS.boil(CUES.boil, 0.03, 0)],
+  ['cue needle', () => LIVE.qw.needle(CUES.needle, 0.03, 0), () => OURS.CUE_KINDS.needle(CUES.needle, 0.03, 0)],
+  ['cue release', () => LIVE.qw.release(CUES.release, 0.03, 0), () => OURS.CUE_KINDS.release(CUES.release, 0.03, 0)],
+  ['cue fill', () => LIVE.qw.fill(CUES.fill, 0.03, 0), () => OURS.CUE_KINDS.fill(CUES.fill, 0.03, 0)],
+  ['cue ignite', () => LIVE.qw.ignite(CUES.ignite, 0.03, 0), () => OURS.CUE_KINDS.ignite(CUES.ignite, 0.03, 0)],
+  ['skor penuh (FN/playCues)', () => LIVE.FN(TRACK, 0), () => OURS.playCues(TRACK, 0)],
+  ['bolt (kN)', () => LIVE.kN({ pan: 0.4 }), () => OURS.bolt({ pan: 0.4 })],
+  ['fmBlip default (oc)', () => LIVE.oc({}), () => OURS.fmBlip({})],
+  ['thump default (_o)', () => LIVE._o({}), () => OURS.thump({})],
+  ['noiseSweep default (U_)', () => LIVE.U_({}), () => OURS.noiseSweep({})],
+  ['voice A Tripod (Vw/EN[0])', () => LIVE.EN[0].play(3.2, 0), () => OURS.VOICES[0].play(3.2, 0)],
+  ['voice B Leviathan (Vw/EN[1])', () => LIVE.EN[1].play(3.2, 0), () => OURS.VOICES[1].play(3.2, 0)],
+  ['voice shimmer', () => LIVE.Vw({ shimmer: true }), () => OURS.voice({ shimmer: true })],
+  ['cue alert (wN)', () => LIVE.wN(), () => OURS.cue('alert')],
+  ['cue loading (_N)', () => LIVE._N(0.34, 0.009), () => OURS.cue('loading')],
+  ['cue ready (RN)', () => LIVE.RN(), () => OURS.cue('ready')],
+  ['cue needsYou (CN)', () => LIVE.CN(), () => OURS.cue('needsYou')],
+  ['cue failed (MN)', () => LIVE.MN(), () => OURS.cue('failed')],
+  ['cue miraEnter (PN)', () => LIVE.PN(), () => OURS.cue('miraEnter')],
+  ['cue miraExit (IN)', () => LIVE.IN(), () => OURS.cue('miraExit')],
+  ['call riser (bN)', () => LIVE.bN(0), () => OURS.callRiser(0)],
+  ['assembly (DN)', () => LIVE.DN(), () => OURS.assembly()],
+]
+
+// skor cue (`Vk`): bandingkan DAFTAR cue yang dihasilkan, bukan pemanggilan audio
+const VK_ROWS = []
+
+function run(fn) {
+  mock.reset()
+  try {
+    fn()
+  } catch (e) {
+    return { error: String(e && e.message ? e.message : e) }
+  }
+  return mock.fingerprint()
+}
+
+function diff(a, b) {
   const out = []
-  for (const c of spec.cases) {
-    const off = new OfflineAudioContext(2, Math.floor(sr * spec.duration), sr)
-    mod.__setAudioContextForTest(off)
-    if (c.cue === 'assembly') mod.assemblyCue()
-    else mod.playMoment(c.cue)
-    const buf = await off.startRendering()
-    const data = buf.getChannelData(0)
-    out.push({
-      cue: c.cue,
-      windows: c.windows.map(([from, to]) => ({ from, to, ...analyse(data, sr, from, to) })),
-    })
+  const kinds = new Set([...Object.keys(a.nodes || {}), ...Object.keys(b.nodes || {})])
+  for (const k of kinds) {
+    const x = (a.nodes || {})[k] || 0
+    const y = (b.nodes || {})[k] || 0
+    if (x !== y) out.push(`node ${k}: live ${x} vs kita ${y}`)
   }
+  if (a.connects !== b.connects) out.push(`sambungan: live ${a.connects} vs kita ${b.connects}`)
+  if (a.src !== b.src) out.push(`start/stop: live ${a.src} vs kita ${b.src}`)
+  const keys = new Set([...Object.keys(a.params || {}), ...Object.keys(b.params || {})])
+  const paramDiff = []
+  for (const k of keys) {
+    const x = (a.params || {})[k] || 0
+    const y = (b.params || {})[k] || 0
+    if (x !== y) paramDiff.push(`${k}: live ${x} vs kita ${y}`)
+  }
+  if (paramDiff.length) out.push(`param beda ${paramDiff.length}: ${paramDiff.slice(0, 6).join(' · ')}`)
+  if (JSON.stringify(a.buffers) !== JSON.stringify(b.buffers)) out.push(`buffer beda: live ${a.buffers.join(',')} vs kita ${b.buffers.join(',')}`)
   return out
 }
 
-;(async () => {
-  fs.mkdirSync(OUT, { recursive: true })
-  const browser = await chromium.launch({
-    args: [
-      '--no-sandbox',
-      '--enable-unsafe-swiftshader',
-      '--use-gl=angle',
-      '--use-angle=swiftshader',
-      '--disable-dev-shm-usage',
-      '--autoplay-policy=no-user-gesture-required',
-      '--mute-audio',
-    ],
+const rows = []
+for (const [name, liveFn, ourFn] of SCEN) {
+  const a = run(liveFn)
+  const b = run(ourFn)
+  if (a.error || b.error) {
+    rows.push({ name, ok: false, problems: [a.error ? `live: ${a.error}` : null, b.error ? `kita: ${b.error}` : null].filter(Boolean) })
+    continue
+  }
+  const problems = diff(a, b)
+  rows.push({
+    name,
+    ok: problems.length === 0,
+    problems,
+    live: { nodes: a.nodes, connects: a.connects, src: a.src, paramCount: a.paramCount },
+    ours: { nodes: b.nodes, connects: b.connects, src: b.src, paramCount: b.paramCount },
   })
-  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } })
-  const page = await ctx.newPage()
+}
 
-  // ---------- A. paritas API ----------
-  const liveCounts = await countNodes(page, LIVE, 'LIVE ')
-  const buildCounts = await countNodes(page, BUILD, 'BUILD')
-
-  // ---------- B. spektrum ----------
-  await page.goto(BUILD, { waitUntil: 'domcontentloaded' })
-  const cases = [
-    { cue: 'ready', windows: [[0.1, 1.1]] },
-    { cue: 'failed', windows: [[0.0, 0.3], [0.1, 0.4], [0.2, 0.5]] },
-    { cue: 'needsYou', windows: [[0.0, 0.6]] },
-    { cue: 'alert', windows: [[0.06, 0.5]] },
-    { cue: 'assembly', windows: [[6.6, 7.7], [5.35, 5.75], [5.6, 6.0]] },
-  ]
-  const spec = await page.evaluate(OFFLINE, { cases, duration: 13 })
-  fs.writeFileSync(path.join(OUT, 'step4-peaks-debug.json'), JSON.stringify(spec, null, 1))
-
-  // ---------- C. cocokkan puncak ----------
-  const EXPECT = {
-    ready: [110, 294, 880],
-    failed: [880, 294, 110],
-    needsYou: [330, 467],
-    alert: [392],
-    assembly: [205, 540, 1150], // jendela paduan suara (formant)
+// ── paritas pembangun skor (`Vk`) ────────────────────────────────────────────────
+const vkRows = SCENES.map((sc) => {
+  const tl = { spark: [0, 0.9], weave: [0.9, 6], ignite: 6.55, corner: [sc.star.x, sc.star.y] }
+  const a = LIVE.Vk({ arcs: sc.arcs, particles: sc.particles, tl }, sc.width)
+  const b = OURS.buildCueTracks({ arcs: sc.arcs, particles: sc.particles, star: sc.star, width: sc.width })
+  const norm = (list) =>
+    list.map((c) =>
+      [c.kind, +c.t.toFixed(6), +c.dur.toFixed(6), c.strength === undefined ? '' : +c.strength.toFixed(6), c.pan === undefined ? '' : +c.pan.toFixed(6), c.step === undefined ? '' : c.step, c.busy ? c.busy.length : ''].join('/')
+    )
+  const A = norm(a)
+  const B = norm(b)
+  const same = A.length === B.length && A.every((x, i) => x === B[i])
+  const lenA = LIVE.Gk(a)
+  const lenB = OURS.cuesLength(b)
+  return {
+    name: `skor adegan: ${sc.name}`,
+    ok: same && Math.abs(lenA - lenB) < 1e-9,
+    problems: same ? [] : [`cues beda: live ${A.length} vs kita ${B.length}`].concat(A.filter((x, i) => x !== B[i]).slice(0, 3).map((x, i) => `live ${x} ≠ kita ${B[i]}`)),
+    detail: `${A.length} cue · panjang ${lenA.toFixed(3)} s`,
   }
-  // toleransi = 3 %, atau batas resolusi jendela (1,5 bin) bila lebih longgar
-  const match = (peaks, f, binHz = 1, tol = 0.03) => {
-    const floor = (1.5 * binHz) / f
-    const lim = Math.max(tol, floor)
-    let best = null
-    for (const p of peaks) {
-      const err = Math.abs(p.f - f) / f
-      if (!best || err < best.err) best = { ...p, err }
-    }
-    return {
-      expected: +f.toFixed(1),
-      found: best ? best.f : null,
-      mag: best ? best.m : 0,
-      errPct: best ? +(best.err * 100).toFixed(2) : null,
-      limitPct: +(lim * 100).toFixed(2),
-      ok: !!best && best.err <= lim && best.m >= 0.02,
-    }
-  }
-  const rows = {}
-  for (const r of spec) {
-    const main = r.windows[0]
-    if (r.cue === 'assembly') {
-      const formants = EXPECT.assembly.map((f) => match(main.peaks, f, main.binHz))
-      // peluit: puncak dominan di 2500–3600 Hz pada dua cuplikan; ramp 2900→3280 linear
-      // peluit menyapu 2900→3280 Hz linear selama 5,35–5,92 s → bandingkan CENTROID
-      // puncak di 2400–3800 Hz dengan frekuensi ramp di tengah jendela
-      const whistle = r.windows.slice(1).map((w) => {
-        // Peluit menyapu 2900→3280 Hz. Amplitudo memuncak di awal lalu meluruh,
-        // jadi centroid band TIDAK sama dengan titik tengah ramp; yang diuji:
-        // (a) centroid berada di dalam rentang sapuan ±3 %, (b) centroid naik antar jendela.
-        const tMid = (w.from + w.to) / 2
-        const found = w.c2400_3800
-        const lo = 2900 * 0.97
-        const hi = 3280 * 1.03
-        return {
-          center: tMid,
-          band: [Math.round(lo), Math.round(hi)],
-          found,
-          ok: !!found && found >= lo && found <= hi,
-        }
-      })
-      const rampUp =
-        whistle.length === 2 && whistle[0].found != null && whistle[1].found != null
-          ? whistle[1].found > whistle[0].found
-          : false
-      rows.assembly = { formants, whistle, rampUp, rms: main.rms }
-    } else if (r.cue === 'failed') {
-      const notes = [
-        { f: 880, w: r.windows[0] },
-        { f: 294, w: r.windows[1] },
-        { f: 110, w: r.windows[2] },
-      ]
-      rows[r.cue] = {
-        partials: notes.map((n) => match(n.w.peaks, n.f, n.w.binHz)),
-        rms: r.windows[0].rms,
-      }
-    } else {
-      rows[r.cue] = {
-        partials: EXPECT[r.cue].map((f) => match(main.peaks, f, main.binHz)),
-        rms: main.rms,
-      }
-    }
-  }
-
-  const apiOK = TYPES.every((t) => {
-    const l = liveCounts.counts ? liveCounts.counts[t] : -1
-    const b = buildCounts.counts ? buildCounts.counts[t] : -2
-    return l === b
-  })
-  const specOK = Object.entries(rows).every(([cue, v]) =>
-    cue === 'assembly'
-      ? v.formants.every((x) => x.ok) && v.whistle.every((x) => x.ok)
-      : v.partials.every((x) => x.ok)
-  )
-
-  const report = {
-    generatedAt: new Date().toISOString(),
-    liveUrl: LIVE,
-    buildUrl: BUILD,
-    liveCounts,
-    buildCounts,
-    apiParity: TYPES.map((t) => ({
-      type: t,
-      live: liveCounts.counts ? liveCounts.counts[t] : null,
-      build: buildCounts.counts ? buildCounts.counts[t] : null,
-    })),
-    spectra: spec,
-    peakMatch: rows,
-    pass: { api: apiOK, spectrum: specOK },
-  }
-  fs.writeFileSync(path.join(OUT, 'step4-report.json'), JSON.stringify(report, null, 1))
-
-  console.log('\n=== A. PARITAS API (live → build) ===')
-  for (const r of report.apiParity)
-    console.log(`${r.type.padEnd(26)} ${String(r.live).padStart(4)} → ${String(r.build).padStart(4)}`)
-  console.log('\n=== B. PUNCAK SPEKTRUM (±3 %) ===')
-  for (const [cue, v] of Object.entries(rows)) {
-    if (cue === 'assembly') {
-      console.log('assembly  formant :', v.formants.map((x) => `${x.expected}→${x.found}${x.ok ? '✓' : '✗'}`).join('  '))
-      console.log(
-        'assembly  peluit  :',
-        v.whistle.map((x) => `t=${x.center.toFixed(2)}s band ${x.band[0]}–${x.band[1]}→${x.found}${x.ok ? '✓' : '✗'}`).join('  '),
-        '| naik =',
-        v.rampUp
-      )
-    } else {
-      console.log(cue.padEnd(10), ':', v.partials.map((x) => `${x.expected}→${x.found}${x.ok ? '✓' : '✗'}`).join('  '))
-    }
-  }
-  console.log('\nPASS  api =', apiOK, '| spektrum =', specOK)
-  await browser.close()
-  process.exit(apiOK && specOK ? 0 : 1)
-})().catch((e) => {
-  console.error('GAGAL', e)
-  process.exit(1)
 })
+for (const r of vkRows) {
+  rows.push(r)
+  console.log(`${r.ok ? 'LULUS ' : 'GAGAL '} ${r.name}${r.detail ? ` — ${r.detail}` : ''}`)
+  if (!r.ok) r.problems.forEach((p) => console.log(`        ↳ ${p}`))
+}
+void VK_ROWS
+
+const pass = rows.filter((r) => r.ok).length
+console.log('GERBANG D · langkah 4 · paritas pemanggilan audio (mock AudioContext)')
+console.log('─'.repeat(78))
+for (const r of rows) {
+  console.log(`${r.ok ? 'LULUS ' : 'GAGAL '} ${r.name}`)
+  if (!r.ok) r.problems.forEach((p) => console.log(`        ↳ ${p}`))
+  else if (VERBOSE) {
+    const n = Object.entries(r.live.nodes).map(([k, v]) => `${k}:${v}`).join(' ')
+    console.log(`        nodes ${n} · sambungan ${r.live.connects} · start/stop ${r.live.src} · param ${r.live.paramCount}`)
+  }
+}
+console.log('─'.repeat(78))
+console.log(`SKOR: ${pass}/${rows.length}`)
+
+const totals = rows.reduce((acc, r) => {
+  if (!r.live) return acc
+  for (const [k, v] of Object.entries(r.live.nodes)) acc.nodes[k] = (acc.nodes[k] || 0) + v
+  acc.connects += r.live.connects
+  acc.src += r.live.src
+  acc.paramCount += r.live.paramCount
+  return acc
+}, { nodes: {}, connects: 0, src: 0, paramCount: 0 })
+console.log(`total live: ${Object.entries(totals.nodes).map(([k, v]) => `${k} ${v}`).join(' · ')}`)
+console.log(`            sambungan ${totals.connects} · start/stop ${totals.src} · penjadwalan param ${totals.paramCount}`)
+
+if (OUT) {
+  writeFileSync(OUT, JSON.stringify({ when: new Date().toISOString(), score: `${pass}/${rows.length}`, totals, rows }, null, 2))
+  console.log(`→ ${OUT}`)
+}
+process.exit(pass === rows.length ? 0 : 1)

@@ -636,3 +636,37 @@ pada 1,89–5,5; lalu kilatan ignition (`hum.strike.flash` di `13/14`), lalu ger
 - **P9 🟡:** A & B lulus; C (ambang live-vs-live) dan D masih terbuka.
 - Paket **`niu-update-langkah4l.zip`** — isinya **dokumen + alat + spesifikasi dial**, BUKAN kode panggung
   (tidak ada perubahan piksel sesi ini).
+
+### Sesi 40 (2026-10-29) — **langkah 4 MIRA: mesin audio penuh** (graph + 8 cue + skor adegan + bolt)
+
+- **Verifikasi paket 4l LULUS:** produksi masih `index-B2KyDmhD.js` (sha256 `bca27438…` = build37),
+  repo head `51edcaa` — sesuai karena 4l hanya dokumen/alat, tanpa kode panggung.
+  Glitch snapshot ke-5 (LANGKAH3.md kehilangan Bagian 29) dipulihkan dari zip 4l.
+- **Lantai derau Gerbang C MIRA diukur** (`shot.js` @8,0/9,5 + pembanding live): t=8,0 **MAE 0,00** ·
+  9,5 **0,55** · 11,0 **0,08** → ambang Gerbang C hampir nol; kita masih 4,50–4,86 di fase itu.
+  Ditulis `STATUS-ROADMAP.md` (P0–P10, 24/30 ≈ 80 %).
+- **Langkah 4 (audio) selesai dan diuji.** Region audio live (20 291 B di `recon/mira-2026-11-03.js`,
+  arsip `recon/audio-region.js`) diport verbatim ke `src/lib/miraAudio.ts` +
+  `src/lib/miraSoundCues.ts`:
+  graph `rh` (comp −8/12/3,5/0,006/0,25 · `hg=vN·0,62` · reverb 3,2 s/exp 2,4 & 6,0 s/exp 1,7 ·
+  send `gN`/`gN·1,15` · noise loop 2 s), primitif `oc/_o/U_/Vw`, drone `xN/_N/yN`,
+  8 cue `LN`, dua voice `EN`, ignition `DN`, **synth buffer prosedural `mo`** (6 strike · burst ·
+  thunder · boom · sizzle · hum), player `wi/Pl/xd`, **8 jenis cue skor `qw`**, track `FN/FT`,
+  bolt `kN`, unlock iOS `ON/Pg`.
+- **Temuan yang mengubah rencana:** (a) graph live **tidak** punya `createAnalyser` → butir rencana
+  “analyser→uEnergy” dibatalkan; (b) MIRA **tidak** memancarkan `MIRA_ENTER`/`ASSEMBLY` — bunyi masuk
+  berasal dari skor cue (`MIRA_BUILD`) + `MIRA_BOLT` per klik; (c) label tombol SOUND = **status**
+  (`SOUND ON` + `aria-pressed=true` sebagai default) — versi kita sebelumnya terbalik, dibetulkan;
+  (d) `Vk` memakai **lebar citra** sebagai skala pan.
+- **Penyambungan:** `MiraStage` membangun skor setelah `buildMatter` (36 cue, panjang **12,550 s**);
+  `HumanoidMode` menangani unlock (`Pg`), skor tunggu-gestur (`w.current`), SOUND ON/OFF
+  (`localStorage.apex_sound_off`), dan bolt pada `pointerdown` (pan `x·0,8`, ambang 150 ms).
+- **Gerbang D:** D1 paritas pemanggilan **31/31** (node/sambungan/start-stop/**multiset nilai
+  AudioParam** identik: 194 osc · 773 gain · 119 bufferSource · 96 panner · 54 biquad · 25 shaper ·
+  1 709 sambungan · 604 start/stop · 777 penjadwalan) · D2 spektrum `OfflineAudioContext`
+  **27/27 sampel-identik (MAE 0,0000 %, korelasi pita 1,000000)** · D3 audio hidup di aplikasi
+  **9/9** (RMS 2,55·10⁻² → SOUND OFF 0,00 → ON 1,01·10⁻¹; bolt 2,26·10⁻²) · D4 regresi piksel
+  t=8,0 **MAE 0,0000**.
+- Paket **`niu-update-langkah4m.zip`**.
+- Berikutnya (langkah 5): state machine penuh + 4 param *Her states* (`?state=`), SPEED/REPLAY
+  menggeser jam panggung, lalu langkah 6 (MediaPipe: `hum.touch.wave`, MIC) dan gerbang C/D + viewport 390.
