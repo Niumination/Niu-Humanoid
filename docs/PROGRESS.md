@@ -922,3 +922,18 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
 - **Alat baru:** `tools/audit-provenance.py` (gerbang hukum otomatis) · `tools/avatar-baru.py` (scaffold +
   validator manifest avatar; sudah dicoba: `python3 tools/avatar-baru.py mirai` → 0 masalah).
 - Tanpa regresi: build MIRA tetap `e215b5a7…` (byte-identik produksi) sesudah LICENSE/NOTICE/package.json.
+
+## Sesi 57 — 2026-10-29 · P11 APEX: lapisan latar ditemukan & diperbaiki (gerbang 11,35 → 7,61)
+
+- **Arah diagnosis berubah total.** Kegelapan area samping **bukan** ukuran/jumlah titik point-cloud
+  (geometri benar: 5197 titik, aspek 1,7768, bright 31 300) melainkan **tiga kanvas** yang salah
+  ditumpuk: gambar diam yang kita matikan, komposit figur yang menulis alfa 1,0, dan plate 2D yang
+  mengisi latar hitam opak. Rincian + angka: `docs/P11-PARITAS-LATAR.md`.
+- **Koreksi klaim lama:** (a) "img backdrop opacity 0" — di live gambar diam **tampak** (sembunyikan:
+  27,65 → 16,19); (b) "kanvas latar `screen`" — perilakunya **aditif** (`plus-lighter`);
+  (c) "plate 2D berlatar hitam" — di live plate transparan di luar siluet (alfa 0 pada 48,9 %).
+- **Gerbang APEX** (`tools/gate-apex.js`, 2 viewport): 1440 **11,35 / 10,39 %** → **7,61 / 7,02 %**
+  (tiga run 7,78 · 7,70 · 7,35); 390 **8,58 / 7,29 %** → **7,03 / 6,63 %**. Isolasi per lapisan:
+  gambar diam 16,90|16,89 · kanvas latar 2,74|2,73 · kanvas figur 14,43|14,26 (live|kita).
+- **Sisa:** sorotan masih redup (pita 120–200 Δ−15,7 · 200–256 Δ−22,5), bayangan sedikit terang (Δ+2,9).
+- Build `index-Ct4QlgXS.js` `98a11ea3…`; CSS tetap `index-WDCbnnbD.css` `1b66a34b…`.

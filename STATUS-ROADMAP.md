@@ -88,7 +88,7 @@ rebranding. Lihat `docs/LISENSI-BRANDING.md`.
 
 | # | pekerjaan | sasaran terukur | estimasi |
 |---|---|---|---|
-| P11 | APEX bloom & tonal | 1440 **≤ 6,0** MAE · 390 **≤ 2,3** · reproduksi tetap 0,0000 | 1–2 sesi |
+| P11 | APEX bloom & tonal | 1440 **≤ 6,0** MAE · 390 **≤ 2,3** — *kemajuan sesi 57: 1440 11,35 → **7,61**; 390 8,58 → **7,03**; kriteria "reproduksi 0,0000" **dibatalkan** karena bawaan berubah dengan sengaja* · rincian `docs/P11-PARITAS-LATAR.md` | 1 sesi lagi |
 | P12 | MIRA pola per-filamen (geometri, bukan citra) | galat torso **10,4 → ≤ 7,0** · `|Δbias|` tiap pita ≤ 2 · paritas ≤ 2,5 | 2–3 sesi |
 | P13 | aset milik sendiri | `audit-provenance` **0 salinan** · siluet IoU ≥ 0,98 | 2–4 sesi |
 | P14 | fitur "satu langkah di depan" | ≥ 3 dari 5 (E1 avatar kustom · E2 fps ≥1,5× · E3 aksesibilitas · E4 pemulihan konteks · E5 PWA) | 2–3 sesi |

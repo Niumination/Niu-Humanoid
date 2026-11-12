@@ -894,3 +894,20 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
    `e215b5a7…` ⇒ tidak ada regresi.
 6. Dokumen baru: `PETA-DOKUMEN.md`, `RENCANA-LANJUTAN.md` (P11–P15 + Gerbang E), `LISENSI-BRANDING.md`,
    `MESIN-PRODUKSI-AVATAR.md`, `templates/avatar.manifest.json`, `tools/avatar-baru.py` (dicoba → lulus).
+
+## Sesi 57 — apa yang benar-benar dikerjakan (P11)
+
+1. `probe-bgcnt` → `__HUM_BG_DBG` {count 5197, aspect 1,7768, dpr 1, rest 0,22, pulse 2,6} ⇒ geometri
+   point-cloud **bukan** penyebab; hook dicabut lagi setelah dipakai.
+2. `probe-cvonly` (sembunyikan img, sisakan kanvas) → konten kanvas kita **setara** live (16,75 vs 16,26);
+   jadi bukan isi, tapi cara menumpuk.
+3. `probe-alpha2/3` (screenshot `omitBackground`, alfa dibaca langsung) → kanvas figur kita **alfa 255
+   pada 100 % kotak** vs live 33,2 % (F-154); plate kita alfa 255 pada 100 % vs live 45,1 % (F-155).
+4. Patch `bloomGL.ts` (teruskan `sc.a`, un-premultiply) → alfa figur 64,2/33,4 ≈ live 62,9/33,2.
+5. Patch `render.ts` (`clearRect` + `siluetMask`) → plate alfa 0 62,9 % · rerata alfa 31,6 (live 48,9 % / 76).
+6. `Backdrop.tsx`: img `opacity` 0 → 1 (F-153). **Gerbang 17,59 → 9,64.**
+7. Percobaan `?bgb=` (normal/plus-lighter/screen/lighten) dengan kanvas benar-benar tampak:
+   9,44 / 7,36 / 7,49 / 7,87 ⇒ **plus-lighter** (F-156). Bawaan diubah.
+8. `?pl=1` (plate sebagai mask oklusi murni) 7,40 / 7,29 ⇒ di dalam derau, bawaan **mati** (F-157b).
+9. Gerbang akhir 3 run 1440 (7,78 · 7,70 · 7,35) + 390 (7,03); produksi-sendiri 6,69 (bukan lagi 0,0000
+   karena bawaan berubah dengan sengaja).
