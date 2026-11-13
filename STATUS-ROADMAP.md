@@ -88,7 +88,7 @@ rebranding. Lihat `docs/LISENSI-BRANDING.md`.
 
 | # | pekerjaan | sasaran terukur | estimasi |
 |---|---|---|---|
-| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** MAE · 390 **≤ 2,3** — *sesi 57: protokol MEDIAN 7 bingkai ⇒ 1440 **3,85** (target tercapai) · 390 **4,59** (belum) · produksi sebelum-5e 8,12 · rincian `docs/P11-PARITAS-LATAR.md`* | sisa: 390 sorotan |
+| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** ✓ (**3,58**) · 390 **≤ 2,3** ✗ (**4,70**) · derau gerbang 1,19/1,99 | sisa: sorotan figur 390 |
 | P12 | MIRA pola per-filamen (geometri, bukan citra) | galat torso **10,4 → ≤ 7,0** · `|Δbias|` tiap pita ≤ 2 · paritas ≤ 2,5 | 2–3 sesi |
 | P13 | aset milik sendiri | `audit-provenance` **0 salinan** · siluet IoU ≥ 0,98 | 2–4 sesi |
 | P14 | fitur "satu langkah di depan" | ≥ 3 dari 5 (E1 avatar kustom · E2 fps ≥1,5× · E3 aksesibilitas · E4 pemulihan konteks · E5 PWA) | 2–3 sesi |

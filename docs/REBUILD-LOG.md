@@ -922,3 +922,15 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 4. Gerbang median: sebelum-5e **8,12** · 5e **3,85** (1440) · **4,59** (390).
 5. Uji bloom (`bpm=1`, `bpi` 0,75/1,4/1,6) → 7,64–7,71, tidak mengubah kesimpulan; uji `uSizeK×0,725`
    → 2,36 (jauh lebih buruk), knob dicabut; uji geser/flip citra titik terang → tidak memperbaiki.
+
+## Sesi 57 lanjutan 2 — tonal: satu eksperimen ditolak, satu diterima
+
+1. Verifikasi 5f: `gate-apex.js af07d58c…` + `P11-PARITAS-LATAR.md c5348d3e…` = byte-identik di repo.
+2. `?bpm=1` sebagai bawaan diuji pada **gambar penuh** hasilnya bertentangan (1440 4,51→5,75 buruk,
+   390 5,51→4,93 baik) ⇒ **ditolak** sebagai bawaan (F-159). Bawaan kembali mode 0.
+3. Cari `frameBufferType` di bundle live: `Ci=1009` = **UnsignedByteType**; `Bu=1016` = HalfFloat.
+   Composer live memakai 1009 ⇒ RT 8-bit. Kita memakai half-float ⇒ diperbaiki (F-160):
+   lapisan figur 1440 4,29→3,95 · 390 4,42→3,30. `?bf16=1` untuk membandingkan.
+4. Derau gerbang diukur ulang: 11 bingkai/400 ms → 1,19 (1440) · 1,99 (390); ditetapkan aturan
+   "selisih < 2,5/3,0 bukan bukti".
+5. Angka resmi: 1440 3,58 / 1,63 % · 390 4,70 / 2,84 % (build `index-euagY5AQ.js` `c2dc850e…`).

@@ -86,7 +86,44 @@ titik terang. Di 1440 jumlah piksel terang hampir sama (6 692 vs 6 720) — perb
 Langkah berikut: uji penskalaan ukuran titik khusus viewport sempit, dan bandingkan geometri
 (5197 titik kita vs jumlah titik live) lewat instrumentasi per-draw.
 
-## 7. Berkas yang berubah
+## 7. F-159 / F-160 — dua percobaan tonal (satu ditolak, satu diterima)
+
+**F-159 — rantai bloom live (`?bpm=1`, 8 level, up-mix, komposit SCREEN) — DITOLAK sebagai bawaan.**
+Pada lapisan figur saja ia lebih dekat (1440 4,29 → 4,14 · 390 4,42 → 3,53), tetapi pada **gambar
+penuh** hasilnya bertentangan: 1440 4,51 → **5,75** (buruk), 390 5,51 → **4,93** (baik). Karena
+kriteria P11 adalah paritas gambar penuh, bawaan tetap rantai lama; `?bpm=1` tetap tersedia.
+
+**F-160 — tipe render target composer — DITERIMA.**
+Composer live memakai `frameBufferType` = **UnsignedByteType (1009)** ⇒ render target **8-bit**,
+bukan HalfFloat (1016). Kita dulu memilih half-float bila tersedia, jadi ambang bloom kita bekerja
+pada nilai >1 yang di live sudah di-clamp. Diukur pada lapisan figur saja (median 5 bingkai):
+
+| | 1440 MAE | 390 MAE |
+|---|---|---|
+| half-float (perilaku lama) | 4,29 | 4,42 |
+| **8-bit (seperti live)** | **3,95** | **3,30** |
+
+Bawaan kini 8-bit; `?bf16=1` mengembalikan half-float. Di gambar penuh selisihnya **tidak bisa
+dipisahkan dari derau** (lihat §8) — dasar penerimaannya adalah angka lapisan figur yang konsisten
+di kedua viewport plus kesesuaian dengan tipe buffer live.
+
+## 8. Lantai derau gerbang (penting untuk sesi berikutnya)
+
+| protokol | derau live-vs-live (1440) | derau (390) |
+|---|---|---|
+| 7 bingkai, jarak 350 ms | 0,98 – 2,45 | 1,21 – 2,45 |
+| **11 bingkai, jarak 400 ms** | **1,19** | 1,99 |
+| 1 bingkai (protokol lama) | 1,4 – 5,4 | 1,4 |
+
+**Aturan baru:** selisih < 2,5 MAE tidak boleh disebut perbaikan/kemunduran pada 1440; < 3,0 pada 390.
+Angka gerbang 1440 dari beberapa run dengan build berbeda (3,58 · 3,85 · 4,27 · 4,32) karena itu
+**setara secara statistik** — jangan saling dituning.
+
+**Angka resmi terakhir (median 11 bingkai, build `index-euagY5AQ.js`):**
+1440 **3,58 / 1,63 %** · 390 **4,70 / 2,84 %** ⇒ target 1440 (≤ 6,0) **tercapai**; target 390 (≤ 2,3)
+**belum** (selisih tersisa terkonsentrasi di pita 120–200 = Δ−13,5, yaitu sorotan kanvas figur).
+
+## 9. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.
@@ -94,6 +131,10 @@ Langkah berikut: uji penskalaan ukuran titik khusus viewport sempit, dan banding
 - `src/lib/render.ts` — `drawState` tidak lagi `fillRect('#000')`; mask siluet (`siluetMask`);
   knob `?pl=1` (plate sebagai mask oklusi murni).
 
-Build: `dist/assets/index-Ct4QlgXS.js` (233,72 kB · gzip 77,69 kB)
-sha256 `98a11ea3c92358cd0065a18aab71748a20395bb626760713c2d9aa7967611823`;
-CSS `index-WDCbnnbD.css` `1b66a34b…` (tidak berubah).
+- `src/lib/bloomGL.ts` (sesi 57 lanjutan, F-160) — render target composer **8-bit** (meniru
+  `frameBufferType: UnsignedByteType` di live); `?bf16=1` mengembalikan half-float.
+
+Build: `dist/assets/index-euagY5AQ.js` (233,78 kB · gzip 77,70 kB)
+sha256 `c2dc850e78f9019bd01b74edf2359b65aad510b3b75aad0eb229d4fb6b0c10fe`;
+CSS `index-WDCbnnbD.css` `1b66a34b…` (tidak berubah). Build sebelumnya (5e/5f, tanpa F-160):
+`index-Ct4QlgXS.js` `98a11ea3…`.

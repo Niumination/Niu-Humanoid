@@ -957,3 +957,19 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
 - **Jalan buntu dicatat:** bloom (`bpm/bpi`) tidak berpengaruh; `uSizeK ×0,725` (dugaan `min(vw,vh)`)
   **salah arah** (2,95 → 2,36) — knob dicabut, build kembali `98a11ea3…`; geser ±20 px & flip UD/LR
   tidak menaikkan impitan titik terang (10,8 % di 390, 18,9 % di 1440 — jumlah piksel terang sama).
+
+### Sesi 57 lanjutan 2 — verifikasi 5f + F-159/F-160 (build baru `index-euagY5AQ.js`)
+
+- **Verifikasi 5f:** `tools/gate-apex.js` (`af07d58c…`, 5 226 B, `--frames` ada) dan
+  `docs/P11-PARITAS-LATAR.md` (`c5348d3e…`) di repo = **byte-identik** dengan lokal.
+- **F-159 (DITOLAK jadi bawaan):** rantai bloom live `?bpm=1` lebih dekat pada lapisan figur (1440 4,29→4,14 ·
+  390 4,42→3,53) tetapi **lebih buruk pada gambar penuh di 1440** (4,51→5,75) dan lebih baik di 390 (5,51→4,93).
+  Bawaan tetap rantai lama karena kriteria P11 = paritas gambar penuh.
+- **F-160 (DITERIMA):** composer live memakai `frameBufferType` **UnsignedByteType (1009)** ⇒ RT 8-bit, bukan
+  HalfFloat (1016). Kita dulu memakai half-float. Diukur lapisan figur: 1440 **4,29 → 3,95** · 390 **4,42 → 3,30**.
+  Bawaan kini 8-bit; `?bf16=1` mengembalikan half-float. Build baru `index-euagY5AQ.js` `c2dc850e…`.
+- **Lantai derau gerbang ditetapkan:** 7 bingkai → 0,98–2,45; **11 bingkai/400 ms → 1,19 (1440) · 1,99 (390)**.
+  Aturan: selisih < 2,5 MAE (1440) / < 3,0 (390) **tidak** boleh disebut perbaikan. Empat run 1440 dengan build
+  berbeda (3,58 · 3,85 · 4,27 · 4,32) karena itu **setara**.
+- **Angka resmi terakhir:** 1440 **3,58 / 1,63 %** · 390 **4,70 / 2,84 %**. Target 1440 (≤6,0) tercapai;
+  390 (≤2,3) belum — sisa di pita 120–200 (Δ−13,5, sorotan kanvas figur).
