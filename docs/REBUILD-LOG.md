@@ -911,3 +911,14 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 8. `?pl=1` (plate sebagai mask oklusi murni) 7,40 / 7,29 ⇒ di dalam derau, bawaan **mati** (F-157b).
 9. Gerbang akhir 3 run 1440 (7,78 · 7,70 · 7,35) + 390 (7,03); produksi-sendiri 6,69 (bukan lagi 0,0000
    karena bawaan berubah dengan sengaja).
+
+## Sesi 57 lanjutan — verifikasi & protokol median
+
+1. `raw.githubusercontent.com` 5 berkas 5e → 3 sumber byte-identik di `apex-humanoid-rebuild`; `Niu-Humanoid`
+   hanya dokumen (src-nya snapshot lama) — dicatat, bukan diperbaiki tanpa keputusan.
+2. `npm ci && tsc --noEmit && vite build` → `98a11ea3…` (sama dengan yang saya kirim) ⇒ reproduksi lulus.
+3. Ukur ulang LIVE dua kali berjarak 1,2 s → **MAE 5,41** (derau fase). Tambah `--frames/--gap` ke
+   `tools/gate-apex.js` (median piksel). Derau turun 0,96–2,08.
+4. Gerbang median: sebelum-5e **8,12** · 5e **3,85** (1440) · **4,59** (390).
+5. Uji bloom (`bpm=1`, `bpi` 0,75/1,4/1,6) → 7,64–7,71, tidak mengubah kesimpulan; uji `uSizeK×0,725`
+   → 2,36 (jauh lebih buruk), knob dicabut; uji geser/flip citra titik terang → tidak memperbaiki.

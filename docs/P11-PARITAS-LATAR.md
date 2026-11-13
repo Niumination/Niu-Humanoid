@@ -51,7 +51,42 @@ Langkah berikut P11: (a) uji bloom figur pada bingkai yang sama (fase denyut blo
 menjelaskan sebagian Δ sorotan — perlu kunci fase, bukan satu tangkapan), (b) uji vignette/overlay
 gradien, (c) ulang gerbang dengan 3 tangkapan per situs dan median.
 
-## 4. Berkas yang berubah
+## 4. Protokol MEDIAN — dan koreksi besar terhadap angka sebelumnya
+
+Terukur: dua tangkapan **LIVE** berjarak 1,2 s berbeda **MAE 5,41**. Artinya angka "kita vs live"
+dari satu tangkapan bercampur derau fase animasi figur (boil/urat/mote), bukan hanya selisih nyata.
+`tools/gate-apex.js` sekarang punya `--frames N --gap ms`: N tangkapan per situs, lalu **median
+piksel**. Derau turun ke **0,96–2,08**.
+
+| pembanding (median 7 bingkai, `?auto=1&state=idle&surge=1.5`) | 1440 MAE / over32 | 390 MAE / over32 |
+|---|---|---|
+| produksi **sebelum 5e** (`niu-humanoid.vercel.app`) vs APEX | 8,12 / 5,89 % | — |
+| build 5e (`index-Ct4QlgXS.js`) vs APEX | **3,85 / 1,84 %** (band: +2,0 · +1,3 · +0,6 · −1,7 · −0,3) | **4,59 / 2,96 %** (120–200: Δ−12,2) |
+| satu tangkapan (protokol lama, untuk perbandingan) | 7,61 / 7,02 % | 7,03 / 6,63 % |
+
+Jadi **perbaikan lapisan latar nyata** (8,12 → 3,85 pada protokol yang sama), dan sebagian besar
+"sisa selisih" yang saya laporkan di sesi sebelumnya ternyata **derau fase**, bukan cacat. Ambang
+P11 untuk 1440 (**≤ 6,0**) tercapai; ambang 390 (**≤ 2,3**) **belum**.
+
+## 5. Jalan buntu yang sudah dicoba (jangan diulang)
+
+| percobaan | hasil | putusan |
+|---|---|---|
+| bloom `bpm=1` (rantai live: 8 level, up-mix) | 7,71 (vs 7,70 bawaan, satu tangkapan) | tak berpengaruh — bloom **bukan** penyebab sisa selisih |
+| `bpi=0,75 / 1,4 / 1,6` | 7,64 / 7,68 / 4,55 (390) | di dalam derau, kecuali 390 sedikit membaik |
+| kanvas latar `uSizeK` × 0,725 (dugaan live memakai `min(vw,vh)`) | rerata c0 2,95 → 2,36, rasio pita 0,41–0,78 | **salah arah**, dibatalkan (knob dicabut, build kembali identik) |
+| `?pl=1` plate sebagai mask oklusi murni | 7,40 / 7,29 | di dalam derau, bawaan mati |
+
+## 6. Sisa selisih 390 (pekerjaan berikutnya)
+
+Pita 120–200 Δ−12,2 · 200+ Δ−5,1, sedangkan 1440 nyaris rata. Kanvas latar sendirian di 390:
+piksel >120 live 1 562 vs kita 1 199, dan hanya 10,8 % titik terang berimpit — jadi bukan soal
+posisi/geser/flip (uji geser ±20 px dan flip UD/LR **tidak** menaikkan impitan), melainkan kerapatan
+titik terang. Di 1440 jumlah piksel terang hampir sama (6 692 vs 6 720) — perbedaan khas **390**.
+Langkah berikut: uji penskalaan ukuran titik khusus viewport sempit, dan bandingkan geometri
+(5197 titik kita vs jumlah titik live) lewat instrumentasi per-draw.
+
+## 7. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.

@@ -937,3 +937,23 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
   gambar diam 16,90|16,89 · kanvas latar 2,74|2,73 · kanvas figur 14,43|14,26 (live|kita).
 - **Sisa:** sorotan masih redup (pita 120–200 Δ−15,7 · 200–256 Δ−22,5), bayangan sedikit terang (Δ+2,9).
 - Build `index-Ct4QlgXS.js` `98a11ea3…`; CSS tetap `index-WDCbnnbD.css` `1b66a34b…`.
+
+- **Paket:** `niu-update-langkah5e.zip` (14 berkas, `38661957…`) — `BACA-DULU.md` di dalamnya.
+
+### Sesi 57 lanjutan — verifikasi 5e + protokol ukur baru (median)
+
+- **Verifikasi paket 5e:** tiga berkas sumber di `Niumination/apex-humanoid-rebuild` **byte-identik**
+  (sha256 16 hex: `Backdrop.tsx 760d44f8…` · `bloomGL.ts 1e427bfc…` · `render.ts d49c4b15…`), dokumen
+  `docs/P11-PARITAS-LATAR.md 1ee4bd39…`, alat `tools/gate-apex.js 4ea83ce0…`. `npm ci && tsc --noEmit
+  && vite build` → `index-Ct4QlgXS.js` `98a11ea3…` **reproduksi byte-identik**. Catatan: `Niu-Humanoid`
+  hanya menerima dokumen — `src/` di repo itu **snapshot lama** (bloomGL 10 797 B vs 19 424 B); bila
+  repo itu juga dipakai untuk deploy, ia perlu disamakan (belum dilakukan, menunggu keputusan).
+- **Koreksi protokol ukur:** dua tangkapan LIVE berjarak 1,2 s sudah berbeda **MAE 5,41** ⇒ angka satu
+  tangkapan bercampur derau fase animasi. `tools/gate-apex.js` kini punya `--frames N --gap ms`
+  (median piksel). Derau turun ke 0,96–2,08.
+- **Hasil protokol median:** produksi **sebelum 5e** vs APEX **8,12 / 5,89 %** → build 5e **3,85 / 1,84 %**
+  (1440) dan **4,59 / 2,96 %** (390). Pita 1440 hampir rata: +2,0 · +1,3 · +0,6 · −1,7 · −0,3.
+  Ambang P11 1440 (≤ 6,0) **tercapai**; 390 (≤ 2,3) **belum** (120–200 Δ−12,2).
+- **Jalan buntu dicatat:** bloom (`bpm/bpi`) tidak berpengaruh; `uSizeK ×0,725` (dugaan `min(vw,vh)`)
+  **salah arah** (2,95 → 2,36) — knob dicabut, build kembali `98a11ea3…`; geser ±20 px & flip UD/LR
+  tidak menaikkan impitan titik terang (10,8 % di 390, 18,9 % di 1440 — jumlah piksel terang sama).
