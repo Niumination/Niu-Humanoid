@@ -945,3 +945,16 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
    bun=0 (3,67, buruk) · bal=1 (3,48) · uSizeK lebar/1020 (1440 **0,43→3,52**) → semua gugur.
 4. Knob-nya dicabut; build kembali `index-euagY5AQ.js` `c2dc850e…`.
 5. Gerbang median 11 bingkai: 1440 3,65 · 390 4,54 (derau 1,15 / 1,36).
+
+## Sesi 57 lanjutan 4 — plate live ternyata hitam
+
+1. Verifikasi 5h: `probe-uniform.js 3fa04e14…` identik; bloomGL tak berubah.
+2. Isolasi lapisan plate (kanvas ke-2 saja, median 5 bingkai) di tiga state: live 1,78 / 1,98 / 1,97 vs kita
+   7,71 / 9,04 / 9,44 ⇒ **plate live hitam** (F-162). Bawaan: plate = siluet saja (?pl=0 membatalkan).
+3. Ukur alfa plate (omitBackground): live alfa255 20,8 % / rerata 57,6; kita 3,6 % / 24,4 → ramp dipertajam +
+   mask 1/2 resolusi → 9,1 % / 33,8 (F-163).
+4. Backing kanvas plate live = CSS×dpr (390×390), kita 900 → diperbaiki (F-164).
+5. Uji encode: tanpa sRGB encode rasio halo jatuh 0,55–0,71 ⇒ encode kita benar (F-165, knob dicabut).
+6. Temuan alat: `bpi` hanya dipakai di mode 1 ⇒ uji bpi lama tidak valid (F-166); diperbaiki.
+7. Profil halo r=0..12: puncak sama, pendar kita 0,85–0,91 ⇒ bukan radius (bpr/bpm tidak mengubah).
+8. Gerbang: 1440 3,80 · 390 4,53 (derau 1,13 / 1,52). Build `index-ClEvdEMa.js` `b489da8c…`.

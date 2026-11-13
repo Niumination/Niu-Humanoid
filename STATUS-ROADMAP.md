@@ -88,7 +88,7 @@ rebranding. Lihat `docs/LISENSI-BRANDING.md`.
 
 | # | pekerjaan | sasaran terukur | estimasi |
 |---|---|---|---|
-| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** ✓ (**3,65**) · 390 **≤ 2,3** ✗ (**4,54**; 120–200 Δ−12,7) · 7 dugaan 390 gugur, uniform figur terbukti identik | sisa: komposit bloom / plate 390 |
+| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** ✓ (**3,80**) · 390 **≤ 2,3** ✗ (**4,53** · 120–200 Δ−11,7) · plate live terbukti hitam (F-162) · pendar kita ±15 % redup (profil halo) | sisa: bobot mip bloom + kepadatan siluet plate |
 | P12 | MIRA pola per-filamen (geometri, bukan citra) | galat torso **10,4 → ≤ 7,0** · `|Δbias|` tiap pita ≤ 2 · paritas ≤ 2,5 | 2–3 sesi |
 | P13 | aset milik sendiri | `audit-provenance` **0 salinan** · siluet IoU ≥ 0,98 | 2–4 sesi |
 | P14 | fitur "satu langkah di depan" | ≥ 3 dari 5 (E1 avatar kustom · E2 fps ≥1,5× · E3 aksesibilitas · E4 pemulihan konteks · E5 PWA) | 2–3 sesi |

@@ -988,3 +988,21 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
   atau ukuran titik ⇒ kandidat tinggal komposit bloom (area halo) / lapisan plate di 390.
 - **Gerbang resmi (median 11 bingkai):** 1440 **3,65 / 1,70 %** (pita +1,9 · +0,7 · −0,3 · −2,5 · −0,7) ·
   390 **4,54 / 2,85 %** (120–200 Δ−12,7). Target 1440 tercapai, 390 belum.
+
+### Sesi 57 lanjutan 4 — plate dibongkar (F-162…F-166), build `index-ClEvdEMa.js`
+
+- **Verifikasi 5h:** `tools/probe-uniform.js` di repo `3fa04e14…` = byte-identik; `bloomGL.ts` tetap `12cfcedf…`.
+- **F-162 (temuan besar):** plate live **hitam** di semua state — diukur sendirian 390: idle 1,78 · thinking 1,98 ·
+  speaking 1,97 (piksel >100 ≈ 950) vs plate kita 7,71 / 9,04 / 9,44 (piksel >100 7 021–11 300). ⇒ plate live
+  hanya **mask oklusi**; kita menggambar figur dua kali. Bawaan kini siluet saja (`?pl=0` membatalkan).
+- **F-163:** siluet plate kita terlalu tipis — alfa live 0/255/rerata = 71,9 % / **20,8 %** / 57,6; kita 79,5 % / 9,1 % / 33,8
+  sesudah ramp dipertajam (0,06/0,04) & mask 1/2 resolusi. Masih kurang pekat (sisa).
+- **F-164:** backing kanvas plate live = **CSS×dpr** (390 pada viewport 390), kita selalu 900 ⇒ alfa merata. Kini ikut ukuran tampil.
+- **F-165:** dugaan "live tidak meng-encode sRGB" **gugur** (tanpa encode rasio halo 0,55–0,71). Knob dicabut.
+- **F-166 (koreksi alat ukur):** `bpi` **mati di mode 0** — semua uji bpi sebelumnya (0,75/1,4/1,6) tidak mengubah
+  apa pun dan kesimpulannya **dibatalkan**. Kini `intensityMul` berlaku di kedua rantai.
+- **Profil halo (bukti terbaik):** puncak sama (216,9 vs 214,1) tetapi pendar kita seragam ±15 % lebih redup
+  (r=3: 0,91 · r=6: 0,87 · r=9 & 12: 0,85). Bukan radius, bukan encode.
+- **Gerbang resmi:** 1440 **3,80 / 1,97 %** · 390 **4,53 / 2,54 %** (derau 1,13 / 1,52) — dalam derau vs build sebelumnya.
+- **Alat baru:** `tools/probe-layers.js` (sembunyikan lapisan + median), `tools/probe-alpha.js` (sebaran alfa),
+  `tools/probe-shot.js` (tangkapan keadaan), `tools/band.py` (pita luma + rasio).

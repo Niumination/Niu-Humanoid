@@ -156,7 +156,51 @@ komposit bloom (area halo) dan/atau lapisan plate di 390.
 ⇒ selisih < 2,5 MAE (1440) / < 3,0 (390) bukan bukti. Run 3,58 · 3,65 · 3,85 · 4,27 · 4,32 (1440)
 karena itu **setara**; 390 4,54 · 4,70 · 4,88 juga setara.
 
-## 11. Berkas yang berubah
+## 11. Lapisan plate terbongkar (F-162…F-166)
+
+**F-162 — plate live praktis HITAM di semua state.** Plate live diukur sendirian (kanvas ke-2 saja,
+median 5 bingkai, 390×844): `idle 1,78 · thinking 1,98 · speaking 1,97` (piksel >100: 925 / 978 / 978).
+Plate kita menggambar ulang figur: `idle 7,71 · thinking 9,04 · speaking 9,44` (piksel >100: 7 021 /
+10 163 / 11 300). ⇒ Di live plate hanya **mask oklusi** (siluet gelap penahan butiran latar); seluruh
+tampilan figur + efek state datang dari kanvas GPU. **Bawaan kini siluet saja**; `?pl=0` mengembalikan
+perilaku lama.
+
+**F-163 — siluet plate kita terlalu tipis.** Tangkapan alfa lapisan plate (omitBackground, 390×844):
+
+| | alfa = 0 | alfa = 255 | rerata alfa |
+|---|---|---|---|
+| live | 71,9 % | **20,8 %** | **57,6** |
+| kita (sebelum) | 79,6 % | 3,6 % | 24,4 |
+| kita (sesudah ramp dipertajam 0,06/0,04, mask 1/2) | 79,5 % | 9,1 % | 33,8 |
+
+Masih kurang pekat; dicatat sebagai sisa.
+
+**F-164 — ukuran backing kanvas plate.** Live memakai **CSS×dpr** (390×390 pada viewport 390;
+900×900 pada 1440). Kita selalu 900, sehingga pada 390 kanvas 900 diperkecil browser dan alfa
+merata-rata. Kini backing mengikuti ukuran tampil (dengan `resize`).
+
+**F-165 — encode sRGB: dugaan "live tidak meng-encode" GUGUR.** Melewati encode di komposit
+(`benc=0`) membuat rasio halo jatuh ke **0,55–0,71** (jauh lebih gelap) ⇒ encode kita benar. Knob dicabut.
+
+**F-166 — KESALAHAN ALAT UKUR: `bpi` tidak pernah bekerja di mode 0.** `intensityMul` hanya dipakai
+di rantai mode 1, sehingga semua uji `bpi` yang saya laporkan di sesi sebelumnya (0,75 / 1,4 / 1,6)
+**tidak mengubah apa pun** dan kesimpulannya batal. Setelah diperbaiki, `bpi` punya efek nyata tapi
+kecil (rasio halo 0,85 → 0,86 pada 1,8).
+
+**Profil halo (bukti terukur paling tajam sejauh ini).** Untuk piksel terang teratas (p99,5), rerata
+luminansi pada radius 0/3/6/9/12 px, 390×844:
+
+| | r=0 | r=3 | r=6 | r=9 | r=12 |
+|---|---|---|---|---|---|
+| live | 214,1 | 160,1 | 130,4 | 109,9 | 95,6 |
+| kita | 216,9 | 146,3 | 113,4 | 93,6 | 80,8 |
+| rasio | 1,01 | 0,91 | 0,87 | 0,85 | 0,85 |
+
+Puncak sama, tetapi pendar kita **seragam ±15 % lebih redup** pada semua radius. Bukan soal radius
+(`bpr` 0,3 / 0,6 dan rantai live `bpm=1` → rasio 0,82–0,86) dan bukan encode. Kandidat berikutnya:
+bobot per-level rantai mip (bloomFactors live) dan/atau kontribusi plate terhadap pendar.
+
+## 12. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.
@@ -167,7 +211,16 @@ karena itu **setara**; 390 4,54 · 4,70 · 4,88 juga setara.
 - `src/lib/bloomGL.ts` (sesi 57 lanjutan, F-160) — render target composer **8-bit** (meniru
   `frameBufferType: UnsignedByteType` di live); `?bf16=1` mengembalikan half-float.
 
-Build: `dist/assets/index-euagY5AQ.js` (233,78 kB · gzip 77,70 kB)
-sha256 `c2dc850e78f9019bd01b74edf2359b65aad510b3b75aad0eb229d4fb6b0c10fe`;
-CSS `index-WDCbnnbD.css` `1b66a34b…` (tidak berubah). Build sebelumnya (5e/5f, tanpa F-160):
-`index-Ct4QlgXS.js` `98a11ea3…`.
+- `src/components/HumanoidMode.tsx` (F-164) — backing kanvas plate = CSS×dpr + penanganan `resize`.
+- `src/lib/render.ts` (F-162/F-163) — plate bawaan **siluet saja** (`?pl=0` membatalkan); ramp mask
+  dipertajam (0,06/0,04); mask dibangun di 1/2 resolusi.
+- `src/lib/bloomGL.ts` (F-166) — `intensityMul` berlaku di kedua rantai bloom (sebelumnya mati di mode 0).
+
+Build: `dist/assets/index-ClEvdEMa.js` (234,26 kB · gzip 77,86 kB)
+sha256 `b489da8ce6354b3d842ed83ca984244d2e54755a187a3127d94843ae48743be1`;
+CSS `index-WDCbnnbD.css` `1b66a34b…` (tidak berubah). Build sebelumnya:
+`index-euagY5AQ.js` `c2dc850e…` (5g) · `index-Ct4QlgXS.js` `98a11ea3…` (5e/5f).
+**Gerbang resmi sesudah F-162…F-166 (median 11 bingkai, derau 1,13 / 1,52):**
+1440 **3,80 / 1,97 %** (pita +1,7 · +0,5 · −0,4 · −4,0 · −2,5) · 390 **4,53 / 2,54 %** (120–200 Δ−11,7).
+Dalam derau dibanding build sebelumnya (1440 3,53–3,88 · 390 4,53–5,13), tetapi perbaikannya nyata pada
+pengukuran lapisan/alfa, bukan pada MAE gambar penuh.
