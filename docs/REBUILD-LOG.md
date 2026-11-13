@@ -934,3 +934,14 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 4. Derau gerbang diukur ulang: 11 bingkai/400 ms → 1,19 (1440) · 1,99 (390); ditetapkan aturan
    "selisih < 2,5/3,0 bukan bukti".
 5. Angka resmi: 1440 3,58 / 1,63 % · 390 4,70 / 2,84 % (build `index-euagY5AQ.js` `c2dc850e…`).
+
+## Sesi 57 lanjutan 3 — 390: tujuh hipotesis diuji, nol diterima
+
+1. Verifikasi 5g: `bloomGL.ts 12cfcedf…` byte-identik; build `c2dc850e…` reproduksi.
+2. Instrumentasi uniform WebGL (bungkus `getUniformLocation` + `uniform1f/2f/4f`) pada LIVE & OURS:
+   uniform figur **identik** (uSize, uPatchUV, uDotSharp, uRim, uBloomR, uPulse, uBoilAmp, uVein) ⇒
+   bukan geometri/ukuran titik.
+3. Uji berturut-turut: bloom_k 1,0/1,25/1,3 (3,15/3,30) · DOT 0,18/0,45 (3,00, rasio 0,87) ·
+   bun=0 (3,67, buruk) · bal=1 (3,48) · uSizeK lebar/1020 (1440 **0,43→3,52**) → semua gugur.
+4. Knob-nya dicabut; build kembali `index-euagY5AQ.js` `c2dc850e…`.
+5. Gerbang median 11 bingkai: 1440 3,65 · 390 4,54 (derau 1,15 / 1,36).

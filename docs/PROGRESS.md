@@ -973,3 +973,18 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
   berbeda (3,58 · 3,85 · 4,27 · 4,32) karena itu **setara**.
 - **Angka resmi terakhir:** 1440 **3,58 / 1,63 %** · 390 **4,70 / 2,84 %**. Target 1440 (≤6,0) tercapai;
   390 (≤2,3) belum — sisa di pita 120–200 (Δ−13,5, sorotan kanvas figur).
+
+### Sesi 57 lanjutan 3 — verifikasi 5g + pengejaran sisa 390 (semua dugaan gugur, build tetap)
+
+- **Verifikasi 5g:** `src/lib/bloomGL.ts` di repo `12cfcedf…` (20 536 B) = **byte-identik** dengan lokal;
+  `npm ci && tsc --noEmit && vite build` → `index-euagY5AQ.js` `c2dc850e…` (reproduksi).
+- **Tujuh dugaan untuk sisa 390 diuji dan GUGUR semua** (rincian angka: `docs/P11-PARITAS-LATAR.md` §9):
+  bloom_k (1,0/1,25/1,3) · `__HUM_DOT` (0,18/0,45) · `?bun=0` (3,53→3,67) · `?bal=1` (3,48) ·
+  rantai bloom live · RT 8-bit (dipakai) · `uSizeK` = lebar/1020 (**1440 0,43→3,52 — jauh lebih buruk**).
+  Semua knob uji dicabut lagi; build kembali **`c2dc850e…`** (byte-identik) — tidak ada perubahan runtime.
+- **Bukti kunci baru:** instrumentasi uniform WebGL pada halaman **live** membuktikan uniform shader figur
+  **identik** di kedua situs/viewport (`uSize` 1,74 · `uPatchUV` 0,0044615 · `uDotSharp` 0,32 · `uRim` 0,9 ·
+  `uBloomR` 9 · `uPulseA/B` 1,4087 · `uBoilAmp` 2,2714 · `uVein` 1,4541). Sisa 390 **bukan** geometri
+  atau ukuran titik ⇒ kandidat tinggal komposit bloom (area halo) / lapisan plate di 390.
+- **Gerbang resmi (median 11 bingkai):** 1440 **3,65 / 1,70 %** (pita +1,9 · +0,7 · −0,3 · −2,5 · −0,7) ·
+  390 **4,54 / 2,85 %** (120–200 Δ−12,7). Target 1440 tercapai, 390 belum.

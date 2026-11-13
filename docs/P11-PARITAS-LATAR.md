@@ -123,7 +123,40 @@ Angka gerbang 1440 dari beberapa run dengan build berbeda (3,58 · 3,85 · 4,27 
 1440 **3,58 / 1,63 %** · 390 **4,70 / 2,84 %** ⇒ target 1440 (≤ 6,0) **tercapai**; target 390 (≤ 2,3)
 **belum** (selisih tersisa terkonsentrasi di pita 120–200 = Δ−13,5, yaitu sorotan kanvas figur).
 
-## 9. Berkas yang berubah
+## 9. Investasi 390 — tujuh dugaan diuji, semuanya gugur (jangan diulang)
+
+Sisa 390 terkonsentrasi di pita 120–200 (Δ−12,7) sementara 1440 rata (−2,5). Diuji satu per satu
+pada lapisan figur saja (median 5 bingkai, `?auto=1&state=idle&surge=1.5`):
+
+| dugaan | angka | putusan |
+|---|---|---|
+| intensitas bloom (`__HUM_BLOOM_K` 1,0 / 1,25 / 1,3) | MAE 3,15 / 3,30 / — · rasio 120–150 tetap 0,86–0,87 | gugur (di dalam derau) |
+| ketajaman titik (`__HUM_DOT` 0,18 / 0,45) | MAE 3,00 · rasio 0,87 / 0,89 | gugur (derau) |
+| un-premultiply komposit (`?bun=0`) | 3,53 → 3,67 | gugur (lebih buruk) |
+| alfa ikut pendar bloom (`?bal=1`) | 3,53 → 3,48 · rasio tak berubah | gugur |
+| rantai bloom live sebagai bawaan | lihat §7 (F-159) | ditolak |
+| render target 8-bit | lihat §7 (F-160) | diterima (bukan untuk 390 spesifik) |
+| `uSizeK` kanvas latar = lebar/1020 | **1440: MAE 0,43 → 3,52** (rerata 6,14 vs live 2,74) · 390: 0,43 → 0,99 | gugur — tinggi/1020 (bawaan) benar |
+
+**Bukti kunci (instrumentasi uniform WebGL di halaman live, `prototype.getUniformLocation` +
+`uniform1f/2f/4f` dibungkus):** seluruh uniform **shader figur** identik di kedua situs dan kedua
+viewport — `uSize` 1,74 (390) / 2,5588 (1440) · `uPatchUV` 0,0044615 / 0,0028431 · `uDotSharp` 0,32 ·
+`uRim` 0,9 · `uBloomR` 9 · `uPulseA/B` 1,4087 · `uBoilAmp` 2,2714 · `uVein` 1,4541.
+⇒ Sisa 390 **bukan** dari geometri, ukuran titik, atau parameter shader figur. Kandidat yang tersisa:
+komposit bloom (area halo) dan/atau lapisan plate di 390.
+
+## 10. Lantai derau (dipakai sebagai aturan)
+
+| protokol | derau 1440 | 390 |
+|---|---|---|
+| 1 bingkai (lama) | 1,4 – 5,4 | 1,4 |
+| 7 bingkai / 350 ms | 0,98 – 2,45 | 1,21 – 2,45 |
+| **11 bingkai / 400 ms** | **1,15 – 1,19** | **1,36 – 1,99** |
+
+⇒ selisih < 2,5 MAE (1440) / < 3,0 (390) bukan bukti. Run 3,58 · 3,65 · 3,85 · 4,27 · 4,32 (1440)
+karena itu **setara**; 390 4,54 · 4,70 · 4,88 juga setara.
+
+## 11. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.
