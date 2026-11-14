@@ -1006,3 +1006,15 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
 - **Gerbang resmi:** 1440 **3,80 / 1,97 %** · 390 **4,53 / 2,54 %** (derau 1,13 / 1,52) — dalam derau vs build sebelumnya.
 - **Alat baru:** `tools/probe-layers.js` (sembunyikan lapisan + median), `tools/probe-alpha.js` (sebaran alfa),
   `tools/probe-shot.js` (tangkapan keadaan), `tools/band.py` (pita luma + rasio).
+
+### Sesi 57 lanjutan 5 — verifikasi 5i + penyapuan pendar (tanpa ubahan bawaan)
+
+- **Verifikasi 5i:** empat berkas di repo = **byte-identik** dengan lokal (`render.ts c62bea94…` ·
+  `HumanoidMode.tsx 77f17e94…` · `bloomGL.ts e3b527ef…` · `probe-layers.js d864d3b6…`);
+  `npm ci && tsc && vite build` → `index-ClEvdEMa.js` `b489da8c…` (reproduksi).
+- **Pendar disapu** (`bpi` kini benar-benar bekerja): r=3 rasio 0,88 (bpi 0) → 0,91 (1) → 0,94 (4) →
+  **0,96 (6)** → 0,98 (8). **Tetapi** gerbang memburuk: bpi=6 → 390 **5,62** · 1440 **5,27** (bias pita
+  tengah +6,0…+7,7). ⇒ selisihnya **sebaran**, bukan jumlah energi bloom. **Tidak diadopsi.**
+- `bpl` 3/4/6 tidak mengubah pendar (rantai mode 0 menormalkan diri sendiri) ⇒ arah itu buntu.
+- **Tidak ada perubahan runtime** sesi ini; build tetap `index-ClEvdEMa.js` `b489da8c…`.
+- Alat baru: `tools/halo.py` (profil pendar r=0…12).

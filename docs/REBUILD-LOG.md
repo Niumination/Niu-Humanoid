@@ -958,3 +958,13 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 6. Temuan alat: `bpi` hanya dipakai di mode 1 ⇒ uji bpi lama tidak valid (F-166); diperbaiki.
 7. Profil halo r=0..12: puncak sama, pendar kita 0,85–0,91 ⇒ bukan radius (bpr/bpm tidak mengubah).
 8. Gerbang: 1440 3,80 · 390 4,53 (derau 1,13 / 1,52). Build `index-ClEvdEMa.js` `b489da8c…`.
+
+## Sesi 57 lanjutan 5 — pendar: angka pertukaran
+
+1. Verifikasi 5i: 4 berkas byte-identik, build `b489da8c…` reproduksi.
+2. Sapuan `bpi` pada profil halo: 0→0,88 · 0,5→0,89 · 1→0,91 · 4→0,94 · 6→0,96 · 8→0,98 (r=3).
+3. Gerbang pada kandidat: bpi 1,33 → 390 4,39 / 1440 4,21 · 1,6 → 4,61 / 4,50 · 6 → **5,62 / 5,27**
+   (pita tengah +6…+7,7) ⇒ menaikkan intensitas merusak gambar penuh.
+4. `bpl` 3/4/6 → halo tetap 0,84–0,87 (mode 0 menormalkan sendiri).
+5. Putusan: **tidak ada ubahan bawaan**; build tetap `ClEvdEMa`. Selisih = sebaran energi bloom,
+   kandidat berikutnya bobot per-level (bloomFactors).

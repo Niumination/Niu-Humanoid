@@ -200,7 +200,29 @@ Puncak sama, tetapi pendar kita **seragam ±15 % lebih redup** pada semua radius
 (`bpr` 0,3 / 0,6 dan rantai live `bpm=1` → rasio 0,82–0,86) dan bukan encode. Kandidat berikutnya:
 bobot per-level rantai mip (bloomFactors live) dan/atau kontribusi plate terhadap pendar.
 
-## 12. Berkas yang berubah
+## 12. Pendar (halo): penyapuan intensitas — ditemukan pertukaran, belum diadopsi
+
+Setelah `bpi` benar-benar bekerja (F-166), profil halo disapu (390×844, median 3 bingkai):
+
+| `bpi` | r=3 | r=6 | r=9 | r=12 | catatan |
+|---|---|---|---|---|---|
+| 0 (tanpa bloom) | 0,88 | 0,83 | 0,81 | 0,80 | bloom hanya menyumbang ~10 % pendar |
+| 0,5 | 0,89 | 0,85 | 0,84 | 0,83 | |
+| 1 (bawaan) | 0,91 | 0,87 | 0,85 | 0,85 | |
+| 1,33 | — | — | — | — | gerbang 390 4,39 · 1440 4,21 |
+| 1,6 | — | — | — | — | gerbang 390 4,61 · 1440 4,50 |
+| 4 | 0,94 | 0,92 | 0,91 | 0,92 | |
+| **6** | **0,96** | **0,94** | **0,95** | **0,96** | **gerbang: 390 5,62 · 1440 5,27 — jauh lebih buruk** |
+| 8 | 0,98 | 0,97 | 0,99 | 1,01 | profil halo cocok, gambar penuh terlalu terang |
+
+**Kesimpulan jujur:** pendar kita ±15 % lebih redup, dan menaikkan intensitas **memperbaiki profil
+halo tetapi merusak gambar penuh** (bias pita tengah +6,0…+7,7 pada `bpi=6`). Artinya selisihnya
+bukan soal **jumlah** energi bloom, melainkan **sebarannya**: live menaruh lebih banyak energi dekat
+inti terang tanpa menaikkan kabut pita tengah. Kandidat yang belum diuji: bobot per-level rantai mip
+(bloomFactors live) — menyapu `bpl` (3/4/6) **tidak** mengubah pendar karena rantai mode 0
+menormalkan diri sendiri (jumlah level dibagi jumlah level). **Tidak ada perubahan bawaan** dari §12 ini.
+
+## 13. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.
