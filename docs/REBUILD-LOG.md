@@ -968,3 +968,13 @@ live pakai dial resmi **`?dial.hum.glow.strength=0`**. Daftar 82 dial live kini 
 4. `bpl` 3/4/6 → halo tetap 0,84–0,87 (mode 0 menormalkan sendiri).
 5. Putusan: **tidak ada ubahan bawaan**; build tetap `ClEvdEMa`. Selisih = sebaran energi bloom,
    kandidat berikutnya bobot per-level (bloomFactors).
+
+## Sesi 57 lanjutan 6 — kernel bloom: cocok, hipotesis ruang warna gugur
+
+1. Verifikasi 5j: `halo.py ea009030…` identik.
+2. Ekstrak `MipmapBlurPass`/`UpsamplingMaterial` dari bundle live: bobot 0,0625 / 0,125 / 0,25 + `mix` —
+   sama dengan FS_UP_MIX kita ⇒ kernel bukan penyebab.
+3. Uji ruang warna rantai (`bsrgb=1`): encode saja → 0,93/0,91/0,90 (artifisial, tak berpasangan);
+   mode 1 encode+decode → 0,88/0,83/0,80 (lebih buruk). Knob dicabut; build kembali `b489da8c…`.
+4. Gerbang: 1440 3,96 · 390 4,35 (derau 1,03 / 1,00).
+5. Daftar eliminasi untuk 390 kini 12 butir; kandidat tersisa = interaksi antar-lapisan.

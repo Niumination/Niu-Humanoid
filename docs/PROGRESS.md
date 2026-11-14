@@ -1018,3 +1018,20 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
 - `bpl` 3/4/6 tidak mengubah pendar (rantai mode 0 menormalkan diri sendiri) ⇒ arah itu buntu.
 - **Tidak ada perubahan runtime** sesi ini; build tetap `index-ClEvdEMa.js` `b489da8c…`.
 - Alat baru: `tools/halo.py` (profil pendar r=0…12).
+
+### Sesi 57 lanjutan 6 — verifikasi 5j + F-167 (kernel bloom diambil verbatim: identik)
+
+- **Verifikasi 5j:** `tools/halo.py` di repo `ea009030…` = byte-identik; `src/` tidak berubah (`render.ts c62bea94…`).
+- **F-167:** bobot upsample live diekstrak dari bundle: corner 0,0625 · edge 0,125 · center 0,25, lalu
+  `mix(base, tent, radius)` ⇒ **identik** dengan `FS_UP_MIX` kita. Jadi kekurangan pendar **bukan** kernel.
+- Uji ruang warna: encode saja (`bsrgb=1`, tidak berpasangan) → pendar 0,93/0,91/0,90 (artifisial);
+  encode+decode berpasangan (mode 1) → 0,88/0,83/0,80 (**lebih buruk**). Knob dicabut; **tanpa ubahan bawaan**.
+- **Daftar penyebab yang sudah dieliminasi untuk sisa 390:** geometri & jumlah titik · seluruh uniform figur ·
+  `uSizeK` · `uDotSharp` · `bpi` 0–8 · `bpr` · `bpm` · `bpl` · kernel mip · ruang warna rantai · encode sRGB ·
+  alpha/komposit figur. **Sisa kandidat: interaksi antar-lapisan di 390** (plate mask + figur + latar `plus-lighter`).
+- **Gerbang resmi ulang:** 1440 **3,96 / 2,22 %** · 390 **4,35 / 2,52 %** (derau 1,03 / 1,00) — dalam derau
+  dibanding run sebelumnya (3,80 · 390 4,53). Build tetap `index-ClEvdEMa.js` `b489da8c…`.
+- **Uji interaksi lapisan (390):** `bgb=plus-lighter/screen/normal` dan `pl=0` tidak mengubah pola; di semua
+  varian pita gelap 5–20 kita **~10 % lebih terang** (rasio 1,10). ⇒ bukan blend antar-lapisan. Lead baru:
+  kanvas figur lebih terang di pita gelap bahkan tanpa bloom (`bpi=0`), kandidat = pensampelan tekstur sprite
+  titik (`uPatchUV`/mip). Dicatat untuk sesi berikutnya.

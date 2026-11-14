@@ -88,7 +88,7 @@ rebranding. Lihat `docs/LISENSI-BRANDING.md`.
 
 | # | pekerjaan | sasaran terukur | estimasi |
 |---|---|---|---|
-| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** ✓ (**3,80**) · 390 **≤ 2,3** ✗ (**4,53**) · pendar ±15 % redup, tetapi menaikkan intensitas bloom merusak gambar penuh (bpi=6 → 5,62/5,27) | sisa: bobot per-level mip (bloomFactors live) |
+| P11 | APEX paritas latar & tonal | 1440 **≤ 6,0** ✓ (**3,96**) · 390 **≤ 2,3** ✗ (**4,35**) · 12 penyebab dieliminasi; lead baru: pita gelap kita +10 % (sampel tekstur sprite titik) | sisa: sprite sampling + kepadatan siluet |
 | P12 | MIRA pola per-filamen (geometri, bukan citra) | galat torso **10,4 → ≤ 7,0** · `|Δbias|` tiap pita ≤ 2 · paritas ≤ 2,5 | 2–3 sesi |
 | P13 | aset milik sendiri | `audit-provenance` **0 salinan** · siluet IoU ≥ 0,98 | 2–4 sesi |
 | P14 | fitur "satu langkah di depan" | ≥ 3 dari 5 (E1 avatar kustom · E2 fps ≥1,5× · E3 aksesibilitas · E4 pemulihan konteks · E5 PWA) | 2–3 sesi |

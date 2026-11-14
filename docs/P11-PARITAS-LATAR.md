@@ -222,7 +222,47 @@ inti terang tanpa menaikkan kabut pita tengah. Kandidat yang belum diuji: bobot 
 (bloomFactors live) — menyapu `bpl` (3/4/6) **tidak** mengubah pendar karena rantai mode 0
 menormalkan diri sendiri (jumlah level dibagi jumlah level). **Tidak ada perubahan bawaan** dari §12 ini.
 
-## 13. Berkas yang berubah
+## 13. F-167 — kernel bloom live diambil VERBATIM: cocok, jadi bukan itu penyebabnya
+
+Diekstrak dari bundle live (`MipmapBlurPass` + `UpsamplingMaterial`), bobot upsample 9-tap:
+
+```
+corner 0.0625 · edge 0.125 · center 0.25   (jumlah = 1,0) · out = mix(baseMip, tent, radius)
+```
+
+Milik kita (`FS_UP_MIX`): center 4/16 = **0,25** · edge 2/16 = **0,125** · corner 1/16 = **0,0625**,
+lalu `mix(base, tent, uRadius)`. ⇒ **identik**. Jadi kekurangan pendar ±15 % **bukan** dari kernel.
+
+Dua uji ruang warna (hipotesis: pass mip live menyertakan `colorspace_fragment` dan RT 8-bit-nya
+ber-warna sRGB, sehingga ambang dihitung pada nilai terenkode):
+
+| varian | r=3 | r=6 | r=9 | r=12 |
+|---|---|---|---|---|
+| bawaan (mode 0, linear) | 0,91 | 0,87 | 0,85 | 0,85 |
+| mode 0 + rantai sRGB (`bsrgb=1`, encode saja) | 0,93 | 0,91 | 0,90 | 0,90 |
+| mode 1 + rantai sRGB (`bpm=1&bsrgb=1`, encode+decode berpasangan) | 0,88 | 0,83 | 0,80 | 0,79 |
+
+Varian "encode saja" membaik, tetapi itu **tidak berpasangan** (encode tanpa decode) sehingga hanya
+menaikkan pendar secara artifisial — sama kelasnya dengan menaikkan `bpi`, yang sudah terbukti merusak
+gambar penuh (§12). Varian berpasangan justru **lebih buruk**. **Knob dicabut; tidak ada ubahan bawaan.**
+
+**Uji interaksi antar-lapisan di 390** (median 3 bingkai, protokol probe — bukan gerbang resmi):
+`bgb=plus-lighter` (bawaan) MAE 6,32 · `bgb=screen` 6,32 · `bgb=normal` 6,34 · `pl=0` (plate menggambar
+figur lagi) 5,30 pada protokol ini. Ketiganya **tidak** mengubah pola: di setiap varian pita gelap
+(5–20) kita **~10 % lebih terang** daripada live (rasio 1,10). ⇒ masalahnya bukan blend antar-lapisan.
+
+**Lead baru dari situ:** kanvas figur kita lebih terang di pita gelap bahkan **dengan bloom dimatikan**
+(`bpi=0` → rasio halo 0,88, jadi bukan bloom). Kandidat tersisa: pensampelan tekstur di sprite titik
+(`uPatchUV` / pemilihan mip) yang membuat pinggiran gelap titik lebih terang. Ini pekerjaan berikutnya.
+
+**Ringkasan penyebab yang sudah dieliminasi untuk sisa 390 (pita 120–200, Δ−12,3):** geometri & jumlah
+titik (F-152) · seluruh uniform shader figur (F-161, identik) · ukuran titik `uSizeK` (tinggi/1020 benar) ·
+ketajaman titik `uDotSharp` · intensitas bloom (`bpi` 0–8) · radius (`bpr`, `bpm=1`) · jumlah level (`bpl`) ·
+kernel mip (F-167, identik) · ruang warna rantai (F-167) · encode sRGB komposit (F-165, benar) ·
+alpha/komposit figur (F-154). **Yang tersisa dan belum diuji:** komposisi antar-lapisan di 390
+(plate mask + kanvas figur + kanvas latar dengan `plus-lighter`) — yaitu *interaksi*, bukan satu parameter.
+
+## 14. Berkas yang berubah
 
 - `src/components/Backdrop.tsx` — img `opacity: 0 → 1`; kanvas: `opacity` tetap 1, `mix-blend-mode`
   `screen` → `plus-lighter` (knob `?bgb=`), hook `__HUM_BG_DBG` dicabut.
