@@ -1,0 +1,64 @@
+{
+ "judul": "P13 langkah 3 — latar (backdrop) milik kita: medan puncak berlapis + partikel + glow",
+ "cara": "langit gradasi + pendar → 5 lapis punggung (y(x) = dasar − kedalaman·|x−cx|^1,6 − amp·fbm) → polyline bergaussian + partikel sepanjang punggung → aliran turun → glow 2 skala → kalibrasi 1 skalar; biji tetap 137",
+ "syarat_tonal": {
+  "rata_luma": "±10 %",
+  "p50": "±3",
+  "p90": "±25 %",
+  "p99": "±40 %",
+  "fraksi>60": "±25 %",
+  "fraksi>120": "±40 %",
+  "fraksi_hangat": "±50 %"
+ },
+ "catatan_struktur": "korelasi baris/kolom/garis-puncak hanya INFORMASI: latar kita adalah dunia yang disusun dari biji tetap sendiri, jadi posisi puncak tidak (dan tidak boleh) disalin dari acuan. Yang disyaratkan adalah paritas TONAL + provenance 0 salinan.",
+ "baris": [
+  {
+   "berkas": "backdrop-v1.webp",
+   "ukuran": [
+    1672,
+    941
+   ],
+   "biji": 137,
+   "skala_kalibrasi": 1.306,
+   "tonal": {
+    "rata_luma": [
+     16.29,
+     16.29
+    ],
+    "p50": [
+     6,
+     6
+    ],
+    "p90": [
+     42,
+     39
+    ],
+    "p99": [
+     151,
+     148
+    ],
+    "fraksi_gt60": [
+     0.065,
+     0.062
+    ],
+    "fraksi_gt120": [
+     0.019,
+     0.02
+    ],
+    "fraksi_hangat": [
+     0.0373,
+     0.0428
+    ]
+   },
+   "korelasi_baris_32": 0.886,
+   "korelasi_kolom_64": 0.433,
+   "korelasi_garis_puncak": -0.331,
+   "rasio_luma": 1.0,
+   "rasio_rgb": [
+    1.097,
+    1.04,
+    0.928
+   ]
+  }
+ ]
+}
