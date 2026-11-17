@@ -1,5 +1,12 @@
 #!/usr/bin/env node
 /**
+ * ⚠ DIPENSIUNKAN 2026-11-17 — JANGAN dipakai sebagai bukti mutu.
+ * Alat ini mengukur MAE piksel aplikasi APEX kita terhadap situs produksi asli. Sejak P13 langkah 2–4
+ * plate & latar adalah karya sendiri, dan acuan itu sendiri tidak stabil (MAE diri 8,80 pada 1440,
+ * 16,06 pada 390 — lihat verification/kalibrasi/). Pengganti: tools/gate-paritas.js (v2),
+ * tools/gate-aset-layout.js, tools/gate-a11y.js. Alat ini dipertahankan hanya untuk arsip angka.
+ */
+/**
  * gate-apex.js — ukur paritas piksel APEX: LIVE (produk asli) vs BUILD kita, dua viewport.
  *
  * Protokol identik dengan tools/gate-deploy.js supaya angkanya sebanding:
