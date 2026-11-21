@@ -1,0 +1,42 @@
+{
+ "judul": "uji-diri alat gerbang",
+ "lulus": 6,
+ "total": 7,
+ "hasil": [
+  {
+   "uji": "G1 tabel sidik kosong = FATAL",
+   "lulus": true,
+   "keterangan": "kode 2"
+  },
+  {
+   "uji": "G2 live tanpa hasil unduh \u2260 LULUS",
+   "lulus": true,
+   "keterangan": "kode 1 \u00b7 tidak lulus"
+  },
+  {
+   "uji": "G3 --pola hanya mira-*",
+   "lulus": true,
+   "keterangan": "2 berkas diperiksa (harus 2)"
+  },
+  {
+   "uji": "G4 kontrak gerbang terpenuhi",
+   "lulus": true,
+   "keterangan": "4 janji cocok"
+  },
+  {
+   "uji": "G5 salinan asli ditolak",
+   "lulus": true,
+   "keterangan": "kode 1"
+  },
+  {
+   "uji": "G6 paket terakhir terbaca",
+   "lulus": true,
+   "keterangan": "niu-update-langkah6k.zip \u00b7 17 berkas"
+  },
+  {
+   "uji": "G7 alat di paket = alat di disk",
+   "lulus": false,
+   "keterangan": "niu-update-langkah6k.zip \u00b7 2 alat identik \u00b7 beda: gate-paritas-fase.js, gerbang-semua.sh, uji-gerbang.py"
+  }
+ ]
+}

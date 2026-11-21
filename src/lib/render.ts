@@ -176,13 +176,78 @@ export interface FrameState {
   images: PlateImages
   veins?: CanvasImageSource | null
   rings?: CanvasImageSource | null
+  /** F-164b: sumber mask siluet (art mentah), bukan kanvas urat yang lebih redup */
+  maskSrc?: CanvasImageSource & { width: number; height: number }
+}
+
+/**
+ * Mask siluet plate (F-155). Live TIDAK menampilkan plate dengan latar hitam opak: kanvas plate
+ * 900×900 di live punya alfa 0 pada 48,9 % piksel dan 255 pada 45,1 % (rerata 76) — jadi hanya
+ * siluet figurnya yang opak, sisanya transparan. Bundle membangun mask ini di kanvas bantu
+ * (`putImageData` → turun/naik skala → `destination-in`). Kita bangun dari luminansi plate idle
+ * dengan cara yang sama: ambang lunak + blur lewat down/up-sample.
+ */
+const maskBuf: { c: HTMLCanvasElement | null; key: string } = { c: null, key: '' }
+function siluetMask(img: CanvasImageSource & { width: number; height: number }, w: number, h: number) {
+  const key = `${w}x${h}`
+  if (maskBuf.c && maskBuf.key === key) return maskBuf.c
+  // F-163b: mask dibangun di resolusi 1/2 (bukan 1/8). Pada 1/8, goresan tipis rata-rata
+  // turun di bawah ambang → siluet berlubang (alfa 255 hanya 7,6 %, live 20,8 %).
+  const sw = Math.max(2, Math.round(w / 2))
+  const sh = Math.max(2, Math.round(h / 2))
+  const small = document.createElement('canvas')
+  small.width = sw
+  small.height = sh
+  const sg = small.getContext('2d', { willReadFrequently: true })!
+  sg.drawImage(img, 0, 0, sw, sh)
+  const data = sg.getImageData(0, 0, sw, sh)
+  const d = data.data
+  for (let i = 0; i < d.length; i += 4) {
+    const l = Math.max(d[i], d[i + 1], d[i + 2]) / 255
+    // F-163 (P11) — TERUKUR: siluet plate live jauh lebih pekat daripada milik kita.
+    // Tangkapan alfa (omitBackground, kanvas plate saja, 390x844):
+    //   live: alfa 0 pada 71,9 % · alfa 255 pada 20,8 % · rerata 57,6
+    //   kita (ramp 0,06–0,22): alfa 0 79,6 % · 255 3,6 % · rerata 24,4  ⇒ terlalu tipis
+    // Ramp dipertajam supaya bagian dalam tubuh benar-benar opak seperti live.
+    const a = Math.max(0, Math.min(1, (l - 0.06) / 0.04))
+    d[i] = 255
+    d[i + 1] = 255
+    d[i + 2] = 255
+    d[i + 3] = Math.round(a * 255)
+  }
+  sg.putImageData(data, 0, 0)
+  const c = document.createElement('canvas')
+  c.width = w
+  c.height = h
+  const g = c.getContext('2d')!
+  g.imageSmoothingEnabled = true
+  g.drawImage(small, 0, 0, w, h)
+  maskBuf.c = c
+  maskBuf.key = key
+  return c
 }
 
 /** ht() */
+/**
+ * F-162 (P11) — TERUKUR: plate live praktis HITAM di semua state.
+ * Lapisan plate live 390x390 diukur sendirian (canvas[1] saja, 5 bingkai median):
+ *   idle 1,78 · thinking 1,98 · speaking 1,97  (piksel >100: 925 / 978 / 978)
+ * sedangkan plate kita menggambar ulang figur: idle 7,71 · thinking 9,04 · speaking 9,44
+ * (piksel >100: 7 021 / 10 163 / 11 300). Artinya di live plate hanya **mask oklusi**
+ * (siluet gelap yang menahan butiran latar), bukan gambar; figur & seluruh efek state
+ * datang dari kanvas GPU. Jadi bawaan kini siluet saja; `?pl=0` mengembalikan perilaku lama.
+ */
+export const siluetSaja =
+  typeof window === 'undefined' || new URLSearchParams(window.location.search).get('pl') !== '0'
+
 export function drawState(ctx: CanvasRenderingContext2D, w: number, h: number, f: FrameState) {
   const { state, energy, strongMix, t, reduced, images, veins, rings } = f
-  ctx.fillStyle = '#000'
-  ctx.fillRect(0, 0, w, h)
+  // F-155 (P11, TERUKUR probe-alpha3 @ live): kanvas plate live 900x900 punya alfa 0 pada
+  // 48,9 % piksel dan 255 pada 45,1 % (rerata alfa 76). Artinya plate TIDAK pernah mengisi
+  // latar hitam opak; ia digambar di atas latar transparan. `fillRect('#000')` kita membuat
+  // seluruh kotak 900x900 opak (alfa 255 = 100 %, rerata 159,5) sehingga kanvas figur
+  // menutupi kanvas backdrop. Diganti clearRect: alpha tetap transparan di luar siluet.
+  ctx.clearRect(0, 0, w, h)
   const breath = reduced ? 1 : 1 + Math.sin(t * 0.95) * 0.0035
   drawScaled(ctx, images.idle, w, h, 1, breath)
 
@@ -214,7 +279,21 @@ export function drawState(ctx: CanvasRenderingContext2D, w: number, h: number, f
       ctx.restore()
     }
   }
+  // F-155: potong latar — hanya siluet yang opak, sama seperti plate live.
   ctx.globalAlpha = 1
+  ctx.globalCompositeOperation = 'destination-in'
+  ctx.drawImage(siluetMask((f.maskSrc || images.idle) as any, w, h), 0, 0, w, h)
+  ctx.globalCompositeOperation = 'source-over'
+
+  // F-157 (?pl=1): di live kanvas plate 900x900 praktis HITAM — alfa 45 % opak tetapi luminansi
+  // rata-rata hanya 1,71 (bandingkan figur 22,8). Artinya plate dipakai sebagai MASK OKLUSI
+  // (siluet gelap yang menahan butiran backdrop menembus tubuh), bukan sebagai gambar tampak.
+  if (siluetSaja) {
+    ctx.globalCompositeOperation = 'source-in'
+    ctx.fillStyle = '#000'
+    ctx.fillRect(0, 0, w, h)
+    ctx.globalCompositeOperation = 'source-over'
+  }
 }
 
 // ---------------------------------------------------------------------------

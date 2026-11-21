@@ -1,0 +1,27 @@
+{
+  "tanggal_pemeriksaan": "2026-11-21",
+  "repo": "https://github.com/Niumination/Niu-Humanoid",
+  "branch": "main",
+  "commit_terakhir_diperiksa": "49e011dd159f96b86721df0934b1ab9bcbc2e081",
+  "target_bundle_produksi": {
+    "file": "index-DeDMCu_9.js",
+    "bytes": 235260,
+    "sha256_prefix_16": "873d3b54ea222267"
+  },
+  "delta": {
+    "paket": "6n",
+    "file_repo": 19,
+    "isi": "package.json + 8 file sumber + 10 plate milik kita",
+    "package_lock": "tidak dikirim; lockfile repo dipertahankan"
+  },
+  "uji": {
+    "repo_bersih_npm_ci": "LULUS",
+    "build_setelah_delta": "LULUS",
+    "hasil_bundle": "index-DeDMCu_9.js",
+    "hasil_bytes": 235260,
+    "hasil_sha256_prefix_16": "873d3b54ea222267",
+    "cocok_produksi": true
+  },
+  "status_push": "belum; tidak ada akses tulis GitHub dalam sesi ini",
+  "putusan": "paket dapat menyelaraskan main bersih ke bundle produksi 6l; commit/push harus dilakukan oleh pemilik repo dan diverifikasi sesudahnya"
+}

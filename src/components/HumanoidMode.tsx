@@ -3,6 +3,16 @@ import { loadAssets, type AssetBag } from '../lib/assets'
 
 /** kanvas komposisi on-screen: 900x900 device px (terukur dari live) */
 const COMPOSE = 900
+/**
+ * F-164 (P11) — TERUKUR: kanvas plate live berukuran **CSS×dpr** (390×390 pada viewport 390,
+ * 900×900 pada 1440), sedangkan kita selalu 900. Pada 390, kanvas 900 yang diperkecil browser
+ * ke 390 meratakan alfa (alfa 255 hanya 8,2 % vs live 20,8 %; rerata 31,9 vs 57,6) — siluet
+ * kita jadi berlubang/halus. Kini backing plate mengikuti ukuran tampil.
+ */
+const backingSize = (cssPx: number) => {
+  const dpr = Math.min(typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1, 1.75)
+  return Math.max(2, Math.round((cssPx || COMPOSE) * dpr))
+}
 import { buildPlate } from '../lib/plate'
 import { buildAssembly, renderBirthFrame, TIMELINE, type Assembly } from '../lib/birth'
 import { buildVeinCanvas } from '../lib/veins'
@@ -31,6 +41,13 @@ const YA = '#19ddff' // warna aksen APEX di bundle (const no="#19ddff")
  * BELUM ada: partikel/boil/hatch + shockwave (langkah 3), audio (4), blend state (5),
  * hand tracking (6), bloom (8).
  */
+const newCanvas = (n: number) => {
+  const c = document.createElement('canvas')
+  c.width = n
+  c.height = n
+  return c
+}
+
 export function HumanoidMode({ state, onExit }: { state: string; onExit: () => void }) {
   const [bag, setBag] = useState<AssetBag | null>(null)
   const plateRef = useRef<HTMLCanvasElement | null>(null)
@@ -74,12 +91,16 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
     if (!bag || !plateRef.current) return
     const cv = plateRef.current
     const ge = cv.getContext('2d')!
+    // F-164: ukuran backing mengikuti ukuran tampil (bukan 900 tetap)
+    let C = backingSize(cv.clientWidth)
+    cv.width = C
+    cv.height = C
     // bundle: r.current.idle DIGANTI dengan bU(idle) → dasar semua plate & lapisan steady
     const idleVein = buildVeinCanvas(bag.idle)
     const plateIdle = buildPlate(bag, 'idle', idleVein)
     const scratch = document.createElement('canvas')
-    scratch.width = COMPOSE
-    scratch.height = COMPOSE
+    scratch.width = C
+    scratch.height = C
     // bundle: assembly: CU(bU(idle)) — bU meredupkan haze, mengubah set sampel >95
     assemblyRef.current = buildAssembly(idleVein)
     // bundle: edgeParticles: PU(AU(idle)), veins: RU(idle), listeningRings dari webp listening
@@ -92,17 +113,35 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
     // idle = bU(idle); thinking/speaking/strong tetap webp mentah (bundle hanya mengganti .idle)
     const images = { idle: idleVein, thinking: bag.thinking, speaking: bag.speaking, strong: bag.strong }
 
-    const mk = () => {
-      const c = document.createElement('canvas')
-      c.width = COMPOSE
-      c.height = COMPOSE
-      return c
+    let prevCv = newCanvas(C)
+    let nextCv = newCanvas(C)
+    let glowCv = newCanvas(C)
+    let maskCv = newCanvas(C)
+    const fitBuffers = (n: number) => {
+      if (prevCv.width === n) return
+      prevCv = newCanvas(n); nextCv = newCanvas(n); glowCv = newCanvas(n); maskCv = newCanvas(n)
+      scratch.width = n; scratch.height = n
     }
-    const prevCv = mk(), nextCv = mk(), glowCv = mk(), maskCv = mk()
+    const syncSize = () => {
+      const n = backingSize(cv.clientWidth)
+      if (n === C) return
+      C = n
+      cv.width = n
+      cv.height = n
+      fitBuffers(n)
+    }
+    window.addEventListener('resize', syncSize)
 
     let aliveToBlob = true
     const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     const skipFlag = !!(window as any).__HUM_SKIP_ASSEMBLY
+    // P15-B: `?t=<detik>` memaku waktu adegan (jangkar gerbang), sama seperti MIRA.
+    // Hook `__HUM_ASM_*` hanya bisa dipasang lewat addInitScript, sedangkan gerbang menembak URL —
+    // jadi jangkar harus bisa lewat URL. Tanpa `?t=`, perilaku tetap persis seperti sebelumnya.
+    const qT = typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('t')
+      : null
+    const tPin = qT !== null && Number.isFinite(Number(qT)) ? Number(qT) : null
     const asmEl = (window as any).__HUM_ASM_EL as number | undefined
     const asmOff = (window as any).__HUM_ASM_OFF as number | undefined
 
@@ -165,24 +204,33 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
       if (target !== fadeFrom) {
         // snapshot kanvas sekarang → dipakai sebagai lapisan "sebelum"
         const pc = prevCv.getContext('2d')!
-        pc.clearRect(0, 0, COMPOSE, COMPOSE)
+        pc.clearRect(0, 0, C, C)
         pc.drawImage(cv, 0, 0)
         fadeFrom = target
         fade = { to: target, p: 0, dur: reduce ? 0.001 : transitionDuration(target) }
       }
       stepEnergy(fade.to, dt)
-      const frame = { state: fade.to, energy, strongMix, t, reduced: reduce, images, veins, rings }
-      ge.clearRect(0, 0, COMPOSE, COMPOSE)
-      if (fade.p < 1) fade = drawTransition(ge, COMPOSE, COMPOSE, fade, dt, frame, prevCv, nextCv, glowCv, maskCv)
-      else drawState(ge, COMPOSE, COMPOSE, frame)
+      const frame = { state: fade.to, energy, strongMix, t, reduced: reduce, images, veins, rings, maskSrc: bag.idle }
+      ge.clearRect(0, 0, C, C)
+      if (fade.p < 1) fade = drawTransition(ge, C, C, fade, dt, frame, prevCv, nextCv, glowCv, maskCv)
+      else drawState(ge, C, C, frame)
       // HARNESS SEAM: status crossfade untuk gerbang D (tidak memengaruhi rendering)
       ;(window as any).__HUM_FADE = { p: fade.p, dur: fade.dur, to: fade.to, dt }
       updateHorn(TIMELINE.total)
       // bundle: at(_e, Te, Ye, Ge, pt, 1) — intensitas 1 di steady-state; `if (He) return`
-      if (!reduce) drawEdgeParticles(ge, COMPOSE, COMPOSE, dt, fade.to, energy, 1, edgeParticles)
+      if (!reduce) drawEdgeParticles(ge, C, C, dt, fade.to, energy, 1, edgeParticles)
     }
 
-    if (reduce || skipFlag) {
+    // P15-B: `?t=` melewati animasi kelahiran (adegan langsung dianggap "sudah lahir"). Tanpa ini
+    // `?t=9` hanya memajukan jam birth, sementara semantik "selesai" masih menunggu 7,4 s dinding.
+    // Jam steady dikunci `tPin` + 0,35 s: pada `?t=9` drawSteady harus melihat t > TIMELINE.total (7,4)
+    // agar jalur "sudah lahir" yang dipakai; angka 0,35 s berasal dari umpan silang state pertama.
+    const jamSteady = (nowMs: number) => (tPin !== null ? tPin + 0.35 : nowMs / 1000)
+    // P15-B3: `?t=` hanya melewati kelahiran bila sudah MELEWATI total timeline (7,4 s). Untuk `?t=` < 7,4
+    // justru harus menampilkan bingkai kelahiran pada detik itu (beku) — kalau tidak, seluruh rentang
+    // kelahiran tampak sama dan gerbang fase tidak bisa membedakan apa pun (terukur: rentang 0,0021).
+    const lewatiKelahiran = reduce || skipFlag || (tPin !== null && tPin >= TIMELINE.total)
+    if (lewatiKelahiran) {
       progressRef.current = 1
       setBirthText('')            // bundle: J("") → readout disembunyikan
       // bundle: Ye = min(.05, (fe-ke)/1e3) — dt nyata, termasuk jalur reduced/skip
@@ -197,15 +245,21 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
       return () => cancelAnimationFrame(raf)
     }
 
-    const t0 = performance.now() - (asmOff ? asmOff * 1000 : 0)
+    // dengan `?t=`: mulai dari 0 namun waktu adegan dihitung dari tPin (adegan langsung "sudah lahir")
+    const t0 = performance.now() - ((asmOff ? asmOff : (tPin ?? 0)) * 1000)
     let raf = 0
     let done = false
     let last = performance.now()
     const frame = (now?: number) => {
       const nowMs = now ?? performance.now()
-      const dt = Math.min(0.05, Math.max(0, (nowMs - last) / 1000))
+      const dtMentah = Math.min(0.05, Math.max(0, (nowMs - last) / 1000))
       last = nowMs
-      const t = asmEl != null ? asmEl : (performance.now() - t0) / 1000
+      // dibekukan oleh `?t=` → tidak ada kemajuan waktu maupun partikel
+      const dt = tPin !== null ? 0 : dtMentah
+      // P15-B2: `?t=` membekukan SELURUH timeline, bukan hanya steady-state. Tanpa ini, `?t=3`
+      // (fase kelahiran) tetap berjalan mengikuti jam dinding → dua tangkapan berbeda (MAE diri 11,88).
+      // Dengan beku, `?t=<detik>` = satu bingkai kelahiran yang bisa diulang persis.
+      const t = asmEl != null ? asmEl : (tPin !== null ? tPin : (performance.now() - t0) / 1000)
       if (!done && t >= TIMELINE.total) {
         done = true
         progressRef.current = 1
@@ -215,15 +269,17 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
         fadeFrom = fade.to
       }
       if (done) {
-        drawSteady(frozenTime() ?? nowMs / 1000, dt)
+        drawSteady(frozenTime() ?? jamSteady(now ?? performance.now()), dt)
         raf = requestAnimationFrame(frame)
         return
       }
       updateHorn(t)
-      ge.clearRect(0, 0, COMPOSE, COMPOSE)
+      ge.clearRect(0, 0, C, C)
       const s = renderBirthFrame(
-        ge, COMPOSE, COMPOSE, t, assemblyRef.current!, plateIdle, scratch, dt, edgeParticles,
-        nowMs / 1000
+        ge, C, C, t, assemblyRef.current!, plateIdle, scratch, dt, edgeParticles,
+        // P15-B4: argumen waktu untuk butiran/twinkle harus ikut dibekukan saat `?t=`. Sebelum ini,
+        // `?t=5` masih menerima jam dinding → dua tangkapan bisa berbeda (MAE diri terukur 11,64).
+        tPin !== null ? tPin : nowMs / 1000
       )
       progressRef.current = s
       // bundle tetap menggambar tiap frame walau __HUM_ASM_EL membekukan waktu
@@ -232,6 +288,7 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
     frame()
     return () => {
       aliveToBlob = false
+      window.removeEventListener('resize', syncSize)
       if (raf) cancelAnimationFrame(raf)
     }
   }, [bag, replay])
@@ -418,6 +475,9 @@ export function HumanoidMode({ state, onExit }: { state: string; onExit: () => v
           style={{
             position: 'fixed', bottom: 10, left: '50%', transform: 'translateX(-50%)', zIndex: 200,
             display: 'flex', gap: 6, fontFamily: 'var(--font-ui)',
+            // lebarkan maksimal selebar viewport dan boleh membungkus: di layar 390 px bar ini dulu
+            // melebar 462 px sehingga 3 tombol keluar layar (gerbang aset & tata letak S2)
+            maxWidth: 'calc(100vw - 16px)', flexWrap: 'wrap', justifyContent: 'center',
           }}
         >
           {['idle', 'listening', 'thinking', 'speaking'].map((st) => (

@@ -10,9 +10,13 @@ import { readTuning } from './lib/humTuning'
  */
 export function App() {
   // bundle: const[i,e]=useState(()=>!!new URLSearchParams(location.search).get("auto"))
-  const [entered, setEntered] = useState(
-    () => typeof window !== 'undefined' && !!new URLSearchParams(window.location.search).get('auto')
-  )
+  // `?auto` ATAU `?t=` masuk otomatis. `?t=` adalah jangkar waktu (P15-B) yang dipakai gerbang;
+  // tanpa itu, jangkar tidak bisa dipakai untuk masuk ke mode humanoid. Tanpa `?t=`, perilaku lama utuh.
+  const [entered, setEntered] = useState(() => {
+    if (typeof window === 'undefined') return false
+    const q = new URLSearchParams(window.location.search)
+    return !!q.get('auto') || q.has('t')
+  })
   const [state, setState] = useState<string>('idle')
 
   useEffect(() => {

@@ -1,0 +1,41 @@
+{
+ "judul": "KONTRAK GERBANG — angka minimum yang harus tetap benar",
+ "tanggal": "2026-11-20",
+ "aturan": "Setiap gerbang punya janji berangka. Bila bukti TERAKHIR di bawah janji, itu REGRESI dan harus dilaporkan, bukan diabaikan. Angka 2026-11-20 (build bersih repo + paket aset kita). Bukti yang dirujuk WAJIB ikut dikirim di paket — kalau tidak, uji-alat G4 gagal di repo yang baru menerima paket (kejadian 6l: kontrak menunjuk bukti 2026-11-19 yang tidak dikirim).",
+ "janji": {
+  "aset-layout": {
+   "minimal": 34,
+   "bukti": "aset-layout-2026-11-20.json",
+   "arti": "34/34 = 8 plate + 4 butir × 3 viewport (2 aplikasi)"
+  },
+  "a11y": {
+   "minimal": 16,
+   "bukti": "a11y-2026-11-20.json",
+   "arti": "16/16 = 8 butir × 2 aplikasi"
+  },
+  "paritas": {
+   "minimal": 24,
+   "bukti": "paritas-2026-11-20.json",
+   "arti": "24/24 = 4 butir × 3 viewport × 2 aplikasi"
+  },
+  "paritas-fase": {
+   "minimal": 5,
+   "bukti": [
+    "paritas-fase-apex-2026-11-20.json",
+    "paritas-fase-mira-2026-11-20.json"
+   ],
+   "arti": "5 butir × 2 aplikasi (F1 median 3 pasangan · F5 derau) · tiap berkas minimal 5/5"
+  }
+ },
+ "provenance": {
+  "apex": 7,
+  "apex_backdrop": 1,
+  "mira": 2,
+  "bukti": [
+   "verification/p14/gp-apex-repo.json",
+   "verification/p14/gp-apex-live.json",
+   "verification/p14/gp-mira-live.json"
+  ]
+ },
+ "catatan": "Angka provenance tidak disimpan sebagai \"minimal\" di JSON ringkas karena alat provenance menulis berkas sendiri; uji-gerbang.py memeriksa tiga berkas itu secara terpisah (G3)."
+}

@@ -147,7 +147,6 @@ export function Backdrop({
     // three.js AdditiveBlending: src = SrcAlpha, dst = One
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE)
     gl.clearColor(0, 0, 0, 0)
-
     let t = 0
     let raf = 0
     let last = performance.now()
@@ -256,9 +255,11 @@ export function Backdrop({
           height: '100%',
           objectFit: 'cover',
           objectPosition: 'center 42%',
-          // TERUKUR (tools/probe-live-imgtime.js): img menyala bersama kanvas `d = visible || born`
-          // — pada 8–9 s (puncak horn) opacity 0 → 1 walau energy 0. Bukan `visible` saja.
-          opacity: active ? 1 : 0,
+          // F-153: img `backdrop-v1.webp` TERBUKTI TAMPAK di live walau `getComputedStyle(img)`
+          // melaporkan opacity 0 (probe-bg2: sembunyikan img ⇒ rerata 27,65 → 16,19;
+          // sembunyikan kanvas ⇒ 27,65 → 16,90 — keduanya berkontribusi ±11). Jadi lapisan latar
+          // = gambar diam + butiran titik. Kita pakai opacity 1 (lapisan tampak), bukan 0.
+          opacity: 1,
           transition: 'opacity 900ms',
         }}
       />
@@ -271,10 +272,16 @@ export function Backdrop({
             inset: 0,
             width: '100%',
             height: '100%',
-            opacity: active ? 1 : 0,
-            transition: 'opacity 900ms',
+            // F-153: kanvas backdrop SELALU op=1 di live (sejak mount, semua fase, semua waktu).
+            // Klaim lama `opacity active?1:0` TERBUKTI SALAH — kanvas kita tak pernah tampak dan
+            // itulah sebab utama area samping gelap. Mix-blend diatur di bawah (F-156).
+            opacity: 1,
             pointerEvents: 'none',
-            mixBlendMode: 'screen',
+            // F-156: kanvas titik live berperilaku ADITIF terhadap gambar diam (terukur: sisi
+            // kiri 17,7 → 19,3 saat kanvas ditumpuk; source-over kita justru menggelapkan ke
+            // 15,8 karena setiap sprite menulis alfa 1). `plus-lighter` = penjumlahan murni,
+            // sesuai AdditiveBlending di bundle. Gerbang: 9,44 → 7,36.
+            mixBlendMode: ((new URLSearchParams(window.location.search).get('bgb') || 'plus-lighter') as any),
           }}
         />
       )}

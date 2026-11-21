@@ -1,0 +1,156 @@
+{
+ "judul": "paritas fase — banyak titik waktu",
+ "aplikasi": "apex",
+ "url": "https://niu-humanoid.vercel.app",
+ "viewport": "1440x900",
+ "titik": [
+  3,
+  5,
+  7,
+  9,
+  11
+ ],
+ "tunggu_ms": 2500,
+ "total_timeline": 7.4,
+ "ulang_per_titik": 3,
+ "kelas_titik": [
+  {
+   "t": 3,
+   "kelas": "kelahiran"
+  },
+  {
+   "t": 5,
+   "kelas": "kelahiran"
+  },
+  {
+   "t": 7,
+   "kelas": "kelahiran"
+  },
+  {
+   "t": 9,
+   "kelas": "mantap"
+  },
+  {
+   "t": 11,
+   "kelas": "mantap"
+  }
+ ],
+ "kurva": [
+  {
+   "t": 3,
+   "cakupan": 0.3077,
+   "mae_diri": 2.31,
+   "ulang": 3,
+   "mae_semua": [
+    8.89,
+    2.11,
+    2.31
+   ],
+   "cakupan_semua": [
+    0.3755,
+    0.3077,
+    0.3062
+   ],
+   "derau_maks": 8.89
+  },
+  {
+   "t": 5,
+   "cakupan": 0.2946,
+   "mae_diri": 2.06,
+   "ulang": 3,
+   "mae_semua": [
+    9.98,
+    2.04,
+    2.06
+   ],
+   "cakupan_semua": [
+    0.3625,
+    0.2946,
+    0.2932
+   ],
+   "derau_maks": 9.98
+  },
+  {
+   "t": 7,
+   "cakupan": 0.3608,
+   "mae_diri": 2.21,
+   "ulang": 3,
+   "mae_semua": [
+    7.17,
+    1.99,
+    2.21
+   ],
+   "cakupan_semua": [
+    0.4283,
+    0.3605,
+    0.3608
+   ],
+   "derau_maks": 7.17
+  },
+  {
+   "t": 9,
+   "cakupan": 0.3387,
+   "mae_diri": 2.64,
+   "ulang": 3,
+   "mae_semua": [
+    4.28,
+    1.93,
+    2.64
+   ],
+   "cakupan_semua": [
+    0.3871,
+    0.3387,
+    0.3387
+   ],
+   "derau_maks": 4.28
+  },
+  {
+   "t": 11,
+   "cakupan": 0.3388,
+   "mae_diri": 2.65,
+   "ulang": 3,
+   "mae_semua": [
+    5.69,
+    1.93,
+    2.65
+   ],
+   "cakupan_semua": [
+    0.4023,
+    0.3387,
+    0.3388
+   ],
+   "derau_maks": 5.69
+  }
+ ],
+ "butir": [
+  {
+   "id": "F1 repro tiap titik (MAE diri median ≤ 12, 3 pasangan/titik)",
+   "lulus": true,
+   "keterangan": "terburuk 2.65 pada t=11"
+  },
+  {
+   "id": "F5 derau dalam titik dilaporkan (catatan, bukan ambang)",
+   "lulus": true,
+   "keterangan": "derau maks 9.98"
+  },
+  {
+   "id": "F2 cakupan mantap 0,05–0,70",
+   "lulus": true,
+   "keterangan": "titik mantap t=9:0.3387 · t=11:0.3388"
+  },
+  {
+   "id": "F3 animasi bergerak (rentang cakupan ≥ 0,01)",
+   "lulus": true,
+   "keterangan": "rentang 0.0662 (semua titik)"
+  },
+  {
+   "id": "F4 tanpa lompatan antar titik mantap (>0,25)",
+   "lulus": true,
+   "keterangan": "terbesar 0.0001 · 1 pasangan"
+  }
+ ],
+ "ringkas": {
+  "lulus": 5,
+  "total": 5
+ }
+}
