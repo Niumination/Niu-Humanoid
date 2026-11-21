@@ -1,0 +1,780 @@
+{
+ "waktu": "2026-11-18T11:00:45.418708Z",
+ "aplikasi": {
+  "APEX": {
+   "repo": "/home/user/tmpup/apex",
+   "workspace": "/home/user/apex-humanoid-rebuild",
+   "plate": [
+    {
+     "berkas": "apex-assembly-25-v1.webp",
+     "sha256": "907c6623913c",
+     "asal": "asli",
+     "workspace": "907c6623913c"
+    },
+    {
+     "berkas": "apex-assembly-60-v1.webp",
+     "sha256": "6847445a5828",
+     "asal": "asli",
+     "workspace": "6847445a5828"
+    },
+    {
+     "berkas": "apex-idle-v1.webp",
+     "sha256": "ba1a6d93f39c",
+     "asal": "asli",
+     "workspace": "ba1a6d93f39c"
+    },
+    {
+     "berkas": "apex-listening-v1.webp",
+     "sha256": "333ded16e724",
+     "asal": "asli",
+     "workspace": "333ded16e724"
+    },
+    {
+     "berkas": "apex-speaking-strong-v1.webp",
+     "sha256": "836c193d917f",
+     "asal": "asli",
+     "workspace": "836c193d917f"
+    },
+    {
+     "berkas": "apex-speaking-v1.webp",
+     "sha256": "5433add40a7b",
+     "asal": "asli",
+     "workspace": "5433add40a7b"
+    },
+    {
+     "berkas": "apex-thinking-v1.webp",
+     "sha256": "64f805cc2f9b",
+     "asal": "asli",
+     "workspace": "64f805cc2f9b"
+    },
+    {
+     "berkas": "backdrop-v1.webp",
+     "sha256": "9c5aeae2f11e",
+     "asal": "asli",
+     "workspace": "9c5aeae2f11e"
+    },
+    {
+     "berkas": "mira-hair-v1.webp",
+     "sha256": "8dc958e1750e",
+     "asal": "asli",
+     "workspace": "8dc958e1750e"
+    },
+    {
+     "berkas": "mira-idle-v1.webp",
+     "sha256": "35911d6e8517",
+     "asal": "asli",
+     "workspace": "35911d6e8517"
+    }
+   ],
+   "berkas_paket": [
+    {
+     "paket": "5v",
+     "berkas": "tools/gerbang-lingkungan.sh",
+     "workspace": "1cdd4b0c446c",
+     "repo": "1cdd4b0c446c",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/pw-shim.js",
+     "workspace": "18c054fabe06",
+     "repo": "18c054fabe06",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/gerbang-semua.sh",
+     "workspace": "fa91051fa0d3",
+     "repo": "fa91051fa0d3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/probe-listen-frame.js",
+     "workspace": "d5164cd2bee3",
+     "repo": "d5164cd2bee3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "docs/p14/GERBANG-CARA-JALAN.md",
+     "workspace": "50dfc8657bf5",
+     "repo": "50dfc8657bf5",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/gate-a.json",
+     "workspace": "4704e160526d",
+     "repo": "4704e160526d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/gate-b.json",
+     "workspace": "15231e18df4b",
+     "repo": "15231e18df4b",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/probe-listen-frame.json",
+     "workspace": "1d5f4e0054cf",
+     "repo": "1d5f4e0054cf",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-mira-a.txt",
+     "workspace": "46fbe71e7e2c",
+     "repo": "46fbe71e7e2c",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-mira-b.txt",
+     "workspace": "b7adb3fb0d53",
+     "repo": "b7adb3fb0d53",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-d.txt",
+     "workspace": "402df4d9e520",
+     "repo": "402df4d9e520",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step4c.txt",
+     "workspace": "147966b7e17d",
+     "repo": "147966b7e17d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step5.txt",
+     "workspace": "2f367d8fe486",
+     "repo": "2f367d8fe486",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step5-node.txt",
+     "workspace": "0413d3994498",
+     "repo": "0413d3994498",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/probe-listen.txt",
+     "workspace": "25d607b85d7a",
+     "repo": "25d607b85d7a",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-paritas.txt",
+     "workspace": "e91329e082c8",
+     "repo": "e91329e082c8",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-aset-layout.txt",
+     "workspace": "711a71e9fad3",
+     "repo": "711a71e9fad3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-a11y.txt",
+     "workspace": "acbb33f58f2f",
+     "repo": "acbb33f58f2f",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/RINGKAS.md",
+     "workspace": "5bbc1f679361",
+     "repo": "5bbc1f679361",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/kalibrasi-paritas.js",
+     "workspace": "db3eda79c505",
+     "repo": "db3eda79c505",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-paritas.js",
+     "workspace": "4da407911d1d",
+     "repo": "4da407911d1d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-d.js",
+     "workspace": "bf011105b25a",
+     "repo": "bf011105b25a",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-apex.js",
+     "workspace": "0737bbd78f67",
+     "repo": "0737bbd78f67",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-mira-a.js",
+     "workspace": "2fb1d90b0409",
+     "repo": "2fb1d90b0409",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "docs/p14/KALIBRASI-PARITAS.md",
+     "workspace": "ec14ac53b410",
+     "repo": "ec14ac53b410",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/kalibrasi/apex-produksi-2026-11-17.json",
+     "workspace": "e2815fed4574",
+     "repo": "e2815fed4574",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/kalibrasi/mira-produksi-2026-11-17.json",
+     "workspace": "1acc750feefd",
+     "repo": "1acc750feefd",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/gate-paritas-2026-11-17.json",
+     "workspace": "8491b41ff100",
+     "repo": "8491b41ff100",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "tools/gate-aset-layout.js",
+     "workspace": "e5fdebf05f10",
+     "repo": "e5fdebf05f10",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "tools/gate-a11y.js",
+     "workspace": "0e413adb09ec",
+     "repo": "0e413adb09ec",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "niu-humanoid/src/main.tsx",
+     "workspace": "4bf761d45806",
+     "repo": "4bf761d45806",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "niu-humanoid/src/index.css",
+     "workspace": "5fb4bccac688",
+     "repo": "5fb4bccac688",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "niu-humanoid/src/lib/a11y.ts",
+     "workspace": "3299185516c5",
+     "repo": "",
+     "status": "HILANG"
+    },
+    {
+     "paket": "5x",
+     "berkas": "niu-humanoid/src/components/HumanoidMode.tsx",
+     "workspace": "bc3eb52b9db8",
+     "repo": "96556263e45e",
+     "status": "BEDA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "docs/p14/CATATAN-P14.md",
+     "workspace": "d4ba55c3ba42",
+     "repo": "d4ba55c3ba42",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "verification/gate-aset-layout-2026-11-17.json",
+     "workspace": "231e154e36b4",
+     "repo": "231e154e36b4",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "verification/gate-a11y-2026-11-17.json",
+     "workspace": "5c550bc0cc7f",
+     "repo": "5c550bc0cc7f",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "tools/periksa-produksi.sh",
+     "workspace": "df4b1d6cf626",
+     "repo": "df4b1d6cf626",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "tools/rakit-paket.py",
+     "workspace": "9a61c9282195",
+     "repo": "9a61c9282195",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "docs/p14/PANDUAN-TERAP.md",
+     "workspace": "60bae37686e6",
+     "repo": "60bae37686e6",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "verification/produksi-2026-11-17/RINGKAS.md",
+     "workspace": "bac14c83f1c6",
+     "repo": "bac14c83f1c6",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "PROGRESS.md",
+     "workspace": "3761be9bd2c4",
+     "repo": "3761be9bd2c4",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "STATUS-ROADMAP.md",
+     "workspace": "5213cf895c7e",
+     "repo": "5213cf895c7e",
+     "status": "SAMA"
+    }
+   ],
+   "build": {
+    "aset": "index-DyoQ8hKN.js",
+    "sha256": "8dac8dada237a264",
+    "ukuran": 226278,
+    "workspace": "015740c83e878389",
+    "sama_dengan_workspace": false
+   },
+   "produksi": {
+    "aset": "index-DyoQ8hKN.js",
+    "sha256": "8dac8dada237a264",
+    "galat": null,
+    "sama_dengan_build": true
+   },
+   "lulus": 41,
+   "total": 54
+  },
+  "MIRA": {
+   "repo": "/home/user/tmpup/mira",
+   "workspace": "/home/user/mira-humanoid-rebuild",
+   "plate": [
+    {
+     "berkas": "mira-hair-v1.webp",
+     "sha256": "6c5e6791e3a5",
+     "asal": "kita",
+     "workspace": "6c5e6791e3a5"
+    },
+    {
+     "berkas": "mira-idle-v1.webp",
+     "sha256": "8409aa77647e",
+     "asal": "kita",
+     "workspace": "8409aa77647e"
+    }
+   ],
+   "berkas_paket": [
+    {
+     "paket": "5v",
+     "berkas": "tools/gerbang-lingkungan.sh",
+     "workspace": "1cdd4b0c446c",
+     "repo": "1cdd4b0c446c",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/pw-shim.js",
+     "workspace": "18c054fabe06",
+     "repo": "18c054fabe06",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/gerbang-semua.sh",
+     "workspace": "fa91051fa0d3",
+     "repo": "fa91051fa0d3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "tools/probe-listen-frame.js",
+     "workspace": "d5164cd2bee3",
+     "repo": "d5164cd2bee3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "docs/p14/GERBANG-CARA-JALAN.md",
+     "workspace": "50dfc8657bf5",
+     "repo": "50dfc8657bf5",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/gate-a.json",
+     "workspace": "4704e160526d",
+     "repo": "4704e160526d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/gate-b.json",
+     "workspace": "15231e18df4b",
+     "repo": "15231e18df4b",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/mira/probe-listen-frame.json",
+     "workspace": "1d5f4e0054cf",
+     "repo": "1d5f4e0054cf",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-mira-a.txt",
+     "workspace": "46fbe71e7e2c",
+     "repo": "46fbe71e7e2c",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-mira-b.txt",
+     "workspace": "b7adb3fb0d53",
+     "repo": "b7adb3fb0d53",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-d.txt",
+     "workspace": "402df4d9e520",
+     "repo": "402df4d9e520",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step4c.txt",
+     "workspace": "147966b7e17d",
+     "repo": "147966b7e17d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step5.txt",
+     "workspace": "2f367d8fe486",
+     "repo": "2f367d8fe486",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-step5-node.txt",
+     "workspace": "0413d3994498",
+     "repo": "0413d3994498",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/probe-listen.txt",
+     "workspace": "25d607b85d7a",
+     "repo": "25d607b85d7a",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-paritas.txt",
+     "workspace": "e91329e082c8",
+     "repo": "e91329e082c8",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-aset-layout.txt",
+     "workspace": "711a71e9fad3",
+     "repo": "711a71e9fad3",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/gate-a11y.txt",
+     "workspace": "acbb33f58f2f",
+     "repo": "acbb33f58f2f",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5v",
+     "berkas": "verification/gerbang-2026-11-17/RINGKAS.md",
+     "workspace": "5bbc1f679361",
+     "repo": "5bbc1f679361",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/kalibrasi-paritas.js",
+     "workspace": "db3eda79c505",
+     "repo": "db3eda79c505",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-paritas.js",
+     "workspace": "4da407911d1d",
+     "repo": "4da407911d1d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-d.js",
+     "workspace": "bf011105b25a",
+     "repo": "bf011105b25a",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-apex.js",
+     "workspace": "0737bbd78f67",
+     "repo": "0737bbd78f67",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "tools/gate-mira-a.js",
+     "workspace": "2fb1d90b0409",
+     "repo": "2fb1d90b0409",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "docs/p14/KALIBRASI-PARITAS.md",
+     "workspace": "ec14ac53b410",
+     "repo": "ec14ac53b410",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/kalibrasi/apex-produksi-2026-11-17.json",
+     "workspace": "e2815fed4574",
+     "repo": "e2815fed4574",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/kalibrasi/mira-produksi-2026-11-17.json",
+     "workspace": "1acc750feefd",
+     "repo": "1acc750feefd",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5w",
+     "berkas": "verification/gate-paritas-2026-11-17.json",
+     "workspace": "8491b41ff100",
+     "repo": "8491b41ff100",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "tools/gate-aset-layout.js",
+     "workspace": "e5fdebf05f10",
+     "repo": "e5fdebf05f10",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "tools/gate-a11y.js",
+     "workspace": "0e413adb09ec",
+     "repo": "0e413adb09ec",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "mira-humanoid/src/main.tsx",
+     "workspace": "9ad86123498d",
+     "repo": "9ad86123498d",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "mira-humanoid/src/index.css",
+     "workspace": "087333ec398c",
+     "repo": "087333ec398c",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "mira-humanoid/src/lib/a11y.ts",
+     "workspace": "3299185516c5",
+     "repo": "3299185516c5",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "docs/p14/CATATAN-P14.md",
+     "workspace": "d4ba55c3ba42",
+     "repo": "d4ba55c3ba42",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "verification/gate-aset-layout-2026-11-17.json",
+     "workspace": "231e154e36b4",
+     "repo": "231e154e36b4",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5x",
+     "berkas": "verification/gate-a11y-2026-11-17.json",
+     "workspace": "5c550bc0cc7f",
+     "repo": "5c550bc0cc7f",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "tools/periksa-produksi.sh",
+     "workspace": "df4b1d6cf626",
+     "repo": "df4b1d6cf626",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "tools/rakit-paket.py",
+     "workspace": "9a61c9282195",
+     "repo": "9a61c9282195",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "docs/p14/PANDUAN-TERAP.md",
+     "workspace": "60bae37686e6",
+     "repo": "60bae37686e6",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "verification/produksi-2026-11-17/RINGKAS.md",
+     "workspace": "bac14c83f1c6",
+     "repo": "bac14c83f1c6",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "PROGRESS.md",
+     "workspace": "3761be9bd2c4",
+     "repo": "3761be9bd2c4",
+     "status": "SAMA"
+    },
+    {
+     "paket": "5y",
+     "berkas": "STATUS-ROADMAP.md",
+     "workspace": "5213cf895c7e",
+     "repo": "5213cf895c7e",
+     "status": "SAMA"
+    }
+   ],
+   "build": {
+    "aset": "index-BiuEEVDg.js",
+    "sha256": "17fc09d82f4fd52c",
+    "ukuran": 533885,
+    "workspace": "17fc09d82f4fd52c",
+    "sama_dengan_workspace": true
+   },
+   "produksi": {
+    "aset": "index-BiuEEVDg.js",
+    "sha256": "17fc09d82f4fd52c",
+    "galat": null,
+    "sama_dengan_build": true
+   },
+   "lulus": 45,
+   "total": 45
+  }
+ },
+ "pulihkan": [
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-assembly-25-v1.webp",
+   "dari_repo": "907c6623913c051e10ca9c9af31a01b3923d651d2670135caa0518b05bda3c9b",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-assembly-60-v1.webp",
+   "dari_repo": "6847445a5828af54cb1077926b4db0b4914edac2e53bd57848501c8d56550cfe",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-idle-v1.webp",
+   "dari_repo": "ba1a6d93f39ce84ead857be91111e5f6157b5c33552998e859e5574a22b05dc4",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-listening-v1.webp",
+   "dari_repo": "333ded16e7244316f79145731cd86a6c386c07cf4ca6644ee04150a3977ee1af",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-speaking-strong-v1.webp",
+   "dari_repo": "836c193d917f2039d328a62bfa26291befb30e755f2bc6759f20d6883ab279b3",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-speaking-v1.webp",
+   "dari_repo": "5433add40a7b4ee2835fb9926742fb8266c29b3c0563f31a47355c69e25a91a5",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "apex-thinking-v1.webp",
+   "dari_repo": "64f805cc2f9b95a8feb9c8f934ef24a2dc676f3910629a4b8f34a233811674f5",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "backdrop-v1.webp",
+   "dari_repo": "9c5aeae2f11ea1db0860a0397a5127d7ae9326511f2210ec655cbc9df21210d3",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "mira-hair-v1.webp",
+   "dari_repo": "8dc958e1750ee348c5eb9ffb3813d42279fcd404ad4cd102bbfeba7b8c474999",
+   "asal": "asli"
+  },
+  {
+   "aplikasi": "APEX",
+   "berkas": "mira-idle-v1.webp",
+   "dari_repo": "35911d6e8517ca755524f630363d99fcadbbaa6457cd92d12603739a1309ffe1",
+   "asal": "asli"
+  }
+ ]
+}

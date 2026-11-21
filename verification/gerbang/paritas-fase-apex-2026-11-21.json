@@ -38,115 +38,115 @@
  "kurva": [
   {
    "t": 3,
-   "cakupan": 0.3077,
-   "mae_diri": 2.31,
+   "cakupan": 0.3063,
+   "mae_diri": 2.3,
    "ulang": 3,
    "mae_semua": [
-    8.89,
-    2.11,
-    2.31
+    7.38,
+    2.09,
+    2.3
    ],
    "cakupan_semua": [
-    0.3755,
-    0.3077,
-    0.3062
+    0.3748,
+    0.3061,
+    0.3063
    ],
-   "derau_maks": 8.89
+   "derau_maks": 7.38
   },
   {
    "t": 5,
-   "cakupan": 0.2946,
-   "mae_diri": 2.06,
+   "cakupan": 0.2931,
+   "mae_diri": 2.5,
    "ulang": 3,
    "mae_semua": [
-    9.98,
-    2.04,
-    2.06
+    5.5,
+    1.77,
+    2.5
    ],
    "cakupan_semua": [
-    0.3625,
-    0.2946,
-    0.2932
+    0.3561,
+    0.2931,
+    0.2931
    ],
-   "derau_maks": 9.98
+   "derau_maks": 5.5
   },
   {
    "t": 7,
-   "cakupan": 0.3608,
+   "cakupan": 0.362,
    "mae_diri": 2.21,
    "ulang": 3,
    "mae_semua": [
-    7.17,
-    1.99,
+    7.92,
+    2.02,
     2.21
    ],
    "cakupan_semua": [
-    0.4283,
-    0.3605,
-    0.3608
+    0.4294,
+    0.362,
+    0.3607
    ],
-   "derau_maks": 7.17
+   "derau_maks": 7.92
   },
   {
    "t": 9,
-   "cakupan": 0.3387,
-   "mae_diri": 2.64,
-   "ulang": 3,
-   "mae_semua": [
-    4.28,
-    1.93,
-    2.64
-   ],
-   "cakupan_semua": [
-    0.3871,
-    0.3387,
-    0.3387
-   ],
-   "derau_maks": 4.28
-  },
-  {
-   "t": 11,
    "cakupan": 0.3388,
    "mae_diri": 2.65,
    "ulang": 3,
    "mae_semua": [
-    5.69,
-    1.93,
+    5.47,
+    1.94,
     2.65
    ],
    "cakupan_semua": [
-    0.4023,
+    0.4013,
     0.3387,
     0.3388
    ],
-   "derau_maks": 5.69
+   "derau_maks": 5.47
+  },
+  {
+   "t": 11,
+   "cakupan": 0.3403,
+   "mae_diri": 2.64,
+   "ulang": 3,
+   "mae_semua": [
+    5.33,
+    2.29,
+    2.64
+   ],
+   "cakupan_semua": [
+    0.4018,
+    0.3403,
+    0.3387
+   ],
+   "derau_maks": 5.33
   }
  ],
  "butir": [
   {
    "id": "F1 repro tiap titik (MAE diri median ≤ 12, 3 pasangan/titik)",
    "lulus": true,
-   "keterangan": "terburuk 2.65 pada t=11"
+   "keterangan": "terburuk 2.65 pada t=9"
   },
   {
    "id": "F5 derau dalam titik dilaporkan (catatan, bukan ambang)",
    "lulus": true,
-   "keterangan": "derau maks 9.98"
+   "keterangan": "derau maks 7.92"
   },
   {
    "id": "F2 cakupan mantap 0,05–0,70",
    "lulus": true,
-   "keterangan": "titik mantap t=9:0.3387 · t=11:0.3388"
+   "keterangan": "titik mantap t=9:0.3388 · t=11:0.3403"
   },
   {
    "id": "F3 animasi bergerak (rentang cakupan ≥ 0,01)",
    "lulus": true,
-   "keterangan": "rentang 0.0662 (semua titik)"
+   "keterangan": "rentang 0.0689 (semua titik)"
   },
   {
    "id": "F4 tanpa lompatan antar titik mantap (>0,25)",
    "lulus": true,
-   "keterangan": "terbesar 0.0001 · 1 pasangan"
+   "keterangan": "terbesar 0.0015 · 1 pasangan"
   }
  ],
  "ringkas": {

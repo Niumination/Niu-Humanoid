@@ -1,0 +1,35 @@
+{
+ "aplikasi": "mira",
+ "tanggal": "2026-11-18",
+ "sha8": "17fc09d8",
+ "sha256": "17fc09d82f4fd52c6a43275d3c3fbb5698b5d6d01bad9ecdefbd81f6d464f43f",
+ "aset": "index-BiuEEVDg.js",
+ "mentah": 533885,
+ "gzip": 129917,
+ "berkas_js": 1,
+ "css": "index-DCwLJ2d9.css",
+ "css_mentah": 1103,
+ "sumber": "upstream",
+ "commit": "b5110a3c",
+ "dir": "/home/user/mira-humanoid-rebuild",
+ "provenance": "GERBANG E ASET: 2/2 lulus · semua milik kita",
+ "anggaran": {
+  "batas": {
+   "gzip": 150000,
+   "mentah": 620000,
+   "berkas_js": 1,
+   "build_s": 60
+  },
+  "lewat": {},
+  "lulus": true
+ },
+ "ukur": {
+  "berkas": "ukur.json",
+  "viewports": [
+   "1440x900",
+   "414x896",
+   "390x844"
+  ],
+  "catatan": "MAE diri = dua tangkapan berurutan pada viewport sama (animasi ikut terukur)"
+ }
+}

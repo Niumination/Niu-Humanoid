@@ -1,0 +1,15 @@
+{
+ "aplikasi": "apex",
+ "sampel": [
+  {
+   "tanggal": "2026-11-18",
+   "sha8": "015740c8",
+   "aset": "index-Crb4yBDw.js",
+   "mentah": 234405,
+   "gzip": 77586,
+   "berkas_js": 1,
+   "sumber": "upstream",
+   "commit": "49e011dd"
+  }
+ ]
+}

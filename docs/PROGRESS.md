@@ -1035,3 +1035,15 @@ Catatan jujur: beberapa nama berkas tangkapan lama yang disebut di log sesi sebe
   varian pita gelap 5–20 kita **~10 % lebih terang** (rasio 1,10). ⇒ bukan blend antar-lapisan. Lead baru:
   kanvas figur lebih terang di pita gelap bahkan tanpa bloom (`bpi=0`), kandidat = pensampelan tekstur sprite
   titik (`uPatchUV`/mip). Dicatat untuk sesi berikutnya.
+
+### Sesi 59–63 — 2026-11-19..21 · paket 6d–6k: gerbang 8 butir, timeline beku, kalibrasi
+
+- **6d (59):** APEX `?t=` jangkar + a11y A4/A7 → 16/16; paritas 24/24 (MAE 2,44).
+- **6e (60):** delta `src/` 9 berkas; build `ffx1NC0u` = produksi; catatan jujur: bundle `B6FCaXg2` di BACA-DULU berasal dari komposisi 6 berkas, bukan 9.
+- **6f (61):** koreksi proses + bukti periksa-penerapan APEX 11/11 MIRA 3/3.
+- **6g (62):** audit ketiga — `gate-provenance` v5 + `asli-sidik.json` 10 sha penuh dari upstream `49e011dd15` (asli-sidik lama ternyata hash plate kita — berbahaya, diganti).
+- **6h (62):** pasangan MIRA; lisensi `SEE LICENSE IN LICENSE`; `ukur-build.py` portabel.
+- **6i (63):** P-2/P-3; 5 konfigurasi MIRA ternyata sudah ada (audit paket pakai snapshot lama); `gerbang-semua.sh` v6i + `.cjs` (repo `type: module` bikin `.js` `require` gagal) + env-aware (`KERJA_ARENA`/`ROOT`/`PY`); gerbang LULUS 6/6 ×4 kombinasi.
+- **6j (63, 20-21 Nov):** 3 bug timeline beku (B-1 `?t=` < 7,4 tidak melewati kelahiran; B-2 `dt=0`; B-3 argumen butiran dibekukan) — tertangkap `gate-paritas-fase` baru; rentang 0,0021 → 0,071; build `index-DeDMCu_9.js` `873d3b54ea222267` byte-identik janji → **deploy produksi**; gerbang 8 butir + `uji-gerbang.py` (6/6, termasuk uji negatif: `p13/asli/` diisi 2 plate asli agar penolakan salinan nyata); G2: semua-unduhan-gagal = GAGAL.
+- **6k (63):** pasangan MIRA; `p13/baru/` kekurangan `backdrop-v1.webp` → disalin dari APEX; kalibrasi `MAE_F1=12` (rasio 1,5×, dasar: MAE diri APEX 6,19–6,47 terdokumentasi gerbang paritas v4 di SwiftShader; ambang mutlak 8 tak mungkin di sandbox ini).
+- **Keadaan akhir:** gerbang produksi 8/8 di APEX (`DeDMCu_9`) & MIRA (`BiuEEVDg`); commit APEX `c499144`+`b5c7070`, MIRA `b9761d2`; sisa P15 hanya **P-4** (lisensi + merek).

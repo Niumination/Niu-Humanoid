@@ -1,0 +1,112 @@
+{
+ "waktu": "2026-11-19T07:40:36.080472Z",
+ "aplikasi": {
+  "APEX": {
+   "repo": "/tmp/5z-repo",
+   "workspace": "/tmp/5z-repo",
+   "plate": [
+    {
+     "berkas": "apex-assembly-25-v1.webp",
+     "sha256": "b1028f45c4f0",
+     "asal": "kita",
+     "workspace": "b1028f45c4f0"
+    },
+    {
+     "berkas": "apex-assembly-60-v1.webp",
+     "sha256": "7bfabb2e46ca",
+     "asal": "kita",
+     "workspace": "7bfabb2e46ca"
+    },
+    {
+     "berkas": "apex-idle-v1.webp",
+     "sha256": "9f7ee35b7a61",
+     "asal": "kita",
+     "workspace": "9f7ee35b7a61"
+    },
+    {
+     "berkas": "apex-listening-v1.webp",
+     "sha256": "d1257bc024d0",
+     "asal": "kita",
+     "workspace": "d1257bc024d0"
+    },
+    {
+     "berkas": "apex-speaking-strong-v1.webp",
+     "sha256": "fed08d9fc770",
+     "asal": "kita",
+     "workspace": "fed08d9fc770"
+    },
+    {
+     "berkas": "apex-speaking-v1.webp",
+     "sha256": "589043740046",
+     "asal": "kita",
+     "workspace": "589043740046"
+    },
+    {
+     "berkas": "apex-thinking-v1.webp",
+     "sha256": "5c52933a80a1",
+     "asal": "kita",
+     "workspace": "5c52933a80a1"
+    },
+    {
+     "berkas": "backdrop-v1.webp",
+     "sha256": "35539292a3b9",
+     "asal": "kita",
+     "workspace": "35539292a3b9"
+    },
+    {
+     "berkas": "mira-hair-v1.webp",
+     "sha256": "6c5e6791e3a5",
+     "asal": "kita",
+     "workspace": "6c5e6791e3a5"
+    },
+    {
+     "berkas": "mira-idle-v1.webp",
+     "sha256": "8409aa77647e",
+     "asal": "kita",
+     "workspace": "8409aa77647e"
+    }
+   ],
+   "berkas_paket": [],
+   "build": {
+    "aset": "index-ffx1NC0u.js",
+    "sha256": "7daca178a692f337",
+    "ukuran": 235200,
+    "workspace": "7daca178a692f337",
+    "sama_dengan_workspace": true
+   },
+   "produksi": {},
+   "lulus": 11,
+   "total": 11
+  },
+  "MIRA": {
+   "repo": "/tmp/5z-mira",
+   "workspace": "/tmp/5z-mira",
+   "plate": [
+    {
+     "berkas": "mira-hair-v1.webp",
+     "sha256": "6c5e6791e3a5",
+     "asal": "kita",
+     "workspace": "6c5e6791e3a5"
+    },
+    {
+     "berkas": "mira-idle-v1.webp",
+     "sha256": "8409aa77647e",
+     "asal": "kita",
+     "workspace": "8409aa77647e"
+    }
+   ],
+   "berkas_paket": [],
+   "build": {
+    "aset": "index-BiuEEVDg.js",
+    "sha256": "17fc09d82f4fd52c",
+    "ukuran": 533885,
+    "workspace": "17fc09d82f4fd52c",
+    "sama_dengan_workspace": true
+   },
+   "produksi": {},
+   "lulus": 3,
+   "total": 3
+  }
+ },
+ "pulihkan": []
+}

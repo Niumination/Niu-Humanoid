@@ -1,0 +1,118 @@
+{
+ "gerbang": "provenance aset",
+ "akar": "public/humanoid",
+ "live": "https://niu-humanoid.vercel.app/",
+ "syarat": {
+  "min_byte": 1024,
+  "larangan": 0
+ },
+ "berkas": [
+  {
+   "berkas": "apex-assembly-25-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "b1028f45c4f0e559",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-assembly-60-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "7bfabb2e46ca8da1",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-idle-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "9f7ee35b7a61462d",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-listening-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "d1257bc024d03bf0",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-speaking-strong-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "fed08d9fc7708db8",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-speaking-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "589043740046a2fc",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  },
+  {
+   "berkas": "apex-thinking-v1.webp",
+   "sha256": null,
+   "byte": 0,
+   "asal": "(tak ada berkas lokal)",
+   "lulus": true,
+   "alasan": [],
+   "live": {
+    "sha256": "5c52933a80a10421",
+    "asal": "kita",
+    "sama_dengan_disk": null
+   }
+  }
+ ],
+ "live_ringkas": {
+  "lulus": 7,
+  "total": 7
+ },
+ "ringkas": {
+  "gagal": 0,
+  "total": 7,
+  "repo": {
+   "lulus": 7,
+   "total": 7
+  },
+  "produksi": {
+   "lulus": 7,
+   "total": 7
+  }
+ }
+}

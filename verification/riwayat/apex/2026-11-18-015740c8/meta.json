@@ -1,0 +1,36 @@
+{
+ "aplikasi": "apex",
+ "tanggal": "2026-11-18",
+ "sha8": "015740c8",
+ "sha256": "015740c83e878389306b87baba71ff67369cbe45a7693a90501b10f220b584c4",
+ "aset": "index-Crb4yBDw.js",
+ "mentah": 234405,
+ "gzip": 77586,
+ "berkas_js": 1,
+ "css": "index-WDCbnnbD.css",
+ "css_mentah": 202,
+ "sumber": "upstream",
+ "commit": "49e011dd",
+ "dir": "/home/user/apex-humanoid-rebuild",
+ "provenance": "GERBANG E ASET: 0/10 lulus · 10 GAGAL",
+ "anggaran": {
+  "batas": {
+   "gzip": 90000,
+   "mentah": 280000,
+   "berkas_js": 1,
+   "build_s": 60
+  },
+  "lewat": {},
+  "lulus": true
+ },
+ "ukur": {
+  "berkas": "ukur.json",
+  "viewports": [
+   "1440x900",
+   "414x896",
+   "390x844"
+  ],
+  "catatan": "MAE diri = dua tangkapan berurutan pada viewport sama (animasi ikut terukur)"
+ },
+ "catatan_penting": "Sampel ini = keadaan UPSTREAM apa adanya (belum P13/P14): 10/10 plate masih salinan asli produksi dan HumanoidMode memuat F-164. Dipakai sebagai titik nol riwayat."
+}
