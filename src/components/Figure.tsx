@@ -256,6 +256,7 @@ export function Figure({
     let raf = 0
     let last = performance.now()
     let elapsed = 0
+    const wall0 = performance.now()
 
     const draw = () => {
       raf = requestAnimationFrame(draw)
@@ -265,6 +266,12 @@ export function Figure({
       const dt = Math.min(0.05, dtRaw || 0.016)
       elapsed += dt
       const t = elapsed
+      // P16: live memakai DUA jam. `E = min(0,05, delta)` hanya untuk integrator (boil, vein,
+      // wave, pelunakan lean, blend state) — itu sudah sama di sini. Napas dan denyut plate
+      // memakai `clock.elapsedTime` three.js, yaitu JAM DINDING tanpa cap. Dengan dt ber-cap,
+      // pada mesin lambat (SwiftShader ±3 fps) jam kita merayap ~5× lebih lambat dan figur
+      // praktis berhenti bernapas (terukur: geser tegak asli ±2 px per 400 ms, klon 0 px).
+      const wallT = (now - wall0) / 1000
 
       const { h } = resize()
 
@@ -289,6 +296,11 @@ export function Figure({
       const L = blend.b
       const isSpeak = L === 2
       const isThink = L === 1
+      // P16: live memisahkan LISTENING dari THINKING lewat string state mentah
+      // (`C.includes("listen")`), bukan lewat indeks blend. Tanpa itu laju edge-boil idle
+      // terlanjur 1,5 (laju thinking live) padahal live memakai 1,0 — figur kita bergolak
+      // 50 % lebih cepat saat diam (terukur: jitter blok tubuh 18,4 vs 12,6 di asli).
+      const isListen = String(stateRef.current || '').includes('listen')
 
       // ================= figur (aU/lU, blending normal) =================
       const p = progFig
@@ -316,7 +328,7 @@ export function Figure({
       gl.uniform1f(uf(p, 'uStrongB'), blend.b === 2 ? strongMix : 0)
 
       const ue = 1 + 0.9 * surge
-      const z = 1 + 0.02 * Math.sin(t * 2.1)
+      const z = 1 + 0.02 * Math.sin(wallT * 2.1)
       gl.uniform1f(uf(p, 'uPulseA'), (blend.a === 1 ? z : 1) * ue)
       gl.uniform1f(uf(p, 'uPulseB'), (blend.b === 1 ? z : 1) * ue)
 
@@ -327,8 +339,8 @@ export function Figure({
       lean.pitch += (bm(0) * 0.2 * J - lean.pitch) * K
       gl.uniform1f(uf(p, 'uYaw'), lean.yaw)
       gl.uniform1f(uf(p, 'uPitch'), lean.pitch)
-      gl.uniform1f(uf(p, 'uBreathe'), 1 + Math.sin(t * 0.9) * 0.004)
-      gl.uniform1f(uf(p, 'uBreathY'), 0.012 * Math.sin(t * 1.37))
+      gl.uniform1f(uf(p, 'uBreathe'), 1 + Math.sin(wallT * 0.9) * 0.004)
+      gl.uniform1f(uf(p, 'uBreathY'), 0.012 * Math.sin(wallT * 1.37))
       gl.uniform1f(
         uf(p, 'uBackK'),
         Math.min(1, Math.max(0, (Math.abs(lean.yaw) + Math.abs(lean.pitch) - 0.09) / 0.24))
@@ -355,7 +367,7 @@ export function Figure({
 
       gl.uniform1f(
         uf(p, 'uVein'),
-        (isSpeak ? 0.85 + energy * 0.55 : isThink ? 1.05 : 1) * (1 + surge)
+        (isSpeak ? 0.85 + energy * 0.55 : isListen ? 1.05 : 1) * (1 + surge)
       )
 
       if (frozen != null) {
@@ -367,8 +379,11 @@ export function Figure({
       } else {
         const cr = clickAge < 3 ? Math.exp(-clickAge / 0.6) : 0
         const amp = 1 + 1.5 * cr
-        boilT += dt * (isSpeak ? 2.6 + energy * 3 : isThink ? 2 : 1.5) * amp * (1 + 3 * surge)
-        veinT += dt * (isSpeak ? 0.55 : isThink ? 0.45 : 0.25)
+        // live: speaking 2,6+E·3 · listening 2 · thinking 1,5 · idle 1
+        boilT +=
+          dt * (isSpeak ? 2.6 + energy * 3 : isListen ? 2 : isThink ? 1.5 : 1) * amp * (1 + 3 * surge)
+        // live: speaking 0,55 · listening 0,45 · selain itu 0,25
+        veinT += dt * (isSpeak ? 0.55 : isListen ? 0.45 : 0.25)
         waveT += dt
       }
       gl.uniform1f(uf(p, 'uBoilT'), boilT)
